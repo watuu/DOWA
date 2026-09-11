@@ -1,0 +1,103 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "日本PGMの技術"
+    - var pageClass = "page-technology"
+    - var breadcrumb = "日本PGMの技術"
+
+block content
+
+    -
+        var research = [
+            { title: "豊富な知見を持つ分析機関", desc: "日本ピージーエムの信頼性を支える分析は、政府認定の総合分析機関であるDOWAテクノリサーチが担当しています。<br>PGM分析をはじめ、環境分析や製錬分析で培った豊富なノウハウを活かし、多様な原料を総合的に評価。第三者機関として中立的な立場から、信頼性の高い分析データを提供しています。" },
+            { title: "正確なICP分析技術", desc: "組成が複雑でばらつきの大きい貴金属スクラップにも、高精度な分析を実現しています。ICP（誘導結合プラズマ）分析をはじめ、複数の分析手法を組み合わせることで、微量成分まで正確に定量。分析はDOWAテクノリサーチが高度な分析機器と豊富な知見を活かして実施し、精度と再現性の高いデータで原料評価の信頼性を支えています。" }
+        ]
+        //- points の要素は文字列か { label, url }（url があればリンク＋三角の矢印）
+        var smelting = [
+            { title: "世界最大級のPGM製錬", desc: "日本ピージーエムの原料処理技術「ROSEプロセス」は、親会社であるDOWAメタルマイン株式会社と田中貴金属工業の共同開発によって生まれた、低エネルギーかつ高効率なPGM回収プロセスです。多種多様な原料を月間1,000トン規模で処理し、優れたエネルギー効率を実現しています。", points: [{ label: "多種多様な取扱原料", url: "material/" }, "月間約<span class=\"u-font-en\">1,000t</span>の大規模な処理能力"] },
+            { title: "高効率のPGM回収", desc: "一般的な製錬所では、他工程を経由するため処理に時間がかかり、PGMの回収効率も低下します。日本ピージーエムは、PGM専用設備により短期間で高効率な回収を実現。低エネルギー操業と大規模処理によるコストメリットを活かし、競争力のあるサービスを提供しています。", points: ["大規模処理だから高効率", "<span class=\"u-font-en\">PGM</span>原料特化だから高効率"] },
+            { title: "リサイクル100%白金族金属を再び市場へ", desc: "ROSEプロセスでは、原料中の貴金属濃度を最終的に約60%まで高め、最終精製に適した銅合金の状態へと仕上げます。<br>その後、田中貴金属工業にて精製を行い、精製された地金は再び市場へ供給されます。この一連の流れにより、資源を有効活用する循環型ビジネスが成立しています。" }
+        ]
+
+    mixin heading-marker(label)
+        h2.c-heading-marker
+            span.c-marker
+                svg(aria-hidden="true")
+                    use(href="#ico_marker")
+            span= label
+
+    .p-technology
+        .cm-block-header-page.cm-block-header-page--section
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title 日本PGMの技術
+                    p.c-heading-page__label NPGM Expertise
+
+        .l-container
+            .p-technology-sections
+
+                //- サンプリング
+                section.p-technology-section#sampling
+                    +heading-marker("サンプリング")
+                    .p-technology-sampling
+                        .c-heading-lead
+                            h3.c-heading-lead__title 信頼は、正確なサンプリングから始まる
+                            p.c-heading-lead__desc わずかな誤差が評価を左右するPGMリサイクルでは、サンプリング精度が極めて重要です。日本ピージーエムでは、原料特性に応じて複数のラインを使い分け、偏りのない代表性の高いサンプルを採取。長年培った技術により、透明性と信頼性の高い評価を実現しています。
+                        .p-technology-diagram.c-scroll-x
+                            .c-scroll-x__inner.js-scroll-x
+                                img.p-technology-diagram__img(src=img + "p-technology-sample.svg" width=1188 height=435 alt="サンプリングの流れ。破砕工程：01 原料、02 粗粉砕、03 微粉砕。サンプリング工程：04 縮分。分析用サンプル：05 サンプル。")
+                            .c-scroll-x__bar(aria-hidden="true")
+                                span.c-scroll-x__thumb
+                        .p-technology-photos
+                            each n in [1, 2, 3]
+                                figure.p-technology-photos__item
+                                    img(src=img + "p-technology-sample" + n + ".webp" alt="" width=772 height=572 loading="lazy")
+
+                //- 分析
+                section.p-technology-section#research
+                    +heading-marker("分析")
+                    .p-technology-research
+                        each r, i in research
+                            if i > 0
+                                .c-line-dot(aria-hidden="true")
+                            .c-card-num.c-card-num--text-first
+                                .c-card-num__body
+                                    .c-card-num__text
+                                        h3.c-card-num__title= r.title
+                                        p.c-card-num__desc!= r.desc
+                                figure.c-card-num__figure
+                                    img(src=img + "p-technology-research" + (i + 1) + ".webp" alt="" width=1456 height=997 loading="lazy")
+
+                //- 製錬
+                section.p-technology-section#smelting
+                    +heading-marker("製錬")
+                    .p-technology-smelting
+                        each s, i in smelting
+                            if i > 0
+                                .c-line-dot(aria-hidden="true")
+                            .c-card-num.c-card-num--text-first.c-card-num--media-left
+                                .c-card-num__body
+                                    p.c-card-num__num #0#{i + 1}
+                                    .c-card-num__text
+                                        h3.c-card-num__title= s.title
+                                        p.c-card-num__desc!= s.desc
+                                    if s.points
+                                        .c-keypoint
+                                            p.c-keypoint__label
+                                                span.c-marker
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_marker")
+                                                span KEYPOINT
+                                            ul.c-keypoint__list
+                                                each pt in s.points
+                                                    li
+                                                        if pt.url
+                                                            a.c-keypoint__link(href=path + pt.url)
+                                                                span.c-keypoint__link-label= pt.label
+                                                                span.c-btn-arrow.c-btn-arrow--xs.c-btn-arrow--action.c-btn-arrow--tri
+                                                                    svg(aria-hidden="true")
+                                                                        use(href="#ico_tri_d")
+                                                        else
+                                                            span!= pt
+                                figure.c-card-num__figure
+                                    img(src=img + "p-technology-smelting" + (i + 1) + ".webp" alt="" width=1200 height=840 loading="lazy")

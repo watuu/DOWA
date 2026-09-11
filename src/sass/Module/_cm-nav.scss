@@ -1,0 +1,181 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	cm-nav
+----------------------------------------------------*/
+
+// ページネーション／ページャーで共通の40pxボタン（三角アイコン）
+%navi-btn {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(40, 16) + rem;
+	height: math.div(40, 16) + rem;
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-action);
+	color: var(--color-inverse);
+
+	svg {
+		display: block;
+		width: math.div(12, 16) + rem;
+		height: math.div(12, 16) + rem;
+		fill: currentColor;
+	}
+}
+
+/*  ページネーション（一覧の数字送り）
+    Figma: PC 2669-13783
+----------------------------------------------------*/
+.cm-navi-paginate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: math.div(10, 16) + rem;
+
+	// 数字
+	&__num {
+		display: grid;
+		place-items: center;
+		width: math.div(40, 16) + rem;
+		height: math.div(40, 16) + rem;
+		border: 1px solid var(--c-border); // Figma 1.333 → 切り捨て
+		border-radius: math.div(4, 16) + rem;
+		background: var(--c-surface);
+		color: var(--c-action);
+		font-family: var(--font-en);
+		font-size: math.div(16, 16) + rem;
+		line-height: 1;
+
+		&.is-current {
+			border-color: transparent;
+			background: var(--c-action);
+			color: var(--color-inverse);
+		}
+	}
+
+	// 中略
+	&__ellipsis {
+		color: var(--c-action);
+		font-family: var(--font-en);
+		font-size: math.div(16, 16) + rem;
+		line-height: 1;
+	}
+
+	// 前後送り
+	&__ctrl {
+		@extend %navi-btn;
+
+		&--prev svg { transform: scaleX(-1); }
+
+		// 先頭・末尾では押せない
+		&.is-disabled {
+			background: var(--c-border);
+			opacity: 1; // .is-disabled ユーティリティの .7 は使わない（Figmaはベタの #d9d9d9）
+			pointer-events: none;
+		}
+	}
+}
+
+/*  ページャー（詳細の前後送り・一覧へもどる）
+    Figma: SP 3139-7356 / PC 2669-14227
+----------------------------------------------------*/
+// 3つの項目を両端揃えで置く。全体の幅は使う側で決める（新着情報詳細は SP 362 / PC 552）。
+.cm-navi-pager {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: math.div(20, 16) + rem;
+}
+
+.cm-navi-pager__item {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+}
+
+.cm-navi-pager__btn {
+	@extend %navi-btn;
+}
+
+.cm-navi-pager__btn--prev svg {
+	transform: scaleX(-1);
+}
+
+// 文字は Action/Primary、下線だけ Text/Link。Figmaでそれぞれ別のカラースタイルが当たっている
+// （文字 #15819e / 罫線 2669-14234 の stroke #088395）
+.cm-navi-pager__label {
+	border-bottom: 1px solid var(--c-text-link);
+	color: var(--c-action);
+	font-size: math.div(12, 16) + rem; // Figma 12.8 → 切り捨て
+	line-height: 1.5;
+	white-space: nowrap;
+}
+
+// 「一覧へもどる」の2×2アイコン。6pxの正方形を1pxずつ空けて並べる
+.cm-navi-pager__grid {
+	display: grid;
+	grid-template-columns: repeat(2, math.div(6, 16) + rem);
+	gap: 1px;
+	flex-shrink: 0;
+
+	span {
+		display: block;
+		width: math.div(6, 16) + rem;
+		height: math.div(6, 16) + rem;
+		background: var(--c-action);
+	}
+}
+
+/*  パンくず
+    Figma: SP 3139-5581 / PC 2548-5270（帯。中のテキスト群は 2548-5412）
+----------------------------------------------------*/
+.cm-navi-breadcrumb {
+	background: var(--c-surface-band);
+	font-size: math.div(12, 16) + rem;
+	line-height: 1.8;
+}
+
+// Figma: PC 2548-5412
+.cm-navi-breadcrumb__list {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: math.div(10, 16) + rem;
+	padding-block: math.div(10, 16) + rem; // 帯の高さ SP42 / PC35 から逆算
+	color: var(--c-text-support);
+
+	@include config.pc {
+		padding-block: math.div(7, 16) + rem;
+	}
+}
+
+// 3階層になると SP では収まらない。縮めるのは現在地（最後の項目）だけにして、
+// 折り返さずに末尾を「…」で切る（記事名など長い現在地で帯の高さが変わらないように）
+.cm-navi-breadcrumb__item {
+	white-space: nowrap;
+}
+
+.cm-navi-breadcrumb__item:not(:last-child) {
+	flex-shrink: 0;
+}
+
+.cm-navi-breadcrumb__item:last-child {
+	min-width: 0; // flex アイテムは既定で中身より縮まないため
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// 区切りの「/」
+.cm-navi-breadcrumb__item + .cm-navi-breadcrumb__item::before {
+	content: "/";
+	margin-right: math.div(9, 16) + rem;
+}
+
+.cm-navi-breadcrumb__item a {
+	color: var(--c-text-link);
+	text-decoration: underline;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

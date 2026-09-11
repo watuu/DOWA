@@ -1,0 +1,36 @@
+extends ../_default
+include ../_include/_form-parts
+block vars
+    - var path = "../"
+    - var title = "お問い合わせ"
+    - var pageClass = "page-contact"
+    - var breadcrumb = "お問い合わせ"
+
+block content
+
+    .p-contact
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title お問い合わせ
+                    p.c-heading-page__label Contact
+
+        section.p-contact-form
+            .l-container
+                .cm-block-panel
+                    p.cm-block-lead ご相談やご質問など、お気軽にお問い合わせください。お問い合わせ内容は、土日祝を除く平日に担当者よりご回答します。内容によっては回答にお時間をいただく場合もあります。あらかじめご了承ください。
+
+                    form.p-contact-form__body.cm-form(action="#" method="post" onsubmit="return false;")
+                        .cm-form__body
+                            .cm-form__rows
+                                +formText("f-name", "name", "お名前", "氏名を入力ください。", true)
+                                +formText("f-kana", "kana", "フリガナ", "フリガナを入力ください。", false)
+                                +formText("f-email", "email", "メールアドレス", "メールアドレスを入力ください。", true, "email")
+                                +formText("f-company", "company", "会社名", "会社名を入力ください。", true)
+                                +formText("f-address", "address", "住所", "住所を入力ください。", true)
+                                +formText("f-tel", "tel", "電話番号", "電話番号を入力ください。", true, "tel")
+                                +formSelect("f-type", "type", "問い合わせ種別", ["買取について", "資料について", "その他"], true)
+                                +formRow("f-body", "お問い合わせ内容", true)
+                                    textarea#f-body.c-textarea(name="body" placeholder="お問い合わせ内容を入力ください。" required)
+                            +formAgree(path)
+                        +formSubmit("内容を確認する")

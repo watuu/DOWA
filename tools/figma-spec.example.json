@@ -1,0 +1,69 @@
+{
+  "_": "Figma との px 差分チェック用の仕様書。数値は Figma のアートボード座標をそのまま書く。",
+  "_color": "色は #707070 のような hex でも書ける（内部で rgb() に直して比較する）。アルファ付きは rgba(...) か #rrggbbaa で書く。",
+  "_run": "実行前に必ず npm run sass && npm run pug でビルドし、dest/ を配信した URL を url に書くこと。",
+
+  "url": "http://localhost/example/dest/message/",
+  "tolerance": 4,
+
+  "_tolerances": "キー別の許容差の上書き。省略時は fontSize/borderRadius 0.5 / lineHeight 1 / letterSpacing 0.05。tolerance（既定4px）が効くのは x/y/w/h だけ。",
+  "tolerances": { "letterSpacing": 0.05 },
+
+  "settle": {
+    "timeout": 2500,
+    "scrollThrough": true,
+    "scrollWait": 1200
+  },
+
+  "viewports": [
+    { "name": "PC", "width": 1600, "height": 1000 },
+    { "name": "SP", "width": 375,  "height": 800  }
+  ],
+
+  "targets": {
+    "PC": {
+      "_baseline": "ページ上部の累積差を吸収する基準要素。セクション単体を見るときはそのセクションの先頭要素を指定する。",
+      "baseline": { "selector": ".c-heading-page__title", "y": 253 },
+
+      "items": [
+        {
+          "name": "リード1",
+          "selector": ".p-message-lead",
+          "x": 566, "y": 1255, "w": 954, "h": 60,
+          "fontSize": 30, "lineHeight": 60, "letterSpacing": "0.04em",
+          "fontWeight": "900"
+        },
+        {
+          "name": "区切り罫線",
+          "selector": ".p-message-logo__body",
+          "x": 566, "y": 2167, "w": 954,
+          "borderTop": "1px solid rgba(112, 112, 112, 0.5)"
+        },
+        {
+          "name": "写真1",
+          "selector": ".p-top-company__pic1 img",
+          "x": -114, "y": 5642, "w": 658, "h": 513,
+          "borderRadius": 16
+        },
+        {
+          "name": "2枚目のカード",
+          "selector": ".c-card-note",
+          "index": 1,
+          "x": 446, "y": 6905, "w": 342
+        }
+      ]
+    },
+
+    "SP": {
+      "baseline": { "selector": ".c-heading-page__title", "y": 192 },
+      "items": [
+        {
+          "name": "リード1",
+          "selector": ".p-message-lead",
+          "x": 24, "y": 1030, "w": 327,
+          "fontSize": 20, "lineHeight": 40
+        }
+      ]
+    }
+  }
+}

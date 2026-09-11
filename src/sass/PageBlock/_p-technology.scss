@@ -1,0 +1,130 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	日本PGMの技術
+	Figma: PC-TECHNOLOGY 2630-6734 / SP-TECHNOLOGY 3154-10236
+----------------------------------------------------*/
+
+/*  本文（サンプリング・分析・製錬の3節）
+    PCはコンテナ（1360）より狭い 1188px を中央に置く（x126〜1314）。節の間 SP 80 / PC 120。
+    下の余白はパンくずまで SP 80 / PC 120。PCの Figma は 252.6 だが、他ページの 120 にそろえた（doc/design-tokens.md 6）
+    Figma: PC 2630-7189
+----------------------------------------------------*/
+.p-technology-sections {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(80, 16) + rem;
+	max-width: math.div(1188, 16) + rem;
+	margin-inline: auto;
+	margin-bottom: math.div(80, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(120, 16) + rem;
+		margin-bottom: math.div(120, 16) + rem;
+	}
+}
+
+// 節の見出し（.c-heading-marker）→ 中身 SP 20 / PC 40
+// Figma SP 3154-10302 → 3155-10465 / PC 2630-7174 → 2725-18027（間隔なので node-id 照合の書式にしない）
+.p-technology-section {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(40, 16) + rem;
+	}
+}
+
+/*  サンプリング（h3＋リード → 図 → 写真3枚。間隔 SP 40 / PC 70）
+    SPは節の見出しまで含む枠（3155-10579・1530）しか無い。見出し45 ＋ 20 を引いた 1465 がこのブロック
+    Figma: PC 2725-18027
+----------------------------------------------------*/
+.p-technology-sampling {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(40, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(70, 16) + rem;
+	}
+}
+
+/*  サンプリングの流れの図（書き出し済みSVG・文字はアウトライン化済み）
+    PCは 1188×434.5 をそのまま、SPは 0.75倍（891×326）にして .c-scroll-x で横に送る。
+    SPの Figma（3155-10466）は 825×326 でラベルの列が詰めてあり、英字の工程名も違う（doc/design-tokens.md 6）。
+    書き出したSVGは PC 版の1枚なので、SPも同じ絵を縮小して使っている。
+    Figma: SP 3155-10554 / PC 2630-7179
+----------------------------------------------------*/
+.p-technology-diagram {
+	width: 100%;
+}
+
+.p-technology-diagram__img {
+	display: block;
+	width: math.div(891, 16) + rem;
+	max-width: none;
+	height: auto;
+
+	@include config.pc {
+		width: 100%;
+	}
+}
+
+/*  サンプリングの写真（SP 縦積み / PC 3列。間隔15・270:200・角丸5）
+    Figma: SP 3155-10555 / PC 2725-18022
+----------------------------------------------------*/
+.p-technology-photos {
+	display: grid;
+	gap: math.div(15, 16) + rem;
+
+	@include config.pc {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.p-technology-photos__item {
+	aspect-ratio: 270 / 200;
+	overflow: hidden;
+	border-radius: math.div(5, 16) + rem;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+/*  分析（テキスト ＋ 写真のカードを点線で区切る）
+    カードは .c-card-num（番号なし）＋ --text-first。
+    PCは買取原料と違ってカードの下に 30 の余白が無い（Figma 2630-7023 は写真の高さ 498 ちょうど）
+    Figma: SP 3155-10606 / PC 2630-7022
+----------------------------------------------------*/
+.p-technology-research .c-card-num {
+	@include config.pc {
+		padding-bottom: 0;
+	}
+}
+
+/*  製錬（テキスト ＋ KEYPOINT ＋ 写真のカード）
+    カードは .c-card-num ＋ --text-first ＋ --media-left。
+    SPは点線で区切り、PCは点線なしで間隔51（Figma 2630-7109 / 2630-7134 / 2630-7155 の y 0 / 471 / 942）
+    Figma: SP 3155-10617 / PC 2630-7169
+----------------------------------------------------*/
+.p-technology-smelting {
+	display: flex;
+	flex-direction: column;
+
+	@include config.pc {
+		gap: math.div(51, 16) + rem;
+	}
+}
+
+.p-technology-smelting .c-line-dot {
+	@include config.pc {
+		display: none;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

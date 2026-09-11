@@ -1,0 +1,224 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	フッター
+	Figma: SP footer_sp 3138-5193 / PC footer-pc 3003-9151
+----------------------------------------------------*/
+.l-footer {
+	// a / button は Base/_anchor.scss で color: var(--color) を持つ。
+	// .is-section-dark と同じ流儀で --color ごと白に差し替える。
+	--color: var(--color-inverse);
+	background: var(--c-brand-deep);
+	color: var(--color);
+
+	&__inner {
+		padding-inline: math.div(30, 16) + rem; // SP 402 に対し 7.46% = 30
+		padding-top: math.div(40, 16) + rem;    // SP 1080 に対し 3.7% = 40
+		padding-bottom: math.div(40, 16) + rem;
+
+		@include config.pc {
+			padding-inline: math.div(40, 16) + rem; // PC 1440 に対し 2.78% = 40
+			padding-top: math.div(100, 16) + rem;   // PC 770 に対し 12.99% = 100
+			padding-bottom: math.div(52, 16) + rem;
+		}
+	}
+}
+
+/*  サイトマップ（PCのみ。SPは出さない）
+----------------------------------------------------*/
+.l-footer-nav {
+	display: none;
+
+	@include config.pc {
+		display: flex;
+		align-items: center;
+		gap: math.div(32, 16) + rem;
+		font-size: math.div(16, 16) + rem;
+		line-height: 1.8;
+		white-space: nowrap;
+	}
+}
+
+/*  関連サイト（運営会社・関連会社）
+----------------------------------------------------*/
+.l-footer-sites {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(9, 16) + rem;
+	}
+
+	&__row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: math.div(32, 16) + rem;
+	}
+
+	// FigmaはRegular（footer-pc 3003-9111）
+	&__name {
+		font-size: math.div(14, 16) + rem;
+		font-weight: 400;
+		letter-spacing: 0.05em;
+		white-space: nowrap;
+	}
+
+	&__link {
+		display: flex;
+		align-items: center;
+		gap: math.div(10, 16) + rem;
+		flex-shrink: 0;
+	}
+
+	// 「サイトへ」の文字はSPでは出ない
+	&__label {
+		display: none;
+
+		@include config.pc {
+			display: block;
+			font-size: math.div(12, 16) + rem;
+			white-space: nowrap;
+		}
+	}
+}
+
+// 「サイトへ」の小さい白ボタン（30px・角丸2.4→2・矢印9.48×3.84→9×3）
+// 白地なので中の矢印だけCTA色に戻す
+.l-footer-sites__btn {
+	--color: var(--c-brand-cta);
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(30, 16) + rem;
+	height: math.div(30, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+	background: var(--c-surface);
+	color: var(--color);
+
+	svg {
+		display: block;
+		width: math.div(10, 16) + rem;
+		height: math.div(4, 16) + rem;
+		fill: currentColor;
+	}
+}
+
+/*  フッターロゴ（書き出し済みSVG 338×49）
+----------------------------------------------------*/
+.l-footer-logo {
+	width: math.div(338, 16) + rem;
+	max-width: 100%;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+/*  コピーライト・ポリシー
+----------------------------------------------------*/
+.l-footer-copy {
+	--color: var(--c-action);
+	color: var(--color);
+	font-family: var(--font-en);
+	font-size: math.div(14, 16) + rem;
+	font-weight: 400; // FigmaはRoboto Condensed Regular（footer-pc 3003-9150）
+	line-height: 1.4;
+}
+
+.l-footer-policy {
+	display: flex;
+	align-items: center;
+	gap: math.div(20, 16) + rem;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: math.div(5, 16) + rem;
+		font-size: math.div(12, 16) + rem;
+		line-height: 1.4;
+		white-space: nowrap;
+	}
+
+	svg {
+		display: block;
+		flex-shrink: 0;
+		height: math.div(15, 16) + rem;
+		fill: currentColor;
+	}
+
+	&__item--cookie svg  { width: math.div(14, 16) + rem; }
+	&__item--privacy svg { width: math.div(13, 16) + rem; }
+}
+
+/*  下段の組み方
+    SP: 関連サイト → ロゴ → コピーライト（中央寄せ、ポリシーは出さない）
+    PC: 左にサイトマップ／右に関連サイト、その下に ロゴ＋コピーライト と ポリシー
+----------------------------------------------------*/
+.l-footer-body {
+	display: flex;
+	flex-direction: column;
+	// カード → 会社行 → ロゴ の間隔（Figma実測 SP 60/80 ・ PC 31/42）
+	gap: math.div(80, 16) + rem;
+	margin-top: math.div(60, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(42, 16) + rem;
+		margin-top: math.div(31, 16) + rem;
+	}
+
+	&__top {
+		display: flex;
+		flex-direction: column;
+		gap: math.div(29, 16) + rem;
+
+		@include config.pc {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: math.div(40, 16) + rem;
+		}
+	}
+
+	&__bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: math.div(29, 16) + rem;
+
+		@include config.pc {
+			flex-direction: row;
+			align-items: flex-end;
+			justify-content: space-between;
+			gap: math.div(40, 16) + rem;
+		}
+	}
+
+	&__brand {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: math.div(29, 16) + rem;
+
+		@include config.pc {
+			align-items: flex-start;
+			gap: math.div(27, 16) + rem;
+		}
+	}
+
+	// ポリシーはSPのデザインに無い
+	.l-footer-policy {
+		display: none;
+
+		@include config.pc {
+			display: flex;
+		}
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

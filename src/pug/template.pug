@@ -1,0 +1,324 @@
+extends ./_default
+block vars
+    - var path = "./"
+    - var title = "テンプレート"
+    - var pageClass = ""
+
+block content
+
+    .l-container
+        .u-template
+            .u-gap
+                p .c-paragraph
+                p.c-paragraph 本文
+
+            hr
+
+            .u-gap
+                p .c-btn　ラベル＋矢印
+                a.c-btn(href="#")
+                    span.c-btn__label お問い合わせ
+                    span.c-btn__arrow
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn--action
+                a.c-btn.c-btn--action(href="#")
+                    span.c-btn__label 内容を確認する
+                    span.c-btn__arrow
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn--mid
+                a.c-btn.c-btn--mid(href="#")
+                    span.c-btn__label 資料ダウンロード
+                    span.c-btn__arrow
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn--sm　矢印なし（ヘッダーCTA）
+                a.c-btn.c-btn--sm(href="#")
+                    span.c-btn__label お問い合わせ
+
+            hr
+
+            .u-gap
+                p .c-btn-arrow　矢印のみ（40px）
+                a.c-btn-arrow(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn-arrow--xs（20px）／ --sm（30px）／ --md（50px）
+                a.c-btn-arrow.c-btn-arrow--xs(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+                a.c-btn-arrow.c-btn-arrow--sm(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+                a.c-btn-arrow.c-btn-arrow--md(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn-arrow--lg（95px・斜め矢印）
+                a.c-btn-arrow.c-btn-arrow--lg(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_ne")
+
+            .u-gap
+                p .c-btn-arrow--action ／ --mid
+                a.c-btn-arrow.c-btn-arrow--action(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+                a.c-btn-arrow.c-btn-arrow--mid(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+
+            .u-gap
+                p .c-btn-arrow--outline　白地＋枠線（一覧・FAQ）
+                a.c-btn-arrow.c-btn-arrow--outline.c-btn-arrow--sm(href="#" aria-label="詳しく見る")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap(style="background:var(--c-brand-deep); padding:2rem; width:100%;")
+                p(style="color:#fff") .c-btn-arrow--white　濃い地の上
+                a.c-btn-arrow.c-btn-arrow--white.c-btn-arrow--sm(href="#" aria-label="サイトへ")
+                    svg(aria-hidden="true")
+                        use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap
+                p .c-btn-menu　閉／開（.is-nav-open）
+                button.c-btn-menu(aria-label="メニューを開く")
+                    span
+                    span
+                    span
+                button.c-btn-menu.is-nav-open(aria-label="メニューを閉じる")
+                    span
+                    span
+                    span
+
+            .u-gap
+                p .c-btn-ctrl　前後送り（75px）
+                .c-btn-ctrl-group
+                    button.c-btn-ctrl.c-btn-ctrl--prev(type="button" aria-label="前へ")
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_ne")
+                    button.c-btn-ctrl.c-btn-ctrl--next(type="button" aria-label="次へ")
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_ne")
+
+            hr
+
+            .u-gap
+                p .c-link-arrow　テキスト＋矢印ボタン（SP 14px＋30px / PC 12px下線＋40px）
+                a.c-link-arrow(href="#")
+                    span.c-link-arrow__label お問い合わせはこちら
+                    span.c-btn-arrow.c-link-arrow__arrow
+                        svg(aria-hidden="true")
+                            use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .cm-block-header-page ＞ .c-heading-page　ページ見出し
+                .cm-block-header-page(style="padding-top:0;")
+                    .c-heading-page
+                        h1.c-heading-page__title 買取原料
+                        p.c-heading-page__label What we buy
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .c-heading-marker　マーカー付き見出し
+                h2.c-heading-marker
+                    span.c-marker
+                        svg(aria-hidden="true")
+                            use(href="#ico_marker")
+                    span 取引開始前のデューデリジェンス
+
+            hr
+
+            .u-gap
+                p .c-heading-section　セクション見出し
+                .c-heading-section
+                    p.c-heading-section__label 自動車解体事業者様の声
+                    p.c-heading-section__title Voice
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .c-card-news　お知らせ1件
+                ul
+                    each n in [1, 2, 3]
+                        li
+                            a.c-card-news(href="#")
+                                .c-card-news__body
+                                    .c-card-news__meta
+                                        time.c-card-news__date(datetime="2026-07-15") 2026.07.15
+                                        span.c-card-news__tag お知らせ
+                                    p.c-card-news__title 新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。
+                                span.c-btn-arrow.c-btn-arrow--outline.c-btn-arrow--sm
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .cm-navi-paginate　ページネーション
+                nav.cm-navi-paginate(aria-label="ページ送り")
+                    span.cm-navi-paginate__ctrl.cm-navi-paginate__ctrl--prev.is-disabled(aria-hidden="true")
+                        svg
+                            use(href="#ico_tri_r")
+                    span.cm-navi-paginate__num.is-current(aria-current="page") 1
+                    a.cm-navi-paginate__num(href="#") 2
+                    a.cm-navi-paginate__num(href="#") 3
+                    span.cm-navi-paginate__ellipsis ⋯
+                    a.cm-navi-paginate__num(href="#") 8
+                    a.cm-navi-paginate__ctrl.cm-navi-paginate__ctrl--next(href="#" aria-label="次のページへ")
+                        svg(aria-hidden="true")
+                            use(href="#ico_tri_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .cm-navi-pager　詳細の前後送り
+                nav.cm-navi-pager(aria-label="記事送り")
+                    a.cm-navi-pager__item(href="#")
+                        span.cm-navi-pager__btn.cm-navi-pager__btn--prev
+                            svg(aria-hidden="true")
+                                use(href="#ico_tri_r")
+                        span.cm-navi-pager__label 前へ
+                    a.cm-navi-pager__item(href="#")
+                        span.cm-navi-pager__grid(aria-hidden="true")
+                            span
+                            span
+                            span
+                            span
+                        span.cm-navi-pager__label 一覧へもどる
+                    a.cm-navi-pager__item(href="#")
+                        span.cm-navi-pager__label 次へ
+                        span.cm-navi-pager__btn
+                            svg(aria-hidden="true")
+                                use(href="#ico_tri_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .c-card-num　番号付きカード
+                .c-card-num
+                    .c-card-num__body
+                        p.c-card-num__num #01
+                        .c-card-num__text
+                            h3.c-card-num__title 使用済み自動車触媒
+                            p.c-card-num__desc 缶出し済み、缶付きのどちらでも受入が可能です。缶出しのサービスも提供しています。
+                    figure.c-card-num__figure
+                        img(src="http://placehold.jp/999999/ffffff/994x680.png" alt="" width=994 height=680)
+
+            .u-gap(style="width:100%;")
+                p .c-heading-sub　マーカー付きの小さい見出し（26px）
+                h2.c-heading-sub
+                    span.c-marker
+                        svg(aria-hidden="true")
+                            use(href="#ico_marker")
+                    span よくあるご質問
+
+            .u-gap(style="width:100%; max-width:758px;")
+                p .c-accordion　開閉つきのQ&A
+                .c-accordion(style="width:100%;")
+                    each q, i in ["触媒が割れたり、溶損していても買取できますか？", "配送指定業者はどこですか？"]
+                        .c-accordion__item
+                            button.c-accordion__head.js-accordion(type="button" aria-expanded="false" aria-controls="tpl-faq-" + i)
+                                span.c-accordion__q= q
+                                span.c-accordion__icon
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_tri_d")
+                            .c-accordion__body(id="tpl-faq-" + i)
+                                p.c-accordion__answer 回答のテキストが入ります。
+
+            .u-gap(style="width:100%;")
+                p .c-line-dot　点線の区切り（80px）
+                .c-line-dot(aria-hidden="true" style="width:100%;")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .c-card-step　手順カード
+                .c-card-step
+                    p.c-card-step__num 1
+                    .c-card-step__main
+                        figure.c-card-step__figure
+                            img(src="http://placehold.jp/999999/ffffff/840x560.png" alt="" width=840 height=560)
+                        .c-card-step__body
+                            h3.c-card-step__title お問い合わせ・ご相談
+                            p.c-card-step__desc 使用済み触媒の種類や数量などをお知らせください。お客様の条件に応じて、最適な取引方法をご提案いたします。
+                            .c-card-step__action
+                                a.c-btn(href="#")
+                                    span.c-btn__label お問い合わせ
+                                    span.c-btn__arrow
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .cm-form　お問い合わせフォーム
+                form.cm-form(action="#" method="post" onsubmit="return false;")
+                    .cm-form__body
+                        .cm-form__rows
+                            .cm-form-row
+                                label.cm-form-row__label(for="f-name")
+                                    | お名前
+                                    span.c-form-required 必須
+                                .cm-form-row__field
+                                    input#f-name.c-input(type="text" name="name" placeholder="氏名を入力ください。" required)
+                            .cm-form-row
+                                label.cm-form-row__label(for="f-kana") フリガナ
+                                .cm-form-row__field
+                                    input#f-kana.c-input(type="text" name="kana" placeholder="フリガナを入力ください。")
+                            .cm-form-row
+                                label.cm-form-row__label(for="f-type")
+                                    | 問い合わせ種別
+                                    span.c-form-required 必須
+                                .cm-form-row__field
+                                    .c-select
+                                        select#f-type(name="type" required)
+                                            option(value="") 選択してください
+                                            option(value="1") 買取について
+                                        span.c-select__arrow
+                                            svg(aria-hidden="true")
+                                                use(href="#ico_tri_r")
+                            .cm-form-row
+                                label.cm-form-row__label(for="f-body")
+                                    | お問い合わせ内容
+                                    span.c-form-required 必須
+                                .cm-form-row__field
+                                    textarea#f-body.c-textarea(name="body" placeholder="お問い合わせ内容を入力ください。" required)
+                        label.c-checkbox
+                            input(type="checkbox" name="agree" required)
+                            span
+                                a(href="#") 個人情報の取り扱い
+                                |  に関して同意する
+                    button.c-btn.c-btn--action(type="submit")
+                        span.c-btn__label 内容を確認する
+                        span.c-btn__arrow
+                            svg(aria-hidden="true")
+                                use(href="#ico_arrow_r")
+
+            hr
+
+            .u-gap(style="width:100%;")
+                p .cm-navi-breadcrumb　パンくず
+                nav.cm-navi-breadcrumb(aria-label="パンくず" style="width:100%;")
+                    .l-container
+                        ol.cm-navi-breadcrumb__list
+                            li.cm-navi-breadcrumb__item
+                                a(href="./") トップ
+                            li.cm-navi-breadcrumb__item 買取原料

@@ -1,0 +1,64 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "使用済み触媒の買取対象原料を更新しました"
+    - var pageClass = "page-single-news"
+    - var breadcrumb = [{ label: "新着情報", url: "news/" }, { label: "使用済み触媒の買取対象原料を更新しました" }]
+
+block content
+
+    -
+        var bodyLines = [
+            "平素より日本ピージーエムをご利用いただき、誠にありがとうございます。",
+            "このたび、使用済み触媒の買取対象原料ページを更新いたしました。",
+            "最新の取り扱い原料や対象品目を掲載しておりますので、売却をご検討中のお客様はぜひご確認ください。",
+            "掲載されていない原料につきましても、お取り扱い可能な場合がございます。ご不明な点がございましたら、お気軽にお問い合わせください。",
+            "今後も、お客様に分かりやすい情報提供に努めてまいります。"
+        ]
+
+    .p-single-news
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    p.c-heading-page__title 新着情報
+                    p.c-heading-page__label News
+
+        section.p-single-news-body
+            .l-container
+                .p-single-news-head
+                    .p-single-news-head__meta
+                        time.p-single-news-head__date(datetime="2025-04-01") 2025.04.01
+                        span.p-single-news-head__tag お知らせ
+                    h1.p-single-news-head__title 使用済み触媒の買取対象原料を更新しました
+
+                .cm-block-panel.cm-block-panel--article
+                    figure.cm-post-eyecatch
+                        img(src=img + "p-single-news-dummy.webp" width=1686 height=900 alt="")
+
+                    .cm-post
+                        h2 使用済み触媒の買取対象原料ページを更新
+                        each line in bodyLines
+                            p= line
+
+                        h3 使用済み触媒の買取対象原料ページを更新
+                        each line in bodyLines
+                            p= line
+
+                nav.cm-navi-pager.p-single-news-pager(aria-label="記事送り")
+                    a.cm-navi-pager__item(href="#")
+                        span.cm-navi-pager__btn.cm-navi-pager__btn--prev
+                            svg(aria-hidden="true")
+                                use(href="#ico_tri_r")
+                        span.cm-navi-pager__label 前へ
+                    a.cm-navi-pager__item(href=path + "news/")
+                        span.cm-navi-pager__grid(aria-hidden="true")
+                            span
+                            span
+                            span
+                            span
+                        span.cm-navi-pager__label 一覧へもどる
+                    a.cm-navi-pager__item(href="#")
+                        span.cm-navi-pager__label 次へ
+                        span.cm-navi-pager__btn
+                            svg(aria-hidden="true")
+                                use(href="#ico_tri_r")

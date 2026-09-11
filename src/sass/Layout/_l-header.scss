@@ -1,0 +1,198 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	ヘッダー
+	配置は各ページの実測（SP x20 y20・362×40 / PC x40 y25・1360×59）。スクロールしても画面に固定（2026-09-11・ユーザー指示）
+	PCはロゴ（59px）が箱の高さを決め、右側（40px）は上下中央（Figma y9.5 = (59 - 40) / 2）
+	Figma: SP header_sp 3138-4670 / PC header_pc 3003-9152
+----------------------------------------------------*/
+.l-header {
+	position: fixed;
+	z-index: 500;
+	top: math.div(20, 16) + rem;
+	left: math.div(20, 16) + rem;
+	right: math.div(20, 16) + rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: math.div(40, 16) + rem;
+	// a / button は Base/_anchor.scss で color: var(--color) を持つため、--color ごと切り替える
+	--color: var(--c-ink); // 既定は濃い。写真や濃い地の上（body.is-header-dark）だけ白
+	color: var(--color);
+
+	@include config.pc {
+		top: math.div(25, 16) + rem;
+		left: math.div(40, 16) + rem;
+		right: math.div(40, 16) + rem;
+		height: math.div(59, 16) + rem;
+	}
+}
+
+// .is-section-dark（MV・買取原料の濃い帯・技術力の帯・フッター）にヘッダーが重なっている間は白抜き。
+// body の is-header-dark は common.js の isSectionDark() が付け外しする（境目はヘッダーの縦の中央）
+body.is-header-dark .l-header {
+	--color: var(--color-inverse);
+}
+
+// ドロワーを開いている間は白地なので濃いまま（Figma SP_MENU 3138-4958）
+body.is-nav-open .l-header {
+	--color: var(--c-ink);
+}
+
+// ドロワーは .l-header の中に入っているので、ロゴと右側は必ずその上に置く
+.l-header-logo,
+.l-header-utility {
+	position: relative;
+	z-index: 2;
+}
+
+/*  ロゴ
+    lockup は書き出し済みSVG（dest/assets/img/logo.svg・logo-wh.svg／355.143×59）。
+    文字（A-OTF 新ゴ Pr5 DB）はアウトライン化済み。
+    SPは同じ絵の縮小（Figma 241.012 / 355.143 = 0.6786 → 高さ40）。
+    Figma: SP 3297-18683 / PC 3003-9028
+----------------------------------------------------*/
+.l-header-logo {
+	flex-shrink: 0;
+	width: math.div(241.012, 16) + rem;
+
+	@include config.pc {
+		width: math.div(355.143, 16) + rem;
+	}
+
+	a {
+		display: block;
+	}
+
+	// display はここに書かない（.l-header-logo img が 0,1,1 で __dark の display:none に勝ち、2枚とも出る）
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+// 既定は濃いロゴ、写真や濃い地の上は白抜き、ドロワーを開いている間は濃いロゴ
+.l-header-logo__light { display: none; }
+.l-header-logo__dark  { display: block; }
+
+body.is-header-dark .l-header-logo__light { display: block; }
+body.is-header-dark .l-header-logo__dark  { display: none; }
+
+body.is-nav-open .l-header-logo__light { display: none; }
+body.is-nav-open .l-header-logo__dark  { display: block; }
+
+/*  グローバルナビ（PCのみ。SPはドロワー）
+----------------------------------------------------*/
+.l-header-nav {
+	display: none;
+
+	@include config.pc {
+		display: flex;
+		align-items: center;
+	}
+
+	// 白いピルの中にリンクが並ぶ
+	&__list {
+		display: flex;
+		align-items: center;
+		gap: math.div(35, 16) + rem;
+		height: math.div(40, 16) + rem;
+		padding-inline: math.div(40, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+		background: var(--c-surface);
+		--color: var(--c-ink); // 白いピルの中は常に濃い文字
+		color: var(--color);
+		font-size: math.div(16, 16) + rem;
+		white-space: nowrap;
+	}
+
+	// 「NPGMの技術」の英字部分だけ欧文フォント
+	&__en {
+		font-family: var(--font-en);
+	}
+}
+
+/*  ヘッダー右側（ナビ＋CTA＋言語切替）
+    Figma: 3003-9066（gap14）の中に 3003-9067（ナビとCTA。gapなし）
+----------------------------------------------------*/
+.l-header-utility {
+	display: flex;
+	align-items: center;
+	gap: math.div(14, 16) + rem;
+
+	// 白いピルとCTAは隙間なくくっつく。中身がPC専用なのでSPでは箱ごと消す
+	// （残すと 0×0 の箱が gap 14px を連れてレイアウトに残る）
+	&__group {
+		display: none;
+
+		@include config.pc {
+			display: flex;
+			align-items: center;
+		}
+	}
+}
+
+/*  JP / EN
+    Figma: 11px・+0.16em、間に1pxの横罫
+----------------------------------------------------*/
+.l-header-lang {
+	display: none;
+
+	@include config.pc {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: math.div(7, 16) + rem;
+		width: math.div(16, 16) + rem;
+		height: math.div(31, 16) + rem;
+		font-family: var(--font-en);
+		font-size: math.div(11, 16) + rem;
+		line-height: 1;
+		letter-spacing: 0.16em;
+	}
+}
+
+// 現在地（JP）は #c4c4c4、現在地でないほう（EN）と罫線は #222020。MV の上（トップ）も同じ。
+// Figma は各ページに置いた header_pc がすべてこの色（トップ I3003-9404;3003-9077 ほか）。
+// コンポーネント本体（3003-9077）だけ JP と罫線が白になっているが、使われている側に合わせた
+.l-header-lang__current {
+	color: var(--c-lang-current);
+}
+
+.l-header-lang__other {
+	color: var(--c-ink);
+}
+
+// 高さ31pxの箱に対して中身（11＋7＋1＋7＋11）が収まらないため、
+// flex-shrink を切らないと 1px の罫線が 0 まで潰れて消える
+.l-header-lang__line {
+	flex-shrink: 0;
+	width: 100%;
+	height: 1px;
+	background: var(--c-ink);
+}
+
+/*  CTA（PCのみ）
+    SPのヘッダー（header_sp 3138-4670）にCTAは無いので、PCだけ出す。
+    見た目は .c-btn--sm（Figma header_pc 3003-9074）。
+----------------------------------------------------*/
+.l-header-cta {
+	display: none;
+
+	@include config.pc {
+		display: inline-flex;
+	}
+}
+
+/*  ハンバーガー（SPのみ）
+----------------------------------------------------*/
+.l-header-menu {
+	@include config.pc {
+		display: none;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

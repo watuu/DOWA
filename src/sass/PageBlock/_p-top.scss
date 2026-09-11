@@ -1,0 +1,926 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	トップ
+	セクションごとに下から実装している（2026-09-11：売却先を選ぶポイント〜日本ピージーエムの技術力まで。MV は未着手）
+	Figma: PC_TOP 2323-5003 / SP_TOP 3012-9710
+----------------------------------------------------*/
+
+/*  MV（動画 ＋ 画像リスト）
+    PCは左に動画（1440 − 8 − 203 ＝ 1229 × 900）、右に 203 角の画像を縦に並べる（間8）。
+    SPは動画（402×546）の下に 120 角の画像を横に並べる（間4）。画像リストは一定速度でループ（2026-09-11・ユーザー指示）。
+    動画は Figma では VIDEO の塗り（2323-5312 / 3012-10158）だが書き出されていないので静止画。
+    地は Key Points と同じグレー（Figma の帯は y0 から敷かれていて、動画と画像のすき間に見える）
+----------------------------------------------------*/
+// 画面より高くならないようにする（2026-09-11・ユーザー指示）。
+// 低い画面では SP は動画が縮み（画像の列 120 はそのまま）、PC は動画と画像の列がそろって低くなる
+.p-top-mv {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(4, 16) + rem;
+	max-height: 100vh;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		flex-direction: row;
+		gap: math.div(8, 16) + rem;
+		height: math.div(900, 16) + rem;
+	}
+}
+
+// Figma: SP 3012-10158 / PC 2323-5312
+.p-top-mv__main {
+	position: relative;
+	height: math.div(546, 16) + rem;
+	// a / button は Base/_anchor.scss で color: var(--color) を持つので、--color ごと白にする
+	--color: var(--color-inverse);
+	color: var(--color);
+
+	@include config.pc {
+		flex: 1 0 0;
+		min-width: 0;
+		height: auto;
+	}
+}
+
+.p-top-mv__movie {
+	position: absolute;
+	inset: 0;
+
+	img,
+	video {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// コピー。左下に置く（SP 下から40 / PC 下から30）。見出し → 本文 SP 10 / PC 20。本文だけ左に2の余白（Figma の padding-left）
+// SPの Figma は x23 だが、ヘッダー・コンテナの 20 にそろえた
+// Figma: SP 3112-4753 / PC 2942-8015
+.p-top-mv__copy {
+	position: absolute;
+	left: math.div(20, 16) + rem;
+	right: math.div(20, 16) + rem;
+	bottom: math.div(40, 16) + rem;
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		left: math.div(40, 16) + rem;
+		right: math.div(40, 16) + rem;
+		bottom: math.div(30, 16) + rem;
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+// 文言は Figma で SP と PC が違う（doc/design-tokens.md 6）ので出し分けている
+.p-top-mv__title {
+	font-size: math.div(32, 16) + rem;
+	font-weight: 700;
+	line-height: 1.2;
+
+	@include config.pc {
+		font-size: math.div(80, 16) + rem;
+		line-height: 1.1;
+	}
+}
+
+.p-top-mv__lead {
+	padding-left: math.div(2, 16) + rem;
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+
+	@include config.pc {
+		font-size: math.div(18, 16) + rem;
+	}
+}
+
+// 画像リスト。同じ5枚を2周並べ、半分（1周ぶん）動かして戻すとつなぎ目なくループする。
+// 間は gap ではなく各画像の margin で持つ（gap だと1周の長さが「半分」からずれる）。
+// 速さは Figma に指定が無いので、SP・PC とも 1秒あたり約25px で仮置き（1周 SP 620px / 25秒・PC 1055px / 42秒）
+// Figma: SP 3112-4750 / PC 2338-6393
+.p-top-mv__gallery {
+	flex-shrink: 0;
+	overflow: hidden;
+	height: math.div(120, 16) + rem;
+
+	@include config.pc {
+		flex: 0 0 math.div(203, 16) + rem;
+		height: auto;
+	}
+}
+
+.p-top-mv__track {
+	display: flex;
+	width: max-content;
+	animation: p-top-mv-x 25s linear infinite;
+
+	@include config.pc {
+		flex-direction: column;
+		width: auto;
+		animation: p-top-mv-y 42s linear infinite;
+	}
+}
+
+.p-top-mv__item {
+	flex-shrink: 0;
+	width: math.div(120, 16) + rem;
+	margin-right: math.div(4, 16) + rem;
+	aspect-ratio: 1;
+
+	@include config.pc {
+		width: math.div(203, 16) + rem;
+		margin-right: 0;
+		margin-bottom: math.div(8, 16) + rem;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+@keyframes p-top-mv-x {
+	to { transform: translateX(-50%); }
+}
+
+@keyframes p-top-mv-y {
+	to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.p-top-mv__track {
+		animation-play-state: paused;
+	}
+}
+
+/*  売却先を選ぶポイント（Key Points。グレーの帯）
+    MV の下端 → 見出しの和文ラベル SP 85 / PC 105、見出し → ポイント SP 19 / PC 30、ポイント → DOWA の一文 SP 40 / PC 59、
+    その下 → 帯の左半分の下端 SP 65 / PC 79。帯の右半分は SP 25 / PC 62 長い（::after）。
+    帯は Figma では MV の裏まで伸びている（PC 3003-9024・3003-9025 / SP 3181-17367・3181-17369 は y0 から）
+----------------------------------------------------*/
+.p-top-point {
+	position: relative;
+	padding-top: math.div(85, 16) + rem;
+	padding-bottom: math.div(65, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		padding-top: math.div(105, 16) + rem;
+		padding-bottom: math.div(79, 16) + rem;
+	}
+}
+
+// 帯の右半分（PC 3003-9025 は y1565、左半分 3003-9024 は y1503）
+.p-top-point::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 50%;
+	height: math.div(25, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		height: math.div(62, 16) + rem;
+	}
+}
+
+.p-top-point__head {
+	margin-bottom: math.div(19, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(30, 16) + rem;
+	}
+}
+
+// 4つを 2列 × 2行、列ごとに上から（1・2 が左、3・4 が右）。PCは 410 × 2 を 847 の中で両端に置く
+// Figma: SP 3112-4790 / PC 2986-8248
+.p-top-point__list {
+	display: grid;
+	grid-template-rows: auto auto;
+	grid-auto-flow: column;
+	justify-content: space-between;
+	row-gap: math.div(10, 16) + rem; // SPだけ行の間10（Figma 3112-4792 → 3112-4799）。PCは 85 の行が隙間なく並ぶ
+
+	@include config.pc {
+		row-gap: 0;
+		grid-template-columns: repeat(2, math.div(410, 16) + rem);
+		max-width: math.div(847, 16) + rem;
+		margin-inline: auto;
+	}
+}
+
+// 1つ（数字 ＋ 文言）。SP 高さ42.4・内側10・間10 / PC 85・20・20
+// Figma: SP 3112-4792 / PC 2986-8250
+.p-top-point__item {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+	height: math.div(42.4, 16) + rem;
+	padding: math.div(10, 16) + rem;
+	font-size: math.div(15, 16) + rem; // Figma 15.977 → 切り捨て
+	line-height: 1;
+	white-space: nowrap;
+	color: var(--c-ink);
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+		height: math.div(85, 16) + rem;
+		padding: math.div(20, 16) + rem;
+		font-size: math.div(32, 16) + rem;
+	}
+}
+
+// 数字は図形（書き出したSVG・PC の大きさ）。SPは半分
+.p-top-point__num {
+	flex-shrink: 0;
+	width: auto;
+	height: math.div(22, 16) + rem;
+
+	@include config.pc {
+		height: math.div(44, 16) + rem;
+	}
+}
+
+// 「[DOWA]には、そのすべてに応える体制があります」。SPは「には、」で改行して2行
+// Figma: SP 3112-4824 / PC 2986-8127
+.p-top-point__closing {
+	margin-top: math.div(40, 16) + rem;
+	font-size: math.div(17, 16) + rem; // Figma 17.286 → 切り捨て
+	font-weight: 700;
+	line-height: 1.6;
+	text-align: center;
+	color: var(--c-ink);
+
+	@include config.pc {
+		margin-top: math.div(59, 16) + rem;
+		font-size: math.div(33, 16) + rem; // Figma 33.277 → 切り捨て
+		line-height: 1.4;
+	}
+}
+
+// DOWA のバッジ（地は Figma #045268 → --c-brand-dark を追加）。角丸 3.803 → 3、内側 SP 4.9 / PC 9.5
+.p-top-point__badge {
+	display: inline-block;
+	margin-right: math.div(5, 16) + rem;
+	padding: math.div(5, 16) + rem;
+	border-radius: math.div(3, 16) + rem;
+	background: var(--c-brand-dark);
+	color: var(--color-inverse);
+	font-family: var(--font-en);
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: -0.05em;
+	vertical-align: middle;
+
+	@include config.pc {
+		margin-right: math.div(9, 16) + rem;
+		padding: math.div(9.5, 16) + rem;
+	}
+}
+
+/*  私たちの強み（Our Strength。白地）
+    帯の左半分の下端 → 見出しの和文ラベル SP 65 / PC 123、見出し → リード見出し SP 20 / PC 40、
+    リード → 写真 SP 60 / PC 45、写真の下 → 濃い帯 SP 120 / PC 190。
+    写真は Figma では動画の塗り（ホバーで黒40% ＋ 説明文。バリアント2）。動画は書き出されていないので静止画で組んでいる
+----------------------------------------------------*/
+.p-top-strength {
+	padding-top: math.div(65, 16) + rem;
+	padding-bottom: math.div(120, 16) + rem;
+
+	@include config.pc {
+		padding-top: math.div(123, 16) + rem;
+		padding-bottom: math.div(190, 16) + rem;
+	}
+}
+
+// 見出し → リード見出し SP 20 / PC 40。ただし PC の Figma の見出し（2942-8097）だけ和文と英字の間が 15（他は 20）で箱が5低い。
+// 見出しは共通の 20 にそろえたので、ここを 35 にして和文ラベル（y1626）とリード見出し（y1769）の位置を Figma に合わせる
+.p-top-strength__head {
+	margin-bottom: math.div(20, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(35, 16) + rem;
+	}
+}
+
+// リード見出し ＋ リード（中央。間20）
+// SPの Figma（3115-589）はリードの文言が PC と違って短く、写真の列と同じ幅342で2行。PC の文言は 342 だと3行になるので、
+// SPはコンテナいっぱい（362）で2行にしている。Figma の枠（3115-587）は高さ 102 のまま固定で中身（126）と合っていない
+// Figma: PC 2942-8098
+.p-top-strength__intro {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: math.div(20, 16) + rem;
+	margin-bottom: math.div(60, 16) + rem;
+	text-align: center;
+	color: var(--c-ink);
+
+	@include config.pc {
+		margin-bottom: math.div(45, 16) + rem;
+	}
+}
+
+.p-top-strength__title {
+	font-size: math.div(21, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+
+	@include config.pc {
+		font-size: math.div(35, 16) + rem;
+	}
+}
+
+.p-top-strength__lead {
+	font-size: math.div(14, 16) + rem;
+	font-weight: 400;
+	line-height: 1.7;
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+// SPは縦積み（間40・コンテナより左右10内側＝342）、PCは 440 × 3（間20）
+// Figma: SP 3181-17399
+.p-top-strength__list {
+	display: grid;
+	gap: math.div(40, 16) + rem;
+	padding-inline: math.div(10, 16) + rem;
+
+	@include config.pc {
+		grid-template-columns: repeat(3, 1fr);
+		gap: math.div(20, 16) + rem;
+		padding-inline: 0;
+	}
+}
+
+// 1枚（写真 ＋ 工程名。右下に大きな数字が写真にかかる）。写真 → 工程名 SP 10 / PC 12
+// Figma: SP 3181-17396
+.p-top-strength__item {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(12, 16) + rem;
+	}
+}
+
+.p-top-strength__figure {
+	position: relative;
+	aspect-ratio: 440 / 540;
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// ホバーで黒40% ＋ 工程名と説明（Figma バリアント2 3003-8868：x50 y148・幅340、DISSOLVE）。
+// ホバーできない端末（SP）では出さない（Figma もホバーのみ）
+.p-top-strength__detail {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+	padding: math.div(148, 16) + rem math.div(50, 16) + rem 0;
+	background: var(--c-overlay-hover);
+	color: var(--color-inverse);
+	opacity: 0;
+	transition: opacity var(--duration) var(--easeTheme);
+	pointer-events: none;
+}
+
+@media (hover: hover) {
+	.p-top-strength__item:hover .p-top-strength__detail {
+		opacity: 1;
+	}
+}
+
+.p-top-strength__detail-title {
+	font-size: math.div(24, 16) + rem;
+	line-height: 1.8;
+}
+
+.p-top-strength__detail-text {
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.8;
+}
+
+.p-top-strength__name {
+	font-size: math.div(21, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	color: var(--c-ink);
+
+	@include config.pc {
+		font-size: math.div(24, 16) + rem;
+	}
+}
+
+// 数字の図形（書き出したSVG・PC の大きさ）。右から40、下は SP 0 / PC 11（Figma 2986-8281 ほか）。SPは半分
+.p-top-strength__num {
+	position: absolute;
+	right: math.div(40, 16) + rem;
+	bottom: 0;
+	width: auto;
+	height: math.div(60, 16) + rem;
+
+	@include config.pc {
+		bottom: math.div(11, 16) + rem;
+		height: math.div(120, 16) + rem;
+	}
+}
+
+/*  買取原料（What We Buy。濃い帯）
+    帯の上端 → 見出しの和文ラベル SP 110 / PC 70、見出し → リード SP 30 / PC 44。
+    PCは2列で、左列は リード → 80 → 1枚目 → 80 → 3枚目、右列は 2枚目（リードの上端から）→ 80 → 4枚目 → 85 → ボタン。
+    SPはこの並びのまま縦積み（リード → 50 → 1 → 40 → 3 → 40 → 2 → 40 → 4 → 50 → ボタン）。下の余白 SP 80 / PC 191
+    Figma: SP 3181-17493
+----------------------------------------------------*/
+// 見出しの上罫線と余白30は他の見出しと同じく落としている（No.246）。見出しの色も --c-brand-mid（Figma #1f819c）
+.p-top-what {
+	--color: var(--color-inverse);
+	padding-top: math.div(110, 16) + rem;
+	padding-bottom: math.div(80, 16) + rem;
+	background: var(--c-surface-dark);
+	color: var(--color);
+
+	@include config.pc {
+		padding-top: math.div(70, 16) + rem;
+		padding-bottom: math.div(191, 16) + rem;
+	}
+}
+
+.p-top-what__head {
+	margin-bottom: math.div(30, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(44, 16) + rem;
+	}
+}
+
+.p-top-what__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(40, 16) + rem;
+
+	@include config.pc {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: math.div(32, 16) + rem; // 列の間（Figma 左列 x40〜704 / 右列 x736〜）
+		align-items: start;
+	}
+}
+
+.p-top-what__col {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(40, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(80, 16) + rem;
+	}
+}
+
+.p-top-what__lead {
+	margin-bottom: math.div(10, 16) + rem; // gap 40 と足して 50
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.2;
+
+	@include config.pc {
+		margin-bottom: 0;
+		font-size: math.div(18, 16) + rem;
+	}
+}
+
+// 1枚（写真 ＋ 英字 ＋ 和文）。写真 → 文字 SP 12 / PC 24、英字 → 和文 SP 10 / PC 20
+// SPの写真は 362×342（正方形でない）、PCは 664 の正方形
+// Figma: SP 3181-17470 / PC 2323-5297
+.p-top-what__card {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(12, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(24, 16) + rem;
+	}
+}
+
+.p-top-what__figure {
+	aspect-ratio: 362 / 342;
+	overflow: hidden;
+
+	@include config.pc {
+		aspect-ratio: 1;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.p-top-what__text {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+	line-height: 1;
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+// 色は Figma #1f819c → --c-brand-mid（見出しと同じ扱い）
+.p-top-what__en {
+	font-family: var(--font-en);
+	font-size: math.div(10, 16) + rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--c-brand-mid);
+
+	@include config.pc {
+		font-size: math.div(14, 16) + rem;
+	}
+}
+
+.p-top-what__name {
+	font-size: math.div(16, 16) + rem;
+	font-weight: 700;
+	letter-spacing: -0.05em;
+
+	@include config.pc {
+		font-size: math.div(32, 16) + rem;
+	}
+}
+
+// SPは中央、PCは右列の右端
+.p-top-what__action {
+	display: flex;
+	justify-content: center;
+	margin-top: math.div(10, 16) + rem; // gap 40 と足して 50
+
+	@include config.pc {
+		justify-content: flex-end;
+		margin-top: math.div(5, 16) + rem; // gap 80 と足して 85
+	}
+}
+
+/*  特長（Feature。白地）
+    上の余白は前のセクション（買取原料・濃い帯）の下端 → 見出しの和文ラベル SP 100 / PC 90
+    （見出しの上罫線と余白30は落としている。doc/design-tokens.md 6）。
+    下の余白は Voice の帯の左半分の上端まで SP 135 / PC 212。右半分は帯が SP 25 / PC 82 先に始まる（::after）。
+    SP の帯の位置は Figma（グループ 3181-17726 がフッターの下にずれている）ではなくカンプ SP_TOP.jpg の実測（右 7692 / 左 7717）。
+----------------------------------------------------*/
+.p-top-feature {
+	position: relative;
+	padding-top: math.div(100, 16) + rem;
+	padding-bottom: math.div(135, 16) + rem;
+
+	@include config.pc {
+		padding-top: math.div(90, 16) + rem;
+		padding-bottom: math.div(212, 16) + rem;
+	}
+}
+
+// Voice の帯の右半分（Figma PC 3003-9022 は x720・y6411、左半分 2323-5109 は y6493）
+.p-top-feature::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 50%;
+	height: math.div(25, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		height: math.div(82, 16) + rem;
+	}
+}
+
+// 見出し → リード SP 30 / PC 40（見出し下端 5121 → 5161）
+.p-top-feature__head {
+	margin-bottom: math.div(30, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(40, 16) + rem;
+	}
+}
+
+// SPは リード → 一覧 60 の縦積み。PCは左にリード（335）、右（x554〜1316・762）に一覧。
+// 列は 335 : 179 : 762 : 84（1440 のとき。1360 に対する比率で持つ）
+.p-top-feature__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(60, 16) + rem;
+
+	@include config.pc {
+		display: grid;
+		grid-template-columns: 24.632% 1fr 56.029% 6.176%; // 335 / 1360・762 / 1360・84 / 1360
+		gap: 0;
+	}
+}
+
+// PCは一覧が流れる間、左に留まる（Figma のプロトタイプで sticky 指定。2986-8347）。
+// 留まる位置は Figma に無いので、画面の上から 40（コンテナの左右余白と同じ）で仮置き
+.p-top-feature__lead {
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-ink);
+
+	@include config.pc {
+		grid-column: 1;
+		align-self: start;
+		position: sticky;
+		top: math.div(40, 16) + rem;
+		font-size: math.div(18, 16) + rem;
+	}
+}
+
+// 行の間 SP 60 / PC 40
+// Figma: SP 3181-17572
+.p-top-feature__list {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(60, 16) + rem;
+
+	@include config.pc {
+		grid-column: 3;
+		gap: math.div(40, 16) + rem;
+	}
+}
+
+/*  お客様の声（Voice。グレーの帯）
+    帯の上端（左半分）→ 見出しの和文ラベル SP 85 / PC 112、見出し → カード SP 40 / PC 70、
+    カード → 前後ボタン SP 57.5 / PC 20（いちばん高いカードから）、前後ボタン → 新着情報 SP 107.5 / PC 122。
+    カードは SP 300 を中央に置いて左右をのぞかせ、PC は 550 を左端からそろえて右へはみ出させる（間 SP 10 / PC 30）。
+----------------------------------------------------*/
+.p-top-voice {
+	overflow: hidden; // PC で右へはみ出すカードを画面の中に閉じ込める
+	padding-top: math.div(85, 16) + rem;
+	padding-bottom: math.div(107.5, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		padding-top: math.div(112, 16) + rem;
+		padding-bottom: math.div(122, 16) + rem;
+	}
+}
+
+.p-top-voice__head {
+	margin-bottom: math.div(40, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(70, 16) + rem;
+	}
+}
+
+// Swiper の .swiper は overflow: hidden なので、はみ出して見せるために戻す
+.p-top-voice__slider.swiper {
+	overflow: visible;
+}
+
+// 高さはそろえない（Figma PC は 757 / 671 / 671 で上端そろえ）。スライダーの高さはいちばん高いカード
+// Figma: SP 3181-17792 / PC 2323-5146
+.p-top-voice__slider .swiper-wrapper {
+	align-items: flex-start;
+}
+
+.p-top-voice__slider .swiper-slide {
+	width: math.div(300, 16) + rem;
+	height: auto;
+
+	@include config.pc {
+		width: math.div(550, 16) + rem;
+	}
+}
+
+.p-top-voice__ctrl {
+	margin-top: math.div(57.5, 16) + rem;
+
+	@include config.pc {
+		margin-top: math.div(20, 16) + rem;
+	}
+}
+
+/*  新着情報（見出し ＋ お知らせ3件 ＋ 一覧をみる。Voice と同じグレーの帯）
+    PCは 846 を中央。見出し → 一覧 10、一覧 → 一覧をみる 35。下の余白は技術力の帯まで SP 100 / PC 153。
+----------------------------------------------------*/
+.p-top-news {
+	padding-bottom: math.div(100, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		padding-bottom: math.div(153, 16) + rem;
+	}
+}
+
+// Figma: SP 3181-17632 / PC 2323-5110
+.p-top-news__inner {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		max-width: math.div(846, 16) + rem;
+		margin-inline: auto;
+	}
+}
+
+// 字送り +0.02em（Figma 32/+0.64・24/+0.48）は「3-3」の表に無い値。個別指定
+.p-top-news__title {
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.02em;
+	color: var(--c-brand-mid);
+
+	@include config.pc {
+		font-size: math.div(32, 16) + rem;
+	}
+}
+
+.p-top-news__more {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: math.div(25, 16) + rem; // __inner の gap 10 と足して 35
+}
+
+/*  日本ピージーエムの技術力（フッター直前の写真の帯）
+    写真に黒46%を重ね、上端に FROM / AKITA / TO THE WORLD、下端に見出し・本文・ボタン。
+    高さ SP 700 / PC 900。上の余白 SP 40 / PC 52、中身は下に寄せて下の余白 SP 69 / PC 81。
+    Figma: SP 3181-17805 / PC 2323-5188
+----------------------------------------------------*/
+.p-top-technology {
+	position: relative;
+	isolation: isolate; // 写真（z-index -1）をこの帯の中に閉じ込める
+	display: flex;
+	min-height: math.div(700, 16) + rem;
+	// a / button は Base/_anchor.scss で color: var(--color) を持つので、--color ごと白にする
+	--color: var(--color-inverse);
+	color: var(--color);
+
+	@include config.pc {
+		min-height: math.div(900, 16) + rem;
+	}
+}
+
+.p-top-technology__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// 写真の上の黒46%（Figma 2323-5189 / 3181-17793 の塗り）
+.p-top-technology__bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--c-overlay-photo);
+}
+
+.p-top-technology__inner {
+	display: flex;
+	flex-direction: column;
+	padding-top: math.div(40, 16) + rem;
+	padding-bottom: math.div(69, 16) + rem;
+
+	@include config.pc {
+		padding-top: math.div(52, 16) + rem;
+		padding-bottom: math.div(81, 16) + rem;
+	}
+}
+
+// FROM / AKITA / TO THE WORLD。SPは両端＋間（Figma 3181-17794 は space-between）、
+// PCは AKITA が帯の中央（Figma 2323-5192 の中心 720.5 ＝ 1440 / 2）
+// Figma: SP 3181-17794 / PC 2323-5191
+.p-top-technology__route {
+	display: flex;
+	justify-content: space-between;
+	font-family: var(--font-en);
+	font-size: math.div(14, 16) + rem;
+	font-weight: 600;
+	line-height: 1.2; // Figma 1.19 → 1.2（doc/design-tokens.md 3-2）
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	@include config.pc {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		font-size: math.div(21, 16) + rem;
+	}
+}
+
+.p-top-technology__route > span:last-child {
+	@include config.pc {
+		justify-self: end;
+	}
+}
+
+// 見出し・本文・ボタン。SPは縦積み（見出し → 本文 15、本文 → ボタン 30・ボタンは中央）。
+// PCは左に見出し、右（帯の中央 +70 から。1440 で幅610）に本文とボタン。
+// 右カラムは見出しブロックの上端から 47 下がって始まる（Figma 見出しの英字 y519 → 本文 y566）
+// Figma: SP 3181-17804
+.p-top-technology__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(15, 16) + rem;
+	margin-top: auto;
+
+	@include config.pc {
+		display: grid;
+		grid-template-columns: 1fr calc(50% - #{math.div(70, 16) + rem});
+		grid-template-areas:
+			"head desc"
+			"head action";
+		gap: 0;
+	}
+}
+
+// 英字ラベル → 見出し SP 5 / PC 9（Figma 3003-8981 下端 544 → 2323-5194 上端 553）
+.p-top-technology__head {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(5, 16) + rem;
+
+	@include config.pc {
+		grid-area: head;
+		align-self: start;
+		gap: math.div(9, 16) + rem;
+	}
+}
+
+// 英字ラベルは Figma で SP「TECHNOLOGY」/ PC「NPGM EXPERTISE」と文言が違う（doc/design-tokens.md 6）
+.p-top-technology__label {
+	font-family: var(--font-en);
+	font-size: math.div(14, 16) + rem;
+	font-weight: 600;
+	line-height: 1.2;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+
+	@include config.pc {
+		font-size: math.div(21, 16) + rem;
+	}
+}
+
+// 字送りは Figma に指定が無いので本文の既定（-0.01em）のまま
+.p-top-technology__title {
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+
+	@include config.pc {
+		font-size: math.div(40, 16) + rem;
+	}
+}
+
+.p-top-technology__desc {
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+
+	@include config.pc {
+		grid-area: desc;
+		margin-top: math.div(47, 16) + rem;
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+// 本文 → ボタン SP 30（gap 15 ＋ 15）/ PC 42。
+// PCの Figma（3003-8972）は右端が 1385 で本文の右端 1400 より 15 内側。本文の右端にそろえた（doc/design-tokens.md 6）
+.p-top-technology__action {
+	align-self: center;
+	margin-top: math.div(15, 16) + rem;
+
+	@include config.pc {
+		grid-area: action;
+		justify-self: end;
+		margin-top: math.div(42, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

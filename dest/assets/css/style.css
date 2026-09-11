@@ -1,0 +1,5064 @@
+@charset "UTF-8";
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input, select {
+  vertical-align: middle;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+svg,
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+svg {
+  overflow: visible;
+}
+
+li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, th, dt {
+  font-weight: inherit;
+}
+
+article, main, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, picture {
+  display: block;
+}
+
+:root {
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Yu Gothic", "メイリオ", "Meiryo", sans-serif;
+  --serif: "游明朝", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HG明朝E", "ＭＳ 明朝", serif;
+  --font: var(--sans);
+  --font-en: "Poppins", var(--sans);
+  --tracking-body: -0.01em;
+  --tracking-title: -0.05em;
+  --c-text-title: #263a40;
+  --c-text-body: #333d40;
+  --c-text-link: #088395;
+  --c-text-support: #555;
+  --c-action: #15819e;
+  --c-label-brand: #39969d;
+  --c-border: #d9d9d9;
+  --c-surface: #fff;
+  --c-surface-raised: #f6f6f6;
+  --c-surface-tint: #edf6f8;
+  --c-brand-deep: #174b59;
+  --c-brand-mid: #13728c;
+  --c-brand-cta: #0b82a3;
+  --c-ink: #222020;
+  --c-ink-title: #222;
+  --c-heading-alt: #1e2e33;
+  --c-surface-alt: #f7f7f7;
+  --c-surface-band: #ebebeb;
+  --c-required: #ff442a;
+  --c-placeholder: #9e9e9e;
+  --c-text-mute: #787878;
+  --c-border-drawer: #b6b6b6;
+  --c-text-off: #c3c3c3;
+  --c-lang-current: #c4c4c4;
+  --c-overlay-photo: rgba(0, 0, 0, .46);
+  --c-overlay-hover: rgba(0, 0, 0, .4);
+  --c-surface-dark: #32343c;
+  --c-brand-dark: #045268;
+  --c-pdf: #ff3131;
+  --c-bullet-mute: #a4a4a4;
+  --color: var(--c-text-body);
+  --color-inverse: #fff;
+  --color-accent: var(--c-action);
+  --header-height: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --header-height: 7.5rem;
+  }
+}
+:root {
+  --gap: 0.75rem;
+  --padding-section: 6.75rem;
+  --padding-page: 16.625rem;
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --gap: 1rem;
+    --padding-section: 10.25rem;
+    --padding-page: 24.5rem;
+  }
+}
+
+:root {
+  --easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+  --easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  --easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+  --easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+  --easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+  --easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+  --easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+  --easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  --easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --duration: .3s;
+  --easeTheme: var(--easeOutSine);
+}
+
+.is-section-dark {
+  --color: #fff;
+}
+
+/*----------------------------------------------------
+	c-paragraph
+----------------------------------------------------*/
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-btn
+----------------------------------------------------*/
+.c-btn,
+.c-btn-arrow {
+  --btn-bg: var(--c-brand-cta);
+  --btn-fg: var(--color-inverse);
+  --btn-line: transparent;
+}
+
+.c-btn--action,
+.c-btn-arrow--action {
+  --btn-bg: var(--c-action);
+}
+
+.c-btn--mid,
+.c-btn-arrow--mid {
+  --btn-bg: var(--c-brand-mid);
+}
+
+.c-btn--outline,
+.c-btn-arrow--outline {
+  --btn-bg: var(--c-surface);
+  --btn-fg: var(--c-action);
+  --btn-line: var(--c-border);
+}
+
+.c-btn--white,
+.c-btn-arrow--white {
+  --btn-bg: var(--c-surface);
+  --btn-fg: var(--c-brand-cta);
+}
+
+/*  ラベル ＋ 矢印
+----------------------------------------------------*/
+.c-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+.c-btn__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.125rem;
+  padding-inline: 1.875rem;
+  border: 1px solid var(--btn-line);
+  border-radius: 0.25rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.c-btn__arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3.125rem;
+  height: 3.125rem;
+  border: 1px solid var(--btn-line);
+  border-radius: 0.25rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.c-btn__arrow svg {
+  width: 0.9375rem;
+  height: 0.375rem;
+  fill: currentColor;
+}
+.c-btn--sm .c-btn__label {
+  height: 2.5rem;
+  padding-inline: 1.25rem;
+  border-radius: 0.3125rem;
+}
+
+/*  大きいボタン（トップの「詳しくみる」）
+    矢印は .c-btn__arrow ではなく .c-btn-arrow--lg（SP 60 / PC 95・#ico_arrow_ne）を並べる。
+    ラベルと矢印の間は Figma SP 1.2 / PC 1.903 → .c-btn の 1px。字は Figma 15.316 / 24.357 → 切り捨て。
+    色は Figma PC #008e9f / SP #1f819c → どちらも CTA色（doc/design-tokens.md 2-3）
+    Figma: SP 3181-17795 / PC 3003-8972
+----------------------------------------------------*/
+.c-btn--lg .c-btn__label {
+  height: 3.75rem;
+  padding-inline: 2.25rem;
+  border-radius: 0.125rem;
+  font-size: 0.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn--lg .c-btn__label {
+    height: 5.9375rem;
+    padding-inline: 3.5625rem;
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+  }
+}
+
+/*  中くらいのボタン（トップの買取原料の「詳しくみる」）
+    ラベル SP 60 / PC 75 ＋ 同じ高さの矢印（#ico_arrow_ne）。字は Figma 15.316 / 19.2 → 15 / 19。
+    色は Figma #1f819c → CTA色（doc/design-tokens.md 2-3）
+    Figma: SP 3181-17494 / PC 2323-5011
+----------------------------------------------------*/
+.c-btn--md .c-btn__label {
+  height: 3.75rem;
+  padding-inline: 2.25rem;
+  border-radius: 0.125rem;
+  font-size: 0.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn--md .c-btn__label {
+    height: 4.6875rem;
+    padding-inline: 2.8125rem;
+    border-radius: 0.1875rem;
+    font-size: 1.1875rem;
+  }
+}
+
+.c-btn--md .c-btn-arrow {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.125rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn--md .c-btn-arrow {
+    width: 4.6875rem;
+    height: 4.6875rem;
+    border-radius: 0.1875rem;
+  }
+}
+.c-btn--md .c-btn-arrow svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: none;
+  stroke: currentColor;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn--md .c-btn-arrow svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}
+
+/*  矢印のみ
+----------------------------------------------------*/
+.c-btn-arrow {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--btn-line);
+  border-radius: 0.25rem;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+}
+.c-btn-arrow svg {
+  width: 0.9375rem;
+  height: 0.375rem;
+  fill: currentColor;
+}
+
+.c-btn-arrow--xs {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.c-btn-arrow--xs svg {
+  width: 0.5625rem;
+  height: 0.1875rem;
+}
+
+.c-btn-arrow--tri svg {
+  width: 0.3rem;
+  height: 0.35rem;
+  transform: rotate(-90deg);
+}
+
+.c-btn-arrow--sm {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.c-btn-arrow--md {
+  width: 3.125rem;
+  height: 3.125rem;
+}
+
+.c-btn-arrow--lg {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.125rem;
+}
+.c-btn-arrow--lg svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: none;
+  stroke: currentColor;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn-arrow--lg {
+    width: 5.9375rem;
+    height: 5.9375rem;
+    border-radius: 0.25rem;
+  }
+  .c-btn-arrow--lg svg {
+    width: 1.4375rem;
+    height: 1.4375rem;
+  }
+}
+
+/*  前後送り（スライダー等の操作ボタン）
+    SP 60（角丸2.523 → 2・字形14.5 → 14）/ PC 75（角丸3.153 → 3・字形25.55 → 25）
+    Figma: SP 3181-17718 / PC 3003-8930
+----------------------------------------------------*/
+.c-btn-ctrl {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.125rem;
+  background: var(--c-brand-cta);
+  color: var(--color-inverse);
+  cursor: pointer;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn-ctrl {
+    width: 4.6875rem;
+    height: 4.6875rem;
+    border-radius: 0.1875rem;
+  }
+}
+.c-btn-ctrl svg {
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: none;
+  stroke: currentColor;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn-ctrl svg {
+    width: 1.5625rem;
+    height: 1.5625rem;
+  }
+}
+
+.c-btn-ctrl--prev svg {
+  transform: rotate(-135deg);
+}
+
+.c-btn-ctrl--next svg {
+  transform: rotate(45deg);
+}
+
+.c-btn-ctrl-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-btn-ctrl-group {
+    gap: 1.875rem;
+  }
+}
+
+/*  ハンバーガー
+    Figma: SP 3138-4665（閉）/ 3138-4902（開）
+----------------------------------------------------*/
+.c-btn-menu {
+  --menu-ease: var(--easeTheme);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 2.5rem;
+  border-radius: 0.3125rem;
+  background: var(--c-brand-cta);
+  cursor: pointer;
+}
+.c-btn-menu span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-inverse);
+  translate: -50% -50%;
+  transition: margin-top var(--duration) var(--menu-ease), rotate 0s, opacity var(--duration) var(--menu-ease);
+}
+.c-btn-menu span:nth-child(1) {
+  margin-top: -0.25rem;
+}
+.c-btn-menu span:nth-child(3) {
+  margin-top: 0.25rem;
+}
+.c-btn-menu.is-nav-open span {
+  transition: margin-top 0.2s var(--menu-ease), rotate 0.3s 0.2s var(--menu-ease), opacity 0.2s var(--menu-ease);
+}
+.c-btn-menu.is-nav-open span:nth-child(1) {
+  margin-top: 0;
+  rotate: 160deg;
+}
+.c-btn-menu.is-nav-open span:nth-child(2) {
+  opacity: 0;
+}
+.c-btn-menu.is-nav-open span:nth-child(3) {
+  margin-top: 0;
+  rotate: -160deg;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	フォーム
+----------------------------------------------------*/
+[hidden] {
+  display: none !important;
+}
+
+[disabled] {
+  cursor: not-allowed;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  left: -9999px;
+  top: -9999px;
+}
+
+input,
+select,
+label {
+  vertical-align: middle;
+  color: var(--color);
+}
+
+[type=text] {
+  line-height: normal;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+button {
+  appearance: none;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: var(--color);
+  font-family: var(--font);
+  font-weight: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+input[type=submit],
+button {
+  cursor: pointer;
+  border: none;
+}
+
+textarea {
+  appearance: none;
+  resize: none;
+  outline: none;
+  background: transparent;
+  font-weight: inherit;
+  color: var(--color);
+  font-family: var(--font);
+  font-size: 16px;
+}
+
+*:focus {
+  outline: none;
+}
+
+/*----------------------------------------------------
+	フォント
+----------------------------------------------------*/
+html {
+  font-size: 16px;
+}
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 3.9800995025vw;
+  }
+}
+@media screen and (min-width: 641px) and (max-width: 1023px) {
+  html {
+    font-size: 2.1333333333vw;
+  }
+}
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: min(16px, 1.1111111111vw);
+  }
+}
+body {
+  font-family: var(--font);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: var(--tracking-body);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+  color: var(--color);
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
+/*----------------------------------------------------
+	レスポンシブ
+----------------------------------------------------*/
+@media screen and (min-width: 641px) {
+  .sp {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .sp-tab {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .pc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .pc-tab {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .tab {
+    display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .tab {
+    display: none;
+  }
+}
+
+/*----------------------------------------------------
+	リンク
+----------------------------------------------------*/
+button,
+a {
+  color: var(--color);
+  text-decoration: none;
+  transition: var(--duration) var(--easeTheme);
+  cursor: pointer;
+}
+@media (hover: hover) {
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
+@media (hover: none) {
+  a, button {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+[data-scroll-target] {
+  content: "";
+  display: block;
+  position: relative;
+  pointer-events: none;
+  top: calc(-1 * var(--header-height));
+}
+
+/*----------------------------------------------------
+	コンテナ
+----------------------------------------------------*/
+.l-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1440px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+/*----------------------------------------------------
+	body
+----------------------------------------------------*/
+body {
+  position: relative;
+}
+.l-body-wrap {
+  width: 100%;
+  min-height: 100%;
+}
+@media screen and (max-width: 1023px) {
+  .l-body-wrap {
+    overflow: hidden;
+  }
+}
+
+/*----------------------------------------------------
+	ヘッダー
+	配置は各ページの実測（SP x20 y20・362×40 / PC x40 y25・1360×59）。スクロールしても画面に固定（2026-09-11・ユーザー指示）
+	PCはロゴ（59px）が箱の高さを決め、右側（40px）は上下中央（Figma y9.5 = (59 - 40) / 2）
+	Figma: SP header_sp 3138-4670 / PC header_pc 3003-9152
+----------------------------------------------------*/
+.l-header {
+  position: fixed;
+  z-index: 500;
+  top: 1.25rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.5rem;
+  --color: var(--c-ink);
+  color: var(--color);
+}
+@media screen and (min-width: 1024px) {
+  .l-header {
+    top: 1.5625rem;
+    left: 2.5rem;
+    right: 2.5rem;
+    height: 3.6875rem;
+  }
+}
+
+body.is-header-dark .l-header {
+  --color: var(--color-inverse);
+}
+
+body.is-nav-open .l-header {
+  --color: var(--c-ink);
+}
+
+.l-header-logo,
+.l-header-utility {
+  position: relative;
+  z-index: 2;
+}
+
+/*  ロゴ
+    lockup は書き出し済みSVG（dest/assets/img/logo.svg・logo-wh.svg／355.143×59）。
+    文字（A-OTF 新ゴ Pr5 DB）はアウトライン化済み。
+    SPは同じ絵の縮小（Figma 241.012 / 355.143 = 0.6786 → 高さ40）。
+    Figma: SP 3297-18683 / PC 3003-9028
+----------------------------------------------------*/
+.l-header-logo {
+  flex-shrink: 0;
+  width: 15.06325rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-logo {
+    width: 22.1964375rem;
+  }
+}
+.l-header-logo a {
+  display: block;
+}
+.l-header-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.l-header-logo__light {
+  display: none;
+}
+
+.l-header-logo__dark {
+  display: block;
+}
+
+body.is-header-dark .l-header-logo__light {
+  display: block;
+}
+
+body.is-header-dark .l-header-logo__dark {
+  display: none;
+}
+
+body.is-nav-open .l-header-logo__light {
+  display: none;
+}
+
+body.is-nav-open .l-header-logo__dark {
+  display: block;
+}
+
+/*  グローバルナビ（PCのみ。SPはドロワー）
+----------------------------------------------------*/
+.l-header-nav {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-nav {
+    display: flex;
+    align-items: center;
+  }
+}
+.l-header-nav__list {
+  display: flex;
+  align-items: center;
+  gap: 2.1875rem;
+  height: 2.5rem;
+  padding-inline: 2.5rem;
+  border-radius: 0.25rem;
+  background: var(--c-surface);
+  --color: var(--c-ink);
+  color: var(--color);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+.l-header-nav__en {
+  font-family: var(--font-en);
+}
+
+/*  ヘッダー右側（ナビ＋CTA＋言語切替）
+    Figma: 3003-9066（gap14）の中に 3003-9067（ナビとCTA。gapなし）
+----------------------------------------------------*/
+.l-header-utility {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+.l-header-utility__group {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-utility__group {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/*  JP / EN
+    Figma: 11px・+0.16em、間に1pxの横罫
+----------------------------------------------------*/
+.l-header-lang {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-lang {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.4375rem;
+    width: 1rem;
+    height: 1.9375rem;
+    font-family: var(--font-en);
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.16em;
+  }
+}
+
+.l-header-lang__current {
+  color: var(--c-lang-current);
+}
+
+.l-header-lang__other {
+  color: var(--c-ink);
+}
+
+.l-header-lang__line {
+  flex-shrink: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--c-ink);
+}
+
+/*  CTA（PCのみ）
+    SPのヘッダー（header_sp 3138-4670）にCTAは無いので、PCだけ出す。
+    見た目は .c-btn--sm（Figma header_pc 3003-9074）。
+----------------------------------------------------*/
+.l-header-cta {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-cta {
+    display: inline-flex;
+  }
+}
+
+/*  ハンバーガー（SPのみ）
+----------------------------------------------------*/
+@media screen and (min-width: 1024px) {
+  .l-header-menu {
+    display: none;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	ドロワー（SPのみ）
+	Figma: SP_MENU 3138-4759（中身は 3138-4965）
+----------------------------------------------------*/
+.l-header-drawer {
+  --drawer-ease: var(--easeTheme);
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration) var(--drawer-ease), visibility var(--duration) var(--drawer-ease);
+  background: var(--c-surface);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+@media screen and (min-width: 1024px) {
+  .l-header-drawer {
+    display: none;
+  }
+}
+body.is-nav-open .l-header-drawer {
+  opacity: 1;
+  visibility: visible;
+}
+.l-header-drawer__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.875rem;
+  padding-inline: 1.875rem;
+  padding-top: 7.8125rem;
+  padding-bottom: 3.75rem;
+}
+
+/*  開くときの演出（blue-mates と同じ）
+    中身を上から順にフェードインアップさせる。順番（--i）は common.js の globalMenu() が
+    「実際に出ている項目だけ」を数えて振る。
+    閉じるときは伏せた状態の指定（＝遅延なし）に戻るので、パネルのフェードアウトと一緒に消える
+----------------------------------------------------*/
+.l-header-drawer__item {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity var(--duration) var(--drawer-ease), transform var(--duration) var(--drawer-ease);
+  will-change: opacity, transform;
+}
+
+body.is-nav-open .l-header-drawer__item {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s var(--drawer-ease) calc(var(--i, 0) * 0.05s + 0.15s), transform 0.7s var(--drawer-ease) calc(var(--i, 0) * 0.05s + 0.15s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l-header-drawer__item {
+    transform: none;
+  }
+  body.is-nav-open .l-header-drawer__item {
+    transition-delay: 0s;
+  }
+}
+/*  ナビ
+----------------------------------------------------*/
+.l-header-drawer-nav {
+  width: 100%;
+}
+.l-header-drawer-nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.l-header-drawer-nav__item {
+  border-bottom: 1px solid var(--c-border-drawer);
+  padding-bottom: 1.5rem;
+}
+.l-header-drawer-nav__item a {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--c-ink);
+}
+
+/*  ドロワー内のCTA
+----------------------------------------------------*/
+.l-header-drawer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  background: var(--c-brand-cta);
+  color: var(--color-inverse);
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+/*  言語切替（ヘッダーとは別サイズ。18px・+0.16em の横並び）
+----------------------------------------------------*/
+.l-header-drawer-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+}
+.l-header-drawer-lang__current {
+  color: var(--c-ink);
+}
+.l-header-drawer-lang__other {
+  --color: var(--c-text-off);
+  color: var(--color);
+}
+.l-header-drawer-lang__line {
+  width: 1px;
+  height: 1.125rem;
+  background: var(--c-ink);
+}
+
+/*  ポリシーリンク
+----------------------------------------------------*/
+.l-header-drawer-policy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+}
+.l-header-drawer-policy__item {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--c-ink);
+}
+.l-header-drawer-policy svg {
+  display: block;
+  flex-shrink: 0;
+  height: 0.9375rem;
+  fill: currentColor;
+}
+.l-header-drawer-policy__item--cookie svg {
+  width: 0.875rem;
+}
+.l-header-drawer-policy__item--privacy svg {
+  width: 0.8125rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	main
+----------------------------------------------------*/
+/*----------------------------------------------------
+	フッター
+	Figma: SP footer_sp 3138-5193 / PC footer-pc 3003-9151
+----------------------------------------------------*/
+.l-footer {
+  --color: var(--color-inverse);
+  background: var(--c-brand-deep);
+  color: var(--color);
+}
+.l-footer__inner {
+  padding-inline: 1.875rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer__inner {
+    padding-inline: 2.5rem;
+    padding-top: 6.25rem;
+    padding-bottom: 3.25rem;
+  }
+}
+
+/*  サイトマップ（PCのみ。SPは出さない）
+----------------------------------------------------*/
+.l-footer-nav {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    white-space: nowrap;
+  }
+}
+
+/*  関連サイト（運営会社・関連会社）
+----------------------------------------------------*/
+.l-footer-sites {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-sites {
+    gap: 0.5625rem;
+  }
+}
+.l-footer-sites__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.l-footer-sites__name {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.l-footer-sites__link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+.l-footer-sites__label {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-sites__label {
+    display: block;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}
+
+.l-footer-sites__btn {
+  --color: var(--c-brand-cta);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 0.125rem;
+  background: var(--c-surface);
+  color: var(--color);
+}
+.l-footer-sites__btn svg {
+  display: block;
+  width: 0.625rem;
+  height: 0.25rem;
+  fill: currentColor;
+}
+
+/*  フッターロゴ（書き出し済みSVG 338×49）
+----------------------------------------------------*/
+.l-footer-logo {
+  width: 21.125rem;
+  max-width: 100%;
+}
+.l-footer-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*  コピーライト・ポリシー
+----------------------------------------------------*/
+.l-footer-copy {
+  --color: var(--c-action);
+  color: var(--color);
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.l-footer-policy {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.l-footer-policy__item {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.l-footer-policy svg {
+  display: block;
+  flex-shrink: 0;
+  height: 0.9375rem;
+  fill: currentColor;
+}
+.l-footer-policy__item--cookie svg {
+  width: 0.875rem;
+}
+.l-footer-policy__item--privacy svg {
+  width: 0.8125rem;
+}
+
+/*  下段の組み方
+    SP: 関連サイト → ロゴ → コピーライト（中央寄せ、ポリシーは出さない）
+    PC: 左にサイトマップ／右に関連サイト、その下に ロゴ＋コピーライト と ポリシー
+----------------------------------------------------*/
+.l-footer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-body {
+    gap: 2.625rem;
+    margin-top: 1.9375rem;
+  }
+}
+.l-footer-body__top {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8125rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-body__top {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+}
+.l-footer-body__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8125rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-body__bottom {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+}
+.l-footer-body__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8125rem;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-body__brand {
+    align-items: flex-start;
+    gap: 1.6875rem;
+  }
+}
+.l-footer-body .l-footer-policy {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .l-footer-body .l-footer-policy {
+    display: flex;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	トップ
+	セクションごとに下から実装している（2026-09-11：売却先を選ぶポイント〜日本ピージーエムの技術力まで。MV は未着手）
+	Figma: PC_TOP 2323-5003 / SP_TOP 3012-9710
+----------------------------------------------------*/
+/*  MV（動画 ＋ 画像リスト）
+    PCは左に動画（1440 − 8 − 203 ＝ 1229 × 900）、右に 203 角の画像を縦に並べる（間8）。
+    SPは動画（402×546）の下に 120 角の画像を横に並べる（間4）。画像リストは一定速度でループ（2026-09-11・ユーザー指示）。
+    動画は Figma では VIDEO の塗り（2323-5312 / 3012-10158）だが書き出されていないので静止画。
+    地は Key Points と同じグレー（Figma の帯は y0 から敷かれていて、動画と画像のすき間に見える）
+----------------------------------------------------*/
+.p-top-mv {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-height: 100vh;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv {
+    flex-direction: row;
+    gap: 0.5rem;
+    height: 56.25rem;
+  }
+}
+
+.p-top-mv__main {
+  position: relative;
+  height: 34.125rem;
+  --color: var(--color-inverse);
+  color: var(--color);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__main {
+    flex: 1 0 0;
+    min-width: 0;
+    height: auto;
+  }
+}
+
+.p-top-mv__movie {
+  position: absolute;
+  inset: 0;
+}
+.p-top-mv__movie img,
+.p-top-mv__movie video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-mv__copy {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__copy {
+    left: 2.5rem;
+    right: 2.5rem;
+    bottom: 1.875rem;
+    gap: 1.25rem;
+  }
+}
+
+.p-top-mv__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__title {
+    font-size: 5rem;
+    line-height: 1.1;
+  }
+}
+
+.p-top-mv__lead {
+  padding-left: 0.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__lead {
+    font-size: 1.125rem;
+  }
+}
+
+.p-top-mv__gallery {
+  flex-shrink: 0;
+  overflow: hidden;
+  height: 7.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__gallery {
+    flex: 0 0 12.6875rem;
+    height: auto;
+  }
+}
+
+.p-top-mv__track {
+  display: flex;
+  width: max-content;
+  animation: p-top-mv-x 25s linear infinite;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__track {
+    flex-direction: column;
+    width: auto;
+    animation: p-top-mv-y 42s linear infinite;
+  }
+}
+
+.p-top-mv__item {
+  flex-shrink: 0;
+  width: 7.5rem;
+  margin-right: 0.25rem;
+  aspect-ratio: 1;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-mv__item {
+    width: 12.6875rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+.p-top-mv__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes p-top-mv-x {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes p-top-mv-y {
+  to {
+    transform: translateY(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-top-mv__track {
+    animation-play-state: paused;
+  }
+}
+/*  売却先を選ぶポイント（Key Points。グレーの帯）
+    MV の下端 → 見出しの和文ラベル SP 85 / PC 105、見出し → ポイント SP 19 / PC 30、ポイント → DOWA の一文 SP 40 / PC 59、
+    その下 → 帯の左半分の下端 SP 65 / PC 79。帯の右半分は SP 25 / PC 62 長い（::after）。
+    帯は Figma では MV の裏まで伸びている（PC 3003-9024・3003-9025 / SP 3181-17367・3181-17369 は y0 から）
+----------------------------------------------------*/
+.p-top-point {
+  position: relative;
+  padding-top: 5.3125rem;
+  padding-bottom: 4.0625rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point {
+    padding-top: 6.5625rem;
+    padding-bottom: 4.9375rem;
+  }
+}
+
+.p-top-point::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 50%;
+  height: 1.5625rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point::after {
+    height: 3.875rem;
+  }
+}
+
+.p-top-point__head {
+  margin-bottom: 1.1875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__head {
+    margin-bottom: 1.875rem;
+  }
+}
+
+.p-top-point__list {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  row-gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__list {
+    row-gap: 0;
+    grid-template-columns: repeat(2, 25.625rem);
+    max-width: 52.9375rem;
+    margin-inline: auto;
+  }
+}
+
+.p-top-point__item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  height: 2.65rem;
+  padding: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__item {
+    gap: 1.25rem;
+    height: 5.3125rem;
+    padding: 1.25rem;
+    font-size: 2rem;
+  }
+}
+
+.p-top-point__num {
+  flex-shrink: 0;
+  width: auto;
+  height: 1.375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__num {
+    height: 2.75rem;
+  }
+}
+
+.p-top-point__closing {
+  margin-top: 2.5rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__closing {
+    margin-top: 3.6875rem;
+    font-size: 2.0625rem;
+    line-height: 1.4;
+  }
+}
+
+.p-top-point__badge {
+  display: inline-block;
+  margin-right: 0.3125rem;
+  padding: 0.3125rem;
+  border-radius: 0.1875rem;
+  background: var(--c-brand-dark);
+  color: var(--color-inverse);
+  font-family: var(--font-en);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  vertical-align: middle;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-point__badge {
+    margin-right: 0.5625rem;
+    padding: 0.59375rem;
+  }
+}
+
+/*  私たちの強み（Our Strength。白地）
+    帯の左半分の下端 → 見出しの和文ラベル SP 65 / PC 123、見出し → リード見出し SP 20 / PC 40、
+    リード → 写真 SP 60 / PC 45、写真の下 → 濃い帯 SP 120 / PC 190。
+    写真は Figma では動画の塗り（ホバーで黒40% ＋ 説明文。バリアント2）。動画は書き出されていないので静止画で組んでいる
+----------------------------------------------------*/
+.p-top-strength {
+  padding-top: 4.0625rem;
+  padding-bottom: 7.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength {
+    padding-top: 7.6875rem;
+    padding-bottom: 11.875rem;
+  }
+}
+
+.p-top-strength__head {
+  margin-bottom: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__head {
+    margin-bottom: 2.1875rem;
+  }
+}
+
+.p-top-strength__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 3.75rem;
+  text-align: center;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__intro {
+    margin-bottom: 2.8125rem;
+  }
+}
+
+.p-top-strength__title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__title {
+    font-size: 2.1875rem;
+  }
+}
+
+.p-top-strength__lead {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__lead {
+    font-size: 1rem;
+  }
+}
+
+.p-top-strength__list {
+  display: grid;
+  gap: 2.5rem;
+  padding-inline: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    padding-inline: 0;
+  }
+}
+
+.p-top-strength__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__item {
+    gap: 0.75rem;
+  }
+}
+
+.p-top-strength__figure {
+  position: relative;
+  aspect-ratio: 440/540;
+  overflow: hidden;
+}
+.p-top-strength__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-strength__detail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 9.25rem 3.125rem 0;
+  background: var(--c-overlay-hover);
+  color: var(--color-inverse);
+  opacity: 0;
+  transition: opacity var(--duration) var(--easeTheme);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .p-top-strength__item:hover .p-top-strength__detail {
+    opacity: 1;
+  }
+}
+.p-top-strength__detail-title {
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+.p-top-strength__detail-text {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.p-top-strength__name {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__name {
+    font-size: 1.5rem;
+  }
+}
+
+.p-top-strength__num {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 0;
+  width: auto;
+  height: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-strength__num {
+    bottom: 0.6875rem;
+    height: 7.5rem;
+  }
+}
+
+/*  買取原料（What We Buy。濃い帯）
+    帯の上端 → 見出しの和文ラベル SP 110 / PC 70、見出し → リード SP 30 / PC 44。
+    PCは2列で、左列は リード → 80 → 1枚目 → 80 → 3枚目、右列は 2枚目（リードの上端から）→ 80 → 4枚目 → 85 → ボタン。
+    SPはこの並びのまま縦積み（リード → 50 → 1 → 40 → 3 → 40 → 2 → 40 → 4 → 50 → ボタン）。下の余白 SP 80 / PC 191
+    Figma: SP 3181-17493
+----------------------------------------------------*/
+.p-top-what {
+  --color: var(--color-inverse);
+  padding-top: 6.875rem;
+  padding-bottom: 5rem;
+  background: var(--c-surface-dark);
+  color: var(--color);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what {
+    padding-top: 4.375rem;
+    padding-bottom: 11.9375rem;
+  }
+}
+
+.p-top-what__head {
+  margin-bottom: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__head {
+    margin-bottom: 2.75rem;
+  }
+}
+
+.p-top-what__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.p-top-what__col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__col {
+    gap: 5rem;
+  }
+}
+
+.p-top-what__lead {
+  margin-bottom: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__lead {
+    margin-bottom: 0;
+    font-size: 1.125rem;
+  }
+}
+
+.p-top-what__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__card {
+    gap: 1.5rem;
+  }
+}
+
+.p-top-what__figure {
+  aspect-ratio: 362/342;
+  overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__figure {
+    aspect-ratio: 1;
+  }
+}
+.p-top-what__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-what__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  line-height: 1;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__text {
+    gap: 1.25rem;
+  }
+}
+
+.p-top-what__en {
+  font-family: var(--font-en);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--c-brand-mid);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__en {
+    font-size: 0.875rem;
+  }
+}
+
+.p-top-what__name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__name {
+    font-size: 2rem;
+  }
+}
+
+.p-top-what__action {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-what__action {
+    justify-content: flex-end;
+    margin-top: 0.3125rem;
+  }
+}
+
+/*  特長（Feature。白地）
+    上の余白は前のセクション（買取原料・濃い帯）の下端 → 見出しの和文ラベル SP 100 / PC 90
+    （見出しの上罫線と余白30は落としている。doc/design-tokens.md 6）。
+    下の余白は Voice の帯の左半分の上端まで SP 135 / PC 212。右半分は帯が SP 25 / PC 82 先に始まる（::after）。
+    SP の帯の位置は Figma（グループ 3181-17726 がフッターの下にずれている）ではなくカンプ SP_TOP.jpg の実測（右 7692 / 左 7717）。
+----------------------------------------------------*/
+.p-top-feature {
+  position: relative;
+  padding-top: 6.25rem;
+  padding-bottom: 8.4375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature {
+    padding-top: 5.625rem;
+    padding-bottom: 13.25rem;
+  }
+}
+
+.p-top-feature::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 1.5625rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature::after {
+    height: 5.125rem;
+  }
+}
+
+.p-top-feature__head {
+  margin-bottom: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature__head {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.p-top-feature__body {
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature__body {
+    display: grid;
+    grid-template-columns: 24.632% 1fr 56.029% 6.176%;
+    gap: 0;
+  }
+}
+
+.p-top-feature__lead {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature__lead {
+    grid-column: 1;
+    align-self: start;
+    position: sticky;
+    top: 2.5rem;
+    font-size: 1.125rem;
+  }
+}
+
+.p-top-feature__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-feature__list {
+    grid-column: 3;
+    gap: 2.5rem;
+  }
+}
+
+/*  お客様の声（Voice。グレーの帯）
+    帯の上端（左半分）→ 見出しの和文ラベル SP 85 / PC 112、見出し → カード SP 40 / PC 70、
+    カード → 前後ボタン SP 57.5 / PC 20（いちばん高いカードから）、前後ボタン → 新着情報 SP 107.5 / PC 122。
+    カードは SP 300 を中央に置いて左右をのぞかせ、PC は 550 を左端からそろえて右へはみ出させる（間 SP 10 / PC 30）。
+----------------------------------------------------*/
+.p-top-voice {
+  overflow: hidden;
+  padding-top: 5.3125rem;
+  padding-bottom: 6.71875rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-voice {
+    padding-top: 7rem;
+    padding-bottom: 7.625rem;
+  }
+}
+
+.p-top-voice__head {
+  margin-bottom: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-voice__head {
+    margin-bottom: 4.375rem;
+  }
+}
+
+.p-top-voice__slider.swiper {
+  overflow: visible;
+}
+
+.p-top-voice__slider .swiper-wrapper {
+  align-items: flex-start;
+}
+
+.p-top-voice__slider .swiper-slide {
+  width: 18.75rem;
+  height: auto;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-voice__slider .swiper-slide {
+    width: 34.375rem;
+  }
+}
+
+.p-top-voice__ctrl {
+  margin-top: 3.59375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-voice__ctrl {
+    margin-top: 1.25rem;
+  }
+}
+
+/*  新着情報（見出し ＋ お知らせ3件 ＋ 一覧をみる。Voice と同じグレーの帯）
+    PCは 846 を中央。見出し → 一覧 10、一覧 → 一覧をみる 35。下の余白は技術力の帯まで SP 100 / PC 153。
+----------------------------------------------------*/
+.p-top-news {
+  padding-bottom: 6.25rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-news {
+    padding-bottom: 9.5625rem;
+  }
+}
+
+.p-top-news__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-news__inner {
+    max-width: 52.875rem;
+    margin-inline: auto;
+  }
+}
+
+.p-top-news__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--c-brand-mid);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-news__title {
+    font-size: 2rem;
+  }
+}
+
+.p-top-news__more {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5625rem;
+}
+
+/*  日本ピージーエムの技術力（フッター直前の写真の帯）
+    写真に黒46%を重ね、上端に FROM / AKITA / TO THE WORLD、下端に見出し・本文・ボタン。
+    高さ SP 700 / PC 900。上の余白 SP 40 / PC 52、中身は下に寄せて下の余白 SP 69 / PC 81。
+    Figma: SP 3181-17805 / PC 2323-5188
+----------------------------------------------------*/
+.p-top-technology {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: 43.75rem;
+  --color: var(--color-inverse);
+  color: var(--color);
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology {
+    min-height: 56.25rem;
+  }
+}
+
+.p-top-technology__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.p-top-technology__bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.p-top-technology__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--c-overlay-photo);
+}
+
+.p-top-technology__inner {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2.5rem;
+  padding-bottom: 4.3125rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__inner {
+    padding-top: 3.25rem;
+    padding-bottom: 5.0625rem;
+  }
+}
+
+.p-top-technology__route {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__route {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    font-size: 1.3125rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .p-top-technology__route > span:last-child {
+    justify-self: end;
+  }
+}
+
+.p-top-technology__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  margin-top: auto;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__body {
+    display: grid;
+    grid-template-columns: 1fr calc(50% - 4.375rem);
+    grid-template-areas: "head desc" "head action";
+    gap: 0;
+  }
+}
+
+.p-top-technology__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3125rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__head {
+    grid-area: head;
+    align-self: start;
+    gap: 0.5625rem;
+  }
+}
+
+.p-top-technology__label {
+  font-family: var(--font-en);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__label {
+    font-size: 1.3125rem;
+  }
+}
+
+.p-top-technology__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__title {
+    font-size: 2.5rem;
+  }
+}
+
+.p-top-technology__desc {
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__desc {
+    grid-area: desc;
+    margin-top: 2.9375rem;
+    font-size: 1rem;
+  }
+}
+
+.p-top-technology__action {
+  align-self: center;
+  margin-top: 0.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-top-technology__action {
+    grid-area: action;
+    justify-self: end;
+    margin-top: 2.625rem;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	新着情報
+	Figma: SP_NEWS 3139-7132 / PC_NEWS 2669-10950
+----------------------------------------------------*/
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	個人情報保護方針
+	Figma: PC_PRIVACY_POLICY 2669-15831
+----------------------------------------------------*/
+/*  窓口の連絡先 ＋ 制定日ブロック
+    Figma: SP 3139-6919（縦積み・間隔24）/ PC 2669-16318・2669-17842
+----------------------------------------------------*/
+.p-privacy-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-privacy-contact {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+}
+
+/*  制定日・所在地・代表者（右揃え）
+    Figma: SP 3139-6923 / PC 2669-17842（844×128・右揃え・16px/lh2。数字は欧文フォント）
+----------------------------------------------------*/
+.p-privacy-imprint {
+  text-align: right;
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--c-text-body);
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	新着情報詳細（WPの投稿詳細）
+	Figma: SP_NEWS_DETAILS 3139-7324 / PC_NEWS_DETAILS 2669-13917
+----------------------------------------------------*/
+/*  日付・タグ・記事タイトル
+    Figma: SP 3139-7350 / PC 2669-14212
+--------------------------------------------------*/
+.p-single-news-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  max-width: 63.5rem;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-head {
+    margin-bottom: 2.8125rem;
+  }
+}
+
+.p-single-news-head__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-head__meta {
+    gap: 1.25rem;
+  }
+}
+
+.p-single-news-head__date {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--c-label-brand);
+  white-space: nowrap;
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-head__date {
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+}
+
+.p-single-news-head__tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  padding-inline: 0.625rem;
+  border-radius: 0.25rem;
+  background: var(--c-label-brand);
+  color: var(--color-inverse);
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-head__tag {
+    padding-inline: 0.3125rem;
+    border-radius: 0.125rem;
+    font-size: 0.875rem;
+  }
+}
+
+.p-single-news-head__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-heading-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-head__title {
+    font-size: 2.875rem;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+  }
+}
+
+/*  前後送り
+    Figma: SP 3139-7356 / PC 2669-14227
+--------------------------------------------------*/
+.p-single-news-pager {
+  margin-bottom: 6.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-single-news-pager {
+    max-width: 34.5rem;
+    margin-inline: auto;
+    margin-bottom: 7.5rem;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	買取原料
+	Figma: PC_MATERIAL 2548-5269 / SP_MATERIAL 3139-5460
+----------------------------------------------------*/
+/*  原料の一覧（番号付きカード ＋ 点線の区切り）
+    Figma: SP 3139-5729 / PC 2548-5367
+----------------------------------------------------*/
+.p-material-list {
+  max-width: 74.3125rem;
+  margin-inline: auto;
+  margin-bottom: 5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-material-list {
+    margin-bottom: 7.5rem;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	お取引の流れ
+	Figma: PC_FLOW 2548-5736 / SP_FLOW 3138-4522
+----------------------------------------------------*/
+/*  リード文（パネルに入れず、見出しのすぐ下）
+    Figma: SP 3139-5250 / PC 2548-5742
+----------------------------------------------------*/
+.p-flow-lead {
+  margin-bottom: 5rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--c-text-mute);
+}
+@media screen and (min-width: 1024px) {
+  .p-flow-lead {
+    margin-bottom: 6.25rem;
+  }
+}
+
+/*  手順の一覧（番号バッジを縦の破線でつなぐ）
+    Figma: SP 3139-5423 / PC 2548-5743
+----------------------------------------------------*/
+.p-flow-steps {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+  max-width: 74.3125rem;
+  margin-inline: auto;
+  margin-bottom: 3.3125rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-flow-steps {
+    gap: 3.125rem;
+    margin-bottom: 10.75rem;
+  }
+}
+
+.p-flow-steps::before {
+  content: "";
+  position: absolute;
+  top: 1.40625rem;
+  bottom: 1.40625rem;
+  left: calc(1.40625rem - 0.5px);
+  width: 1px;
+  background: linear-gradient(to bottom, var(--c-border) 2px, transparent 2px) 0 0/1px 4px repeat-y;
+}
+
+.p-flow-steps .c-card-step__num {
+  position: relative;
+}
+
+/*  よくあるご質問（グレーの帯）
+    Figma: SP 3139-5427 / PC 2548-5826（帯）・2548-5827（中身）
+----------------------------------------------------*/
+.p-flow-faq {
+  padding-block: 5rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-flow-faq {
+    padding-top: 6.25rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+.p-flow-faq__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  padding-inline: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-flow-faq__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2.5rem;
+    max-width: 74.25rem;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .p-flow-faq__list {
+    flex: 0 1 47.375rem;
+    min-width: 0;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	責任ある調達
+	Figma: PC_SUPPLY CHAIN 2548-5470 / SP_SUPPLY CHAIN 3139-5801
+----------------------------------------------------*/
+/*  方針（番号付きカード #01・#02 ＋ 点線の区切り）
+    PCはコンテナ（1360）より狭い 1189px を中央に置く（x126〜1315。買取原料と同じ）。
+    下の余白はデューデリジェンスの帯まで（Figma実測 SP 118.7 / PC 150.6）
+    Figma: SP 3139-5967 / PC 2548-5477
+----------------------------------------------------*/
+.p-supply-list {
+  max-width: 74.3125rem;
+  margin-inline: auto;
+  margin-bottom: 7.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-list {
+    margin-bottom: 9.375rem;
+  }
+}
+
+/*  取引開始前のデューデリジェンス（グレーの帯）
+    帯の内側余白 SP 上下60 / PC 上100・下150。帯の下はそのままパンくず。
+    PCの帯の矩形（2548-5471）はフッターの下まで伸びているので、高さの照合には SP だけ使う。
+    Figma: SP 3139-6049
+----------------------------------------------------*/
+.p-supply-dd {
+  padding-block: 3.75rem;
+  background: var(--c-surface-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-dd {
+    padding-top: 6.25rem;
+    padding-bottom: 9.375rem;
+  }
+}
+
+.p-supply-dd__inner {
+  max-width: 74.3125rem;
+  margin-inline: auto;
+}
+
+.p-supply-dd__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-dd__head {
+    gap: 1.875rem;
+    margin-bottom: 3.125rem;
+  }
+}
+
+.p-supply-dd__lead {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--c-text-mute);
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-dd__lead {
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+}
+
+.p-supply-dd__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-dd__list {
+    gap: 1.25rem;
+  }
+}
+
+/*  書類の表（見出しの帯 ＋ 点付きの箇条書き。SPは縦積み・PCは 400 × 2列を中央）
+    PCは見出し行の下端 → 表 が 40（本文の 27 より深い）ので、箱の gap 27 に 13 を足す。
+    Figma: SP 3139-6204 / PC 2548-5637
+----------------------------------------------------*/
+.p-supply-docs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-docs {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 0.8125rem;
+  }
+}
+
+.p-supply-docs__col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-supply-docs__col {
+    flex: 0 1 25rem;
+    min-width: 0;
+  }
+}
+
+.p-supply-docs__head {
+  padding: 0.9375rem 0.625rem;
+  background: var(--c-surface-band);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--c-heading-alt);
+}
+
+.p-supply-docs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-left: 1.25rem;
+}
+
+.p-supply-docs__list > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--c-text-title);
+}
+
+.p-supply-docs__list > li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.25rem;
+  height: 0.25rem;
+  margin-top: calc(0.75em - 0.125rem);
+  border-radius: 50%;
+  background: var(--c-bullet-mute);
+}
+
+.p-supply-docs__list .u-font-en {
+  font-weight: 500;
+  line-height: 1;
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+  .p-supply-docs__list > li > span {
+    text-box: trim-both cap alphabetic;
+  }
+  .p-supply-docs__list > li::before {
+    margin-top: calc(0.3665em - 0.125rem);
+  }
+}
+@supports not (text-box: trim-both cap alphabetic) {
+  .p-supply-docs__list {
+    gap: 0.25rem;
+  }
+}
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	日本PGMの技術
+	Figma: PC-TECHNOLOGY 2630-6734 / SP-TECHNOLOGY 3154-10236
+----------------------------------------------------*/
+/*  本文（サンプリング・分析・製錬の3節）
+    PCはコンテナ（1360）より狭い 1188px を中央に置く（x126〜1314）。節の間 SP 80 / PC 120。
+    下の余白はパンくずまで SP 80 / PC 120。PCの Figma は 252.6 だが、他ページの 120 にそろえた（doc/design-tokens.md 6）
+    Figma: PC 2630-7189
+----------------------------------------------------*/
+.p-technology-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  max-width: 74.25rem;
+  margin-inline: auto;
+  margin-bottom: 5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-sections {
+    gap: 7.5rem;
+    margin-bottom: 7.5rem;
+  }
+}
+
+.p-technology-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-section {
+    gap: 2.5rem;
+  }
+}
+
+/*  サンプリング（h3＋リード → 図 → 写真3枚。間隔 SP 40 / PC 70）
+    SPは節の見出しまで含む枠（3155-10579・1530）しか無い。見出し45 ＋ 20 を引いた 1465 がこのブロック
+    Figma: PC 2725-18027
+----------------------------------------------------*/
+.p-technology-sampling {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-sampling {
+    gap: 4.375rem;
+  }
+}
+
+/*  サンプリングの流れの図（書き出し済みSVG・文字はアウトライン化済み）
+    PCは 1188×434.5 をそのまま、SPは 0.75倍（891×326）にして .c-scroll-x で横に送る。
+    SPの Figma（3155-10466）は 825×326 でラベルの列が詰めてあり、英字の工程名も違う（doc/design-tokens.md 6）。
+    書き出したSVGは PC 版の1枚なので、SPも同じ絵を縮小して使っている。
+    Figma: SP 3155-10554 / PC 2630-7179
+----------------------------------------------------*/
+.p-technology-diagram {
+  width: 100%;
+}
+
+.p-technology-diagram__img {
+  display: block;
+  width: 55.6875rem;
+  max-width: none;
+  height: auto;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-diagram__img {
+    width: 100%;
+  }
+}
+
+/*  サンプリングの写真（SP 縦積み / PC 3列。間隔15・270:200・角丸5）
+    Figma: SP 3155-10555 / PC 2725-18022
+----------------------------------------------------*/
+.p-technology-photos {
+  display: grid;
+  gap: 0.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-photos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.p-technology-photos__item {
+  aspect-ratio: 270/200;
+  overflow: hidden;
+  border-radius: 0.3125rem;
+}
+.p-technology-photos__item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*  分析（テキスト ＋ 写真のカードを点線で区切る）
+    カードは .c-card-num（番号なし）＋ --text-first。
+    PCは買取原料と違ってカードの下に 30 の余白が無い（Figma 2630-7023 は写真の高さ 498 ちょうど）
+    Figma: SP 3155-10606 / PC 2630-7022
+----------------------------------------------------*/
+@media screen and (min-width: 1024px) {
+  .p-technology-research .c-card-num {
+    padding-bottom: 0;
+  }
+}
+
+/*  製錬（テキスト ＋ KEYPOINT ＋ 写真のカード）
+    カードは .c-card-num ＋ --text-first ＋ --media-left。
+    SPは点線で区切り、PCは点線なしで間隔51（Figma 2630-7109 / 2630-7134 / 2630-7155 の y 0 / 471 / 942）
+    Figma: SP 3155-10617 / PC 2630-7169
+----------------------------------------------------*/
+.p-technology-smelting {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  .p-technology-smelting {
+    gap: 3.1875rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .p-technology-smelting .c-line-dot {
+    display: none;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-block
+----------------------------------------------------*/
+/*  ページ見出しのブロック
+    Figma: 見出しの上端 SP y140 / PC y190（ヘッダーは絶対配置で重なる）
+----------------------------------------------------*/
+.cm-block-header-page {
+  padding-top: 8.75rem;
+  margin-bottom: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-header-page {
+    padding-top: 11.875rem;
+    margin-bottom: 8.0625rem;
+  }
+}
+
+.cm-block-header-page--lead {
+  margin-bottom: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-header-page--lead {
+    margin-bottom: 3.6875rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cm-block-header-page--section {
+    margin-bottom: 8.6875rem;
+  }
+}
+
+/*  リード文（本文パネルの先頭。下に区切り線）
+    Figma: PC 2669-15751（お問い合わせ）/ 2669-16069（個人情報保護方針）
+----------------------------------------------------*/
+.cm-block-lead {
+  padding-bottom: 1.875rem;
+  border-bottom: 1px solid var(--c-placeholder);
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-lead {
+    padding-bottom: 3.75rem;
+  }
+}
+
+/*  本文パネル（薄いグレーの箱）
+    #f6f6f6・角丸4・PCは 1016px 幅で中央。高さは中身なりなので node-id 照合は
+    モディファイア側（--list / --article）に持たせる。
+----------------------------------------------------*/
+.cm-block-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 63.5rem;
+  margin-inline: auto;
+  margin-bottom: 6.25rem;
+  padding: 1.875rem 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--c-surface-raised);
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-panel {
+    gap: 4.0625rem;
+    margin-bottom: 7.5rem;
+    padding: 4.375rem 5.375rem;
+  }
+}
+
+.cm-block-panel--list {
+  gap: 2.5rem;
+  padding-top: 0.625rem;
+  padding-bottom: 3.125rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-panel--list {
+    gap: 3.75rem;
+    padding-top: 3.75rem;
+    padding-bottom: 6.0625rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cm-block-panel--policy {
+    gap: 3.75rem;
+  }
+}
+
+.cm-block-panel--article {
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-panel--article {
+    gap: 3.75rem;
+    margin-bottom: 3.75rem;
+    padding-top: 5rem;
+    padding-bottom: 5.4375rem;
+  }
+}
+
+/*  DOWNLOAD / CONTACT の誘導カード
+    Figma: SP 3138-5157 / PC footer-pc 3003-9083・3003-9093
+----------------------------------------------------*/
+.cm-block-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta {
+    flex-direction: row;
+  }
+  .cm-block-cta > * {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+}
+
+.cm-block-cta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+  padding: 1.875rem;
+  border-radius: 0.3125rem;
+  background: var(--c-surface);
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta-card {
+    gap: 10rem;
+    padding: 2.5rem;
+  }
+}
+
+.cm-block-cta-card__label {
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-title);
+  text-transform: uppercase;
+  color: var(--c-brand-cta);
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta-card__label {
+    font-size: 2rem;
+  }
+}
+
+.cm-block-cta-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta-card__body {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+}
+
+.cm-block-cta-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.875rem;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta-card__text {
+    width: 24rem;
+    flex-shrink: 0;
+  }
+}
+
+.cm-block-cta-card__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-title);
+  color: var(--c-ink-title);
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-cta-card__title {
+    font-size: 2.5rem;
+  }
+}
+
+.cm-block-cta-card__desc {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--c-ink);
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+  .cm-block-cta-card__desc {
+    text-box: trim-both cap alphabetic;
+  }
+}
+@supports not (text-box: trim-both cap alphabetic) {
+  .cm-block-cta-card__desc {
+    margin-block: -0.503em -0.364em;
+  }
+}
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-nav
+----------------------------------------------------*/
+.cm-navi-pager__btn, .cm-navi-paginate__ctrl {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  background: var(--c-action);
+  color: var(--color-inverse);
+}
+.cm-navi-pager__btn svg, .cm-navi-paginate__ctrl svg {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: currentColor;
+}
+
+/*  ページネーション（一覧の数字送り）
+    Figma: PC 2669-13783
+----------------------------------------------------*/
+.cm-navi-paginate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+}
+.cm-navi-paginate__num {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--c-border);
+  border-radius: 0.25rem;
+  background: var(--c-surface);
+  color: var(--c-action);
+  font-family: var(--font-en);
+  font-size: 1rem;
+  line-height: 1;
+}
+.cm-navi-paginate__num.is-current {
+  border-color: transparent;
+  background: var(--c-action);
+  color: var(--color-inverse);
+}
+.cm-navi-paginate__ellipsis {
+  color: var(--c-action);
+  font-family: var(--font-en);
+  font-size: 1rem;
+  line-height: 1;
+}
+.cm-navi-paginate__ctrl--prev svg {
+  transform: scaleX(-1);
+}
+.cm-navi-paginate__ctrl.is-disabled {
+  background: var(--c-border);
+  opacity: 1;
+  pointer-events: none;
+}
+
+/*  ページャー（詳細の前後送り・一覧へもどる）
+    Figma: SP 3139-7356 / PC 2669-14227
+----------------------------------------------------*/
+.cm-navi-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.cm-navi-pager__item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.cm-navi-pager__btn--prev svg {
+  transform: scaleX(-1);
+}
+
+.cm-navi-pager__label {
+  border-bottom: 1px solid var(--c-text-link);
+  color: var(--c-action);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.cm-navi-pager__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 0.375rem);
+  gap: 1px;
+  flex-shrink: 0;
+}
+.cm-navi-pager__grid span {
+  display: block;
+  width: 0.375rem;
+  height: 0.375rem;
+  background: var(--c-action);
+}
+
+/*  パンくず
+    Figma: SP 3139-5581 / PC 2548-5270（帯。中のテキスト群は 2548-5412）
+----------------------------------------------------*/
+.cm-navi-breadcrumb {
+  background: var(--c-surface-band);
+  font-size: 0.75rem;
+  line-height: 1.8;
+}
+
+.cm-navi-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  padding-block: 0.625rem;
+  color: var(--c-text-support);
+}
+@media screen and (min-width: 1024px) {
+  .cm-navi-breadcrumb__list {
+    padding-block: 0.4375rem;
+  }
+}
+
+.cm-navi-breadcrumb__item {
+  white-space: nowrap;
+}
+
+.cm-navi-breadcrumb__item:not(:last-child) {
+  flex-shrink: 0;
+}
+
+.cm-navi-breadcrumb__item:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cm-navi-breadcrumb__item + .cm-navi-breadcrumb__item::before {
+  content: "/";
+  margin-right: 0.5625rem;
+}
+
+.cm-navi-breadcrumb__item a {
+  color: var(--c-text-link);
+  text-decoration: underline;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-form
+	Figma: SP 3139-7718（1行）/ PC 2669-15753（フォーム全体）
+----------------------------------------------------*/
+.cm-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-form {
+    gap: 3.75rem;
+  }
+}
+.cm-form__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+}
+.cm-form__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1.625rem;
+  width: 100%;
+}
+@media screen and (min-width: 1024px) {
+  .cm-form__rows {
+    gap: 1.25rem;
+  }
+}
+
+/*  1行（ラベル ＋ 入力）
+    SPは縦積み、PCは 160px のラベル列 ＋ 84px の間隔
+----------------------------------------------------*/
+.cm-form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-form-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 5.25rem;
+  }
+}
+.cm-form-row__label {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 1.375rem;
+  white-space: nowrap;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .cm-form-row__label {
+    flex-shrink: 0;
+    width: 10rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .cm-form-row__field {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+}
+
+/*  必須バッジ（角丸なしの枠線）
+    Figma: SP 3139-7721 / PC 2669-15759（どちらも 42×22）
+----------------------------------------------------*/
+.c-form-required {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 1.375rem;
+  padding-inline: 0.4375rem;
+  border: 1px solid var(--c-required);
+  color: var(--c-required);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/*  入力欄
+----------------------------------------------------*/
+input.c-input,
+textarea.c-textarea,
+.c-select select {
+  display: block;
+  width: 100%;
+  height: 3.75rem;
+  padding-inline: 0.75rem;
+  border: 1px solid var(--c-placeholder);
+  border-radius: 0.25rem;
+  background: var(--c-surface);
+  color: var(--c-text-body);
+  font-family: var(--font);
+  font-size: 0.75rem;
+  line-height: 2;
+}
+@media screen and (min-width: 1024px) {
+  input.c-input,
+  textarea.c-textarea,
+  .c-select select {
+    padding-inline: 1.375rem;
+    font-size: 0.875rem;
+  }
+}
+input.c-input::placeholder,
+textarea.c-textarea::placeholder,
+.c-select select::placeholder {
+  color: var(--c-placeholder);
+}
+
+textarea.c-textarea {
+  height: 12.5rem;
+  padding-block: 1rem;
+}
+
+/*  セレクト（PCだけ 200px の固定幅）
+----------------------------------------------------*/
+.c-select {
+  position: relative;
+}
+@media screen and (min-width: 1024px) {
+  .c-select {
+    width: 12.5rem;
+  }
+}
+.c-select select {
+  appearance: none;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+.c-select__arrow {
+  position: absolute;
+  top: 50%;
+  right: 1.25rem;
+  translate: 0 -50%;
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--c-action);
+  pointer-events: none;
+}
+.c-select__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  rotate: 90deg;
+}
+
+/*  同意チェック
+----------------------------------------------------*/
+.c-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.9;
+  color: var(--c-text-body);
+}
+.c-checkbox input {
+  appearance: none;
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin: 0;
+  border: 1px solid var(--c-placeholder);
+  border-radius: 0.25rem;
+  background: var(--c-surface);
+  cursor: pointer;
+}
+.c-checkbox input:checked {
+  background: var(--c-action);
+  border-color: var(--c-action);
+}
+.c-checkbox a {
+  color: var(--c-action);
+  text-decoration: underline;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-policy　規程・方針の長文組み（個人情報保護方針・クッキーポリシー）
+	Figma: PC 2669-16247（1セクション）
+	クッキーポリシーは PC 2669-17770（本文）のみ。SPのアートボードが無いため、
+	SPは個人情報保護方針と同じ組み（このファイルの SP 値）をそのまま使う。
+	クッキーポリシーのFigmaは節の間隔などが個人情報保護方針と違うが、
+	同じ型として個人情報保護方針の値に統一している（doc/design-tokens.md 42）。
+
+	投稿本文（WPのエディタ出力）は .cm-post。こちらは
+	「見出し＋本文＋マーカー付き小見出し＋箇条書き」の決まった型を持つ静的ページ用。
+----------------------------------------------------*/
+.cm-policy {
+  display: flex;
+  flex-direction: column;
+  gap: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-policy {
+    gap: 5rem;
+  }
+}
+.cm-policy p {
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--c-text-body);
+}
+
+.cm-policy__section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-policy__section {
+    gap: 2.5rem;
+  }
+}
+
+.cm-policy__head .cm-policy__title {
+  margin-bottom: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-policy__head .cm-policy__title {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.cm-policy__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-position: from-font;
+}
+@media screen and (min-width: 1024px) {
+  .cm-policy__title {
+    font-size: 1.875rem;
+  }
+}
+
+.cm-policy__subtitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .cm-policy__subtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.cm-policy__subtitle .c-marker {
+  margin-top: calc((1.5em - 0.75rem) / 2);
+}
+
+.cm-policy__subtitle .u-font-en {
+  font-weight: 500;
+}
+
+.cm-policy__spaced {
+  margin-top: 2em;
+}
+
+/*  番号付き項目（共同利用の 01〜04）
+    Figma: PC 2669-16257（群）/ 2669-16258（1つ）
+--------------------------------------------------*/
+.cm-policy__numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6875rem;
+}
+
+.cm-policy__number {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.cm-policy__number p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.cm-policy__number-title {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--c-action);
+}
+
+.cm-policy__no {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.375rem 0.3125rem;
+  background: var(--c-action);
+  color: var(--color-inverse);
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.cm-policy__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+}
+
+.cm-policy__block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-post　投稿本文（WPのエディタ出力を想定した素の見出し・段落）
+	Figmaのノード（子孫セレクタなので node-id 照合には載せない）:
+	  節1 SP 3139-7342 / PC 2669-14218　節2 SP 3139-7347 / PC 2669-14223
+
+	規程・方針の決まった型（マーカー付き小見出し・箇条書き）は .cm-policy。
+	こちらは h2 / h3 / p だけで組めることを前提にする。
+
+	Gutenberg の出力を想定し、ブロック間の余白は要素の margin ではなく **gap** で持つ。
+	どんなブロック（リスト・画像・グループ等）が並んでも同じ間隔になり、
+	WP側のブロックに付く margin とも干渉しない（子の margin-block は 0 に戻す）。
+	gap は1つの値なので、Figmaの余白（h2の下 SP20/PC40・h3の下 10・段落どうし 0）は
+	すべて gap（SP16 / PC20）にそろう。見出しの上だけは padding-top で足す。
+----------------------------------------------------*/
+.cm-post {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-post {
+    gap: 1.25rem;
+  }
+}
+
+.cm-post > * {
+  margin-block: 0;
+}
+
+.cm-post > :is(h2, h3):not(:first-child) {
+  padding-top: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-post > :is(h2, h3):not(:first-child) {
+    padding-top: 2.5rem;
+  }
+}
+
+/*  大見出し（下に短い罫線）
+    Figmaのノード: SP 3139-7343 / PC 2669-14219（箱は SP/PC とも 87px）
+--------------------------------------------------*/
+.cm-post h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-title);
+}
+@media screen and (min-width: 1024px) {
+  .cm-post h2 {
+    font-size: 2rem;
+    line-height: 2;
+  }
+}
+
+.cm-post h2::after {
+  content: "";
+  display: block;
+  width: 3.75rem;
+  height: 1px;
+  margin-top: 0.875rem;
+  background: var(--c-placeholder);
+}
+@media screen and (min-width: 1024px) {
+  .cm-post h2::after {
+    width: 6.25rem;
+    margin-top: 1.375rem;
+  }
+}
+
+/*  小見出し
+    Figmaのノード: SP 3139-7348 / PC 2669-14224
+--------------------------------------------------*/
+.cm-post h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-title);
+}
+@media screen and (min-width: 1024px) {
+  .cm-post h3 {
+    font-size: 1.5rem;
+    line-height: 2;
+  }
+}
+
+/*  本文
+    Figmaのノード: SP 3139-7346 / PC 2669-14222
+--------------------------------------------------*/
+.cm-post p {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+  text-align: justify;
+}
+@media screen and (min-width: 1024px) {
+  .cm-post p {
+    font-size: 1rem;
+    line-height: 2;
+  }
+}
+
+/*  アイキャッチ
+    Figma: SP 3139-7341 / PC 2669-14226（843×450・角丸4）
+--------------------------------------------------*/
+.cm-post-eyecatch {
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.cm-post-eyecatch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.8733333333;
+  object-fit: cover;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-accordion　開閉つきのQ&A（よくある質問）
+----------------------------------------------------*/
+/*  一覧
+    Figma: SP 3139-5429 / PC 2548-5830（項目の間 20）
+----------------------------------------------------*/
+.c-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/*  1項目（下罫線 ＋ 下余白20）
+    Figma: SP 3139-5430 / PC 2548-5831
+----------------------------------------------------*/
+.c-accordion__item {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.c-accordion__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.c-accordion__q {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-accordion__q {
+    font-size: 1.25rem;
+  }
+}
+
+.c-accordion__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  border: 1px solid var(--c-border);
+  border-radius: 0.25rem;
+  background: var(--c-surface);
+  color: var(--c-action);
+}
+.c-accordion__icon svg {
+  display: block;
+  width: 0.3rem;
+  height: 0.35rem;
+  fill: currentColor;
+  transition: rotate var(--duration) var(--easeTheme);
+}
+
+.c-accordion__head.is-open .c-accordion__icon svg {
+  rotate: 180deg;
+}
+
+.c-accordion__body {
+  display: none;
+  overflow: clip;
+}
+
+.c-accordion__answer {
+  padding-top: 0.9375rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-accordion__answer {
+    font-size: 1rem;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-card
+----------------------------------------------------*/
+/*  お知らせ1件（一覧の行）
+    Figma: PC 2669-13663
+----------------------------------------------------*/
+.c-card-news {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--c-border);
+}
+.c-card-news__body {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+.c-card-news__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.c-card-news__date {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--c-label-brand);
+  white-space: nowrap;
+}
+.c-card-news__tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  padding-inline: 0.625rem;
+  border-radius: 0.25rem;
+  background: var(--c-label-brand);
+  color: var(--color-inverse);
+  font-size: 0.75rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+.c-card-news__title {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--c-text-body);
+}
+
+/*  お知らせ1件（トップの新着情報。タグが線だけ・右の矢印なし）
+    日付とタグは CTA色（Figma #0b82a3）、タイトルは SP 16 / PC 21・--c-ink。
+    Figma: SP 3181-17637 / PC 2323-5115
+----------------------------------------------------*/
+.c-card-news--outline .c-card-news__date {
+  font-size: 0.875rem;
+  color: var(--c-brand-cta);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-news--outline .c-card-news__date {
+    font-size: 1rem;
+  }
+}
+
+.c-card-news--outline .c-card-news__tag {
+  border: 1px solid var(--c-brand-cta);
+  background: transparent;
+  color: var(--c-brand-cta);
+}
+
+.c-card-news--outline .c-card-news__title {
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-news--outline .c-card-news__title {
+    font-size: 1.3125rem;
+  }
+}
+
+/*  番号付きカード（#01 ＋ 見出し ＋ 本文 ＋ 写真）
+    Figma: SP 3139-5472 / PC 2548-5368
+----------------------------------------------------*/
+.c-card-num {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3.75rem;
+    padding-bottom: 1.875rem;
+  }
+}
+
+.c-card-num__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__body {
+    flex-shrink: 0;
+    width: 25rem;
+    gap: 2.5rem;
+  }
+}
+
+.c-card-num__num {
+  font-family: var(--font-en);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--c-action);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__num {
+    font-size: 1.5rem;
+  }
+}
+
+.c-card-num__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__text {
+    gap: 0.9375rem;
+  }
+}
+
+.c-card-num__title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__title {
+    font-size: 1.875rem;
+  }
+}
+
+.c-card-num__desc {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__desc {
+    font-size: 1rem;
+  }
+}
+
+.c-card-num__figure {
+  aspect-ratio: 497/340;
+  overflow: hidden;
+  border-radius: 0.3125rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__figure {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+}
+.c-card-num__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-card-num__action {
+  width: 100%;
+  margin-top: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num__action {
+    margin-top: 0;
+  }
+}
+
+.c-card-num--text-first {
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-num--text-first {
+    flex-direction: row;
+    gap: 3.75rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .c-card-num--media-left {
+    flex-direction: row-reverse;
+    align-items: stretch;
+    gap: 3.25rem;
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .c-card-num--media-left .c-card-num__figure {
+    flex: 0 0 37.5rem;
+    aspect-ratio: 600/420;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .c-card-num--media-left .c-card-num__body {
+    flex: 1 0 0;
+    width: auto;
+    min-width: 0;
+    gap: 1.125rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .c-card-num--media-left .c-card-num__text {
+    margin-top: auto;
+  }
+}
+
+/*  手順カード（番号バッジ ＋ 写真 ＋ 見出し ＋ 本文 ＋ ボタン）
+    Figma: SP 3139-5251 / PC 2548-5744
+----------------------------------------------------*/
+.c-card-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step {
+    gap: 7.875rem;
+  }
+}
+.c-card-step__num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.8125rem;
+  height: 2.8125rem;
+  border-radius: 0.25rem;
+  background: var(--c-action);
+  color: var(--color-inverse);
+  font-family: var(--font-en);
+  font-size: 2rem;
+  line-height: 1.4;
+}
+.c-card-step__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  min-width: 0;
+  gap: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__main {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 3.75rem;
+  }
+}
+.c-card-step__figure {
+  aspect-ratio: 420/280;
+  overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__figure {
+    aspect-ratio: auto;
+    flex-shrink: 0;
+    width: 26.25rem;
+    height: 17.5rem;
+  }
+}
+.c-card-step__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.c-card-step__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__body {
+    flex: 1 0 0;
+    min-width: 0;
+    gap: 1.5625rem;
+  }
+}
+.c-card-step__title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__title {
+    font-size: 2rem;
+  }
+}
+.c-card-step__desc {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  letter-spacing: -0.05em;
+  color: var(--c-text-mute);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__desc {
+    font-size: 1.125rem;
+  }
+}
+.c-card-step__action {
+  margin-top: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-step__action {
+    margin-top: 0.9375rem;
+  }
+}
+
+.c-card-step--end {
+  align-items: center;
+}
+
+/*  番号バッジ付きの白い箱（番号 ＋ 見出し ＋ 本文）
+    Figma: SP 3139-6205 / PC 2548-5631
+----------------------------------------------------*/
+.c-card-procedure {
+  display: flex;
+  flex-direction: column;
+  gap: 1.875rem;
+  padding: 1.875rem 1.25rem;
+  background: var(--c-surface);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-procedure {
+    gap: 1.6875rem;
+    padding: 2.5rem;
+  }
+}
+
+.c-card-procedure__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-procedure__head {
+    gap: 1.25rem;
+  }
+}
+
+.c-card-procedure__num {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.8125rem;
+  height: 2.8125rem;
+  border-radius: 0.25rem;
+  background: var(--c-action);
+  color: var(--color-inverse);
+  font-family: var(--font-en);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-procedure__num {
+    font-size: 2rem;
+  }
+}
+
+.c-card-procedure__title {
+  display: flex;
+  align-items: center;
+  flex: 1 0 0;
+  min-width: 0;
+  min-height: 2.8125rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-text-title);
+}
+
+.c-card-procedure__desc {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-procedure__desc {
+    padding-left: 4.0625rem;
+    font-size: 1rem;
+  }
+}
+
+/*  特長（写真 ＋ 番号 ＋ 見出し ＋ 本文。トップの Feature）
+    SPは縦積み（写真 → 20 → 番号 → 20 → 見出し・本文）。
+    PCは 写真360 ＋ 40 ＋ テキスト362（762 のうち写真 47.244%）。テキストは番号を上端、見出し以降を写真の下端にそろえる。
+    Figma: SP 3181-17508 / PC 2323-5088
+----------------------------------------------------*/
+.c-card-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-feature {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2.5rem;
+  }
+}
+
+.c-card-feature__figure {
+  aspect-ratio: 360/250;
+  overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-feature__figure {
+    flex: 0 0 47.244%;
+  }
+}
+.c-card-feature__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-card-feature__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-feature__body {
+    flex: 1 0 0;
+    min-width: 0;
+    justify-content: space-between;
+  }
+}
+
+.c-card-feature__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.c-card-feature__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-ink);
+}
+
+.c-card-feature__desc {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--c-text-mute);
+}
+
+/*  お客様の声（白いカード：写真 ＋ 番号 ＋ 見出し ＋ 本文 ＋ お客様名。トップの Voice）
+    幅はスライダー側で SP 300 / PC 550。写真 SP 260×200 / PC 470×340（角丸5）。
+    写真 → 番号 SP 20 / PC 30、番号 → 見出し SP 10 / PC 30。
+    Figma: SP 3181-17735 / PC 2323-5157
+----------------------------------------------------*/
+.c-card-voice {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  background: var(--c-surface);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice {
+    gap: 1.875rem;
+    padding: 2.5rem;
+  }
+}
+
+.c-card-voice__figure {
+  aspect-ratio: 260/200;
+  overflow: hidden;
+  border-radius: 0.3125rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__figure {
+    aspect-ratio: 470/340;
+  }
+}
+.c-card-voice__figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c-card-voice__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__body {
+    gap: 1.875rem;
+  }
+}
+
+.c-card-voice__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.c-card-voice__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-brand-cta);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__title {
+    padding-bottom: 0.9375rem;
+    font-size: 1.625rem;
+  }
+}
+
+.c-card-voice__text {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__text {
+    font-size: 1rem;
+  }
+}
+
+.c-card-voice__client {
+  font-size: 0.875rem;
+  line-height: 1.8;
+  text-align: right;
+  color: var(--c-ink);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__client {
+    font-size: 1.125rem;
+  }
+}
+
+.c-card-voice__client-label {
+  font-family: var(--font-en);
+  color: var(--c-text-off);
+}
+@media screen and (min-width: 1024px) {
+  .c-card-voice__client-label {
+    display: none;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-heading
+----------------------------------------------------*/
+/*  セクション見出し（和文ラベル＋英字）
+    Figma: SP 3181-17729 / PC 2986-8633
+----------------------------------------------------*/
+.c-heading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: var(--c-brand-mid);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-section {
+    gap: 1.25rem;
+  }
+}
+.c-heading-section__label {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.c-heading-section__title {
+  font-family: var(--font-en);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-section__title {
+    font-size: 5rem;
+  }
+}
+
+.c-heading-section--center {
+  align-items: center;
+  text-align: center;
+}
+
+/*  ページ見出し（和文タイトル＋右上の英字ラベル）
+    Figma: SP 3139-5463 / PC 2548-5363
+----------------------------------------------------*/
+.c-heading-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--c-border);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-page {
+    padding-top: 1.875rem;
+  }
+}
+.c-heading-page__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--tracking-title);
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-page__title {
+    font-size: 3.75rem;
+  }
+}
+.c-heading-page__label {
+  flex-shrink: 0;
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--c-brand-mid);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-page__label {
+    font-size: 0.875rem;
+  }
+}
+
+/*  マーカー付き見出し（責任ある調達・NPGMの技術など）
+    Figma: SP 3139-6078 / PC 2548-5626
+----------------------------------------------------*/
+.c-heading-marker {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-title);
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-marker {
+    align-items: center;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+}
+.c-heading-marker .c-marker {
+  --marker-size: 1rem;
+  --marker-box: 1.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-marker .c-marker {
+    --marker-size: 1.25rem;
+    --marker-box: 1.25rem;
+  }
+}
+
+/*  マーカー付きの小さい見出し（「よくあるご質問」など）
+    Figma: SP 3139-5428 / PC 2548-5829（コンポーネント 1845:1586）
+----------------------------------------------------*/
+.c-heading-sub {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+}
+
+/*  h3 ＋ リード文（NPGMの技術のサンプリング「信頼は、正確なサンプリングから始まる」）
+    文字の組みは .c-card-num__title / __desc と同じ（PCのh3コンポーネントの箱36より 1.4 を優先。No.50）。
+    Figma: SP 3155-10465 / PC 3155-10568
+----------------------------------------------------*/
+.c-heading-lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-lead {
+    gap: 0.9375rem;
+  }
+}
+
+.c-heading-lead__title {
+  font-size: 1.3125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-lead__title {
+    font-size: 1.875rem;
+  }
+}
+
+.c-heading-lead__desc {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-heading-lead__desc {
+    font-size: 1rem;
+  }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-line
+----------------------------------------------------*/
+/*  点線の区切り（Figmaの「dot-loop-white」）
+    Figma: SP 3139-5952 / PC 2548-5375（80px の箱の中央に点線）
+----------------------------------------------------*/
+.c-line-dot {
+  --dot-size: 2px;
+  --dot-pitch: 8px;
+  height: 5rem;
+  background-image: linear-gradient(to right, var(--c-border) var(--dot-size), transparent var(--dot-size));
+  background-size: var(--dot-pitch) var(--dot-size);
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+}
+
+/*  番号 ＋ 下線（「01」の下に 1px の線。トップの特長・お客様の声）
+    Figma は 番号18 ＋ 間隔8 ＋ 線（上に1px はみ出す描き方）で箱26。padding 7 ＋ 線1 で同じ 26 にする。
+    Figma: SP 3181-17511 / PC 2986-8594
+----------------------------------------------------*/
+.c-line-num {
+  padding-bottom: 0.4375rem;
+  border-bottom: 1px solid var(--c-brand-mid);
+  font-family: var(--font-en);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-brand-mid);
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	...
+----------------------------------------------------*/
+/*  本文中に置くURLリンク（次の行に続けて出す）
+    Figma: PC 2669-16297（段落と同じテキストブロックの中。行間の余白は無い）
+----------------------------------------------------*/
+.c-link-url {
+  display: block;
+  font-family: var(--font-en);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.c-link-url--inline {
+  display: inline;
+  line-height: 1;
+  text-underline-position: from-font;
+}
+
+/*  テキスト＋矢印ボタン（「お問い合わせはこちら」「責任ある調達について」）
+    Figma: SP 3139-5341 / PC 2669-17822
+----------------------------------------------------*/
+.c-link-arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: fit-content;
+}
+
+.c-link-arrow__label {
+  color: var(--c-action);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+@media screen and (min-width: 1024px) {
+  .c-link-arrow__label {
+    border-bottom: 1px solid var(--c-text-link);
+    font-weight: inherit;
+    line-height: 1.5;
+    letter-spacing: var(--tracking-body);
+  }
+}
+
+.c-link-arrow__arrow {
+  --btn-bg: var(--c-brand-cta);
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 0.125rem;
+}
+.c-link-arrow__arrow svg {
+  width: 0.5625rem;
+  height: 0.1875rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-link-arrow__arrow {
+    --btn-bg: var(--c-action);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+  }
+  .c-link-arrow__arrow svg {
+    width: 0.9375rem;
+    height: 0.375rem;
+  }
+}
+
+/*  テキスト＋矢印ボタン・大（トップの新着情報の「一覧をみる」）
+    文字 SP 16 / PC 18・CTA色・下線なし ＋ 矢印 SP 60 / PC 75（#ico_arrow_ne・CTA色）。間は10
+    矢印の角丸は Figma 2.523 / 3.153 → 2 / 3、字形は 14.5 / 18.13 → 14 / 18
+    Figma: SP 3181-17658 / PC 3003-8965
+----------------------------------------------------*/
+.c-link-arrow--lg .c-link-arrow__label {
+  border-bottom: 0;
+  color: var(--c-brand-cta);
+  font-size: 1rem;
+  font-weight: inherit;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-body);
+}
+@media screen and (min-width: 1024px) {
+  .c-link-arrow--lg .c-link-arrow__label {
+    font-size: 1.125rem;
+  }
+}
+
+.c-link-arrow--lg .c-link-arrow__arrow {
+  --btn-bg: var(--c-brand-cta);
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 0.125rem;
+}
+@media screen and (min-width: 1024px) {
+  .c-link-arrow--lg .c-link-arrow__arrow {
+    width: 4.6875rem;
+    height: 4.6875rem;
+    border-radius: 0.1875rem;
+  }
+}
+.c-link-arrow--lg .c-link-arrow__arrow svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: none;
+  stroke: currentColor;
+}
+@media screen and (min-width: 1024px) {
+  .c-link-arrow--lg .c-link-arrow__arrow svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}
+
+/*  バナーリンク（ロゴ ＋ 文言 ＋ 三角の矢印。薄いティールの箱）
+    責任ある調達 #02 の「DOWAメタルマイン 責任ある調達について」。
+    ロゴは書き出し済みSVG（dest/assets/img/logo-dowa-mm.svg／280×14、SPは 240×12 に縮小）。
+    Figma: SP 3139-6014 / PC 2548-5493
+----------------------------------------------------*/
+.c-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border-radius: 0.25rem;
+  background: var(--c-surface-tint);
+}
+@media screen and (min-width: 1024px) {
+  .c-banner-link {
+    padding: 1.875rem;
+  }
+}
+
+.c-banner-link__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.c-banner-link__logo {
+  display: block;
+  width: 15rem;
+  height: auto;
+}
+@media screen and (min-width: 1024px) {
+  .c-banner-link__logo {
+    width: 17.5rem;
+  }
+}
+
+.c-banner-link__label {
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--c-text-body);
+}
+
+/*  PDFリンク
+    Figma: PC 2669-16274（文字14px＋13×16のアイコン＋容量）
+----------------------------------------------------*/
+.c-link-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--c-text-body);
+}
+.c-link-pdf__label {
+  text-decoration: underline;
+}
+.c-link-pdf__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+}
+.c-link-pdf__icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0.1875rem;
+  width: 0.8125rem;
+  height: 1rem;
+  border: 1px solid var(--c-pdf);
+  background: var(--c-surface);
+}
+.c-link-pdf__icon span {
+  position: absolute;
+  top: 0.25rem;
+  left: 0;
+  padding: 1px;
+  background: var(--c-pdf);
+  color: var(--color-inverse);
+  font-family: var(--font-en);
+  font-size: 0.4375rem;
+  line-height: 1.5;
+}
+.c-link-pdf__size {
+  font-family: var(--font-en);
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-list
+----------------------------------------------------*/
+/*  丸ポチの箇条書き
+    Figma: PC 2669-16190（5pxの円 ＋ gap11 ＋ 16px lh1.5）
+----------------------------------------------------*/
+.c-list-bullet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.c-list-bullet > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6875rem;
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--c-text-body);
+}
+
+.c-list-bullet > li .u-font-en {
+  line-height: 1;
+}
+
+.c-list-bullet > li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.3125rem;
+  height: 0.3125rem;
+  margin-top: calc((2em - 0.3125rem) / 2);
+  border-radius: 50%;
+  background: var(--c-action);
+}
+
+/*  KEYPOINT（ラベル ＋ 点付きの箇条書き。薄いティールの箱）
+    SPは ラベル → 箇条書き の縦積み（間隔20）、PCは横並び（ラベル107 ＋ 間隔70 → 箇条書きは x207）。
+    Figma: SP 3155-10713 / PC 2630-7119
+----------------------------------------------------*/
+.c-keypoint {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 1.875rem;
+  background: var(--c-surface-tint);
+}
+@media screen and (min-width: 1024px) {
+  .c-keypoint {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 4.375rem;
+  }
+}
+
+.c-keypoint__label {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.625rem;
+  font-family: var(--font-en);
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--c-ink);
+}
+
+.c-keypoint__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.c-keypoint__list > li {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--c-text-body);
+}
+
+.c-keypoint__list > li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: var(--c-action);
+}
+
+.c-keypoint__list .u-font-en {
+  line-height: 1;
+}
+
+.c-keypoint__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+}
+
+.c-keypoint__link-label {
+  color: var(--c-action);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+
+/*  マーカー（#ico_marker）
+    SPドロワーのナビ先頭と、本文の小見出しで共通
+    Figma: SP 3138-4959（12×12）/ PC 2669-16188（12×24の箱の下半分に同じ字形）
+----------------------------------------------------*/
+.c-marker {
+  --marker-size: 0.75rem;
+  --marker-box: var(--marker-size);
+  display: flex;
+  align-items: flex-end;
+  flex-shrink: 0;
+  width: var(--marker-size);
+  height: var(--marker-box);
+  color: var(--c-action);
+}
+.c-marker svg {
+  display: block;
+  width: var(--marker-size);
+  height: var(--marker-size);
+  fill: currentColor;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	c-scroll
+----------------------------------------------------*/
+/*  横スクロール（幅の広い図を枠の中で横に送る。下に細いスクロールバー）
+    NPGMの技術のサンプリングの図（SP）。送る必要が無いとき（PC）はバーを出さない。
+    スクロールできることは ScrollHint（common.js の jsScrollX）で知らせる。
+    Figma: SP 3155-10578（図 825×326 を 362 の枠で送る → 間隔20 → 2px のバー）
+----------------------------------------------------*/
+.c-scroll-x {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.c-scroll-x__inner {
+  position: relative;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.c-scroll-x__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.c-scroll-x__bar {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  background: var(--c-border);
+}
+
+.c-scroll-x__thumb {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--c-text-link);
+}
+
+.c-scroll-x:not(.is-scrollable) .c-scroll-x__bar {
+  display: none;
+}
+
+.c-scroll-x .scroll-hint-icon {
+  left: calc(50% - 3.4375rem);
+  width: 6.875rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	汎用クラス
+----------------------------------------------------*/
+.bold,
+.strong {
+  font-weight: bold;
+}
+
+.u-hide {
+  display: none;
+}
+
+.u-breakLine {
+  display: inline-block;
+}
+
+.u-center {
+  text-align: center;
+}
+
+.u-only-sp {
+  display: block !important;
+}
+@media screen and (min-width: 641px) {
+  .u-only-sp {
+    display: none !important;
+  }
+}
+
+.u-only-pc {
+  display: none !important;
+}
+@media screen and (min-width: 641px) {
+  .u-only-pc {
+    display: block !important;
+  }
+}
+
+.u-font-en {
+  font-family: var(--font-en);
+}
+
+.u-color-accent {
+  color: var(--color-accent);
+}
+
+.u-template {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding-bottom: 6.25rem;
+}
+.u-template > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.u-gap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--gap);
+}
+
+.is-disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.u-budoux {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+[data-delay="0.1"] {
+  transition-delay: 0.1s;
+}
+
+[data-delay="0.2"] {
+  transition-delay: 0.2s;
+}
+
+[data-delay="0.3"] {
+  transition-delay: 0.3s;
+}
+
+[data-delay="0.4"] {
+  transition-delay: 0.4s;
+}
+
+[data-delay="0.5"] {
+  transition-delay: 0.5s;
+}
+
+[data-delay="0.6"] {
+  transition-delay: 0.6s;
+}
+
+[data-delay="0.7"] {
+  transition-delay: 0.7s;
+}
+
+[data-delay="0.8"] {
+  transition-delay: 0.8s;
+}
+
+[data-delay="0.9"] {
+  transition-delay: 0.9s;
+}
+
+[data-delay="1"] {
+  transition-delay: 1s;
+}
+
+[data-delay="1.1"] {
+  transition-delay: 1.1s;
+}
+
+[data-delay="1.2"] {
+  transition-delay: 1.2s;
+}
+
+[data-delay="1.3"] {
+  transition-delay: 1.3s;
+}
+
+[data-delay="1.4"] {
+  transition-delay: 1.4s;
+}
+
+[data-delay="1.5"] {
+  transition-delay: 1.5s;
+}
+
+[data-delay="1.6"] {
+  transition-delay: 1.6s;
+}
+
+[data-delay="1.7"] {
+  transition-delay: 1.7s;
+}
+
+[data-delay="1.8"] {
+  transition-delay: 1.8s;
+}
+
+[data-delay="1.9"] {
+  transition-delay: 1.9s;
+}
+
+[data-delay="2"] {
+  transition-delay: 2s;
+}
+
+[data-delay="2.1"] {
+  transition-delay: 2.1s;
+}
+
+[data-delay="2.2"] {
+  transition-delay: 2.2s;
+}
+
+[data-delay="2.3"] {
+  transition-delay: 2.3s;
+}
+
+[data-delay="2.4"] {
+  transition-delay: 2.4s;
+}
+
+[data-delay="2.5"] {
+  transition-delay: 2.5s;
+}
+
+[data-delay="2.6"] {
+  transition-delay: 2.6s;
+}
+
+[data-delay="2.7"] {
+  transition-delay: 2.7s;
+}
+
+[data-delay="2.8"] {
+  transition-delay: 2.8s;
+}
+
+[data-delay="2.9"] {
+  transition-delay: 2.9s;
+}
+
+[data-delay="3"] {
+  transition-delay: 3s;
+}
+
+.__loop {
+  display: flex;
+}
+.__loop figure {
+  animation: loopLeft linear 30s infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.__loop img {
+  width: auto;
+  max-width: none;
+  height: 18.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .__loop figure {
+    animation-duration: 50s;
+  }
+  .__loop img {
+    height: 32.875rem;
+  }
+}
+
+@keyframes loopLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+@keyframes loopRight {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes btnArrow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  30% {
+    transform: translate3d(70%, 0, 0);
+  }
+  30.1% {
+    transform: translate3d(-70%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}

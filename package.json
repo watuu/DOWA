@@ -1,0 +1,50 @@
+{
+  "name": "name",
+  "author": "watuu",
+  "description": "",
+  "license": "",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "sass": "sass --no-source-map src/sass/style.scss dest/assets/css/style.css --style expanded",
+    "pug": "pug src/pug/ --hierarchy -o dest -P '\t' -E html",
+    "js:build": "cross-env NODE_ENV=production rollup -c rollup-config.js",
+    "js:watch": "cross-env NODE_ENV=development rollup -c rollup-config.js --watch",
+    "verify": "node tools/figma-verify.mjs",
+    "verify:coverage": "node tools/figma-coverage.mjs",
+    "verify:nodes": "node tools/figma-nodes.mjs",
+    "verify:compare": "node tools/figma-compare.mjs",
+    "verify:sanity": "node tools/figma-sanity.mjs",
+    "verify:all": "node tools/verify-all.mjs"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@playwright/test": "^1.63.0",
+    "@rollup/plugin-alias": "^4.0.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-replace": "^5.0.5",
+    "@rollup/plugin-terser": "^0.4.4",
+    "cross-env": "^7.0.3",
+    "dat.gui": "^0.7.9",
+    "dotenv": "^16.4.5",
+    "pug": "^3.0.2",
+    "pug-cli": "git+https://github.com/watuu/pug-cli.git",
+    "rollup": "^3.29.4",
+    "rollup-plugin-import-css": "^3.5.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "sass": "^1.86.0"
+  },
+  "dependencies": {
+    "@barba/core": "^2.10.3",
+    "budoux": "^0.7.0",
+    "gsap": "^3.12.5",
+    "micromodal": "^0.4.10",
+    "overlayscrollbars": "^2.11.1",
+    "scroll-hint": "^1.2.9",
+    "swiper": "^12.2.0"
+  }
+}

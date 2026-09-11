@@ -1,0 +1,35 @@
+extends ../_default
+include ../_include/_form-parts
+block vars
+    - var path = "../"
+    - var title = "資料ダウンロード"
+    - var pageClass = "page-document"
+    - var breadcrumb = "資料ダウンロード"
+
+block content
+
+    .p-document
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title 資料ダウンロード
+                    p.c-heading-page__label Download
+
+        section.p-document-form
+            .l-container
+                .cm-block-panel
+                    p.cm-block-lead
+                        | サービスについて詳しく知っていただける資料をご用意しています。
+                        br
+                        | 課題解決のヒントや情報収集に、ぜひご活用ください。
+
+                    form.p-document-form__body.cm-form(action="#" method="post" onsubmit="return false;")
+                        .cm-form__body
+                            .cm-form__rows
+                                +formText("d-name", "name", "お名前", "氏名を入力ください。", true)
+                                +formText("d-email", "email", "メールアドレス", "メールアドレスを入力ください。", true, "email")
+                                +formText("d-company", "company", "会社名", "会社名を入力ください。", true)
+                                +formText("d-tel", "tel", "電話番号", "電話番号を入力ください。", true, "tel")
+                                +formSelect("d-purpose", "purpose", "利用目的", ["買取の検討", "情報収集", "その他"], true)
+                            +formAgree(path)
+                        +formSubmit("内容を確認する")

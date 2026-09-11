@@ -1,0 +1,106 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	新着情報詳細（WPの投稿詳細）
+	Figma: SP_NEWS_DETAILS 3139-7324 / PC_NEWS_DETAILS 2669-13917
+----------------------------------------------------*/
+
+/*  日付・タグ・記事タイトル
+    Figma: SP 3139-7350 / PC 2669-14212
+--------------------------------------------------*/
+// パネル（1016px）と左端を揃える。パネルの内側余白（86px）には入らない。
+.p-single-news-head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	max-width: math.div(1016, 16) + rem;
+	margin-inline: auto;
+	margin-bottom: math.div(24, 16) + rem; // 見出し下端 → パネル上端（Figma実測 SP 24 / PC 45）
+
+	@include config.pc {
+		margin-bottom: math.div(45, 16) + rem;
+	}
+}
+
+// Figma: SP 3139-7351 / PC 2669-14213
+.p-single-news-head__meta {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+// Figmaは text-box-trim が効いていて、日付の箱はタグと同じ 20px に収まる
+// （c-card-news__date と同じ理由。1.4 のままだと 22.4px になり行が伸びる）
+.p-single-news-head__date {
+	font-family: var(--font-en);
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.25;
+	color: var(--c-label-brand);
+	white-space: nowrap;
+
+	@include config.pc {
+		font-size: math.div(12, 16) + rem;
+		line-height: 1.5;
+	}
+}
+
+// SPは一覧（c-card-news__tag）と同じ 12px・角丸4・左右10。
+// PCだけ 14px・角丸2・左右5 で別物になっている（Figmaどおり。doc/design-tokens.md 参照）
+// Figma: SP 3139-7353 / PC 2669-14215
+.p-single-news-head__tag {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: math.div(20, 16) + rem;
+	padding-inline: math.div(10, 16) + rem;
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-label-brand);
+	color: var(--color-inverse);
+	font-size: math.div(12, 16) + rem;
+	line-height: 1; // Figmaは 2.2 だが 20px の箱に入るため中央揃えで持たせる
+	white-space: nowrap;
+
+	@include config.pc {
+		padding-inline: math.div(5, 16) + rem;
+		border-radius: math.div(2, 16) + rem;
+		font-size: math.div(14, 16) + rem;
+	}
+}
+
+// Figma: SP 3139-7355 / PC 2669-14217
+.p-single-news-head__title {
+	font-size: math.div(32, 16) + rem;
+	font-weight: 700;
+	line-height: 1.6;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-heading-alt);
+
+	@include config.pc {
+		font-size: math.div(46, 16) + rem; // doc/design-tokens.md のスケール外。詳細ページ専用
+		line-height: 1.4;
+		letter-spacing: 0.03em; // h3見出しと同じプラス方向（Figma 1.38 / 46）
+	}
+}
+
+/*  前後送り
+    Figma: SP 3139-7356 / PC 2669-14227
+--------------------------------------------------*/
+// SPはコンテナ幅いっぱい（362）、PCだけ 552px で中央寄せ。
+.p-single-news-pager {
+	margin-bottom: math.div(100, 16) + rem; // ページャー下端 → パンくず（Figma実測 SP 103 / PC 120）
+
+	@include config.pc {
+		max-width: math.div(552, 16) + rem;
+		margin-inline: auto;
+		margin-bottom: math.div(120, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

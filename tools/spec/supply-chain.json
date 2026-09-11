@@ -1,0 +1,112 @@
+{
+  "_": "責任ある調達。Figma: SP_SUPPLY CHAIN 3139-5801 / PC_SUPPLY CHAIN 2548-5470",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/supply-chain/",
+  "tolerance": 4,
+  "settle": { "timeout": 1000, "scrollThrough": true, "scrollWait": 500 },
+
+  "viewports": [
+    { "name": "PC", "width": 1440, "height": 1000 },
+    { "name": "SP", "width": 402, "height": 900 }
+  ],
+
+  "targets": {
+    "PC": {
+      "items": [
+        { "name": "ヘッダー", "selector": ".l-header", "x": 40, "y": 25, "w": 1360, "h": 59, "_note": "Figma header_pc 3003-9512（ロゴ差し替えで 40 → 59）" },
+        { "name": "ヘッダーロゴ", "selector": ".l-header-logo", "x": 40, "y": 25, "w": 355.1, "h": 59, "_note": "Figma 3003-9028" },
+        { "name": "グローバルナビ", "selector": ".l-header-nav__list", "y": 34.5, "h": 40, "_note": "Figma 3003-9066 は y9.5（(59 - 40) / 2）" },
+        { "name": "言語切替・現在地", "selector": ".l-header-lang__current", "color": "#c4c4c4", "_note": "Figma I3003-9512;3003-9077（白背景のページ）" },
+        { "name": "言語切替・非選択", "selector": ".l-header-lang__other", "color": "#222020", "_note": "Figma I3003-9512;3003-9079" },
+        { "name": "言語切替・罫線", "selector": ".l-header-lang__line", "w": 16, "h": 1, "background": "#222020", "_note": "Figma I3003-9512;3003-9078" },
+
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 40, "y": 190, "w": 1360 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 60, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 14, "color": "#13728c" },
+
+        { "name": "方針の一覧", "selector": ".p-supply-list", "x": 126, "y": 409, "w": 1189, "h": 1137.4, "_note": "Figma 2548-5477" },
+        { "name": "カード#01", "selector": ".c-card-num", "index": 0, "x": 126, "y": 409, "w": 1189, "h": 528.7, "_note": "Figma 2548-5478（写真498.7 ＋ 下30）" },
+        { "name": "写真#01", "selector": ".c-card-num__figure", "index": 0, "x": 586, "y": 409, "w": 729, "h": 498.7, "borderRadius": 5, "_note": "Figma 2548-5484" },
+        { "name": "番号#01", "selector": ".c-card-num__num", "index": 0, "x": 126, "y": 409, "h": 43.2, "fontSize": 24, "fontFamily": "Poppins", "color": "#15819e", "_note": "Figma 2548-5480" },
+        { "name": "見出し#01", "selector": ".c-card-num__title", "index": 0, "y": 492, "h": 42, "fontSize": 30, "lineHeight": 42, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 2548-5482（箱42）" },
+        { "name": "本文#01", "selector": ".c-card-num__desc", "index": 0, "y": 549, "w": 400, "h": 144, "fontSize": 16, "lineHeight": 28.8, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 2548-5483（5行・箱145）" },
+        { "name": "点線の区切り", "selector": ".c-line-dot", "index": 0, "x": 126, "y": 937.7, "w": 1189, "h": 80, "_note": "Figma 2548-5485" },
+        { "name": "カード#02", "selector": ".c-card-num", "index": 1, "y": 1017.7, "h": 528.7, "_note": "Figma 2548-5487" },
+        { "name": "見出し#02（2行）", "selector": ".c-card-num__title", "index": 1, "y": 1100.7, "h": 84, "_note": "Figma 2548-5491" },
+        { "name": "本文#02", "selector": ".c-card-num__desc", "index": 1, "y": 1199.7, "h": 115.2, "_note": "Figma 2548-5492（4行・箱116）" },
+
+        { "name": "バナー", "selector": ".c-banner-link", "x": 126, "y": 1355.7, "w": 400, "h": 112, "borderRadius": 4, "background": "#edf6f8", "_note": "Figma 2548-5493（本文 → バナー 40）" },
+        { "name": "バナーのロゴ", "selector": ".c-banner-link__logo", "x": 156, "y": 1385.7, "w": 280, "h": 14, "_note": "Figma 2548-5497" },
+        { "name": "バナーの文言", "selector": ".c-banner-link__label", "x": 156, "y": 1419.7, "h": 18, "fontSize": 18, "lineHeight": 18, "color": "#333d40", "_note": "Figma 2548-5523" },
+        { "name": "バナーの矢印", "selector": ".c-banner-link .c-btn-arrow", "x": 476, "y": 1401.7, "w": 20, "h": 20, "borderRadius": 4, "background": "#15819e", "_note": "Figma 2548-5524" },
+
+        { "name": "デューデリジェンスの帯", "selector": ".p-supply-dd", "x": 0, "y": 1696.4, "w": 1440, "h": 1155.4, "background": "#f7f7f7", "_note": "Figma 2548-5471 は y1697・パンくずまで 1135。手順の箱が +20.4（下の手順2・3の _note）" },
+        { "name": "帯の見出しブロック", "selector": ".p-supply-dd__head", "x": 126, "y": 1796.4, "h": 91.6, "_note": "Figma 2548-5625（92）" },
+        { "name": "帯の見出し", "selector": ".p-supply-dd .c-heading-marker", "h": 40, "fontSize": 40, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "帯のリード", "selector": ".p-supply-dd__lead", "y": 1866.4, "h": 21.6, "fontSize": 18, "lineHeight": 21.6, "letterSpacing": "-0.01em", "color": "#787878", "_note": "Figma 2548-5629（18px・lh1.2・箱22）。字送りは Figma -0.05em だが本文の -0.01em" },
+
+        { "name": "手順の一覧", "selector": ".p-supply-dd__list", "x": 126, "y": 1938.4, "w": 1189, "h": 763.4, "_note": "Figma 2548-5630 は 743。手順2・3 で +20.4（それぞれの _note）" },
+        { "name": "手順1", "selector": ".c-card-procedure", "index": 0, "x": 126, "y": 1938.4, "w": 1189, "h": 333, "background": "#ffffff", "_note": "Figma 2548-5631" },
+        { "name": "番号バッジ1", "selector": ".c-card-procedure__num", "index": 0, "x": 166, "y": 1978.4, "w": 45, "h": 45, "borderRadius": 4, "background": "#15819e", "fontSize": 32, "fontFamily": "Poppins", "color": "#ffffff", "_note": "Figma 2548-5634" },
+        { "name": "手順の見出し1", "selector": ".c-card-procedure__title", "index": 0, "x": 231, "fontSize": 24, "lineHeight": 33.6, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#263a40", "_note": "Figma 2548-5636（Text/Title）" },
+        { "name": "書類の表", "selector": ".p-supply-docs", "y": 2063.4, "h": 168, "_note": "Figma 2548-5637（見出し行の下端 → 表 40）" },
+        { "name": "書類の列（左）", "selector": ".p-supply-docs__col", "index": 0, "x": 311, "w": 400, "h": 168, "_note": "Figma 2548-5638（x185 は箱の中で中央）" },
+        { "name": "書類の列（右）", "selector": ".p-supply-docs__col", "index": 1, "x": 731, "w": 400, "_note": "Figma 2548-5654" },
+        { "name": "書類の見出し", "selector": ".p-supply-docs__head", "index": 0, "h": 52.4, "fontSize": 16, "fontWeight": "700", "letterSpacing": "0.03em", "color": "#1e2e33", "background": "#ebebeb", "_note": "Figma 2548-5639（52）。地は Figma #ececec → --c-surface-band" },
+        { "name": "書類の箇条書き", "selector": ".p-supply-docs__list", "index": 0, "h": 96, "_note": "Figma 2548-5641（12 × 4 ＋ 16 × 3）" },
+        { "name": "書類の項目", "selector": ".p-supply-docs__list > li > span", "index": 0, "h": 12, "fontSize": 16, "fontWeight": "400", "color": "#263a40", "_note": "Figma 2548-5644（text-box-trim で箱12）" },
+        { "name": "手順2", "selector": ".c-card-procedure", "index": 1, "y": 2291.4, "h": 180.8, "_note": "Figma 2548-5664 は 174。本文の箱が 22 になっている（16px・lh1.8 の1行は 28.8）ため +6.8" },
+        { "name": "手順の本文2", "selector": ".c-card-procedure__desc", "index": 0, "x": 166, "w": 1109, "h": 28.8, "fontSize": 16, "lineHeight": 28.8, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 2548-5672（本文は x231。左の余白65は padding-left）。字送りは Figma +0.03em だが本文の -0.01em" },
+        { "name": "手順3", "selector": ".c-card-procedure", "index": 2, "y": 2492.2, "h": 209.6, "_note": "Figma 2548-5673 は 196。ここだけ下の余白が 26（他は 40）。40 にそろえて +13.6" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2851.8, "_note": "Figma 2832（+20.4。手順2・3の差がそのまま）" },
+        { "name": "フッター", "selector": ".l-footer", "h": 770 }
+      ]
+    },
+
+    "SP": {
+      "items": [
+        { "name": "ヘッダー", "selector": ".l-header", "x": 20, "y": 20, "w": 362, "h": 40, "_note": "Figma header_sp 3139-5802" },
+        { "name": "ヘッダーロゴ", "selector": ".l-header-logo", "x": 20, "y": 20, "w": 241, "h": 40, "_note": "Figma 3297-18683" },
+
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 20, "y": 140, "w": 362 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 28, "letterSpacing": "-0.05em" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 12, "color": "#13728c" },
+
+        { "name": "方針の一覧", "selector": ".p-supply-list", "x": 20, "y": 248, "w": 362, "h": 1200.3, "_note": "Figma 3139-5967 は 1173.3。#02 の本文が 4 → 5 行で +27（字送り -0.05em → 本文の -0.01em。doc/design-tokens.md 6）" },
+        { "name": "カード#01", "selector": ".c-card-num", "index": 0, "y": 248, "h": 490.6, "_note": "Figma 3139-5808" },
+        { "name": "写真#01", "selector": ".c-card-num__figure", "index": 0, "x": 20, "y": 248, "w": 362, "h": 247.6, "borderRadius": 5, "_note": "Figma 3139-5950" },
+        { "name": "番号#01", "selector": ".c-card-num__num", "index": 0, "y": 525.6, "h": 28.8, "fontSize": 16, "color": "#15819e", "_note": "Figma 3139-5811" },
+        { "name": "見出し#01", "selector": ".c-card-num__title", "index": 0, "y": 564.6, "h": 29.4, "fontSize": 21, "lineHeight": 29.4, "letterSpacing": "0.03em", "color": "#1e2e33", "_note": "Figma 3139-5813" },
+        { "name": "本文#01", "selector": ".c-card-num__desc", "index": 0, "y": 603.6, "h": 135, "fontSize": 15, "lineHeight": 27, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 3139-5815（5行）。色は Figma #787878 だが買取原料の同じ部品（#333d40）にそろえた" },
+        { "name": "点線の区切り", "selector": ".c-line-dot", "index": 0, "y": 738.6, "h": 80, "_note": "Figma 3139-5964" },
+        { "name": "カード#02", "selector": ".c-card-num", "index": 1, "y": 818.6, "h": 629.6, "_note": "Figma 3139-5968 は 602.6。本文 4 → 5 行で +27" },
+        { "name": "バナー", "selector": ".c-banner-link", "x": 20, "y": 1358.6, "w": 362, "h": 90, "borderRadius": 4, "background": "#edf6f8", "_note": "Figma 3139-6014 は y1331.6（本文の +27）。本文 → バナー 20" },
+        { "name": "バナーのロゴ", "selector": ".c-banner-link__logo", "x": 40, "w": 240, "h": 12, "_note": "Figma 3139-6018" },
+        { "name": "バナーの矢印", "selector": ".c-banner-link .c-btn-arrow", "x": 342, "w": 20, "h": 20, "_note": "Figma 3139-6045" },
+
+        { "name": "デューデリジェンスの帯", "selector": ".p-supply-dd", "x": 0, "y": 1568.3, "w": 402, "h": 1323, "background": "#f7f7f7", "_note": "Figma 3139-6049 は y1540・h1301。上の +27 ＋ 一覧の下 118.7 → 120、中は書類の項目の折り返しで +22（下の _note）" },
+        { "name": "帯の見出しブロック", "selector": ".p-supply-dd__head", "x": 20, "y": 1628.3, "w": 362, "h": 164, "_note": "Figma 3139-6084" },
+        { "name": "帯の見出し", "selector": ".p-supply-dd .c-heading-marker", "h": 90, "fontSize": 32, "letterSpacing": "-0.05em", "_note": "Figma 3139-6078（2行）。字送りは SP の Figma +0.03em だが PC の -0.05em（c-heading-marker で決定済み）" },
+        { "name": "帯のリード", "selector": ".p-supply-dd__lead", "h": 54, "fontSize": 15, "lineHeight": 27, "color": "#787878", "_note": "Figma 3139-6082（2行）" },
+        { "name": "手順1", "selector": ".c-card-procedure", "index": 0, "x": 20, "y": 1822.3, "w": 362, "h": 490, "_note": "Figma 3139-6205 は 468。「LPPM 責任ある調達に関する確認書(OBQ)」が Poppins の字幅で2行になり +22（doc/design-tokens.md 6 No.1）" },
+        { "name": "番号バッジ1", "selector": ".c-card-procedure__num", "index": 0, "x": 40, "w": 45, "h": 45, "fontSize": 24, "_note": "Figma 3139-6142" },
+        { "name": "手順の見出し1（2行）", "selector": ".c-card-procedure__title", "index": 0, "x": 95, "h": 67.2, "fontSize": 24, "lineHeight": 33.6, "color": "#263a40", "_note": "Figma 3139-6144（68）" },
+        { "name": "書類の表", "selector": ".p-supply-docs", "x": 40, "w": 322, "h": 332, "_note": "Figma 3139-6204 は 310（上の +22）" },
+        { "name": "書類の見出し", "selector": ".p-supply-docs__head", "index": 0, "h": 52.4, "_note": "Figma 3139-6147" },
+        { "name": "書類の箇条書き（左）", "selector": ".p-supply-docs__list", "index": 0, "h": 96, "_note": "Figma 3139-6149" },
+        { "name": "手順2", "selector": ".c-card-procedure", "index": 1, "h": 216, "_note": "Figma 3139-6206" },
+        { "name": "手順の本文2", "selector": ".c-card-procedure__desc", "index": 0, "x": 40, "w": 322, "h": 81, "fontSize": 15, "lineHeight": 27, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 3139-6241（3行）。字送りは Figma -0.05em だが本文の -0.01em" },
+        { "name": "手順3", "selector": ".c-card-procedure", "index": 2, "h": 243, "_note": "Figma 3139-6243" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2891.3, "_note": "Figma 3139-5848 は 2841（+50.3：方針の +28.3 ＋ 手順1 の +22）" }
+      ]
+    }
+  },
+
+  "_known": [
+    "PCの手順2（2548-5664）は本文の箱が 22（1行 28.8 のはず）、手順3（2548-5673）は下の余白が 26。そろえた結果 +20.4、パンくず以降も同じだけ下がる。",
+    "SPの本文は Figma -0.05em・#787878 だが、買取原料の同じ部品に合わせて -0.01em・#333d40。#02 の本文が1行増える（+27）。",
+    "SPの「LPPM 責任ある調達に関する確認書(OBQ)」は Poppins の字幅で2行になる（Figma は Roboto Condensed で1行）。"
+  ]
+}

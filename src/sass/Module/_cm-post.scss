@@ -1,0 +1,125 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	cm-post　投稿本文（WPのエディタ出力を想定した素の見出し・段落）
+	Figmaのノード（子孫セレクタなので node-id 照合には載せない）:
+	  節1 SP 3139-7342 / PC 2669-14218　節2 SP 3139-7347 / PC 2669-14223
+
+	規程・方針の決まった型（マーカー付き小見出し・箇条書き）は .cm-policy。
+	こちらは h2 / h3 / p だけで組めることを前提にする。
+
+	Gutenberg の出力を想定し、ブロック間の余白は要素の margin ではなく **gap** で持つ。
+	どんなブロック（リスト・画像・グループ等）が並んでも同じ間隔になり、
+	WP側のブロックに付く margin とも干渉しない（子の margin-block は 0 に戻す）。
+	gap は1つの値なので、Figmaの余白（h2の下 SP20/PC40・h3の下 10・段落どうし 0）は
+	すべて gap（SP16 / PC20）にそろう。見出しの上だけは padding-top で足す。
+----------------------------------------------------*/
+.cm-post {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(16, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+.cm-post > * {
+	margin-block: 0;
+}
+
+// 見出しの上（本文 → 次の見出し）は gap ＋ padding で Figma の SP32 / PC60 にする。
+// 先頭の見出しは上に何も無いので足さない
+.cm-post > :is(h2, h3):not(:first-child) {
+	padding-top: math.div(32 - 16, 16) + rem;
+
+	@include config.pc {
+		padding-top: math.div(60 - 20, 16) + rem;
+	}
+}
+
+/*  大見出し（下に短い罫線）
+    Figmaのノード: SP 3139-7343 / PC 2669-14219（箱は SP/PC とも 87px）
+--------------------------------------------------*/
+// 罫線は Figma では高さ0のライン（inset -1px）なので、
+// 見出し下端から罫線の下端までがちょうど 87px（SP 72+14+1 / PC 64+22+1）になる。
+.cm-post h2 {
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-title);
+
+	@include config.pc {
+		font-size: math.div(32, 16) + rem;
+		line-height: 2;
+	}
+}
+
+.cm-post h2::after {
+	content: "";
+	display: block;
+	width: math.div(60, 16) + rem;
+	height: 1px;
+	margin-top: math.div(14, 16) + rem;
+	background: var(--c-placeholder); // Figma実測 #9e9e9e（アセットSVGの stroke）
+
+	@include config.pc {
+		width: math.div(100, 16) + rem;
+		margin-top: math.div(22, 16) + rem;
+	}
+}
+
+/*  小見出し
+    Figmaのノード: SP 3139-7348 / PC 2669-14224
+--------------------------------------------------*/
+.cm-post h3 {
+	font-size: math.div(18, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-title);
+
+	@include config.pc {
+		font-size: math.div(24, 16) + rem;
+		line-height: 2;
+	}
+}
+
+/*  本文
+    Figmaのノード: SP 3139-7346 / PC 2669-14222
+--------------------------------------------------*/
+// Figmaは複数行が1つのテキストノードで段落どうしの余白が無いが、
+// Gutenberg では1行ずつ別の段落ブロックになるので gap で空ける
+.cm-post p {
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-body);
+	text-align: justify;
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+		line-height: 2;
+	}
+}
+
+/*  アイキャッチ
+    Figma: SP 3139-7341 / PC 2669-14226（843×450・角丸4）
+--------------------------------------------------*/
+.cm-post-eyecatch {
+	border-radius: math.div(4, 16) + rem;
+	overflow: hidden;
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: math.div(843, 450);
+		object-fit: cover;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

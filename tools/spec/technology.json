@@ -1,0 +1,110 @@
+{
+  "_": "日本PGMの技術。Figma: SP-TECHNOLOGY 3154-10236 / PC-TECHNOLOGY 2630-6734",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/technology/",
+  "tolerance": 4,
+  "settle": { "timeout": 1000, "scrollThrough": true, "scrollWait": 500 },
+
+  "viewports": [
+    { "name": "PC", "width": 1440, "height": 1000 },
+    { "name": "SP", "width": 402, "height": 900 }
+  ],
+
+  "targets": {
+    "PC": {
+      "items": [
+        { "name": "ヘッダー", "selector": ".l-header", "x": 40, "y": 25, "w": 1360, "h": 59, "_note": "Figma header_pc 3154-9804" },
+        { "name": "ヘッダーロゴ", "selector": ".l-header-logo", "w": 355.1, "h": 59, "_note": "Figma 3003-9028" },
+
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 40, "y": 190, "w": 1360 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 60, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 14, "color": "#13728c" },
+        { "name": "ページ見出しのブロック", "selector": ".cm-block-header-page--section", "y": 0, "h": 280.6, "_note": "Figma 2630-6737 の下端 280。下の余白 139 は節見出しの y419 で見ている" },
+
+        { "name": "本文（3節）", "selector": ".p-technology-sections", "x": 126, "y": 419, "w": 1188, "h": 3893.4, "_note": "Figma 2630-7189 は 3887.4。サンプリングの h3 が lh1.4（42）で箱36より +6（No.50）" },
+
+        { "name": "節見出し（サンプリング）", "selector": ".p-technology-section .c-heading-marker", "index": 0, "y": 419, "h": 40, "fontSize": 40, "letterSpacing": "-0.05em", "color": "#333d40", "_note": "Figma 2630-7174" },
+        { "name": "サンプリング", "selector": ".p-technology-sampling", "y": 499, "w": 1188, "h": 975.4, "_note": "Figma 2725-18027 は 969.4（h3 の +6）" },
+        { "name": "h3＋リード", "selector": ".c-heading-lead", "y": 499, "h": 114.6, "_note": "Figma 3155-10568 は 109（h3 の箱36 → lh1.4 の 42）" },
+        { "name": "h3", "selector": ".c-heading-lead__title", "h": 42, "fontSize": 30, "lineHeight": 42, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 3155-10569" },
+        { "name": "リード", "selector": ".c-heading-lead__desc", "y": 556, "w": 1188, "h": 57.6, "fontSize": 16, "lineHeight": 28.8, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 3155-10570（y550 ＋ h3 の +6）" },
+        { "name": "図", "selector": ".p-technology-diagram", "x": 126, "y": 684, "w": 1188, "h": 434.5, "_note": "Figma 2630-7179（y678 ＋ 6）" },
+        { "name": "図の画像", "selector": ".p-technology-diagram__img", "w": 1188, "h": 434.5 },
+        { "name": "スクロール枠（PCは送らない）", "selector": ".c-scroll-x", "w": 1188, "h": 434.5, "_note": "バーを出さないので図の高さのまま" },
+        { "name": "図のスクロールバー（PCは出さない）", "selector": ".c-scroll-x__bar", "display": "none" },
+        { "name": "写真の列", "selector": ".p-technology-photos", "x": 126, "y": 1188.5, "w": 1188, "h": 285.9, "_note": "Figma 2725-18022（y1182.5 ＋ 6）" },
+        { "name": "写真1", "selector": ".p-technology-photos__item", "index": 0, "x": 126, "w": 386, "h": 285.9, "borderRadius": 5, "_note": "Figma 2725-18023" },
+        { "name": "写真2", "selector": ".p-technology-photos__item", "index": 1, "x": 527, "w": 386, "_note": "Figma 2725-18024（間隔15）" },
+
+        { "name": "節見出し（分析）", "selector": ".p-technology-section .c-heading-marker", "index": 1, "y": 1594.4, "h": 40, "_note": "Figma 2630-7180（y1588.4 ＋ 6）" },
+        { "name": "分析", "selector": ".p-technology-research", "y": 1674.4, "w": 1188, "h": 1076.1, "_note": "Figma 2630-7022" },
+        { "name": "分析カード1", "selector": ".c-card-num--text-first", "index": 0, "y": 1674.4, "h": 498, "_note": "Figma 2630-7023（写真の高さちょうど。買取原料の下30は無い）" },
+        { "name": "分析の写真1", "selector": ".p-technology-research .c-card-num__figure", "index": 0, "x": 586, "w": 728, "h": 498, "borderRadius": 5, "_note": "Figma 2630-7028" },
+        { "name": "分析の見出し1", "selector": ".p-technology-research .c-card-num__title", "index": 0, "y": 1674.4, "h": 42, "fontSize": 30, "_note": "Figma 2630-7026（箱36 → 42）" },
+        { "name": "分析の本文1", "selector": ".p-technology-research .c-card-num__desc", "index": 0, "y": 1731.4, "w": 400, "fontSize": 16, "lineHeight": 28.8, "color": "#333d40", "_note": "Figma 2630-7027" },
+        { "name": "分析の点線", "selector": ".p-technology-research .c-line-dot", "y": 2172.4, "h": 80, "_note": "Figma 2630-7029" },
+        { "name": "分析カード2", "selector": ".p-technology-research .c-card-num", "index": 1, "y": 2252.4, "h": 498, "_note": "Figma 2630-7031" },
+
+        { "name": "節見出し（製錬）", "selector": ".p-technology-section .c-heading-marker", "index": 2, "y": 2870.4, "h": 40, "_note": "Figma 2630-7183（y2864.4 ＋ 6）" },
+        { "name": "製錬", "selector": ".p-technology-smelting", "y": 2950.4, "w": 1188, "h": 1362, "_note": "Figma 2630-7169" },
+        { "name": "製錬カード1", "selector": ".c-card-num--media-left", "index": 0, "x": 126, "y": 2950.4, "w": 1188, "h": 420, "_note": "Figma 2630-7109" },
+        { "name": "製錬の写真1", "selector": ".p-technology-smelting .c-card-num__figure", "index": 0, "x": 126, "y": 2950.4, "w": 600, "h": 420, "borderRadius": 5, "_note": "Figma 2630-7110（角丸は Figma 4 → カードの 5）" },
+        { "name": "製錬の右カラム1", "selector": ".p-technology-smelting .c-card-num__body", "index": 0, "x": 778, "y": 2950.4, "w": 536, "h": 420, "_note": "Figma 2630-7111" },
+        { "name": "製錬の番号1", "selector": ".p-technology-smelting .c-card-num__num", "index": 0, "y": 2950.4, "fontSize": 24, "color": "#15819e", "_note": "Figma 2630-7115" },
+        { "name": "製錬の見出し1", "selector": ".p-technology-smelting .c-card-num__title", "index": 0, "fontSize": 30, "lineHeight": 42, "letterSpacing": "0.03em", "color": "#1e2e33", "_note": "Figma 2630-7117 は 28px・lh1.8（箱50）。h3見出しの 30 / 1.4 にそろえた（doc/design-tokens.md 6）" },
+        { "name": "KEYPOINT1", "selector": ".c-keypoint", "index": 0, "x": 778, "y": 3252.4, "w": 536, "h": 118, "background": "#edf6f8", "_note": "Figma 2630-7119（写真の下端にそろう）" },
+        { "name": "KEYPOINTのラベル", "selector": ".c-keypoint__label", "index": 0, "x": 808, "y": 3282.4, "h": 18, "fontSize": 18, "fontFamily": "Poppins", "color": "#222020", "_note": "Figma 2630-7120" },
+        { "name": "KEYPOINTの箇条書き", "selector": ".c-keypoint__list", "index": 0, "x": 985, "y": 3282.4, "h": 58, "_note": "Figma 2630-7123（x207 ＝ 余白30 ＋ ラベル107 ＋ 70）" },
+        { "name": "KEYPOINTの項目", "selector": ".c-keypoint__list > li", "index": 1, "h": 18, "fontSize": 18, "color": "#333d40", "_note": "Figma 2630-7131" },
+        { "name": "KEYPOINTのリンク", "selector": ".c-keypoint__link-label", "h": 18, "fontSize": 18, "color": "#15819e", "textDecorationLine": "underline", "_note": "Figma 2630-7127" },
+        { "name": "KEYPOINTの矢印", "selector": ".c-keypoint__link .c-btn-arrow", "w": 20, "h": 20, "borderRadius": 4, "background": "#15819e", "_note": "Figma 2630-7128" },
+        { "name": "三角の字形", "selector": ".c-btn-arrow--tri svg", "w": 5.6, "h": 4.8, "_note": "Figma 2630-7130（5.6×4.8 の右向き）" },
+        { "name": "製錬カード2", "selector": ".p-technology-smelting .c-card-num", "index": 1, "y": 3421.4, "h": 420, "_note": "Figma 2630-7134（間隔51・PCは点線なし）" },
+        { "name": "製錬カード3", "selector": ".p-technology-smelting .c-card-num", "index": 2, "y": 3892.4, "h": 420, "_note": "Figma 2630-7155" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 4432.4, "_note": "Figma 2630-6793 は 4559。本文の下 252.6 を他ページの 120 にそろえた（-126.6）" },
+        { "name": "フッター", "selector": ".l-footer", "h": 770, "_note": "PCのアートボードは 920px の旧フッター（No.20）。Component 版で組んでいる" }
+      ]
+    },
+
+    "SP": {
+      "items": [
+        { "name": "ヘッダー", "selector": ".l-header", "x": 20, "y": 20, "w": 362, "h": 40, "_note": "Figma header_sp 3154-10237" },
+        { "name": "ヘッダーロゴ", "selector": ".l-header-logo", "w": 241, "h": 40, "_note": "Figma 3297-18683" },
+
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 20, "y": 140, "w": 362 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 28, "letterSpacing": "-0.05em" },
+        { "name": "ページ見出しのブロック", "selector": ".cm-block-header-page--section", "y": 0, "h": 188.6, "_note": "Figma 3154-10238 の下端 188。SPは既定の余白60" },
+
+        { "name": "本文（3節）", "selector": ".p-technology-sections", "x": 20, "y": 248, "w": 362 },
+        { "name": "節見出し（サンプリング）", "selector": ".p-technology-section .c-heading-marker", "index": 0, "y": 248, "h": 44.8, "fontSize": 32, "_note": "Figma 3154-10302（45）" },
+        { "name": "h3＋リード", "selector": ".c-heading-lead", "y": 313, "h": 230.8, "_note": "Figma 3155-10465 は 203。リードが 5 → 6 行で +27（字送り -0.05em → 本文の -0.01em）" },
+        { "name": "h3", "selector": ".c-heading-lead__title", "h": 58.8, "fontSize": 21, "lineHeight": 29.4, "letterSpacing": "0.03em", "color": "#1e2e33", "_note": "Figma 3155-10461（2行）" },
+        { "name": "リード", "selector": ".c-heading-lead__desc", "fontSize": 15, "lineHeight": 27, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 3154-10306 は #787878・-0.05em。.c-card-num__desc にそろえた" },
+        { "name": "図（横スクロール）", "selector": ".p-technology-diagram.c-scroll-x", "x": 20, "y": 583.8, "w": 362, "h": 348, "_note": "Figma 3155-10554（y556 ＋ リードの +27）。図326 ＋ 20 ＋ バー2" },
+        { "name": "図の画像", "selector": ".p-technology-diagram__img", "w": 891, "h": 326.3, "_note": "Figma の SP の図は 825×325.8（ラベルの列を詰めた別の絵）。PC の SVG を 0.75倍で使っている" },
+        { "name": "スクロールバー", "selector": ".c-scroll-x__bar", "w": 362, "h": 2, "background": "#d9d9d9", "_note": "Figma 3155-10543" },
+        { "name": "スクロールバーのつまみ", "selector": ".c-scroll-x__thumb", "h": 2, "background": "#088395", "_note": "Figma 3155-10544（151。見えている幅 ÷ 全体の幅なので図の幅で変わる）" },
+        { "name": "写真の列", "selector": ".p-technology-photos", "y": 971.8, "w": 362, "h": 834.4, "_note": "Figma 3155-10555（y944 ＋ 27）" },
+        { "name": "写真1", "selector": ".p-technology-photos__item", "index": 0, "w": 362, "h": 268.1, "borderRadius": 5, "_note": "Figma 3155-10556" },
+
+        { "name": "分析", "selector": ".p-technology-research", "y": 1951.2, "w": 362, "h": 1071.3, "_note": "Figma 3155-10606（y1923 ＋ 28）" },
+        { "name": "分析カード1", "selector": ".c-card-num--text-first", "index": 0, "h": 495.6, "_note": "Figma 3155-10599（テキスト228 → 20 → 写真247.6）" },
+        { "name": "分析の写真1", "selector": ".p-technology-research .c-card-num__figure", "index": 0, "w": 362, "h": 247.6, "_note": "Figma 3155-10588" },
+
+        { "name": "製錬", "selector": ".p-technology-smelting", "y": 3168.2, "w": 362, "h": 2074, "_note": "Figma 3155-10617 は 2032.2。本文が 3 枚とも1〜2行ずつ増える（字送り）" },
+        { "name": "KEYPOINT1", "selector": ".c-keypoint", "index": 0, "w": 362, "h": 156, "background": "#edf6f8", "_note": "Figma 3155-10713" },
+        { "name": "KEYPOINTの箇条書き", "selector": ".c-keypoint__list", "index": 0, "h": 58, "_note": "Figma 3155-10717" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 5322.2, "_note": "Figma 3154-10296 は 5252（リード・製錬の本文の行数差 +70）" }
+      ]
+    }
+  },
+
+  "_known": [
+    "PCの本文は Figma より 6px 長い（サンプリングの h3 を lh1.4 にしている。No.50）。以降の y は +6。",
+    "PCの本文の下 → パンくずは Figma 252.6 を他ページの 120 にそろえた（-126.6）。PCのアートボードのフッターは 920px の旧版。",
+    "SPの本文（リード・カード）は Figma -0.05em・#787878 だが、買取原料の同じ部品に合わせて -0.01em・#333d40。行が増えるぶん下がる。",
+    "SPの図は Figma では別の絵（825×326・工程の英字も違う）。PC の SVG を 0.75倍（891×326）で横スクロールにしている。"
+  ]
+}

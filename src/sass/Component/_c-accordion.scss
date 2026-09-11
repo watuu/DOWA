@@ -1,0 +1,96 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	c-accordion　開閉つきのQ&A（よくある質問）
+----------------------------------------------------*/
+// 開閉は common.js の jsAccordion()。.js-accordion（ボタン）の次の要素を GSAP で開閉する。
+// Figmaは閉じた状態しか無いので、回答部分（__body）の組みは本文に合わせて決めている。
+
+/*  一覧
+    Figma: SP 3139-5429 / PC 2548-5830（項目の間 20）
+----------------------------------------------------*/
+.c-accordion {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+}
+
+/*  1項目（下罫線 ＋ 下余白20）
+    Figma: SP 3139-5430 / PC 2548-5831
+----------------------------------------------------*/
+.c-accordion__item {
+	padding-bottom: math.div(20, 16) + rem;
+	border-bottom: 1px solid var(--c-border);
+}
+
+// 質問（ボタン全体）。質問文と開閉アイコンを両端に置く
+.c-accordion__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: math.div(20, 16) + rem;
+	width: 100%;
+	padding: 0; // button の既定の余白（上下1px・左右6px）を消す
+	text-align: left;
+	cursor: pointer;
+}
+
+// 質問文（Figma SP 16px / PC 20px・lh1.8）
+.c-accordion__q {
+	flex: 1 0 0;
+	min-width: 0;
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(20, 16) + rem;
+	}
+}
+
+// 開閉アイコン（30px・白地・罫線・角丸4 に下向きの三角）
+// Figma: SP 3139-5433 / PC 2548-5834
+.c-accordion__icon {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(30, 16) + rem;
+	height: math.div(30, 16) + rem;
+	border: 1px solid var(--c-border);
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-surface);
+	color: var(--c-action);
+
+	svg {
+		display: block;
+		width: math.div(4.8, 16) + rem;
+		height: math.div(5.6, 16) + rem;
+		fill: currentColor;
+		transition: rotate var(--duration) var(--easeTheme);
+	}
+}
+
+.c-accordion__head.is-open .c-accordion__icon svg {
+	rotate: 180deg;
+}
+
+// 回答。閉じているあいだは出さない（開くと jsAccordion が display:block にする）
+// 開閉の途中は高さだけが動くので、はみ出した文字が見えないよう clip で切る。
+// jsAccordion は開くときしか overflow を付けず、終わると外すため、CSS 側で常に持たせる
+.c-accordion__body {
+	display: none;
+	overflow: clip;
+}
+
+.c-accordion__answer {
+	padding-top: math.div(15, 16) + rem;
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

@@ -1,0 +1,95 @@
+{
+  "_": "お取引の流れ。Figma: SP_FLOW 3138-4522 / PC_FLOW 2548-5736",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/flow/",
+  "tolerance": 4,
+  "settle": { "timeout": 1000, "scrollThrough": true, "scrollWait": 500 },
+
+  "viewports": [
+    { "name": "PC", "width": 1440, "height": 1000 },
+    { "name": "SP", "width": 402, "height": 900 }
+  ],
+
+  "targets": {
+    "PC": {
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 40, "y": 190, "w": 1360 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 60, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 14, "color": "#13728c" },
+
+        { "name": "リード", "selector": ".p-flow-lead", "x": 40, "y": 339, "w": 1360, "h": 64.8, "fontSize": 18, "lineHeight": 32.4, "letterSpacing": "-0.01em", "color": "#787878", "_note": "Figma 2548-5742（箱64）。字送りは Figma -0.05em だが本文の -0.01em" },
+
+        { "name": "手順の一覧", "selector": ".p-flow-steps", "x": 126, "y": 503.5, "w": 1189, "h": 1695, "_note": "Figma 2548-5743" },
+        { "name": "手順1", "selector": ".c-card-step", "index": 0, "x": 126, "y": 503.5, "w": 1189, "h": 280, "_note": "Figma 2548-5744" },
+        { "name": "番号バッジ", "selector": ".c-card-step__num", "index": 0, "x": 126, "y": 503.5, "w": 45, "h": 45, "borderRadius": 4, "background": "#15819e", "fontSize": 32, "_note": "Figma 2548-5745" },
+        { "name": "写真", "selector": ".c-card-step__figure", "index": 0, "x": 297, "y": 503.5, "w": 420, "h": 280, "_note": "Figma 2548-5748（バッジ → 写真 126）" },
+        { "name": "本文ブロック", "selector": ".c-card-step__body", "index": 0, "x": 777, "w": 538, "_note": "Figma 2548-5749（写真 → 本文 60）" },
+        { "name": "見出し", "selector": ".c-card-step__title", "index": 0, "y": 503.5, "h": 44.8, "fontSize": 32, "lineHeight": 44.8, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 2548-5751（箱45）" },
+        { "name": "本文", "selector": ".c-card-step__desc", "index": 0, "y": 573.5, "h": 64.8, "fontSize": 18, "lineHeight": 32.4, "letterSpacing": "-0.05em", "color": "#787878", "_note": "Figma 2548-5753（見出し → 本文 25）" },
+        { "name": "ボタン（手順1）", "selector": ".c-card-step .c-btn", "y": 677.5, "h": 50, "_note": "Figma 2548-5754（本文 → ボタン 40）" },
+        { "name": "手順2", "selector": ".c-card-step", "index": 1, "y": 833.5, "h": 280, "_note": "Figma 2548-5761（手順の間 50）" },
+        { "name": "見出し（2行）", "selector": ".c-card-step__title", "index": 1, "h": 89.6, "_note": "Figma 2548-5767（90）。「/」の後で改行" },
+        { "name": "リンク（手順2）", "selector": ".c-card-step .c-link-arrow", "index": 0, "y": 1052.5, "h": 40, "_note": "Figma 2548-5771（178×40）。文字 12.8 → 12px なので幅は 168" },
+        { "name": "リンクの文字", "selector": ".c-card-step .c-link-arrow__label", "index": 0, "h": 19, "fontSize": 12, "color": "#15819e", "borderBottom": "1px solid rgb(8, 131, 149)", "_note": "Figma 2548-5772" },
+        { "name": "リンクの矢印", "selector": ".c-card-step .c-link-arrow__arrow", "index": 0, "w": 40, "h": 40, "borderRadius": 4, "background": "#15819e", "_note": "Figma 2548-5773" },
+        { "name": "手順6（見出しだけ）", "selector": ".c-card-step--end", "y": 2153.5, "h": 45, "_note": "Figma 2548-5819" },
+        { "name": "手順6の見出し", "selector": ".c-card-step--end .c-card-step__title", "x": 297, "y": 2153.5, "h": 44.8, "_note": "Figma 2548-5825（バッジの右 126）" },
+
+        { "name": "よくあるご質問の帯", "selector": ".p-flow-faq", "x": 0, "y": 2371, "w": 1440, "h": 508, "background": "#f7f7f7", "_note": "Figma 2548-5826 は 504。Figmaの罫線は内側（高さに含まない）なので 1px × 4項目ぶん +4。手順の一覧 → 帯 172" },
+        { "name": "見出し", "selector": ".c-heading-sub", "x": 126, "y": 2471, "w": 209, "h": 36.4, "fontSize": 26, "lineHeight": 36.4, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 2548-5829（帯の上 100）" },
+        { "name": "見出しのマーカー", "selector": ".c-heading-sub .c-marker", "w": 12, "h": 12 },
+        { "name": "質問の一覧", "selector": ".c-accordion", "x": 556, "y": 2471, "w": 758, "h": 288, "_note": "Figma 2548-5830 は 284（罫線 +4）" },
+        { "name": "質問の項目", "selector": ".c-accordion__item", "index": 0, "h": 57, "borderBottom": "1px solid rgb(217, 217, 217)", "_note": "Figma 2548-5831 は 56（文字36 ＋ 下余白20。罫線は内側）" },
+        { "name": "質問のボタン", "selector": ".c-accordion__head", "index": 0, "x": 556, "w": 758, "h": 36, "_note": "質問文とアイコンを両端に置く（Figma 2548-5831 の中身）" },
+        { "name": "一覧の幅（PC）", "selector": ".p-flow-faq__list", "w": 758 },
+        { "name": "質問文", "selector": ".c-accordion__q", "index": 0, "x": 556, "h": 36, "fontSize": 20, "lineHeight": 36, "color": "#333d40", "_note": "Figma 2548-5833" },
+        { "name": "開閉アイコン", "selector": ".c-accordion__icon", "index": 0, "x": 1284, "w": 30, "h": 30, "borderRadius": 4, "borderTop": "1px solid rgb(217, 217, 217)", "background": "#ffffff", "_note": "Figma 2548-5834" },
+        { "name": "開閉アイコンの三角", "selector": ".c-accordion__icon svg", "index": 0, "w": 4.8, "h": 5.6 },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2879, "_note": "Figma 2875（帯 +4）" },
+        { "name": "フッター", "selector": ".l-footer", "h": 770 }
+      ]
+    },
+
+    "SP": {
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 20, "y": 140, "w": 362 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 28, "letterSpacing": "-0.05em" },
+
+        { "name": "リード", "selector": ".p-flow-lead", "x": 20, "y": 228, "w": 362, "h": 194.4, "fontSize": 18, "lineHeight": 32.4, "color": "#787878", "_note": "Figma 3139-5250 は 192（6行 × 32。Figma側が行を 32 に丸めている）。見出し下端 → リード 40" },
+
+        { "name": "手順の一覧", "selector": ".p-flow-steps", "x": 20, "y": 500, "w": 362, "_note": "Figma 3139-5423。リード → 一覧 80" },
+        { "name": "手順1", "selector": ".c-card-step", "index": 0, "x": 20, "y": 500, "w": 362, "h": 418.4, "_note": "Figma 3139-5251（418）" },
+        { "name": "番号バッジ", "selector": ".c-card-step__num", "index": 0, "x": 20, "w": 45, "h": 45, "borderRadius": 4, "fontSize": 32 },
+        { "name": "写真", "selector": ".c-card-step__figure", "index": 0, "x": 85, "y": 500, "w": 297, "h": 198, "_note": "Figma 3139-5255（バッジ → 写真 20）" },
+        { "name": "見出し", "selector": ".c-card-step__title", "index": 0, "x": 85, "y": 728, "h": 29.4, "fontSize": 21, "lineHeight": 29.4, "letterSpacing": "0.03em", "color": "#1e2e33", "_note": "Figma 3139-5258（写真 → 見出し 30）" },
+        { "name": "本文", "selector": ".c-card-step__desc", "index": 0, "y": 767, "h": 81, "fontSize": 15, "lineHeight": 27, "letterSpacing": "-0.05em", "color": "#787878", "_note": "Figma 3139-5260（見出し → 本文 10）" },
+        { "name": "ボタン（手順1）", "selector": ".c-card-step .c-btn", "y": 868, "h": 50, "_note": "Figma 3139-5261（本文 → ボタン 20）" },
+        { "name": "手順2", "selector": ".c-card-step", "index": 1, "y": 978, "h": 427.8, "_note": "Figma 3139-5268 は 400。本文を PC の文言にしたため 2行 → 3行（+27）" },
+        { "name": "リンク（手順2）", "selector": ".c-card-step .c-link-arrow", "index": 0, "h": 30, "_note": "Figma 3139-5341（186×30）" },
+        { "name": "リンクの文字", "selector": ".c-card-step .c-link-arrow__label", "index": 0, "fontSize": 12, "fontWeight": "400", "letterSpacing": "0.05em", "color": "#15819e", "_note": "Figma 3139-5342 は 14px・#0b82a3。PCと同じ 12px・Action/Primary にする判断（2026-09-10・ユーザー指示）" },
+        { "name": "リンクの矢印", "selector": ".c-card-step .c-link-arrow__arrow", "index": 0, "w": 30, "h": 30, "borderRadius": 2, "background": "#0b82a3", "_note": "Figma 3139-5344（角丸 2.4 → 2）" },
+        { "name": "手順3", "selector": ".c-card-step", "index": 2, "h": 425.4, "_note": "Figma 3139-5355（425）" },
+        { "name": "手順4", "selector": ".c-card-step", "index": 3, "h": 321.4, "_note": "Figma 3139-5372（321）" },
+        { "name": "手順5", "selector": ".c-card-step", "index": 4, "h": 452.4, "_note": "Figma 3139-5389（452）" },
+        { "name": "手順6（見出しだけ）", "selector": ".c-card-step--end", "h": 45, "_note": "Figma 3139-5406" },
+
+        { "name": "よくあるご質問の帯", "selector": ".p-flow-faq", "x": 0, "w": 402, "h": 573.2, "background": "#f7f7f7", "_note": "Figma 3139-5427 は 570（罫線 +4）。手順の一覧 → 帯 53" },
+        { "name": "見出し", "selector": ".c-heading-sub", "x": 30, "h": 36.4, "fontSize": 26, "letterSpacing": "0.03em", "_note": "Figma 3139-5428（帯の上 80・左 30）" },
+        { "name": "質問の一覧", "selector": ".c-accordion", "x": 30, "w": 342, "_note": "Figma 3139-5429（見出し → 一覧 30）" },
+        { "name": "質問の項目（2行）", "selector": ".c-accordion__item", "index": 0, "h": 78.6, "_note": "Figma 3139-5430（78）" },
+        { "name": "質問の項目（1行）", "selector": ".c-accordion__item", "index": 3, "h": 51, "_note": "Figma 3139-5448（50。1行のときはアイコン30が高さを決める）" },
+        { "name": "質問のボタン", "selector": ".c-accordion__head", "index": 0, "x": 30, "w": 342, "h": 57.6 },
+        { "name": "質問文", "selector": ".c-accordion__q", "index": 0, "x": 30, "w": 292, "h": 57.6, "fontSize": 16, "lineHeight": 28.8, "color": "#333d40", "_note": "Figma 3139-5432" },
+        { "name": "開閉アイコン", "selector": ".c-accordion__icon", "index": 0, "x": 342, "w": 30, "h": 30 }
+      ]
+    }
+  },
+
+  "_known": [
+    "文言は PC 版に合わせた。SP版と違うのは 手順2の本文（SP「安心してお取引頂くために…」）/ 手順5のリンク（SP「サンプリングについて」）/ 手順6の見出し（SP「精製完了」）。SPの手順2が +27、以降が同じだけ下がる。",
+    "SPの縦の破線は Figma が x53（バッジの中央 42.5 より右）で、6番目のバッジの手前 30px で切れている。PCと同じくバッジの中央を通り、1番目から6番目のバッジまでつないでいる。",
+    "SPの帯は Figma でパンくずと 10px 重なっている（3139-5427 の下端 3484 / パンくず 3474）。重ねず帯の下にパンくずを置いている。",
+    "よくある質問の回答は Figma に無いのでダミー。"
+  ]
+}

@@ -1,0 +1,102 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	お取引の流れ
+	Figma: PC_FLOW 2548-5736 / SP_FLOW 3138-4522
+----------------------------------------------------*/
+
+/*  リード文（パネルに入れず、見出しのすぐ下）
+    Figma: SP 3139-5250 / PC 2548-5742
+----------------------------------------------------*/
+// 18px・lh1.8・--c-text-mute（#787878）。字送りは Figma -0.05em だが本文の -0.01em（doc/design-tokens.md 6 の表）
+// 下の余白は手順の一覧まで（Figma実測 SP 80 / PC 100）
+.p-flow-lead {
+	margin-bottom: math.div(80, 16) + rem;
+	font-size: math.div(18, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-mute);
+
+	@include config.pc {
+		margin-bottom: math.div(100, 16) + rem;
+	}
+}
+
+/*  手順の一覧（番号バッジを縦の破線でつなぐ）
+    Figma: SP 3139-5423 / PC 2548-5743
+----------------------------------------------------*/
+// PCはコンテナ（1360）より狭い 1189px を中央に置く（x126〜1315。買取原料と同じ）。
+// 手順の間 SP 60 / PC 50。下の余白は「よくあるご質問」の帯まで（Figma実測 SP 53 / PC 172）
+.p-flow-steps {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: math.div(60, 16) + rem;
+	max-width: math.div(1189, 16) + rem;
+	margin-inline: auto;
+	margin-bottom: math.div(53, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(50, 16) + rem;
+		margin-bottom: math.div(172, 16) + rem;
+	}
+}
+
+// 縦の破線（Figma SP 3139-5424 / PC 2548-5737：1px・2px間隔の破線）。
+// 1番目のバッジの中央から最後のバッジの中央まで引き、バッジで上から隠す。
+// 色は Figma #d1d1d1。スタイル未登録の生値なので --c-border（#d9d9d9）に寄せた（c-heading-page の罫線と同じ扱い）
+.p-flow-steps::before {
+	content: "";
+	position: absolute;
+	top: math.div(22.5, 16) + rem;
+	bottom: math.div(22.5, 16) + rem;
+	left: calc(#{math.div(22.5, 16) + rem} - 0.5px);
+	width: 1px;
+	background: linear-gradient(to bottom, var(--c-border) 2px, transparent 2px) 0 0 / 1px 4px repeat-y;
+}
+
+// 破線より手前に出す
+.p-flow-steps .c-card-step__num {
+	position: relative;
+}
+
+/*  よくあるご質問（グレーの帯）
+    Figma: SP 3139-5427 / PC 2548-5826（帯）・2548-5827（中身）
+----------------------------------------------------*/
+// 帯の内側余白 SP 上下80・左右30 / PC 上100・下120。
+// SPの左右30はコンテナ（20）より10広い
+.p-flow-faq {
+	padding-block: math.div(80, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		padding-top: math.div(100, 16) + rem;
+		padding-bottom: math.div(120, 16) + rem;
+	}
+}
+
+// SPは見出し → 一覧 30 の縦積み。PCは見出し（左）と一覧（右・758px）を両端に置く（1188px を中央）
+.p-flow-faq__inner {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+	padding-inline: math.div(10, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: math.div(40, 16) + rem;
+		max-width: math.div(1188, 16) + rem;
+		margin-inline: auto;
+		padding-inline: 0;
+	}
+}
+
+.p-flow-faq__list {
+	@include config.pc {
+		flex: 0 1 math.div(758, 16) + rem;
+		min-width: 0;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

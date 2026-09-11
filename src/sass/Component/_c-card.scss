@@ -1,0 +1,605 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	c-card
+----------------------------------------------------*/
+
+/*  お知らせ1件（一覧の行）
+    Figma: PC 2669-13663
+----------------------------------------------------*/
+// 右端の矢印は .c-btn-arrow--outline.c-btn-arrow--sm をそのまま使う
+// （30px・白地・--c-border・角丸4px・#ico_arrow_r まで一致していたため作り足さない）。
+.c-card-news {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+	padding-block: math.div(20, 16) + rem;
+	border-bottom: 1px solid var(--c-border);
+
+	&__body {
+		flex: 1 0 0;
+		min-width: 0; // 長いタイトルで矢印が押し出されないように
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: math.div(10, 16) + rem;
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		gap: math.div(10, 16) + rem;
+	}
+
+	// Figmaは text-box-trim が効いていて、日付の箱はタグと同じ 20px に収まる。
+	// 1.4 のままだと 22.4px になり、1件あたり約3px・一覧全体で30px ずれる。
+	&__date {
+		font-family: var(--font-en);
+		font-size: math.div(16, 16) + rem;
+		line-height: 1.25;
+		color: var(--c-label-brand);
+		white-space: nowrap;
+	}
+
+	&__tag {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: math.div(20, 16) + rem;
+		padding-inline: math.div(10, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+		background: var(--c-label-brand);
+		color: var(--color-inverse);
+		font-size: math.div(12, 16) + rem;
+		line-height: 1; // Figmaは2.2だが20pxの箱に入るため、中央揃えで持たせる
+		white-space: nowrap;
+	}
+
+	&__title {
+		font-size: math.div(16, 16) + rem;
+		line-height: 1.6;
+		color: var(--c-text-body);
+	}
+}
+
+/*  お知らせ1件（トップの新着情報。タグが線だけ・右の矢印なし）
+    日付とタグは CTA色（Figma #0b82a3）、タイトルは SP 16 / PC 21・--c-ink。
+    Figma: SP 3181-17637 / PC 2323-5115
+----------------------------------------------------*/
+// Figma の3件目（2323-5135）だけタイトルの行間が 1.8。他の 1.6 にそろえた
+.c-card-news--outline .c-card-news__date {
+	font-size: math.div(14, 16) + rem;
+	color: var(--c-brand-cta);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+.c-card-news--outline .c-card-news__tag {
+	border: 1px solid var(--c-brand-cta);
+	background: transparent;
+	color: var(--c-brand-cta);
+}
+
+.c-card-news--outline .c-card-news__title {
+	color: var(--c-ink);
+
+	@include config.pc {
+		font-size: math.div(21, 16) + rem;
+	}
+}
+
+/*  番号付きカード（#01 ＋ 見出し ＋ 本文 ＋ 写真）
+    Figma: SP 3139-5472 / PC 2548-5368
+----------------------------------------------------*/
+// 買取原料・責任ある調達・技術の製錬で共通。SPは「写真 → テキスト」の縦積み。
+.c-card-num {
+	display: flex;
+	flex-direction: column-reverse; // SPは写真が先。マークアップはテキスト→写真の順
+	gap: math.div(30, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: math.div(60, 16) + rem;
+		padding-bottom: math.div(30, 16) + rem;
+	}
+}
+
+.c-card-num__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		flex-shrink: 0;
+		width: math.div(400, 16) + rem;
+		gap: math.div(40, 16) + rem;
+	}
+}
+
+// #01
+.c-card-num__num {
+	font-family: var(--font-en);
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-action);
+
+	@include config.pc {
+		font-size: math.div(24, 16) + rem;
+	}
+}
+
+// 見出しと本文（PCだけ15pxの塊にまとまる）
+.c-card-num__text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(15, 16) + rem;
+	}
+}
+
+// 文字の行間は SP/PC とも 1.4（Figma 3139-5476 / 2548-5408）。
+// PCのh3コンポーネント（2548-5372）は箱が 36px（30 × 1.2）で文字だけ 1.4 ではみ出す作りだが、
+// 2行になる #04（2548-5408）は 1.4 の 84px で組まれているので、箱ではなく行間に合わせる。
+// 1行のとき本文が Figma より 6px 下がるが、カードの高さは写真で決まるので後続には影響しない。
+.c-card-num__title {
+	font-size: math.div(21, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.03em; // h3見出しはプラス方向（doc/design-tokens.md 3-3）
+	color: var(--c-heading-alt);
+
+	@include config.pc {
+		font-size: math.div(30, 16) + rem;
+	}
+}
+
+// SPの色は買取原料が Text/Body（#333d40）、責任ある調達・NPGMの技術が #787878 と割れている。
+// 同じ部品なので Text/Body にそろえる（doc/design-tokens.md 6）
+.c-card-num__desc {
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+.c-card-num__figure {
+	aspect-ratio: 497 / 340;
+	overflow: hidden;
+	border-radius: math.div(5, 16) + rem;
+
+	@include config.pc {
+		flex: 1 0 0;
+		min-width: 0;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+// 本文の下に置くバナー（責任ある調達 #02）。本文 → バナーは SP 20 / PC 40（__body の gap 10 / 40 に足す）
+// Figma SP 3139-5974 → 3139-6014 / PC 2548-5492 → 2548-5493（間隔なので node-id 照合の書式にしない）
+.c-card-num__action {
+	width: 100%;
+	margin-top: math.div(10, 16) + rem;
+
+	@include config.pc {
+		margin-top: 0;
+	}
+}
+
+// テキストが先に来る組み（NPGMの技術の分析・製錬）。SPは テキスト → 写真 で間隔20
+// Figma: SP 3155-10599（分析）/ 3155-10618（製錬）
+.c-card-num--text-first {
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		gap: math.div(60, 16) + rem;
+	}
+}
+
+// PCで写真が左（600×420）・テキストが右（536）の組み（NPGMの技術の製錬）
+// Figma: PC 2630-7109（写真 2630-7110 → テキスト 2630-7111 の間 52）
+// 右カラムは写真の高さに合わせ、#01 を上端・見出し以降を下端に寄せる
+// （Figma 2630-7158 は #03 → 見出しが 167 空いて下端で終わる。#01・#02 は KEYPOINT の下端が写真の下端）
+.c-card-num--media-left {
+	@include config.pc {
+		flex-direction: row-reverse; // マークアップはテキスト → 写真の順
+		align-items: stretch;
+		gap: math.div(52, 16) + rem;
+		padding-bottom: 0;
+	}
+}
+
+.c-card-num--media-left .c-card-num__figure {
+	@include config.pc {
+		flex: 0 0 math.div(600, 16) + rem;
+		aspect-ratio: 600 / 420;
+	}
+}
+
+.c-card-num--media-left .c-card-num__body {
+	@include config.pc {
+		flex: 1 0 0;
+		width: auto;
+		min-width: 0;
+		gap: math.div(18, 16) + rem; // 本文 → KEYPOINT（Figma 2630-7112 下端 284 → 2630-7119 上端 302）
+	}
+}
+
+.c-card-num--media-left .c-card-num__text {
+	@include config.pc {
+		margin-top: auto;
+	}
+}
+
+/*  手順カード（番号バッジ ＋ 写真 ＋ 見出し ＋ 本文 ＋ ボタン）
+    Figma: SP 3139-5251 / PC 2548-5744
+----------------------------------------------------*/
+// ボタンは既存の .c-btn（ラベル50px＋矢印50px）がそのまま合うので作り足さない。
+.c-card-step {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(126, 16) + rem;
+	}
+
+	// 番号バッジ
+	&__num {
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		width: math.div(45, 16) + rem;
+		height: math.div(45, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+		background: var(--c-action);
+		color: var(--color-inverse);
+		font-family: var(--font-en);
+		font-size: math.div(32, 16) + rem;
+		line-height: 1.4;
+	}
+
+	&__main {
+		display: flex;
+		flex-direction: column;
+		flex: 1 0 0;
+		min-width: 0;
+		gap: math.div(30, 16) + rem;
+
+		@include config.pc {
+			flex-direction: row;
+			align-items: flex-start;
+			gap: math.div(60, 16) + rem;
+		}
+	}
+
+	&__figure {
+		aspect-ratio: 420 / 280;
+		overflow: hidden;
+
+		@include config.pc {
+			aspect-ratio: auto;
+			flex-shrink: 0;
+			width: math.div(420, 16) + rem;
+			height: math.div(280, 16) + rem;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: math.div(10, 16) + rem;
+
+		@include config.pc {
+			flex: 1 0 0;
+			min-width: 0;
+			gap: math.div(25, 16) + rem;
+		}
+	}
+
+	&__title {
+		font-size: math.div(21, 16) + rem;
+		font-weight: 700;
+		line-height: 1.4;
+		letter-spacing: 0.03em;
+		color: var(--c-heading-alt);
+
+		@include config.pc {
+			font-size: math.div(32, 16) + rem;
+		}
+	}
+
+	// 字送りは Figma どおり -0.05em（SP 15/-0.75・PC 18/-0.9）。本文の既定 -0.01em より詰める（2026-09-10・ユーザー指示）
+	&__desc {
+		font-size: math.div(15, 16) + rem;
+		line-height: 1.8;
+		letter-spacing: -0.05em;
+		color: var(--c-text-mute);
+
+		@include config.pc {
+			font-size: math.div(18, 16) + rem;
+		}
+	}
+
+	// 本文とボタンの間（__body の gap と足して SP20 / PC40）
+	&__action {
+		margin-top: math.div(10, 16) + rem;
+
+		@include config.pc {
+			margin-top: math.div(15, 16) + rem;
+		}
+	}
+}
+
+// 最後の手順（写真・本文なしで見出しだけ）。見出しを番号バッジの高さの中央に置く
+// Figma: SP 3139-5406（見出し29を45の中に y8）/ PC 2548-5819
+.c-card-step--end {
+	align-items: center;
+}
+
+/*  番号バッジ付きの白い箱（番号 ＋ 見出し ＋ 本文）
+    Figma: SP 3139-6205 / PC 2548-5631
+----------------------------------------------------*/
+// 責任ある調達のデューデリジェンス。1番目は中身が書類の表、2・3番目は本文（SP 3139-6206 / PC 2548-5664）。
+// 見出し → 本文 は SP 30 / PC 27。PCの本文は番号バッジの右（45 + 20 = 65）から始まる。
+.c-card-procedure {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+	padding: math.div(30, 16) + rem math.div(20, 16) + rem;
+	background: var(--c-surface);
+
+	@include config.pc {
+		gap: math.div(27, 16) + rem;
+		padding: math.div(40, 16) + rem;
+	}
+}
+
+// 見出しが1行のときはバッジ（45）の中央、2行になったらバッジと上端をそろえる（Figma SP 3139-6141 は items-start）。
+// 見出しの箱を最低45にして中で中央寄せにすると、どちらも満たせる
+.c-card-procedure__head {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+.c-card-procedure__num {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(45, 16) + rem;
+	height: math.div(45, 16) + rem;
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-action);
+	color: var(--color-inverse);
+	font-family: var(--font-en);
+	font-size: math.div(24, 16) + rem;
+	line-height: 1;
+
+	@include config.pc {
+		font-size: math.div(32, 16) + rem;
+	}
+}
+
+// 色は Figma で Text/Title（#263a40）と #1e2e33 が混在（PCの2・3番だけ #1e2e33）。多いほうの Text/Title
+.c-card-procedure__title {
+	display: flex;
+	align-items: center;
+	flex: 1 0 0;
+	min-width: 0;
+	min-height: math.div(45, 16) + rem;
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.03em; // h3見出しと同じプラス方向
+	color: var(--c-text-title);
+}
+
+// 字送りは Figma SP -0.05em / PC +0.03em でばらばら。本文の -0.01em（--tracking-body）に寄せる
+.c-card-procedure__desc {
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		padding-left: math.div(65, 16) + rem;
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+/*  特長（写真 ＋ 番号 ＋ 見出し ＋ 本文。トップの Feature）
+    SPは縦積み（写真 → 20 → 番号 → 20 → 見出し・本文）。
+    PCは 写真360 ＋ 40 ＋ テキスト362（762 のうち写真 47.244%）。テキストは番号を上端、見出し以降を写真の下端にそろえる。
+    Figma: SP 3181-17508 / PC 2323-5088
+----------------------------------------------------*/
+.c-card-feature {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: stretch;
+		gap: math.div(40, 16) + rem;
+	}
+}
+
+.c-card-feature__figure {
+	aspect-ratio: 360 / 250;
+	overflow: hidden;
+
+	@include config.pc {
+		flex: 0 0 47.244%; // 360 / 762
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.c-card-feature__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		flex: 1 0 0;
+		min-width: 0;
+		justify-content: space-between;
+	}
+}
+
+.c-card-feature__text {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+}
+
+// 字送りは Figma に指定が無いので本文の既定のまま
+.c-card-feature__title {
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+	color: var(--c-ink);
+}
+
+// Figma は Regular・#838383（単発の色）→ 近い --c-text-mute（#787878）
+.c-card-feature__desc {
+	font-size: math.div(16, 16) + rem;
+	font-weight: 400;
+	line-height: 1.8;
+	color: var(--c-text-mute);
+}
+
+/*  お客様の声（白いカード：写真 ＋ 番号 ＋ 見出し ＋ 本文 ＋ お客様名。トップの Voice）
+    幅はスライダー側で SP 300 / PC 550。写真 SP 260×200 / PC 470×340（角丸5）。
+    写真 → 番号 SP 20 / PC 30、番号 → 見出し SP 10 / PC 30。
+    Figma: SP 3181-17735 / PC 2323-5157
+----------------------------------------------------*/
+.c-card-voice {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+	padding: math.div(20, 16) + rem;
+	border-radius: math.div(5, 16) + rem;
+	background: var(--c-surface);
+
+	@include config.pc {
+		gap: math.div(30, 16) + rem;
+		padding: math.div(40, 16) + rem;
+	}
+}
+
+.c-card-voice__figure {
+	aspect-ratio: 260 / 200;
+	overflow: hidden;
+	border-radius: math.div(5, 16) + rem;
+
+	@include config.pc {
+		aspect-ratio: 470 / 340;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.c-card-voice__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(30, 16) + rem;
+	}
+}
+
+.c-card-voice__content {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+}
+
+// 色は Figma #008e9f → CTA色（doc/design-tokens.md 2-3）。PCだけ下に15（Figma 2323-5161 の padding-bottom）
+.c-card-voice__title {
+	font-size: math.div(18, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+	color: var(--c-brand-cta);
+
+	@include config.pc {
+		padding-bottom: math.div(15, 16) + rem;
+		font-size: math.div(26, 16) + rem;
+	}
+}
+
+.c-card-voice__text {
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-ink);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+// お客様名（右寄せ）。SPだけ前に「CLIENT：」が付く（Figma 3181-17746。PCの 2323-5167 には無い）
+.c-card-voice__client {
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+	text-align: right;
+	color: var(--c-ink);
+
+	@include config.pc {
+		font-size: math.div(18, 16) + rem;
+	}
+}
+
+// Figma は Poppins Medium・#bcbcbc（単発の色）→ 近い --c-text-off（#c3c3c3）
+.c-card-voice__client-label {
+	font-family: var(--font-en);
+	color: var(--c-text-off);
+
+	@include config.pc {
+		display: none;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

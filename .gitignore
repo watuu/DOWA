@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea
+.vscode
+
+# WordPress
+# /public/*
+# !/public/.gitignore
+# !/public/wp-content
+# /public/wp-content/*
+# !/public/wp-content/themes
+# /public/wp-content/themes/*
+# !/public/wp-content/themes/xxx
+
+# Misc
+*::*
+

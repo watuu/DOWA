@@ -1,0 +1,38 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	個人情報保護方針
+	Figma: PC_PRIVACY_POLICY 2669-15831
+----------------------------------------------------*/
+
+/*  窓口の連絡先 ＋ 制定日ブロック
+    Figma: SP 3139-6919（縦積み・間隔24）/ PC 2669-16318・2669-17842
+----------------------------------------------------*/
+// PCは連絡先（左）と制定日（右）を同じ行に置く。
+// Figmaはこの2つが 73px 重なった状態で置かれていて、左右に並ぶ想定になっている。
+// 高さは stretch（既定）でそろえる。
+.p-privacy-contact {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(24, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		justify-content: space-between;
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+/*  制定日・所在地・代表者（右揃え）
+    Figma: SP 3139-6923 / PC 2669-17842（844×128・右揃え・16px/lh2。数字は欧文フォント）
+----------------------------------------------------*/
+.p-privacy-imprint {
+	text-align: right;
+	font-size: math.div(16, 16) + rem;
+	line-height: 2;
+	color: var(--c-text-body);
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

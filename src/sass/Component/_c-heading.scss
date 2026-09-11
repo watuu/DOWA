@@ -1,0 +1,179 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	c-heading
+----------------------------------------------------*/
+
+/*  セクション見出し（和文ラベル＋英字）
+    Figma: SP 3181-17729 / PC 2986-8633
+----------------------------------------------------*/
+// 和文ラベル → 英字。色は2つとも --c-brand-mid。
+// Figmaには上罫線（#d1d1d1）と padding-top:30px が付いているが、罫線を落とす判断のため
+// それに付随する余白も持たせていない。上の余白はセクション側で取る。
+.c-heading-section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	color: var(--c-brand-mid); // SPは #1f819c だがPCの #13728c に寄せる
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+
+	&__label {
+		font-size: math.div(16, 16) + rem;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	&__title {
+		font-family: var(--font-en);
+		font-size: math.div(40, 16) + rem;
+		font-weight: 600;
+		line-height: 0.8;
+		letter-spacing: -0.06em;
+		white-space: nowrap;
+
+		@include config.pc {
+			font-size: math.div(80, 16) + rem;
+		}
+	}
+}
+
+// 中央寄せ（トップの Key Points / Our Strength）。Figma 2942-8109 / 2942-8097
+// SPの Figma（3112-4757）は和文ラベル 14px・間隔15、英字の字送り -0.04em で他の見出しと違うが、共通の値にそろえた（doc/design-tokens.md 6）
+.c-heading-section--center {
+	align-items: center;
+	text-align: center;
+}
+
+/*  ページ見出し（和文タイトル＋右上の英字ラベル）
+    Figma: SP 3139-5463 / PC 2548-5363
+----------------------------------------------------*/
+.c-heading-page {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding-top: math.div(20, 16) + rem;
+	border-top: 1px solid var(--c-border); // Figmaは #d1d1d1。Border/Default に寄せる
+
+	@include config.pc {
+		padding-top: math.div(30, 16) + rem;
+	}
+
+	&__title {
+		font-size: math.div(28, 16) + rem;
+		font-weight: 700;
+		line-height: 1;
+		letter-spacing: var(--tracking-title);
+		color: var(--c-text-body); // Figmaは生の #333。スタイル未バインドのため近い Text/Body を当てている
+
+		@include config.pc {
+			font-size: math.div(60, 16) + rem;
+		}
+	}
+
+	&__label {
+		flex-shrink: 0;
+		font-family: var(--font-en);
+		font-size: math.div(12, 16) + rem;
+		line-height: 1.4;
+		text-transform: uppercase;
+		color: var(--c-brand-mid);
+
+		@include config.pc {
+			font-size: math.div(14, 16) + rem;
+		}
+	}
+}
+
+/*  マーカー付き見出し（責任ある調達・NPGMの技術など）
+    Figma: SP 3139-6078 / PC 2548-5626
+----------------------------------------------------*/
+// マーカーは共通の .c-marker（#ico_marker）。
+// SPは 16×31 の箱の下に 16×16 の字形、PCは 20×20 で箱いっぱい。
+.c-heading-marker {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	font-size: math.div(32, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: var(--tracking-title); // SPのFigmaは +0.03em だがPCの -0.05em に揃える
+	color: var(--c-text-body);             // SPのFigmaは #1e2e33 だがPCの #333 に揃える
+
+	@include config.pc {
+		align-items: center;
+		font-size: math.div(40, 16) + rem;
+		line-height: 1;
+	}
+
+	.c-marker {
+		--marker-size: #{math.div(16, 16) + rem};
+		--marker-box : #{math.div(31, 16) + rem};
+
+		@include config.pc {
+			--marker-size: #{math.div(20, 16) + rem};
+			--marker-box : #{math.div(20, 16) + rem};
+		}
+	}
+}
+
+/*  マーカー付きの小さい見出し（「よくあるご質問」など）
+    Figma: SP 3139-5428 / PC 2548-5829（コンポーネント 1845:1586）
+----------------------------------------------------*/
+// .c-heading-marker（32/40px・-0.05em）とは別のコンポーネント。
+// SP/PC とも 26px・lh1.4（箱36）・+0.03em（h3見出しと同じプラス方向）。マーカーは 12px を中央。
+.c-heading-sub {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+	font-size: math.div(26, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
+	color: var(--c-heading-alt);
+}
+
+/*  h3 ＋ リード文（NPGMの技術のサンプリング「信頼は、正確なサンプリングから始まる」）
+    文字の組みは .c-card-num__title / __desc と同じ（PCのh3コンポーネントの箱36より 1.4 を優先。No.50）。
+    Figma: SP 3155-10465 / PC 3155-10568
+----------------------------------------------------*/
+// SPのリード文は Figma #787878・-0.05em。.c-card-num__desc にそろえて Text/Body・本文の字送り
+.c-heading-lead {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(15, 16) + rem;
+	}
+}
+
+.c-heading-lead__title {
+	font-size: math.div(21, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
+	color: var(--c-heading-alt);
+
+	@include config.pc {
+		font-size: math.div(30, 16) + rem;
+	}
+}
+
+.c-heading-lead__desc {
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

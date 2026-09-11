@@ -1,0 +1,230 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	cm-block
+----------------------------------------------------*/
+
+/*  ページ見出しのブロック
+    Figma: 見出しの上端 SP y140 / PC y190（ヘッダーは絶対配置で重なる）
+----------------------------------------------------*/
+// ヘッダー下からの余白を持つラッパー。罫線と 20/30px の余白は .c-heading-page 側。
+// ヘッダー下からの余白と、次のブロックまでの余白を持つ。
+// 罫線と 20/30px の内側余白は .c-heading-page 側。
+.cm-block-header-page {
+	padding-top: math.div(140, 16) + rem;
+	margin-bottom: math.div(60, 16) + rem; // 見出し下端 → パネル上端（SP 188→248 / PC 281→409）
+
+	@include config.pc {
+		padding-top: math.div(190, 16) + rem;
+		margin-bottom: math.div(129, 16) + rem;
+	}
+}
+
+// 見出しのすぐ下にリード文が来るページ（お取引の流れ）。見出し下端 → リード SP 40 / PC 59
+// Figma SP 3138-4992 → 3139-5250 / PC 2548-5739 → 2548-5742（間隔なので node-id 照合の書式にしない）
+.cm-block-header-page--lead {
+	margin-bottom: math.div(40, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(59, 16) + rem;
+	}
+}
+
+// 見出しのすぐ下に節見出し（.c-heading-marker）が来るページ（NPGMの技術）。見出し下端 → 節見出し PC 139（他は 129）。SPは既定の 60
+// Figma PC 2630-6737 → 2630-7174（間隔なので node-id 照合の書式にしない）。doc/design-tokens.md 6
+.cm-block-header-page--section {
+	@include config.pc {
+		margin-bottom: math.div(139, 16) + rem;
+	}
+}
+
+/*  リード文（本文パネルの先頭。下に区切り線）
+    Figma: PC 2669-15751（お問い合わせ）/ 2669-16069（個人情報保護方針）
+----------------------------------------------------*/
+.cm-block-lead {
+	padding-bottom: math.div(30, 16) + rem;
+	border-bottom: 1px solid var(--c-placeholder);
+	font-size: math.div(16, 16) + rem;
+	line-height: 2;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		padding-bottom: math.div(60, 16) + rem;
+	}
+}
+
+/*  本文パネル（薄いグレーの箱）
+    #f6f6f6・角丸4・PCは 1016px 幅で中央。高さは中身なりなので node-id 照合は
+    モディファイア側（--list / --article）に持たせる。
+----------------------------------------------------*/
+.cm-block-panel {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(32, 16) + rem; // リード文 → 本文（Figma実測 SP 32 / PC 65）
+	max-width: math.div(1016, 16) + rem;
+	margin-inline: auto;
+	margin-bottom: math.div(100, 16) + rem; // パネル下端 → パンくず（Figma実測 SP 100 / PC 120）
+	padding: math.div(30, 16) + rem math.div(20, 16) + rem;
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-surface-raised);
+
+	@include config.pc {
+		gap: math.div(65, 16) + rem;
+		margin-bottom: math.div(120, 16) + rem;
+		padding: math.div(70, 16) + rem math.div(86, 16) + rem;
+	}
+}
+
+// 一覧（新着情報）。上下の余白が浅く、下だけ深い。一覧 → ページ送りは 40/60
+// Figma: SP 3139-7170 / PC 2669-13661
+.cm-block-panel--list {
+	gap: math.div(40, 16) + rem;
+	padding-top: math.div(10, 16) + rem;
+	padding-bottom: math.div(50, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(60, 16) + rem;
+		padding-top: math.div(60, 16) + rem;
+		padding-bottom: math.div(97, 16) + rem;
+	}
+}
+
+// 個人情報保護方針だけ リード文 → 本文 が 60
+.cm-block-panel--policy {
+	@include config.pc {
+		gap: math.div(60, 16) + rem;
+	}
+}
+
+// 新着情報詳細。写真 → 本文 → 次の見出し が SP32 / PC60 の等間隔。
+// パネル下は 87（Figma実測。上は 80）
+// Figma: SP 3139-7340 / PC 2669-14211
+.cm-block-panel--article {
+	gap: math.div(32, 16) + rem;
+	margin-bottom: math.div(40, 16) + rem; // パネル下端 → ページャー（Figma実測 SP 40 / PC 60）
+
+	@include config.pc {
+		gap: math.div(60, 16) + rem;
+		margin-bottom: math.div(60, 16) + rem;
+		padding-top: math.div(80, 16) + rem;
+		padding-bottom: math.div(87, 16) + rem;
+	}
+}
+
+/*  DOWNLOAD / CONTACT の誘導カード
+    Figma: SP 3138-5157 / PC footer-pc 3003-9083・3003-9093
+----------------------------------------------------*/
+// フッター内（濃い地の上）に2枚並ぶ白カード。SPは縦積み。
+.cm-block-cta {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+
+		> * {
+			flex: 1 0 0;
+			min-width: 0;
+		}
+	}
+}
+
+// カード1枚（SP 341 = 余白30 ＋ ラベル25 ＋ 60 ＋ 本文と矢印196 ＋ 余白30）
+// Figma: SP 3138-5137 / PC 3003-9083
+.cm-block-cta-card {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(60, 16) + rem;
+	padding: math.div(30, 16) + rem;
+	border-radius: math.div(5, 16) + rem;
+	background: var(--c-surface);
+
+	@include config.pc {
+		gap: math.div(160, 16) + rem;
+		padding: math.div(40, 16) + rem;
+	}
+}
+
+// DOWNLOAD / CONTACT の英字ラベル
+.cm-block-cta-card__label {
+	font-family: var(--font-en);
+	font-size: math.div(18, 16) + rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: var(--tracking-title);
+	text-transform: uppercase;
+	color: var(--c-brand-cta); // Figma #008e9f はCTA色へ統合済み
+
+	@include config.pc {
+		font-size: math.div(32, 16) + rem;
+	}
+}
+
+// SPは「テキスト → 右寄せボタン」の縦積み、PCは横並び
+.cm-block-cta-card__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: math.div(40, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+.cm-block-cta-card__text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(30, 16) + rem;
+	width: 100%;
+
+	@include config.pc {
+		width: math.div(384, 16) + rem;
+		flex-shrink: 0;
+	}
+}
+
+.cm-block-cta-card__title {
+	font-size: math.div(28, 16) + rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: var(--tracking-title);
+	color: var(--c-ink-title); // Figmaの #222 をそのまま採用（--c-ink #222020 とは別）
+
+	@include config.pc {
+		font-size: math.div(40, 16) + rem;
+	}
+}
+
+// FigmaはここだけRegular（footer-pc 3003-9088）。
+// Figmaの箱は text-box-trim（cap〜alphabetic）で、上下の行間を落とした高さ（SP 2行で38 / PC 1行で12）。
+// lh1.6 のままだと SP は 2行で 51.2 になり、カード1枚につき +13.2・2枚で +27 ずれていた（SP 3138-5142 / PC 3003-9088）。
+// 未対応のブラウザ（Firefox）は、Noto Sans JP の字面（ascent 1.16 / descent 0.288 / 大文字の高さ 0.733）から
+// 同じだけ上下を詰める（上 0.076 + 0.427 = 0.503em / 下 0.076 + 0.288 = 0.364em）
+.cm-block-cta-card__desc {
+	font-size: math.div(16, 16) + rem;
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--c-ink);
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+	.cm-block-cta-card__desc {
+		text-box: trim-both cap alphabetic;
+	}
+}
+
+@supports not (text-box: trim-both cap alphabetic) {
+	.cm-block-cta-card__desc {
+		margin-block: -0.503em -0.364em;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

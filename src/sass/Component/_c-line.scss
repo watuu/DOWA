@@ -1,0 +1,38 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	c-line
+----------------------------------------------------*/
+
+/*  点線の区切り（Figmaの「dot-loop-white」）
+    Figma: SP 3139-5952 / PC 2548-5375（80px の箱の中央に点線）
+----------------------------------------------------*/
+// Figmaのアセットは 1200×80 のGIFアニメ（8フレームで点が左へ流れる）だが、
+// **ループアニメーションは無し**（2026-09-10・ユーザー指示）。静止した点線にしている。
+// 2×2px の点（#d9d9d9）を 8px 間隔。画像は使わずグラデーションの繰り返しで描く。
+// 箱の幅は親いっぱい（Figmaも 1200px の画像をコンテナ幅で切っている）。
+.c-line-dot {
+	--dot-size: 2px;
+	--dot-pitch: 8px;
+	height: math.div(80, 16) + rem;
+	background-image: linear-gradient(to right, var(--c-border) var(--dot-size), transparent var(--dot-size));
+	background-size: var(--dot-pitch) var(--dot-size);
+	background-repeat: repeat-x;
+	background-position: 0 50%;
+}
+
+/*  番号 ＋ 下線（「01」の下に 1px の線。トップの特長・お客様の声）
+    Figma は 番号18 ＋ 間隔8 ＋ 線（上に1px はみ出す描き方）で箱26。padding 7 ＋ 線1 で同じ 26 にする。
+    Figma: SP 3181-17511 / PC 2986-8594
+----------------------------------------------------*/
+.c-line-num {
+	padding-bottom: math.div(7, 16) + rem;
+	border-bottom: 1px solid var(--c-brand-mid);
+	font-family: var(--font-en);
+	font-size: math.div(12, 16) + rem;
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--c-brand-mid);
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

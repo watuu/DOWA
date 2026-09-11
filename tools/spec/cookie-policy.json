@@ -1,0 +1,334 @@
+{
+  "_": "クッキーポリシー。Figma: PC_COOKIE POLICY 2669-17075（SPのアートボードは無い。SPは個人情報保護方針と同じ組み）",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md / cm-policy の型の値 = 個人情報保護方針に統一（doc/design-tokens.md 42）",
+  "url": "http://localhost:8899/cookie-policy/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c"
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 409,
+          "w": 1016
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 298,
+          "y": 479,
+          "w": 844,
+          "h": 284,
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40",
+          "borderBottom": "1px solid rgb(158, 158, 158)",
+          "_note": "Figma 2669-17767（文字224 ＋ 下余白60）"
+        },
+        {
+          "name": "本文の先頭",
+          "selector": ".cm-policy",
+          "x": 298,
+          "y": 823,
+          "w": 844,
+          "_note": "Figma 2669-17770。リード下端 → 本文 60"
+        },
+        {
+          "name": "h3",
+          "selector": ".cm-policy__title",
+          "h": 36,
+          "fontSize": 30,
+          "lineHeight": 36,
+          "letterSpacing": "0.03em",
+          "color": "#1e2e33",
+          "textDecorationThickness": 2,
+          "textDecorationLine": "underline",
+          "_note": "Figmaのh3インスタンス（2669-17772 ほか）は箱36。色はFigma #263a40 だが h3見出しは --c-heading-alt"
+        },
+        {
+          "name": "本文",
+          "selector": ".cm-policy p",
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40"
+        },
+        {
+          "name": "1節（クッキーとは）",
+          "selector": ".cm-policy__section",
+          "index": 0,
+          "h": 156,
+          "_note": "Figma 2669-17771"
+        },
+        {
+          "name": "2節（使用目的）",
+          "selector": ".cm-policy__section",
+          "index": 1,
+          "y": 1059,
+          "h": 156,
+          "_note": "Figma 2669-17774（y 1019）。節の間隔を個人情報保護方針の80に統一しているため +40"
+        },
+        {
+          "name": "3節（種類）",
+          "selector": ".cm-policy__section",
+          "index": 2,
+          "h": 582,
+          "_note": "Figma 2669-17777 は 560。小見出しを個人情報保護方針の型（箱36・下20）に統一しているため +22（Figmaは箱24・下10）"
+        },
+        {
+          "name": "空行つき段落",
+          "selector": ".cm-policy__spaced",
+          "h": 32,
+          "_note": "Figma 2669-17780 は空の段落（lh2）で1行空けている。margin-top 2em"
+        },
+        {
+          "name": "4節（無効化）",
+          "selector": ".cm-policy__section",
+          "index": 3,
+          "h": 672,
+          "_note": "Figma 2669-17790 は 586。h3→小見出し 30→40（+10）、小見出しの型の統一 +22×2、IEのURLがPoppinsで2行に折り返す +32"
+        },
+        {
+          "name": "5節（連絡先）",
+          "selector": ".cm-policy__section",
+          "index": 4,
+          "h": 172,
+          "_note": "Figma 2669-17818 は 162。見出し群→ボタン 30→40（他節と同じ40に統一）"
+        },
+        {
+          "name": "小見出し",
+          "selector": ".cm-policy__subtitle",
+          "h": 36,
+          "fontSize": 24,
+          "fontWeight": "700",
+          "lineHeight": 36,
+          "color": "#333d40",
+          "_note": "Figma 2669-17795 は箱24（lh1）。個人情報保護方針の小見出し（箱36）に統一"
+        },
+        {
+          "name": "小見出し（欧文）",
+          "selector": ".cm-policy__subtitle .u-font-en",
+          "fontSize": 24,
+          "fontWeight": "500",
+          "_note": "Figma 2669-17782 は Roboto Condensed Medium → Poppins 500"
+        },
+        {
+          "name": "小見出しのマーカー",
+          "selector": ".cm-policy__subtitle .c-marker",
+          "w": 12,
+          "h": 12
+        },
+        {
+          "name": "箇条書きの行",
+          "selector": ".c-list-bullet > li",
+          "index": 0,
+          "w": 844,
+          "h": 32,
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40",
+          "_note": "Figma 2669-17784。欧文（Poppins）を混ぜても 32 のまま（34 に伸びないこと）"
+        },
+        {
+          "name": "箇条書きの行（ブラウザ）",
+          "selector": ".c-list-bullet > li",
+          "index": 2,
+          "h": 32,
+          "_note": "Figma 2669-17798"
+        },
+        {
+          "name": "文中のURL",
+          "selector": ".c-link-url--inline",
+          "fontSize": 16,
+          "color": "#333d40",
+          "textDecorationLine": "underline"
+        },
+        {
+          "name": "お問い合わせリンク",
+          "selector": ".c-link-arrow",
+          "x": 298,
+          "h": 40,
+          "_note": "Figma 2669-17822 は 178×40。文字が 12.8 → 12px（切り捨て）なので幅は 168"
+        },
+        {
+          "name": "お問い合わせリンクの文字",
+          "selector": ".c-link-arrow__label",
+          "h": 19,
+          "fontSize": 12,
+          "color": "#15819e",
+          "borderBottom": "1px solid rgb(8, 131, 149)",
+          "_note": "Figma 2669-17823（文字 #15819e / 下線 2669-17825 の stroke #088395）"
+        },
+        {
+          "name": "お問い合わせリンクの矢印",
+          "selector": ".c-link-arrow .c-btn-arrow",
+          "w": 40,
+          "h": 40,
+          "borderRadius": 4,
+          "background": "#15819e",
+          "_note": "Figma 2669-17826"
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 2543,
+          "_note": "Figma 2669-17766 は 2314。節の間隔 +160、3〜5節 +22/+86/+10、下余白 120→70（他ページと同じ70に統一）-50、リード +1"
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 3073,
+          "_note": "Figma 2669-17081 は 2843。パネル高さの差 +229 ＋ 見出しブロック +1"
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 248,
+          "w": 362,
+          "_note": "SPのアートボードが無いため個人情報保護方針（3139-6678）と同じ位置"
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 40,
+          "y": 278,
+          "w": 322,
+          "borderBottom": "1px solid rgb(158, 158, 158)"
+        },
+        {
+          "name": "本文の先頭",
+          "selector": ".cm-policy",
+          "x": 40,
+          "w": 322
+        },
+        {
+          "name": "h3",
+          "selector": ".cm-policy__title",
+          "index": 0,
+          "h": 28.8,
+          "fontSize": 24,
+          "letterSpacing": "0.03em",
+          "textDecorationThickness": 2,
+          "textDecorationLine": "underline",
+          "_note": "個人情報保護方針のSPと同じ 24px（2026-09-10 ユーザー判断）"
+        },
+        {
+          "name": "小見出し",
+          "selector": ".cm-policy__subtitle",
+          "h": 30,
+          "fontSize": 20,
+          "fontWeight": "700",
+          "lineHeight": 30,
+          "color": "#333d40"
+        },
+        {
+          "name": "小見出しのマーカー",
+          "selector": ".cm-policy__subtitle .c-marker",
+          "w": 12,
+          "h": 12
+        },
+        {
+          "name": "箇条書きの行（URLが3行に折り返す）",
+          "selector": ".c-list-bullet > li",
+          "index": 0,
+          "w": 322,
+          "h": 96,
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40",
+          "_note": "32 × 3行。欧文を混ぜても1行 32 のまま"
+        },
+        {
+          "name": "お問い合わせリンク",
+          "selector": ".c-link-arrow",
+          "x": 40,
+          "h": 30,
+          "_note": "SPのアートボードが無いので、お取引の流れの SP（3139-5341）の c-link-arrow と同じ組み"
+        },
+        {
+          "name": "お問い合わせリンクの文字",
+          "selector": ".c-link-arrow__label",
+          "fontSize": 12,
+          "fontWeight": "400",
+          "letterSpacing": "0.05em",
+          "color": "#15819e"
+        },
+        {
+          "name": "お問い合わせリンクの矢印",
+          "selector": ".c-link-arrow .c-btn-arrow",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 2,
+          "background": "#0b82a3"
+        }
+      ]
+    }
+  },
+  "_known": "Figma（PCのみ）より縦に長い。クッキーポリシーのFigmaは cm-policy の型の値が個人情報保護方針と違うが、同じ型として個人情報保護方針の値に統一した（doc/design-tokens.md 42）。①節の間隔 40→80（+160）②小見出し 箱24・下10 → 箱36・下20（+22×3）③h3→小見出し・見出し群→ボタン 30→40（+10×2）④パネル下余白 120→70（-50）⑤IE の URL が Poppins で2行に折り返す（+32）"
+}

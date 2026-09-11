@@ -1,0 +1,88 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "お取引の流れ"
+    - var pageClass = "page-flow"
+    - var breadcrumb = "お取引の流れ"
+
+block content
+
+    -
+        //- 文言は PC 版に合わせている（SP版と違う箇所は doc/design-tokens.md 参照）
+        var steps = [
+            { title: "お問い合わせ・ご相談", desc: "使用済み触媒の種類や数量などをお知らせください。<br class=\"u-only-pc\">お客様の条件に応じて、最適な取引方法をご提案いたします。", btn: { label: "お問い合わせ", url: "contact/" } },
+            { title: "原料の出所調査 /<br>デューディリジェンス", desc: "責任ある調達ポリシーに則って、お客様や原料の出所に関するリスクを事前に確認します。", link: { label: "責任ある調達について", url: "supply-chain/" } },
+            { title: "受入・破砕・サンプリング", desc: "お預かりした原料は、均一に粉砕・縮分を行った後、代表性の高いサンプルを採取します。正確な評価を行うために、このサンプリング工程が重要な役割を担います。", link: { label: "サンプリングについて", url: "technology/" } },
+            { title: "受入数量確定", desc: "水分込みの重量および、水分を除いた乾燥重量が確定します。" },
+            { title: "分析値判明/原料代金の精算", desc: "採取したサンプルを、政府認定の総合分析機関「DOWAテクノリサーチ」が分析。PGM含有量を正確に評価し、その分析値をもとに原料代を精算し、お客様から受け取った原料中の貴金属を買い取ります。", link: { label: "分析について", url: "technology/" } }
+        ]
+        //- 回答は Figma に無いのでダミー
+        var faqs = [
+            "触媒が割れたり、溶損していても買取できますか？",
+            "配送から入金までどれくらいの日数がかかりますか？",
+            "ホームページに載ってないものも買い取ってもらえますか？",
+            "配送指定業者はどこですか？"
+        ]
+
+    .p-flow
+        .cm-block-header-page.cm-block-header-page--lead
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title お取引の流れ
+                    p.c-heading-page__label Flow
+
+        section.p-flow-body
+            .l-container
+                p.p-flow-lead
+                    | 初めてのお取引でも安心してご利用いただけるよう、原料納入から分析、評価、最終決済までの流れをご紹介します。
+                    br
+                    | お客様の原料やご要望に応じて、最適な取引方法をご提案いたしますので、まずはお気軽にご相談ください。
+
+                ol.p-flow-steps
+                    each s, i in steps
+                        li.c-card-step
+                            p.c-card-step__num= i + 1
+                            .c-card-step__main
+                                figure.c-card-step__figure
+                                    img(src=img + "p-flow-pic" + (i + 1) + ".webp" alt="" width=840 height=560 loading=(i > 0 ? "lazy" : "eager"))
+                                .c-card-step__body
+                                    h2.c-card-step__title!= s.title
+                                    p.c-card-step__desc!= s.desc
+                                    if s.btn
+                                        .c-card-step__action
+                                            a.c-btn(href=path + s.btn.url)
+                                                span.c-btn__label= s.btn.label
+                                                span.c-btn__arrow
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_arrow_r")
+                                    if s.link
+                                        .c-card-step__action
+                                            a.c-link-arrow(href=path + s.link.url)
+                                                span.c-link-arrow__label= s.link.label
+                                                span.c-btn-arrow.c-link-arrow__arrow
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_arrow_r")
+                    li.c-card-step.c-card-step--end
+                        p.c-card-step__num 6
+                        .c-card-step__main
+                            .c-card-step__body
+                                h2.c-card-step__title 製錬/精製プロセスへ
+
+        section.p-flow-faq
+            .l-container
+                .p-flow-faq__inner
+                    h2.c-heading-sub
+                        span.c-marker
+                            svg(aria-hidden="true")
+                                use(href="#ico_marker")
+                        span よくあるご質問
+                    .p-flow-faq__list.c-accordion
+                        each q, i in faqs
+                            .c-accordion__item
+                                button.c-accordion__head.js-accordion(type="button" aria-expanded="false" aria-controls="faq-" + (i + 1))
+                                    span.c-accordion__q= q
+                                    span.c-accordion__icon
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_tri_d")
+                                .c-accordion__body(id="faq-" + (i + 1))
+                                    p.c-accordion__answer 回答のテキストが入ります。回答のテキストが入ります。回答のテキストが入ります。

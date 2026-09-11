@@ -1,0 +1,169 @@
+# figma-coverage.mjs が「spec 未参照」として出さないクラス。
+# 独自の箱を持たない入れ物や、色だけ変えるモディファイアを書く。
+# 寸法が変わるモディファイア（--sm / --lg など）は必ず spec 側で見ること。
+
+# 入れ物（親の幅いっぱい・高さは中身なり）
+c-btn__label
+c-btn__arrow
+c-card-news__body
+c-card-news__title
+c-card-num__body
+c-card-num__text
+c-card-num__num
+c-card-step__main
+c-card-step__body
+c-card-step__action
+c-card-step__num
+cm-block-cta-card__body
+cm-block-cta-card__text
+cm-block-cta-card__label
+cm-block-cta-card__title
+cm-block-cta-card__desc
+cm-form
+cm-form__body
+cm-form__rows
+cm-form-row__field
+cm-policy
+cm-policy__head
+cm-policy__blocks
+cm-policy__block
+cm-policy__section
+cm-navi-paginate__ellipsis
+cm-navi-pager__item
+cm-navi-pager__label
+cm-navi-breadcrumb__list
+cm-navi-breadcrumb__item
+l-body-wrap
+l-container
+l-main
+l-header-utility
+l-header-logo__dark
+l-header-logo__light
+l-header-nav__list
+l-header-nav__en
+l-header-lang__current
+l-header-lang__other
+l-header-lang__line
+l-header-drawer__wrap
+l-header-drawer-nav__item
+l-header-drawer-policy__item
+l-header-drawer-policy__item--cookie
+l-header-drawer-policy__item--privacy
+l-footer__inner
+l-footer-body
+l-footer-body__top
+l-footer-body__bottom
+l-footer-body__brand
+l-footer-sites
+l-footer-sites__row
+l-footer-sites__name
+l-footer-sites__link
+l-footer-sites__label
+l-footer-nav
+l-footer-logo
+l-footer-policy
+l-footer-policy__item
+l-footer-policy__item--cookie
+l-footer-policy__item--privacy
+l-footer-copy
+p-news
+p-news-list
+p-contact
+p-contact-form
+p-contact-form__body
+p-document
+p-document-form
+p-document-form__body
+p-privacy
+p-privacy-body
+p-privacy-body__main
+p-cookie
+p-cookie-body
+p-cookie-body__main
+p-material
+p-material-body
+p-flow
+p-flow-body
+# 見出しと一覧を並べるだけの入れ物（帯の高さは .p-flow-faq で見ている）
+p-flow-faq__inner
+# アコーディオンの回答。閉じた状態では出ず、開いた状態の組みは Figma に無い
+c-accordion__body
+c-accordion__answer
+# 余白だけのモディファイア（すぐ下のリードの y で見ている）
+cm-block-header-page--lead
+# ドロワーの中身を順に出すための演出用クラス（箱は各部品の spec で見ている）
+l-header-drawer__item
+p-top
+p-top-mv
+p-top-mv__wrap
+p-top-mv__head
+p-top-mv__conten
+p-top-mv__title
+p-top-mv__body
+p-top-leadv
+p-top-businessv
+p-top-
+c-paragraph
+c-list-bullet
+
+# 色だけ変えるモディファイア
+c-btn--action
+c-btn--mid
+c-btn--outline
+c-btn--white
+c-btn-arrow--action
+c-btn-arrow--mid
+c-btn-arrow--outline
+c-btn-arrow--white
+c-btn-ctrl--prev
+c-btn-ctrl--next
+cm-navi-paginate__ctrl--prev
+cm-navi-pager__btn--prev
+cm-block-panel--policy
+l-header-drawer-lang__current
+l-header-drawer-lang__other
+cm-navi-paginate__ctrl--next
+c-link-pdf__label
+c-link-pdf__size
+c-link-url
+# 文中のインライン要素で箱を持たない。行の高さは .c-list-bullet > li の h で見ている
+c-link-url--inline
+p-single-news
+p-single-news-body
+
+# 責任ある調達・NPGMの技術の入れ物（親の幅いっぱい・高さは中身なり。中の部品と外側のブロックを spec で見ている）
+p-supply
+p-supply-policy
+p-supply-dd__inner
+p-technology
+c-banner-link__body
+c-card-procedure__head
+c-card-num__action
+c-scroll-x__inner
+
+# トップの技術力の帯の入れ物（帯・中身・ボタンは spec で見ている）
+p-top-technology__inner
+p-top-technology__head
+p-top-technology__action
+# トップの特長・お客様の声・新着情報の入れ物（カード・一覧・帯は spec で見ている）
+c-card-feature__body
+c-card-voice__body
+c-card-voice__content
+p-top-feature__body
+p-top-feature__head
+p-top-voice__head
+p-top-news__list
+p-top-news__more
+# 文中のインライン要素（「CLIENT：」）。行の高さは .c-card-voice__client の h で見ている
+c-card-voice__client-label
+# トップのポイント・強み・買取原料の入れ物（帯・一覧・カードは spec で見ている）
+p-top-point__head
+p-top-strength__head
+p-top-what__head
+p-top-what__body
+p-top-what__col
+p-top-what__text
+p-top-what__action
+# MV の入れ物（動画は .p-top-mv__main と同じ箱、画像の帯はループで動くので画像と画像列で見ている）
+p-top-mv__movie
+p-top-mv__track

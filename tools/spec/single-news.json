@@ -1,0 +1,85 @@
+{
+  "_": "新着情報詳細。Figma: SP_NEWS_DETAILS 3139-7324 / PC_NEWS_DETAILS 2669-13917",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/single-news/",
+  "tolerance": 4,
+  "settle": { "timeout": 1000, "scrollThrough": true, "scrollWait": 500 },
+
+  "viewports": [
+    { "name": "PC", "width": 1440, "height": 1000 },
+    { "name": "SP", "width": 402, "height": 900 }
+  ],
+
+  "targets": {
+    "PC": {
+      "baseline": { "selector": ".c-heading-page__title", "y": 220 },
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 40, "y": 190, "w": 1360 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 60, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 14, "color": "#13728c" },
+
+        { "name": "記事見出しブロック", "selector": ".p-single-news-head", "x": 212, "y": 409, "h": 94.4 },
+        { "name": "日付・タグの行", "selector": ".p-single-news-head__meta", "x": 212, "y": 409, "h": 20 },
+        { "name": "日付", "selector": ".p-single-news-head__date", "x": 212, "w": 63, "h": 18, "fontSize": 12, "fontFamily": "Poppins", "lineHeight": 18, "color": "#39969d" },
+        { "name": "タグ", "selector": ".p-single-news-head__tag", "x": 295, "w": 66, "h": 20, "borderRadius": 2, "background": "#39969d", "fontSize": 14 },
+        { "name": "記事タイトル", "selector": ".p-single-news-head__title", "x": 212, "y": 439, "h": 64.4, "fontSize": 46, "lineHeight": 64.4, "letterSpacing": "0.03em", "color": "#1e2e33" },
+
+        { "name": "パネル", "selector": ".cm-block-panel--article", "x": 212, "y": 548, "w": 1016, "borderRadius": 4, "background": "#f6f6f6" },
+        { "name": "パネル高さ", "selector": ".cm-block-panel--article", "h": 1456.5, "_note": "Figma 1306。cm-post を gap 組みにしたため +150.5（段落どうし 0→20 ×8 = +160、h2下 40→20 = -20、h3下 10→20 = +10）" },
+        { "name": "アイキャッチ", "selector": ".cm-post-eyecatch", "x": 298, "y": 628, "w": 844, "h": 450.5, "borderRadius": 4 },
+
+        { "name": "本文ブロック", "selector": ".cm-post", "x": 298, "y": 1138, "w": 844 },
+        { "name": "大見出し", "selector": ".cm-post h2", "x": 298, "y": 1138, "w": 844, "h": 87, "fontSize": 32, "lineHeight": 64, "letterSpacing": "-0.01em", "color": "#263a40" },
+        { "name": "本文1行目", "selector": ".cm-post p", "index": 0, "x": 298, "y": 1245, "_note": "Figma 1265。h2の下は gap（20）。Figmaは40",  "w": 844, "fontSize": 16, "lineHeight": 32, "letterSpacing": "-0.01em", "color": "#333d40" },
+        { "name": "本文2行目（段落の間隔）", "selector": ".cm-post p", "index": 1, "y": 1297, "h": 32, "_note": "段落どうしは gap 20。Figmaは1つのテキストノードで 0" },
+        { "name": "小見出し", "selector": ".cm-post h3", "x": 298, "y": 1538, "w": 844, "h": 88, "_note": "箱は padding-top 40 ＋ 文字48。本文 → 見出しは gap20 ＋ 40 = Figmaの60", "fontSize": 24, "lineHeight": 48, "letterSpacing": "-0.01em", "color": "#263a40" },
+
+        { "name": "前後送り", "selector": ".p-single-news-pager", "x": 444, "y": 2065, "w": 552, "h": 40, "_note": "Figma 1914。パネル高さの差 +151" },
+        { "name": "送りボタン", "selector": ".cm-navi-pager__btn", "w": 40, "h": 40, "borderRadius": 4, "background": "#15819e" },
+        { "name": "送りラベル", "selector": ".cm-navi-pager__label", "fontSize": 12, "color": "#15819e", "borderBottom": "1px solid #088395" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2225, "_note": "Figma 2074（+151）" },
+        { "name": "パンくずの帯", "selector": ".cm-navi-breadcrumb", "background": "#ebebeb" }
+      ]
+    },
+
+    "SP": {
+      "baseline": { "selector": ".c-heading-page__title", "y": 160 },
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 20, "y": 140, "w": 362 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 28, "letterSpacing": "-0.05em" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 12, "color": "#13728c" },
+
+        { "name": "記事見出しブロック", "selector": ".p-single-news-head", "x": 20, "y": 248, "h": 132.4 },
+        { "name": "日付・タグの行", "selector": ".p-single-news-head__meta", "x": 20, "y": 248, "h": 20 },
+        { "name": "日付", "selector": ".p-single-news-head__date", "x": 20, "w": 84, "h": 20, "fontSize": 16, "fontFamily": "Poppins", "lineHeight": 20, "color": "#39969d" },
+        { "name": "タグ", "selector": ".p-single-news-head__tag", "x": 114, "w": 68, "h": 20, "borderRadius": 4, "background": "#39969d", "fontSize": 12 },
+        { "name": "記事タイトル", "selector": ".p-single-news-head__title", "x": 20, "y": 278, "h": 102.4, "fontSize": 32, "lineHeight": 51.2, "letterSpacing": "-0.01em", "color": "#1e2e33" },
+
+        { "name": "パネル", "selector": ".cm-block-panel--article", "x": 20, "y": 404, "w": 362, "borderRadius": 4, "background": "#f6f6f6" },
+        { "name": "パネル高さ", "selector": ".cm-block-panel--article", "h": 1201.4, "_note": "Figma 1071.4 相当。gap 組みで +130（段落どうし 0→16 ×8 = +128、h2下 20→16 = -4、h3下 10→16 = +6）" },
+        { "name": "アイキャッチ", "selector": ".cm-post-eyecatch", "x": 40, "y": 434, "w": 322, "h": 171.9, "borderRadius": 4 },
+
+        { "name": "本文ブロック", "selector": ".cm-post", "x": 40, "y": 637.9, "w": 322 },
+        { "name": "大見出し", "selector": ".cm-post h2", "x": 40, "y": 637.9, "w": 322, "h": 87, "fontSize": 24, "lineHeight": 36, "letterSpacing": "-0.01em", "color": "#263a40" },
+        { "name": "本文1行目", "selector": ".cm-post p", "index": 0, "x": 40, "y": 740.9, "_note": "h2の下は gap（16）。Figmaは20", "w": 322, "fontSize": 14, "lineHeight": 25.2, "letterSpacing": "-0.01em", "color": "#333d40" },
+        { "name": "本文2行目（段落の間隔）", "selector": ".cm-post p", "index": 1, "y": 807.3, "_note": "1行目（2行・50.4）＋ gap 16" },
+        { "name": "小見出し", "selector": ".cm-post h3", "x": 40, "y": 1124, "w": 322, "h": 70, "_note": "箱は padding-top 16 ＋ 文字54。本文 → 見出しは gap16 ＋ 16 = Figmaの32", "fontSize": 18, "lineHeight": 27, "letterSpacing": "-0.01em", "color": "#263a40" },
+
+        { "name": "前後送り", "selector": ".p-single-news-pager", "x": 20, "y": 1646, "w": 362, "h": 40, "_note": "Figma 1515.4（+130）" },
+        { "name": "送りボタン", "selector": ".cm-navi-pager__btn", "w": 40, "h": 40, "borderRadius": 4, "background": "#15819e" },
+        { "name": "送りラベル", "selector": ".cm-navi-pager__label", "fontSize": 12, "color": "#15819e", "borderBottom": "1px solid #088395" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 1786, "_note": "Figma 1654（+132）" }
+      ]
+    }
+  },
+
+  "_known": [
+    "cm-post は Gutenberg 想定で gap 組み（2026-09-10・ユーザー指示）。Figmaは本文が1つのテキストノードで段落どうし0だが、実装は段落ごとに gap が入るので PC +151 / SP +130 縦に長い。",
+    "PCの前後送りは Figma が x456（1016のパネルに対して +12 ずれて中央でない）。実装は中央寄せの 444。",
+    "SPの本文は Figma 300px に対し実測 302.25px（14×1.8×12行＝302.4）。Figma側の text-box-trim ぶんで、パネル高さ・小見出しy・ページャーyに +2〜5px 出る。",
+    "SPのページャー下端 → パンくずは Figma 103。他ページの規定値 100 に合わせている（-3px）。",
+    "PCのパンくずは Figma が「トップ / 責任ある調達」（ダミー）。実装は「トップ / 新着情報 / 記事名」の3階層。"
+  ]
+}

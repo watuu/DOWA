@@ -1,0 +1,65 @@
+{
+  "_": "買取原料。Figma: SP_MATERIAL 3139-5460 / PC_MATERIAL 2548-5269",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/material/",
+  "tolerance": 4,
+  "settle": { "timeout": 1000, "scrollThrough": true, "scrollWait": 500 },
+
+  "viewports": [
+    { "name": "PC", "width": 1440, "height": 1000 },
+    { "name": "SP", "width": 402, "height": 900 }
+  ],
+
+  "targets": {
+    "PC": {
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 40, "y": 190, "w": 1360 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 60, "letterSpacing": "-0.05em", "color": "#333d40" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 14, "color": "#13728c" },
+
+        { "name": "一覧", "selector": ".p-material-list", "x": 126, "y": 409, "w": 1189, "h": 2354.8, "_note": "Figma 2548-5367 は 2434.8。1本目の点線のあとにだけ空の80pxの枠（2548-5384）があり、他の区切りと同じ間隔にそろえたため -80" },
+        { "name": "カード#01", "selector": ".c-card-num", "index": 0, "x": 126, "y": 409, "w": 1189, "h": 528.7, "_note": "Figma 2548-5368（写真498.7 ＋ 下30）" },
+        { "name": "写真", "selector": ".c-card-num__figure", "index": 0, "x": 586, "y": 409, "w": 729, "h": 498.7, "borderRadius": 5, "_note": "Figma 2548-5374" },
+        { "name": "左カラム", "selector": ".c-card-num__body", "index": 0, "w": 400, "_note": "Figma 2548-5369" },
+        { "name": "番号", "selector": ".c-card-num__num", "index": 0, "x": 126, "y": 409, "h": 43.2, "fontSize": 24, "lineHeight": 43.2, "fontFamily": "Poppins", "color": "#15819e", "_note": "Figma 2548-5370（箱43）" },
+        { "name": "見出し", "selector": ".c-card-num__title", "index": 0, "y": 492, "h": 42, "fontSize": 30, "lineHeight": 42, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 2548-5372（h3コンポーネントは箱36で文字は lh1.4）。2行の #04 に合わせて lh1.4 = 42。番号 → 見出し 40" },
+        { "name": "本文", "selector": ".c-card-num__desc", "index": 0, "y": 549, "w": 400, "h": 57.6, "fontSize": 16, "lineHeight": 28.8, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 2548-5373 は y543（箱58）。見出しの箱が 36 → 42 のぶん +6。見出し → 本文 15" },
+        { "name": "点線の区切り", "selector": ".c-line-dot", "index": 0, "x": 126, "y": 937.7, "w": 1189, "h": 80, "_note": "Figma 2548-5375" },
+        { "name": "カード#02", "selector": ".c-card-num", "index": 1, "y": 1017.7, "h": 528.7, "_note": "Figma 1097.7（空の80pxの枠のぶん -80）" },
+        { "name": "カード#03", "selector": ".c-card-num", "index": 2, "y": 1626.4, "h": 528.7, "_note": "Figma 1706.4（-80）" },
+        { "name": "カード#04", "selector": ".c-card-num", "index": 3, "y": 2235.1, "h": 528.7, "_note": "Figma 2315.1（-80）" },
+        { "name": "見出し#04（2行）", "selector": ".c-card-num__title", "index": 3, "h": 84, "_note": "Figma 2548-5408（2行 × lh1.4）" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2883.8, "_note": "Figma 2964（-80）。一覧下端 → パンくず 120" },
+        { "name": "パンくずの帯", "selector": ".cm-navi-breadcrumb", "background": "#ebebeb" },
+        { "name": "フッター", "selector": ".l-footer", "h": 770 }
+      ]
+    },
+
+    "SP": {
+      "items": [
+        { "name": "ページ見出し", "selector": ".c-heading-page", "x": 20, "y": 140, "w": 362 },
+        { "name": "見出しタイトル", "selector": ".c-heading-page__title", "fontSize": 28, "letterSpacing": "-0.05em" },
+        { "name": "見出し英字", "selector": ".c-heading-page__label", "fontSize": 12, "color": "#13728c" },
+
+        { "name": "一覧", "selector": ".p-material-list", "x": 20, "y": 248, "w": 362, "h": 1959.6, "_note": "Figma 3139-5729" },
+        { "name": "カード#01", "selector": ".c-card-num", "index": 0, "x": 20, "y": 248, "w": 362, "h": 409.6, "_note": "Figma 3139-5472" },
+        { "name": "写真", "selector": ".c-card-num__figure", "index": 0, "x": 20, "y": 248, "w": 362, "h": 247.6, "borderRadius": 5, "_note": "Figma 3139-5687" },
+        { "name": "番号", "selector": ".c-card-num__num", "index": 0, "y": 525.6, "h": 28.8, "fontSize": 16, "lineHeight": 28.8, "fontFamily": "Poppins", "color": "#15819e", "_note": "Figma 3139-5685（写真 → 番号 30）" },
+        { "name": "見出し", "selector": ".c-card-num__title", "index": 0, "y": 564.6, "h": 29.4, "fontSize": 21, "lineHeight": 29.4, "letterSpacing": "0.03em", "fontWeight": "700", "color": "#1e2e33", "_note": "Figma 3139-5476（21 × 1.4・箱29）" },
+        { "name": "本文", "selector": ".c-card-num__desc", "index": 0, "y": 603.6, "w": 362, "h": 54, "fontSize": 15, "lineHeight": 27, "letterSpacing": "-0.01em", "color": "#333d40", "_note": "Figma 3139-5478。字送りは Figma -0.05em だが本文の -0.01em（doc/design-tokens.md 6 の表）" },
+        { "name": "点線の区切り", "selector": ".c-line-dot", "index": 0, "x": 20, "y": 657.6, "w": 362, "h": 80, "_note": "Figma 3139-5952" },
+        { "name": "カード#02", "selector": ".c-card-num", "index": 1, "y": 737.6, "h": 436.6, "_note": "Figma 3139-5699（本文3行）" },
+        { "name": "カード#04", "selector": ".c-card-num", "index": 3, "y": 1770.9, "h": 436.6, "_note": "Figma 3139-5719" },
+
+        { "name": "パンくず上端", "selector": ".cm-navi-breadcrumb", "y": 2288, "_note": "Figma 3139-5581。一覧下端 → パンくず 80" }
+      ]
+    }
+  },
+
+  "_known": [
+    "PCは Figma の1本目の点線のあとにだけ空の80pxの枠（2548-5384）がある。他の区切り・SPには無いため入れていない（-80）。",
+    "PCの見出しは lh1.4。1行の見出しは Figma の h3 コンポーネントの箱（36）より 6px 高く、本文が 6px 下がる（カードの高さは写真で決まるので後続には影響しない）。",
+    "カンプ doc/PC_MATERIAL.jpg は旧版（番号が #01/#03/#04/#05、下に空白、フッター920px）。現在の Figma とは別物なので③の照合結果は参考にならない。"
+  ]
+}

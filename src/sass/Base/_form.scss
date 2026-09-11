@@ -1,0 +1,72 @@
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	フォーム
+----------------------------------------------------*/
+[hidden] {
+	display: none !important;
+}
+
+[disabled] {
+	cursor: not-allowed;
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+.sr-only {
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+	left: -9999px;
+	top: -9999px;
+}
+
+input,
+select,
+label {
+	vertical-align: middle;
+	color: var(--color);
+}
+
+[type="text"] {
+	line-height: normal;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+button {
+	appearance: none;
+	border-radius: 0;
+	outline: none;
+	background: transparent;
+	color: var(--color);
+	font-family: var(--font);
+	font-weight: inherit; // 既定の 500 を引き継ぐ（フォーム要素は既定では継承しない）
+	font-size: 16px;
+	line-height: 1.5;
+}
+input[type="submit"],
+button {
+	cursor: pointer;
+	border: none;
+}
+
+textarea {
+	appearance: none;
+	resize: none;
+	outline: none;
+	background: transparent;
+	font-weight: inherit;
+	color: var(--color);
+	font-family: var(--font);
+	font-size: 16px;
+}
+
+*:focus {
+	outline: none;
+}
+
+

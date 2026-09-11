@@ -1,0 +1,106 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "クッキーポリシー"
+    - var pageClass = "page-cookie"
+    - var breadcrumb = "クッキーポリシー"
+
+block content
+
+    -
+        var analyticsLinks = [
+            { en: "Google Analytics", ja: "利用規約", url: "https://www.google.com/analytics/terms/jp.html" },
+            { en: "Google", ja: "プライバシーポリシー", url: "https://www.google.com/intl/ja/policies/privacy/partners/" }
+        ]
+        var browserLinks = [
+            { en: "Apple Safari", url: "https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" },
+            { en: "Google Chrome", url: "https://support.google.com/chrome/answer/95647?hl=ja" },
+            { en: "Microsoft Internet Explorer", url: "https://support.microsoft.com/ja-jp/help/17442/windows-internet-explorer-delete-manage-cookies" },
+            { en: "Mozilla Firefox", url: "https://support.mozilla.org/ja/kb/delete-cookies-remove-info-websites-stored" }
+        ]
+        var toolLinks = [
+            { en: "Google LLC", url: "https://support.google.com/analytics/answer/181881?hl=ja" }
+        ]
+
+    //- c-list-bullet の li は flex なので、文字とリンクを span で1つにまとめる。
+    //- | を複数行に分けると改行が空白として出るため、1行に補間で書く
+    mixin linkList(links)
+        ul.c-list-bullet
+            each l in links
+                li
+                    span #[span.u-font-en= l.en]#{l.ja ? l.ja : " "}(#[a.c-link-url.c-link-url--inline(href=l.url target="_blank" rel="noopener")= l.url])
+
+    mixin subtitle(label, en)
+        h4.cm-policy__subtitle
+            span.c-marker
+                svg(aria-hidden="true")
+                    use(href="#ico_marker")
+            if en
+                span.u-font-en= label
+            else
+                span= label
+
+    .p-cookie
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title クッキーポリシー
+                    p.c-heading-page__label Cookie Policy
+
+        section.p-cookie-body
+            .l-container
+                .cm-block-panel.cm-block-panel--policy
+                    p.cm-block-lead
+                        | 本クッキーポリシーは、株式会社日本ピージーエム（以下当社といいます）が運営するウェブサイト（以下「本ウェブサイト」）に適用されます。
+                        br
+                        | 本ウェブサイトでは、サービスの利便性向上や利用状況の分析などを目的として、クッキー（Cookie）を使用しています。本ウェブサイトをご利用いただくことで、本クッキーポリシーに基づくクッキーの利用に同意いただいたものとみなします。
+                        br
+                        | なお、ブラウザの設定によりクッキーを無効にすることも可能ですが、その場合、本ウェブサイトの一部機能をご利用いただけない場合があります。
+
+                    .p-cookie-body__main.cm-policy
+                        .cm-policy__section
+                            .cm-policy__head
+                                h3.cm-policy__title クッキーとは
+                                p Cookie（クッキー）とは、お客様がウェブサイトを閲覧した際に、お使いのデバイスへ保存される小さなデータです。当社では、ウェブサイトの利便性向上、利用状況の分析、コンテンツの改善、および広告配信の最適化を目的としてCookieを利用しています。
+
+                        .cm-policy__section
+                            .cm-policy__head
+                                h3.cm-policy__title クッキーの使用目的について
+                                p 本ウェブサイトでは、お客様により快適にご利用いただくため、Cookieを利用してサイトの利便性向上や利用状況の分析、パフォーマンスの改善を行っています。なお、Cookieにより取得される情報には、お客様個人を特定できる情報は含まれておりません。
+
+                        .cm-policy__section
+                            .cm-policy__head
+                                h3.cm-policy__title 使用されるクッキーの種類について
+                                p
+                                    | 本ウェブサイトでは、セッションクッキー及びパーシステントクッキーと呼ばれるクッキーを利用しています。セッションクッキーは、一時的に記録されるクッキーであり、お客様が本ウェブサイトの閲覧をしている間に限り、お客様のデバイスに記録されています。一方パーシステントクッキーは、本ウェブサイトの閲覧終了後もお客様のデバイスに記録され、有効期限が切れるか、又はお客様自身でこれを削除いただくまでお客様のデバイスに残り続けます。有効期限につきましては、個々のクッキーごとに異なります。
+                                    br
+                                    | また、本ウェブサイトでは、サードパーティークッキー情報が取得されることがございます。サードパーティークッキーとは、本ウェブサイトにおいて、当社以外の第三者が当社に代わって付与するクッキーのことをいいます。サードパーティークッキーについての詳細情報、及びこのようなクッキー情報を使用するためのオプトアウト手続きにつきましては、当該サードパーティークッキー情報を使用している第三者のプライバシーポリシー等をご覧ください。
+                                p.cm-policy__spaced なお、当社は、当社ウェブサイトの利用状況を計測・分析するため、以下のツールを使用しております。
+                            .cm-policy__block
+                                +subtitle("Google Analytics", true)
+                                +linkList(analyticsLinks)
+
+                        .cm-policy__section
+                            h3.cm-policy__title クッキーの無効化について
+                            .cm-policy__blocks
+                                .cm-policy__block
+                                    +subtitle("すべてのクッキーの無効化")
+                                    p
+                                        | お客様は、ブラウザの設定を変更することにより、一切のクッキーを無効にすることができます。ただし、クッキーを無効とした場合、本ウェブサイトの一部の機能がご利用いただけない可能性があることにつきご了承ください。
+                                        br
+                                        | 主要なブラウザごとの、クッキーの設定変更の方法につきましては、以下の各URLをご参照ください。
+                                    +linkList(browserLinks)
+                                .cm-policy__block
+                                    +subtitle("一部のクッキーの無効化")
+                                    p お客様は、特定のツールごとにクッキーを無効化することもできます。特定のツールへの情報提供を停止するための方法につきましては、以下に記載するURLに記載されておりますのでご参照ください。ただし、これらのクッキー情報を削除した場合にも、本ウェブサイトの一部の機能がご利用いただけない可能性があることにつきご了承ください。
+                                    +linkList(toolLinks)
+
+                        .cm-policy__section
+                            .cm-policy__head
+                                h3.cm-policy__title 連絡先
+                                p 本クッキーポリシーに関してのお問い合わせは、下記の送信フォームよりお願いいたします。
+                            a.c-link-arrow(href=path + "contact/")
+                                span.c-link-arrow__label お問い合わせはこちら
+                                span.c-btn-arrow.c-link-arrow__arrow
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_arrow_r")

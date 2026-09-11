@@ -1,0 +1,116 @@
+@use '../Base/config' as config;
+// ===================================================================
+// CSS 変数
+// ===================================================================
+:root {
+	// フォント（doc/design-tokens.md 参照）
+	// 和文は Noto Sans JP に統一。Figma上の 平成角ゴ / 新ゴ / 見出ゴ / Zen Kaku Gothic New は
+	// すべてここへ寄せる。ロゴまわりの「触媒買取」はSVGで書き出すためフォント依存を持たない。
+	// 欧文・数字は Poppins に統一（Figma上の Roboto / Roboto Condensed を含む）。
+	--sans : "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Yu Gothic", "メイリオ", "Meiryo", sans-serif;
+	--serif: "游明朝", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HG明朝E", "ＭＳ 明朝", serif;
+	--font : var(--sans);
+	--font-en : "Poppins", var(--sans); // 英字見出し・数字・英字ラベル
+
+	// 字送り。Figmaのpx指定をem換算したもの。
+	// h3(+0.03em) / ステップ見出し(+0.04em) / 英字ラベル(+0.16em) は出現箇所が限られるため
+	// トークン化せず、各コンポーネント側で個別に指定する。
+	--tracking-body : -0.01em; // 本文。bodyに適用
+	--tracking-title: -0.05em; // ページタイトル・セクション見出し（60 / 40 / 32px）
+
+	// 色 ── Figmaのカラースタイル NPGM/Color/* に対応
+	--c-text-title   : #263a40; // Text/Title
+	--c-text-body    : #333d40; // Text/Body
+	--c-text-link    : #088395; // Text/Link
+	--c-text-support : #555;    // Text/Support
+	--c-action       : #15819e; // Action/Primary
+	--c-label-brand  : #39969d; // Label/Brand
+	--c-border       : #d9d9d9; // Border/Default
+	--c-surface      : #fff;    // Primary（Figma上で唯一の変数）
+	--c-surface-raised: #f6f6f6; // Surface/Raised
+	--c-surface-tint : #edf6f8; // Surface/Tint
+
+	// 色 ── Figmaでスタイル未登録のもの
+	--c-brand-deep   : #174b59; // フッター地色
+	--c-brand-mid    : #13728c; // ページ見出しの英字ラベル
+	--c-brand-cta    : #0b82a3; // CTA。Figmaのフッター側 #008e9f はここへ統合
+	--c-ink          : #222020; // ヘッダーのロゴ文字・本文の一部
+	--c-ink-title    : #222;    // CTAカードの見出し。Figmaの生値のまま採用する判断（2026-09-10）
+	--c-heading-alt  : #1e2e33; // h3見出し
+	--c-surface-alt  : #f7f7f7;
+	--c-surface-band : #ebebeb; // パンくずの帯
+	--c-required     : #ff442a; // フォームの必須ラベル
+	--c-placeholder  : #9e9e9e; // フォームの枠線・プレースホルダ
+	--c-text-mute    : #787878; // お取引の流れの本文。Text/Support(#555) より薄い別値
+	--c-border-drawer: #b6b6b6; // SPドロワーの区切り線
+	--c-text-off     : #c3c3c3; // 言語切替の非選択
+	--c-lang-current : #c4c4c4; // ヘッダーの言語切替の現在地（白背景のページ）。--c-text-off と1違い
+	--c-overlay-photo: rgba(0, 0, 0, .46); // 写真の上に重ねる黒（トップの技術力の帯）
+	--c-overlay-hover: rgba(0, 0, 0, .4);  // 写真にホバーで重ねる黒（トップの強み）
+	--c-surface-dark : #32343c; // 濃い帯（トップの買取原料）
+	--c-brand-dark   : #045268; // 「DOWA」のバッジ（トップの売却先を選ぶポイント）
+	--c-pdf          : #ff3131; // PDFリンクのアイコン
+	--c-bullet-mute  : #a4a4a4; // 書類の表（責任ある調達）の点。Figmaの生値
+
+	--color: var(--c-text-body);
+	--color-inverse: #fff;
+	--color-accent: var(--c-action);
+	--header-height: #{60/16+rem};
+	@include config.pc {
+		--header-height: #{120/16+rem};
+	}
+
+	// 余白
+	--gap: #{12/16+rem};
+	--padding-section: #{108/16+rem};
+	--padding-page: #{266/16+rem};
+	@include config.pc {
+		--gap: #{16/16+rem};
+		--padding-section: #{164/16+rem};
+		--padding-page: #{392/16+rem};
+	}
+}
+:root {
+	// sine
+	--easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+	--easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+	--easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+	// quad poser1
+	--easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+	--easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+	// cubic power2
+	--easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	--easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+	--easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+	// quart power3
+	--easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+	--easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+	--easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+
+	// quint power4
+	--easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+	--easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+	--easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+
+	// expo
+	--easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	--easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+	--easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+
+	// back
+	--easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+	--easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	--easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+	--duration: .3s;
+	--easeTheme: var(--easeOutSine);
+}
+
+// ドロワーは白地に濃い文字（Figma SP_MENU 3138-4759）なので .is-nav-open では色を反転しない
+.is-section-dark {
+	--color: #fff;
+}

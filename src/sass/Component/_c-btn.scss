@@ -1,0 +1,337 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	c-btn
+----------------------------------------------------*/
+
+// 色は --btn-bg / --btn-fg / --btn-line の3つで切り替える。
+// 既定はCTA色（--c-brand-cta）。色違いはモディファイアで上書きする。
+.c-btn,
+.c-btn-arrow {
+	--btn-bg  : var(--c-brand-cta);
+	--btn-fg  : var(--color-inverse);
+	--btn-line: transparent;
+}
+
+// 色モディファイア（.c-btn / .c-btn-arrow 共通）
+.c-btn--action,
+.c-btn-arrow--action {
+	--btn-bg: var(--c-action);
+}
+.c-btn--mid,
+.c-btn-arrow--mid {
+	--btn-bg: var(--c-brand-mid);
+}
+// 白地＋枠線。一覧・FAQの開閉ボタン
+.c-btn--outline,
+.c-btn-arrow--outline {
+	--btn-bg  : var(--c-surface);
+	--btn-fg  : var(--c-action);
+	--btn-line: var(--c-border);
+}
+// 白地。フッターなど濃い地の上
+.c-btn--white,
+.c-btn-arrow--white {
+	--btn-bg: var(--c-surface);
+	--btn-fg: var(--c-brand-cta);
+}
+
+/*  ラベル ＋ 矢印
+----------------------------------------------------*/
+.c-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 1px;
+
+	&__label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: math.div(50, 16) + rem;
+		padding-inline: math.div(30, 16) + rem;
+		border: 1px solid var(--btn-line);
+		border-radius: math.div(4, 16) + rem;
+		background: var(--btn-bg);
+		color: var(--btn-fg);
+		font-size: math.div(12, 16) + rem;
+		line-height: 1;
+		white-space: nowrap;
+	}
+
+	&__arrow {
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		width: math.div(50, 16) + rem;
+		height: math.div(50, 16) + rem;
+		border: 1px solid var(--btn-line);
+		border-radius: math.div(4, 16) + rem;
+		background: var(--btn-bg);
+		color: var(--btn-fg);
+
+		svg {
+			width: math.div(15, 16) + rem;
+			height: math.div(6, 16) + rem;
+			fill: currentColor;
+		}
+	}
+
+	// ヘッダーCTAなど。矢印を持たない小さいピル
+	// Figma: header_pc 3003-9074（角丸5。doc/design-tokens.md でも 5 = CTAボタン）
+	&--sm &__label {
+		height: math.div(40, 16) + rem;
+		padding-inline: math.div(20, 16) + rem;
+		border-radius: math.div(5, 16) + rem;
+	}
+}
+
+/*  大きいボタン（トップの「詳しくみる」）
+    矢印は .c-btn__arrow ではなく .c-btn-arrow--lg（SP 60 / PC 95・#ico_arrow_ne）を並べる。
+    ラベルと矢印の間は Figma SP 1.2 / PC 1.903 → .c-btn の 1px。字は Figma 15.316 / 24.357 → 切り捨て。
+    色は Figma PC #008e9f / SP #1f819c → どちらも CTA色（doc/design-tokens.md 2-3）
+    Figma: SP 3181-17795 / PC 3003-8972
+----------------------------------------------------*/
+.c-btn--lg .c-btn__label {
+	height: math.div(60, 16) + rem;
+	padding-inline: math.div(36, 16) + rem;
+	border-radius: math.div(2, 16) + rem; // Figma 2.523 → 切り捨て
+	font-size: math.div(15, 16) + rem;
+
+	@include config.pc {
+		height: math.div(95, 16) + rem;
+		padding-inline: math.div(57, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+		font-size: math.div(24, 16) + rem;
+	}
+}
+
+/*  中くらいのボタン（トップの買取原料の「詳しくみる」）
+    ラベル SP 60 / PC 75 ＋ 同じ高さの矢印（#ico_arrow_ne）。字は Figma 15.316 / 19.2 → 15 / 19。
+    色は Figma #1f819c → CTA色（doc/design-tokens.md 2-3）
+    Figma: SP 3181-17494 / PC 2323-5011
+----------------------------------------------------*/
+.c-btn--md .c-btn__label {
+	height: math.div(60, 16) + rem;
+	padding-inline: math.div(36, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+	font-size: math.div(15, 16) + rem;
+
+	@include config.pc {
+		height: math.div(75, 16) + rem;
+		padding-inline: math.div(45, 16) + rem;
+		border-radius: math.div(3, 16) + rem;
+		font-size: math.div(19, 16) + rem;
+	}
+}
+
+.c-btn--md .c-btn-arrow {
+	width: math.div(60, 16) + rem;
+	height: math.div(60, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+
+	@include config.pc {
+		width: math.div(75, 16) + rem;
+		height: math.div(75, 16) + rem;
+		border-radius: math.div(3, 16) + rem;
+	}
+
+	svg {
+		width: math.div(14, 16) + rem;
+		height: math.div(14, 16) + rem;
+		fill: none;
+		stroke: currentColor;
+
+		@include config.pc {
+			width: math.div(18, 16) + rem;
+			height: math.div(18, 16) + rem;
+		}
+	}
+}
+
+/*  矢印のみ
+----------------------------------------------------*/
+.c-btn-arrow {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(40, 16) + rem;
+	height: math.div(40, 16) + rem;
+	border: 1px solid var(--btn-line);
+	border-radius: math.div(4, 16) + rem;
+	background: var(--btn-bg);
+	color: var(--btn-fg);
+
+	svg {
+		width: math.div(15, 16) + rem;
+		height: math.div(6, 16) + rem;
+		fill: currentColor;
+	}
+}
+
+.c-btn-arrow--xs {
+	width: math.div(20, 16) + rem;
+	height: math.div(20, 16) + rem;
+
+	svg {
+		width: math.div(9, 16) + rem;
+		height: math.div(3, 16) + rem;
+	}
+}
+
+// 字形が三角（#ico_tri_d を右へ90°回す）。--xs と組み合わせる
+// Figma PC 2548-5524 / 2630-7128（20px・角丸4・Action/Primary。三角 5.6×4.8）
+// ※三角の塗りは Figma では白 86.7%。他の白抜きアイコンに合わせて不透明の白にしている
+.c-btn-arrow--tri svg {
+	width: math.div(4.8, 16) + rem;
+	height: math.div(5.6, 16) + rem;
+	transform: rotate(-90deg);
+}
+
+.c-btn-arrow--sm {
+	width: math.div(30, 16) + rem;
+	height: math.div(30, 16) + rem;
+}
+
+.c-btn-arrow--md {
+	width: math.div(50, 16) + rem;
+	height: math.div(50, 16) + rem;
+}
+
+// フッターの大ボタン。矢印の字形が別（#ico_arrow_ne）
+// Figma SP 3138-5143（60px・角丸2.523→2・アイコン14.5→14）/ PC 3003-9089（95.143→95・角丸4・アイコン23）
+.c-btn-arrow--lg {
+	width: math.div(60, 16) + rem;
+	height: math.div(60, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+
+	svg {
+		width: math.div(14, 16) + rem;
+		height: math.div(14, 16) + rem;
+		fill: none;
+		stroke: currentColor;
+	}
+
+	@include config.pc {
+		width: math.div(95, 16) + rem;
+		height: math.div(95, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+
+		svg {
+			width: math.div(23, 16) + rem;
+			height: math.div(23, 16) + rem;
+		}
+	}
+}
+
+/*  前後送り（スライダー等の操作ボタン）
+    SP 60（角丸2.523 → 2・字形14.5 → 14）/ PC 75（角丸3.153 → 3・字形25.55 → 25）
+    Figma: SP 3181-17718 / PC 3003-8930
+----------------------------------------------------*/
+// 矢印は #ico_arrow_ne（フッターの大ボタンと同じ字形）を回して使う。
+// Figmaのアセットも viewBox とストローク比が一致していたため、字形は追加しない。
+.c-btn-ctrl {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(60, 16) + rem;
+	height: math.div(60, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+	background: var(--c-brand-cta); // Figma #008e9f。doc/design-tokens.md でCTA色へ統合済み
+	color: var(--color-inverse);
+	cursor: pointer;
+
+	@include config.pc {
+		width: math.div(75, 16) + rem;
+		height: math.div(75, 16) + rem;
+		border-radius: math.div(3, 16) + rem;
+	}
+
+	svg {
+		display: block;
+		width: math.div(14, 16) + rem;
+		height: math.div(14, 16) + rem;
+		fill: none;
+		stroke: currentColor;
+
+		@include config.pc {
+			width: math.div(25, 16) + rem;
+			height: math.div(25, 16) + rem;
+		}
+	}
+}
+
+// ↗ の字形を回して ← / → にする
+.c-btn-ctrl--prev svg { transform: rotate(-135deg); }
+.c-btn-ctrl--next svg { transform: rotate(45deg); }
+
+// 前後ボタンの並び（間 SP 24 / PC 30）
+// Figma: SP 3181-17717 / PC 3003-8934
+.c-btn-ctrl-group {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: math.div(24, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(30, 16) + rem;
+	}
+}
+
+/*  ハンバーガー
+    Figma: SP 3138-4665（閉）/ 3138-4902（開）
+----------------------------------------------------*/
+// 24×1px のバー3本を4px間隔。開くと上下のバーが中央へ寄って ±20° に開き、中央のバーが消える。
+// 20° は Figma の×アセットの実測（24 × cos20° = 22.55 / 24 × sin20° = 8.21）から。
+//
+// 動きは blue-mates と同じ2段階。
+//   開く … 先に上下のバーが中央へ寄り（.2s）、寄りきってから回って×になる（.2s 遅れで .3s）
+//   閉じる … 回転は即座に戻し、上下に開く
+// 回転は ±20° ではなく ∓160° にしている（見た目の×は同じで、180° 近く回る）。
+// blue-mates の scale(-1, -1) rotate(∓20deg) と同じ回り方。
+// イージングは未決（後日検討）。差し替えは --menu-ease の1箇所で済むようにしてある。
+.c-btn-menu {
+	--menu-ease: var(--easeTheme);
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: math.div(64, 16) + rem;  // バー24 + 左右padding20
+	height: math.div(40, 16) + rem;
+	border-radius: math.div(5, 16) + rem;
+	background: var(--c-brand-cta);
+	cursor: pointer;
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: math.div(24, 16) + rem;
+		height: 1px;
+		background: var(--color-inverse);
+		translate: -50% -50%;
+		// 閉じるとき：回転は 0s で即座に戻し、上下に開く
+		transition: margin-top var(--duration) var(--menu-ease), rotate 0s, opacity var(--duration) var(--menu-ease);
+	}
+	span:nth-child(1) { margin-top: math.div(-4, 16) + rem; }
+	span:nth-child(3) { margin-top: math.div(4, 16) + rem; }
+
+	&.is-nav-open {
+		// 開くとき：中央へ寄せる（.2s）→ 寄りきってから回す（.2s 遅れで .3s）
+		span {
+			transition: margin-top .2s var(--menu-ease), rotate .3s .2s var(--menu-ease), opacity .2s var(--menu-ease);
+		}
+		span:nth-child(1) {
+			margin-top: 0;
+			rotate: 160deg; // 見た目は -20°
+		}
+		span:nth-child(2) {
+			opacity: 0;
+		}
+		span:nth-child(3) {
+			margin-top: 0;
+			rotate: -160deg; // 見た目は 20°
+		}
+	}
+}
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

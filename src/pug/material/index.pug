@@ -1,0 +1,38 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "買取原料"
+    - var pageClass = "page-material"
+    - var breadcrumb = "買取原料"
+
+block content
+
+    -
+        var materials = [
+            { title: "使用済み自動車触媒", desc: "缶出し済み、缶付きのどちらでも受入が可能です。缶出しのサービスも提供しています。" },
+            { title: "メタルハニカム", desc: "PGMを含むウォッシュコートが付着した金属製ハニカムにも対応。前処理でウォッシュコートを分離したうえで、サンプリング・分析を行います。" },
+            { title: "化学触媒", desc: "石油精製や化学製品の製造工程で使用された触媒にも対応。大規模なサンプリング・製錬設備により、10tを超える大ロットも柔軟に処理できます。" },
+            { title: "その他PGM含有原料、工場残渣", desc: "その他PGMを含む原料についても処理が可能です。サンプルをお送りいただいたうえで最適なサービスをご提案しますので、まずはお気軽にご相談ください。" }
+        ]
+
+    .p-material
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title 買取原料
+                    p.c-heading-page__label What we buy
+
+        section.p-material-body
+            .l-container
+                .p-material-list
+                    each m, i in materials
+                        if i > 0
+                            .c-line-dot(aria-hidden="true")
+                        .c-card-num
+                            .c-card-num__body
+                                p.c-card-num__num #0#{i + 1}
+                                .c-card-num__text
+                                    h2.c-card-num__title= m.title
+                                    p.c-card-num__desc= m.desc
+                            figure.c-card-num__figure
+                                img(src=img + "p-material-pic" + (i + 1) + ".webp" alt="" width=1458 height=998 loading=(i > 0 ? "lazy" : "eager"))

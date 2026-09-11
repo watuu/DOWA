@@ -1,0 +1,168 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	cm-policy　規程・方針の長文組み（個人情報保護方針・クッキーポリシー）
+	Figma: PC 2669-16247（1セクション）
+	クッキーポリシーは PC 2669-17770（本文）のみ。SPのアートボードが無いため、
+	SPは個人情報保護方針と同じ組み（このファイルの SP 値）をそのまま使う。
+	クッキーポリシーのFigmaは節の間隔などが個人情報保護方針と違うが、
+	同じ型として個人情報保護方針の値に統一している（doc/design-tokens.md 42）。
+
+	投稿本文（WPのエディタ出力）は .cm-post。こちらは
+	「見出し＋本文＋マーカー付き小見出し＋箇条書き」の決まった型を持つ静的ページ用。
+----------------------------------------------------*/
+.cm-policy {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(60, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(80, 16) + rem;
+	}
+
+	p {
+		font-size: math.div(16, 16) + rem;
+		line-height: 2;
+		color: var(--c-text-body);
+	}
+}
+
+// セクションは「見出し＋本文」のかたまりと「小見出しブロック群」を 40px 空けて並べる
+.cm-policy__section {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(40, 16) + rem;
+	}
+}
+
+// 見出しと本文。見出しの下だけ 24px 空け、段落どうしは詰める
+// （Figmaは複数段落が1つのテキストノードなので段落間の余白は無い）
+.cm-policy__head .cm-policy__title {
+	margin-bottom: math.div(16, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(24, 16) + rem;
+	}
+}
+
+// FigmaのA3コンポーネントは箱が 36px（30 × 1.2）で、文字だけ 1.4 相当ではみ出す作り。
+// 後続の位置を合わせるため箱に合わせて 1.2 にしている。
+// SPは Figma も 30px（PCと同じコンポーネント 2298-4087 の流用で、322pxのパネルからはみ出している）だが、
+// SPで30pxは大きすぎるため **24px に落とす判断**（2026-09-10・ユーザー指示）。
+.cm-policy__title {
+	font-size: math.div(24, 16) + rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: 0.03em; // h3見出しはプラス方向
+	color: var(--c-heading-alt);
+	text-decoration: underline;
+	text-decoration-thickness: 2px; // Figmaは約1.5px。ブラウザ既定の太さは太すぎる
+	text-underline-position: from-font; // Figmaも from-font
+
+	@include config.pc {
+		font-size: math.div(30, 16) + rem;
+	}
+}
+
+// 小見出し（マーカー付き）
+// SPは Figma も 24px（PCと同じコンポーネント 2298-4094 の流用）だが、
+// 見出しと同じ理由で **20px に落とす判断**（2026-09-10・ユーザー指示）。
+.cm-policy__subtitle {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	font-size: math.div(20, 16) + rem;
+	font-weight: 700;
+	line-height: 1.5;
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(24, 16) + rem;
+	}
+}
+
+// マーカーは共通の .c-marker（ドロワー・c-heading-marker と同じ #ico_marker）。
+// 字形（12px）を**1行目の中央**に置く。(行の高さ 1.5em − 12px) ÷ 2
+// FigmaのアセットはPC基準の 12×24 の箱で、字形が下半分に入っているだけ。
+// 箱の高さで合わせると文字サイズが変わったときにずれるので、行の中央から計算する。
+.cm-policy__subtitle .c-marker {
+	margin-top: calc((1.5em - #{math.div(12, 16) + rem}) / 2);
+}
+
+// 欧文だけの小見出し（クッキーポリシーの「Google Analytics」）
+// Figma 2669-17782 は Roboto Condensed Medium。欧文は Poppins へ読み替え、太さは Medium のまま
+.cm-policy__subtitle .u-font-en {
+	font-weight: 500;
+}
+
+// 前に1行ぶん空ける段落。Figmaは空行（lh2 の空の段落）で区切っている
+// Figma PC 2669-17780（クッキーポリシー「なお、当社は…」の前。ノードは3段落まとめて1つなので node-id 照合の対象にしない）
+.cm-policy__spaced {
+	margin-top: 2em;
+}
+
+/*  番号付き項目（共同利用の 01〜04）
+    Figma: PC 2669-16257（群）/ 2669-16258（1つ）
+--------------------------------------------------*/
+// 小見出し（.cm-policy__subtitle）とは別物。番号はベタ塗りのバッジで、
+// 見出しは 18px・CTA色、本文は 14px。
+.cm-policy__numbers {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(27, 16) + rem;
+}
+
+.cm-policy__number {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+
+	p {
+		font-size: math.div(14, 16) + rem;
+		line-height: 1.5;
+	}
+}
+
+.cm-policy__number-title {
+	display: flex;
+	align-items: center;
+	gap: math.div(5, 16) + rem;
+	font-size: math.div(18, 16) + rem;
+	font-weight: 700;
+	line-height: 1;
+	color: var(--c-action);
+}
+
+// 「01」のバッジ
+.cm-policy__no {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	padding: math.div(6, 16) + rem math.div(5, 16) + rem;
+	background: var(--c-action);
+	color: var(--color-inverse);
+	font-family: var(--font-en);
+	font-size: math.div(18, 16) + rem;
+	line-height: 1;
+}
+
+// 小見出し＋箇条書きのまとまり
+.cm-policy__blocks {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+}
+
+.cm-policy__block {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

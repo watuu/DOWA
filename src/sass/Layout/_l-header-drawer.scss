@@ -1,0 +1,175 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	ドロワー（SPのみ）
+	Figma: SP_MENU 3138-4759（中身は 3138-4965）
+----------------------------------------------------*/
+// 白地に濃い文字。ヘッダー（z-index 500）より下に敷き、ハンバーガーは出したままにする。
+// 開閉のモーションはFigmaに指定が無いため、blue-mates と同じ組み（パネルはフェード、
+// 中身は上から順にフェードインアップ）にしている。
+// イージングは未決（後日検討）。差し替えは --drawer-ease の1箇所で済むようにしてある。
+.l-header-drawer {
+	--drawer-ease: var(--easeTheme);
+	position: fixed;
+	inset: 0;
+	z-index: 1; // .l-header（z-index 500）の中。ロゴとハンバーガーは z-index 2 で上に出す
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity var(--duration) var(--drawer-ease), visibility var(--duration) var(--drawer-ease);
+	background: var(--c-surface);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+
+	@include config.pc {
+		display: none;
+	}
+
+	body.is-nav-open & {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&__wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: math.div(30, 16) + rem;
+		padding-inline: math.div(30, 16) + rem;
+		padding-top: math.div(125, 16) + rem; // ヘッダー（y20 + 40）の下から
+		padding-bottom: math.div(60, 16) + rem;
+	}
+}
+
+/*  開くときの演出（blue-mates と同じ）
+    中身を上から順にフェードインアップさせる。順番（--i）は common.js の globalMenu() が
+    「実際に出ている項目だけ」を数えて振る。
+    閉じるときは伏せた状態の指定（＝遅延なし）に戻るので、パネルのフェードアウトと一緒に消える
+----------------------------------------------------*/
+.l-header-drawer__item {
+	opacity: 0;
+	transform: translateY(math.div(20, 16) + rem);
+	transition: opacity var(--duration) var(--drawer-ease), transform var(--duration) var(--drawer-ease);
+	will-change: opacity, transform;
+}
+
+// パネルが出きるのを少し待ってから（.15s）、1項目ずつ .05s ずらして送り出す
+body.is-nav-open .l-header-drawer__item {
+	opacity: 1;
+	transform: none;
+	transition: opacity .7s var(--drawer-ease) calc(var(--i, 0) * .05s + .15s),
+				transform .7s var(--drawer-ease) calc(var(--i, 0) * .05s + .15s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.l-header-drawer__item {
+		transform: none;
+	}
+
+	body.is-nav-open .l-header-drawer__item {
+		transition-delay: 0s;
+	}
+}
+
+/*  ナビ
+----------------------------------------------------*/
+.l-header-drawer-nav {
+	width: 100%;
+
+	// 項目の並びは ul 側で持つ（nav に gap を置いても子が ul 1つなので効かない）
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: math.div(24, 16) + rem;
+	}
+
+	&__item {
+		border-bottom: 1px solid var(--c-border-drawer);
+		padding-bottom: math.div(24, 16) + rem;
+	}
+
+	&__item a {
+		display: flex;
+		align-items: center;
+		gap: math.div(10, 16) + rem;
+		font-size: math.div(28, 16) + rem;
+		font-weight: 700;
+		line-height: 1.4;
+		color: var(--c-ink);
+	}
+}
+
+/*  ドロワー内のCTA
+----------------------------------------------------*/
+.l-header-drawer-cta {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: math.div(20, 16) + rem;
+	border-radius: math.div(5, 16) + rem;
+	background: var(--c-brand-cta);
+	color: var(--color-inverse);
+	font-size: math.div(21, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+/*  言語切替（ヘッダーとは別サイズ。18px・+0.16em の横並び）
+----------------------------------------------------*/
+.l-header-drawer-lang {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+	font-family: var(--font-en);
+	font-size: math.div(18, 16) + rem;
+	line-height: 1;
+	letter-spacing: 0.16em;
+
+	&__current {
+		color: var(--c-ink);
+	}
+
+	&__other {
+		--color: var(--c-text-off);
+		color: var(--color);
+	}
+
+	&__line {
+		width: 1px;
+		height: math.div(18, 16) + rem;
+		background: var(--c-ink);
+	}
+}
+
+/*  ポリシーリンク
+----------------------------------------------------*/
+.l-header-drawer-policy {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(12, 16) + rem;
+	width: 100%;
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: math.div(5, 16) + rem;
+		font-size: math.div(14, 16) + rem;
+		line-height: 1.4;
+		color: var(--c-ink);
+	}
+
+	svg {
+		display: block;
+		flex-shrink: 0;
+		height: math.div(15, 16) + rem;
+		fill: currentColor;
+	}
+
+	&__item--cookie svg  { width: math.div(14, 16) + rem; }
+	&__item--privacy svg { width: math.div(13, 16) + rem; }
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

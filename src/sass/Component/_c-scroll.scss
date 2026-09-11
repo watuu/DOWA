@@ -1,0 +1,57 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	c-scroll
+----------------------------------------------------*/
+
+/*  横スクロール（幅の広い図を枠の中で横に送る。下に細いスクロールバー）
+    NPGMの技術のサンプリングの図（SP）。送る必要が無いとき（PC）はバーを出さない。
+    スクロールできることは ScrollHint（common.js の jsScrollX）で知らせる。
+    Figma: SP 3155-10578（図 825×326 を 362 の枠で送る → 間隔20 → 2px のバー）
+----------------------------------------------------*/
+.c-scroll-x {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+}
+
+// ネイティブのスクロールバーは消して、下の __bar で見せる（iOSでは細工できないため）
+.c-scroll-x__inner {
+	position: relative; // ScrollHint のアイコンの基準
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+// Figma 3155-10543：地が Border/Default、つまみが Text/Link
+.c-scroll-x__bar {
+	position: relative;
+	height: 2px;
+	overflow: hidden;
+	background: var(--c-border);
+}
+
+// 幅と位置は jsScrollX が「見えている幅 ÷ 全体の幅」「scrollLeft ÷ 見えている幅」で入れる
+.c-scroll-x__thumb {
+	display: block;
+	width: 0;
+	height: 100%;
+	background: var(--c-text-link);
+}
+
+.c-scroll-x:not(.is-scrollable) .c-scroll-x__bar {
+	display: none;
+}
+
+// ScrollHint のアイコン（Figma 3155-10545：110×76・黒75%・角丸5）。
+// 幅だけ Figma に合わせ、地・字形・文言はライブラリの既定（黒70%・120px）のまま
+.c-scroll-x .scroll-hint-icon {
+	left: calc(50% - #{math.div(55, 16) + rem});
+	width: math.div(110, 16) + rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

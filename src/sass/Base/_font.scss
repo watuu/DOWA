@@ -1,0 +1,39 @@
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	フォント
+----------------------------------------------------*/
+html {
+	font-size: 16px;
+	@include config.sp {
+		// FigmaのSPアートボードは全て402幅（SP_TOP / SP_FLOW / SP_MATERIAL …）。
+		// 基準を375にすると402で見たときに全体が 402/375 = 7.2% 大きく出る。
+		font-size: (16/402*100vw);
+	}
+	@include config.tab {
+		font-size: (16/750*100vw);
+	}
+	@include config.pc {
+		// font-size: (16/1440*100vw);
+		font-size: min(16px, #{16/1440*100vw} );
+	}
+	@include config.wide {
+		//font-size: (16*1920/1440+px);
+	}
+}
+body {
+	font-family: var(--font);
+	// Figmaの本文は Noto Sans JP:Medium が既定（Regular はCTAカードの説明文と
+	// フッターの会社名・コピーライトなど数箇所だけ）。500 を既定にして例外側で戻す。
+	font-weight: 500;
+	line-height: 1.5;
+	letter-spacing: var(--tracking-body);
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	word-wrap: break-word;
+	color: var(--color);
+}
+.serif {
+	font-family: var(--serif);
+}

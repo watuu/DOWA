@@ -1,0 +1,11 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	main
+----------------------------------------------------*/
+// ヘッダーは絶対配置で本文の上に乗る。
+// その分の余白は .cm-block-header-page（ページ見出しのラッパー）が持つ。
+.l-main {
+}

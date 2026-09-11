@@ -1,0 +1,330 @@
+{
+  "_": "個人情報保護方針。Figma: SP_PRIVACY_POLICY 3139-6678 / PC_PRIVACY_POLICY 2669-15831",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/privacy-policy/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c"
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 409,
+          "w": 1016
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 298,
+          "y": 479,
+          "w": 844,
+          "borderBottom": "1px solid rgb(158, 158, 158)"
+        },
+        {
+          "name": "h3",
+          "selector": ".cm-policy__title",
+          "fontSize": 30,
+          "lineHeight": 36,
+          "letterSpacing": "0.03em",
+          "color": "#1e2e33",
+          "_note": "Figmaのh3コンポーネントは箱が36（30×1.2）。文字は1.4相当ではみ出す作りなので箱に合わせている"
+        },
+        {
+          "name": "本文",
+          "selector": ".cm-policy p",
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40"
+        },
+        {
+          "name": "小見出し",
+          "selector": ".cm-policy__subtitle",
+          "fontSize": 24,
+          "fontWeight": "700",
+          "color": "#333d40"
+        },
+        {
+          "name": "箇条書き",
+          "selector": ".c-list-bullet > li",
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40",
+          "_note": "Figmaは 利用目的=32 / 安全管理=24 と不揃い。32に統一"
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 5748
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 6278
+        },
+        {
+          "name": "1節（利用目的）",
+          "selector": ".cm-policy__section",
+          "h": 1902
+        },
+        {
+          "name": "3節（第三者提供）",
+          "selector": ".cm-policy__section:nth-child(3)",
+          "h": 156
+        },
+        {
+          "name": "4節（委託）",
+          "selector": ".cm-policy__section:nth-child(4)",
+          "h": 124
+        },
+        {
+          "name": "h3の箱",
+          "selector": ".cm-policy__title",
+          "h": 36
+        },
+        {
+          "name": "箇条書きの行",
+          "selector": ".c-list-bullet > li",
+          "h": 32
+        },
+        {
+          "name": "小見出しのマーカー",
+          "selector": ".cm-policy__subtitle .c-marker",
+          "w": 12,
+          "h": 12,
+          "_note": "字形は12×12。Figmaのアセットは 12×24 の箱の下半分に字形が入っているが、実装は字形だけを持ち、1行目の中央に置いている（PCでは結果が一致する）"
+        },
+        {
+          "name": "小見出し",
+          "selector": ".cm-policy__subtitle",
+          "h": 36,
+          "fontSize": 24,
+          "fontWeight": "700",
+          "color": "#333d40"
+        },
+        {
+          "name": "5節（共同利用）",
+          "selector": ".cm-policy__section:nth-child(5)",
+          "h": 615,
+          "_note": "Figma 608。見出し群→番号群の間隔が Figma はここだけ 30（他節は40）。40に統一しているため +7"
+        },
+        {
+          "name": "番号ブロック群",
+          "selector": ".cm-policy__numbers",
+          "h": 419
+        },
+        {
+          "name": "番号ブロック01",
+          "selector": ".cm-policy__number",
+          "h": 82
+        },
+        {
+          "name": "番号の見出し行",
+          "selector": ".cm-policy__number-title",
+          "h": 30,
+          "fontSize": 18,
+          "fontWeight": "700",
+          "color": "#15819e"
+        },
+        {
+          "name": "番号バッジ",
+          "selector": ".cm-policy__no",
+          "h": 30,
+          "fontSize": 18,
+          "background": "#15819e",
+          "color": "#ffffff"
+        },
+        {
+          "name": "番号ブロックの本文",
+          "selector": ".cm-policy__number p",
+          "fontSize": 14,
+          "lineHeight": 21,
+          "color": "#333d40"
+        },
+        {
+          "name": "PDFリンク",
+          "selector": ".c-link-pdf",
+          "h": 21,
+          "fontSize": 14,
+          "color": "#333d40"
+        },
+        {
+          "name": "PDFアイコン",
+          "selector": ".c-link-pdf__icon",
+          "w": 16,
+          "h": 16
+        },
+        {
+          "name": "制定日・所在地",
+          "selector": ".p-privacy-imprint",
+          "w": 394,
+          "h": 132,
+          "_note": "Figma 2669-17842（844×128・右揃え）は 2669-16318（連絡先）と73px重なった状態で置かれている。左右に並ぶ想定と解釈し、右端を 1142（298+844）にそろえた",
+          "x": 748
+        },
+        {
+          "name": "窓口の行（連絡先＋制定日）",
+          "selector": ".p-privacy-contact",
+          "x": 298,
+          "w": 844,
+          "h": 132,
+          "_note": "PCは連絡先（左）と制定日（右）を同じ行に置き、高さは stretch でそろえる"
+        },
+        {
+          "name": "連絡先",
+          "selector": ".p-privacy-contact > p",
+          "x": 298,
+          "h": 132,
+          "_note": "文字は2行（65px）だが、箱は制定日と同じ 132px に伸びる"
+        },
+        {
+          "name": "h3の下線",
+          "selector": ".cm-policy__title",
+          "textDecorationThickness": 2,
+          "textDecorationLine": "underline"
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 248,
+          "w": 362
+        },
+        {
+          "name": "h3",
+          "selector": ".cm-policy__title",
+          "fontSize": 24,
+          "letterSpacing": "0.03em",
+          "h": 28.8,
+          "_note": "SPは Figma も PC と同じ 30px（コンポーネント 2298-4087 の流用）だが、SPで30pxは大きすぎるため 24px に落とす判断（2026-09-10・ユーザー指示）。箱は 24×1.2＝28.8"
+        },
+        {
+          "name": "小見出し",
+          "selector": ".cm-policy__subtitle",
+          "fontSize": 20,
+          "_note": "SPは Figma も PC と同じ 24px（コンポーネント 2298-4094 の流用）だが、見出しと同じ理由で 20px に落とす判断（2026-09-10・ユーザー指示）"
+        },
+        {
+          "name": "小見出しの箱（2行）",
+          "selector": ".cm-policy__subtitle",
+          "index": 0,
+          "h": 60,
+          "fontWeight": "700",
+          "color": "#333d40",
+          "lineHeight": 30,
+          "_note": "20×1.5＝30 の2行。Figmaは 24px で 72px"
+        },
+        {
+          "name": "小見出しのマーカー",
+          "selector": ".cm-policy__subtitle .c-marker",
+          "w": 12,
+          "h": 12,
+          "_note": "字形12px。1行目（30px）の中央 = 上から9px"
+        },
+        {
+          "name": "箇条書き",
+          "selector": ".c-list-bullet > li",
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40"
+        },
+        {
+          "name": "箇条書きの点",
+          "selector": ".c-list-bullet > li",
+          "index": 0,
+          "h": 96,
+          "_note": "Figma 3139-6701 は 3行 96px。点は1行目の中央（上から13.5px）"
+        },
+        {
+          "name": "窓口の行（連絡先＋制定日）",
+          "selector": ".p-privacy-contact",
+          "x": 40,
+          "w": 322,
+          "_note": "SPは縦積み。間隔24（Figma 3139-6922 → 3139-6923）"
+        },
+        {
+          "name": "制定日・所在地",
+          "selector": ".p-privacy-imprint",
+          "x": 40,
+          "w": 322,
+          "fontSize": 16,
+          "lineHeight": 32,
+          "color": "#333d40",
+          "_note": "Figma 3139-6923（322×160・右揃え）"
+        },
+        {
+          "name": "h3の下線",
+          "selector": ".cm-policy__title",
+          "textDecorationThickness": 2,
+          "textDecorationLine": "underline"
+        }
+      ]
+    }
+  },
+  "_known": "Figma内の不揃いを統一した分だけ縦に長い。①箇条書きの行が 利用目的=32 / 安全管理・開示請求=24 → 32に統一（+176）②セクション内の間隔が 40/30/20 → 40に統一（+47）③Figmaは本文フレームと制定日ブロックが73px重なっているが、実装は重ねず60px空けている ④SPの節見出し 30→24 / 小見出し 24→20 に落としている（Figmaと違う。2026-09-10 ユーザー判断） ⑤窓口の連絡先と制定日ブロックはPCで左右に並べた（Figmaは73px重なった状態で置かれている）"
+}

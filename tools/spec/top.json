@@ -1,0 +1,1452 @@
+{
+  "_": "トップ。Figma: SP_TOP 3012-9710 / PC_TOP 2323-5003。全セクション実装済み（2026-09-11）。baseline は技術力の帯",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "baseline": {
+        "selector": ".p-top-technology",
+        "y": 8391
+      },
+      "items": [
+        {
+          "name": "MV",
+          "selector": ".p-top-mv",
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 900,
+          "background": "#f7f7f7",
+          "_note": "動画 1229 ＋ 8 ＋ 画像列 203"
+        },
+        {
+          "name": "MV・動画",
+          "selector": ".p-top-mv__main",
+          "x": 0,
+          "y": 0,
+          "w": 1229,
+          "h": 900,
+          "_note": "Figma 2323-5312（動画は未書き出しのため静止画）"
+        },
+        {
+          "name": "MV・コピー",
+          "selector": ".p-top-mv__copy",
+          "x": 40,
+          "y": 642,
+          "h": 228,
+          "_note": "Figma 2942-8015"
+        },
+        {
+          "name": "MV・見出し",
+          "selector": ".p-top-mv__title",
+          "h": 176,
+          "fontSize": 80,
+          "lineHeight": 88,
+          "fontWeight": "700",
+          "color": "#ffffff",
+          "_note": "Figma 2942-8016"
+        },
+        {
+          "name": "MV・本文",
+          "selector": ".p-top-mv__lead",
+          "y": 838,
+          "h": 32.4,
+          "fontSize": 18,
+          "lineHeight": 32.4,
+          "color": "#ffffff",
+          "_note": "Figma 2942-8017（x42。左に2）"
+        },
+        {
+          "name": "MV・画像列",
+          "selector": ".p-top-mv__gallery",
+          "x": 1237,
+          "y": 0,
+          "w": 203,
+          "h": 900,
+          "_note": "Figma 2338-6393"
+        },
+        {
+          "name": "MV・画像",
+          "selector": ".p-top-mv__item",
+          "index": 0,
+          "x": 1237,
+          "w": 203,
+          "h": 203,
+          "_note": "Figma 2338-6388（縦にループで動くので y は見ない）"
+        },
+        {
+          "name": "言語切替・現在地（MV の上）",
+          "selector": ".l-header-lang__current",
+          "color": "#c4c4c4",
+          "_note": "Figma I3003-9404;3003-9077"
+        },
+        {
+          "name": "言語切替・罫線（MV の上）",
+          "selector": ".l-header-lang__line",
+          "w": 16,
+          "h": 1,
+          "background": "#222020",
+          "_note": "Figma I3003-9404;3003-9078"
+        },
+        {
+          "name": "ポイントの帯",
+          "selector": ".p-top-point",
+          "x": 0,
+          "y": 900,
+          "w": 1440,
+          "h": 603,
+          "background": "#f7f7f7",
+          "_note": "MV の下端 900 → 帯の左半分の下端 1503（3003-9024）。右半分の 62 は ::after"
+        },
+        {
+          "name": "ポイント・見出し（中央）",
+          "selector": ".p-top-point .c-heading-section--center",
+          "w": 1360,
+          "h": 108,
+          "_note": "Figma 2942-8109（391×108。Figma は中心が 715.5 で帯の中央より4.5左）"
+        },
+        {
+          "name": "ポイント・和文ラベル",
+          "selector": ".p-top-point .c-heading-section__label",
+          "y": 1005,
+          "fontSize": 16,
+          "color": "#13728c",
+          "_note": "Figma 2942-8110（中央）"
+        },
+        {
+          "name": "ポイント・英字",
+          "selector": ".p-top-point .c-heading-section__title",
+          "y": 1049,
+          "h": 64,
+          "fontSize": 80,
+          "_note": "Figma 2942-8111"
+        },
+        {
+          "name": "ポイントの一覧",
+          "selector": ".p-top-point__list",
+          "x": 297,
+          "y": 1143,
+          "w": 847,
+          "h": 170,
+          "_note": "Figma 2986-8248"
+        },
+        {
+          "name": "ポイント1",
+          "selector": ".p-top-point__item",
+          "index": 0,
+          "x": 297,
+          "y": 1143,
+          "w": 410,
+          "h": 85,
+          "fontSize": 32,
+          "color": "#222020",
+          "_note": "Figma 2986-8250"
+        },
+        {
+          "name": "ポイント3（右列）",
+          "selector": ".p-top-point__item",
+          "index": 2,
+          "x": 734,
+          "y": 1143,
+          "w": 410,
+          "h": 85,
+          "_note": "Figma 2986-8265"
+        },
+        {
+          "name": "ポイント2（左列の2行目）",
+          "selector": ".p-top-point__item",
+          "index": 1,
+          "y": 1228,
+          "_note": "Figma 2986-8257"
+        },
+        {
+          "name": "ポイントの数字",
+          "selector": ".p-top-point__num",
+          "index": 0,
+          "x": 317,
+          "w": 30,
+          "h": 44,
+          "_note": "Figma 2986-8251（29.25×43.5。書き出しは 30×44）"
+        },
+        {
+          "name": "DOWA の一文",
+          "selector": ".p-top-point__closing",
+          "y": 1372.3,
+          "h": 52,
+          "fontSize": 33,
+          "fontWeight": "700",
+          "color": "#222020",
+          "_note": "Figma 2986-8127（33.277 → 33）"
+        },
+        {
+          "name": "DOWA のバッジ",
+          "selector": ".p-top-point__badge",
+          "x": 347,
+          "h": 52,
+          "borderRadius": 3,
+          "background": "#045268",
+          "color": "#ffffff",
+          "fontFamily": "Poppins",
+          "_note": "Figma 2986-8126（122×52。3.803 → 3）"
+        },
+        {
+          "name": "強みの帯",
+          "selector": ".p-top-strength",
+          "x": 0,
+          "y": 1503,
+          "w": 1440,
+          "h": 1259,
+          "_note": "帯の左半分の下端 1503 → 濃い帯 2762"
+        },
+        {
+          "name": "強み・和文ラベル",
+          "selector": ".p-top-strength .c-heading-section__label",
+          "y": 1626,
+          "_note": "Figma 2942-8089"
+        },
+        {
+          "name": "強み・リード見出しとリード",
+          "selector": ".p-top-strength__intro",
+          "h": 172.4,
+          "_note": "Figma 2942-8098（172）"
+        },
+        {
+          "name": "強み・リード見出し",
+          "selector": ".p-top-strength__title",
+          "y": 1769,
+          "h": 98,
+          "fontSize": 35,
+          "lineHeight": 49,
+          "fontWeight": "700",
+          "color": "#222020",
+          "_note": "Figma 2323-5275"
+        },
+        {
+          "name": "強み・リード",
+          "selector": ".p-top-strength__lead",
+          "y": 1887,
+          "h": 54.4,
+          "fontSize": 16,
+          "lineHeight": 27.2,
+          "fontWeight": "400",
+          "color": "#222020",
+          "_note": "Figma 2323-5276（54）"
+        },
+        {
+          "name": "強みの一覧",
+          "selector": ".p-top-strength__list",
+          "x": 40,
+          "y": 1986,
+          "w": 1360,
+          "h": 586,
+          "_note": "Figma 3003-8874 ほか（x39・440 × 3・間20）"
+        },
+        {
+          "name": "強み1",
+          "selector": ".p-top-strength__item",
+          "index": 0,
+          "x": 40,
+          "w": 440,
+          "h": 586,
+          "_note": "写真540 ＋ 12 ＋ 工程名34"
+        },
+        {
+          "name": "強み1・写真",
+          "selector": ".p-top-strength__figure",
+          "index": 0,
+          "w": 440,
+          "h": 540,
+          "_note": "Figma 3003-8874"
+        },
+        {
+          "name": "強み1・工程名",
+          "selector": ".p-top-strength__name",
+          "index": 0,
+          "y": 2538,
+          "h": 33.6,
+          "fontSize": 24,
+          "lineHeight": 33.6,
+          "color": "#222020",
+          "_note": "Figma 2942-8105"
+        },
+        {
+          "name": "強み1・数字",
+          "selector": ".p-top-strength__num",
+          "index": 0,
+          "x": 373,
+          "y": 2441,
+          "w": 67,
+          "h": 120,
+          "_note": "Figma 2986-8281（x372・y2441.7）"
+        },
+        {
+          "name": "強み・ホバーの説明（ふだんは消えている）",
+          "selector": ".p-top-strength__detail",
+          "index": 0,
+          "w": 440,
+          "h": 540,
+          "background": "rgba(0, 0, 0, 0.4)",
+          "_note": "Figma バリアント2 3003-8868"
+        },
+        {
+          "name": "強み・ホバーの工程名",
+          "selector": ".p-top-strength__detail-title",
+          "index": 0,
+          "y": 2134,
+          "fontSize": 24,
+          "lineHeight": 43.2,
+          "color": "#ffffff",
+          "_note": "Figma 3003-8872（写真の上から148）",
+          "h": 43.2
+        },
+        {
+          "name": "強み・ホバーの説明文",
+          "selector": ".p-top-strength__detail-text",
+          "index": 0,
+          "w": 340,
+          "fontSize": 16,
+          "lineHeight": 28.8,
+          "_note": "Figma 3003-8876"
+        },
+        {
+          "name": "買取原料の帯",
+          "selector": ".p-top-what",
+          "x": 0,
+          "y": 2762,
+          "w": 1440,
+          "h": 2161,
+          "background": "#32343c",
+          "_note": "Figma 2986-8771・3003-9023"
+        },
+        {
+          "name": "買取原料・和文ラベル",
+          "selector": ".p-top-what .c-heading-section__label",
+          "x": 40,
+          "y": 2832,
+          "color": "#13728c",
+          "_note": "Figma 2942-8107 は #1f819c → --c-brand-mid（見出しの上罫線と余白30は落としている）"
+        },
+        {
+          "name": "買取原料・リード",
+          "selector": ".p-top-what__lead",
+          "x": 40,
+          "y": 2984,
+          "h": 21.6,
+          "fontSize": 18,
+          "color": "#ffffff",
+          "_note": "Figma 2323-5010（22）"
+        },
+        {
+          "name": "買取原料1（左列）",
+          "selector": ".p-top-what__card",
+          "index": 0,
+          "x": 40,
+          "y": 3086,
+          "w": 664,
+          "h": 754,
+          "_note": "Figma 2323-5297"
+        },
+        {
+          "name": "買取原料1・写真",
+          "selector": ".p-top-what__figure",
+          "index": 0,
+          "w": 664,
+          "h": 664,
+          "_note": "Figma 2323-5298"
+        },
+        {
+          "name": "買取原料1・英字",
+          "selector": ".p-top-what__en",
+          "index": 0,
+          "y": 3774,
+          "h": 14,
+          "fontSize": 14,
+          "fontFamily": "Poppins",
+          "color": "#13728c",
+          "_note": "Figma 2323-5300（#1f819c → --c-brand-mid）"
+        },
+        {
+          "name": "買取原料1・和文",
+          "selector": ".p-top-what__name",
+          "index": 0,
+          "y": 3808,
+          "h": 32,
+          "fontSize": 32,
+          "letterSpacing": "-0.05em",
+          "color": "#ffffff",
+          "_note": "Figma 2323-5301"
+        },
+        {
+          "name": "買取原料3（左列の2枚目）",
+          "selector": ".p-top-what__card",
+          "index": 1,
+          "y": 3920,
+          "_note": "Figma 2323-5307（間80）"
+        },
+        {
+          "name": "買取原料2（右列）",
+          "selector": ".p-top-what__card",
+          "index": 2,
+          "x": 736,
+          "y": 2984,
+          "w": 664,
+          "_note": "Figma 2323-5302（リードの上端から）"
+        },
+        {
+          "name": "買取原料4",
+          "selector": ".p-top-what__card",
+          "index": 3,
+          "x": 736,
+          "y": 3818,
+          "_note": "Figma 2323-5292"
+        },
+        {
+          "name": "詳しくみる",
+          "selector": ".c-btn--md",
+          "x": 1137.5,
+          "y": 4657.4,
+          "w": 262.5,
+          "h": 75,
+          "_note": "Figma 2323-5011"
+        },
+        {
+          "name": "詳しくみる・ラベル",
+          "selector": ".c-btn--md .c-btn__label",
+          "w": 186,
+          "h": 75,
+          "fontSize": 19,
+          "background": "#0b82a3",
+          "_note": "Figma 2323-5012（19.2 → 19・#1f819c → CTA色）"
+        },
+        {
+          "name": "詳しくみる・矢印",
+          "selector": ".c-btn--md .c-btn-arrow",
+          "w": 75,
+          "h": 75,
+          "borderRadius": 3,
+          "_note": "Figma 2323-5014"
+        },
+        {
+          "name": "特長の帯",
+          "selector": ".p-top-feature",
+          "x": 0,
+          "y": 4923,
+          "w": 1440,
+          "h": 1570,
+          "_note": "前の濃い帯（2986-8771）の下端 4923 → Voice の帯の左半分 6493"
+        },
+        {
+          "name": "特長・和文ラベル",
+          "selector": ".p-top-feature .c-heading-section__label",
+          "x": 40,
+          "y": 5013,
+          "fontSize": 16,
+          "color": "#13728c",
+          "_note": "Figma 2986-8342（見出しの上罫線と余白30は落としている）"
+        },
+        {
+          "name": "特長・英字",
+          "selector": ".p-top-feature .c-heading-section__title",
+          "y": 5057,
+          "h": 64,
+          "fontSize": 80,
+          "_note": "Figma 2986-8343"
+        },
+        {
+          "name": "特長・リード",
+          "selector": ".p-top-feature__lead",
+          "x": 40,
+          "y": 5161,
+          "w": 335,
+          "h": 129.6,
+          "fontSize": 18,
+          "lineHeight": 32.4,
+          "color": "#222020",
+          "_note": "Figma 2986-8344（箱128）。PCは sticky"
+        },
+        {
+          "name": "特長・行1",
+          "selector": ".c-card-feature",
+          "index": 0,
+          "x": 554,
+          "y": 5161,
+          "w": 762,
+          "h": 250,
+          "_note": "Figma 2323-5088"
+        },
+        {
+          "name": "特長・写真1",
+          "selector": ".c-card-feature__figure",
+          "index": 0,
+          "x": 554,
+          "w": 360,
+          "h": 250,
+          "_note": "Figma 2323-5089"
+        },
+        {
+          "name": "特長・番号1",
+          "selector": ".c-card-feature .c-line-num",
+          "index": 0,
+          "x": 954,
+          "y": 5161,
+          "w": 362,
+          "h": 26,
+          "fontSize": 12,
+          "fontFamily": "Poppins",
+          "fontWeight": "600",
+          "color": "#13728c",
+          "borderBottom": "1px solid #13728c",
+          "_note": "Figma 2986-8594"
+        },
+        {
+          "name": "特長・見出しと本文1",
+          "selector": ".c-card-feature__text",
+          "index": 0,
+          "x": 954,
+          "y": 5278,
+          "h": 132.4,
+          "_note": "Figma 2986-8595（133・写真の下端にそろう）"
+        },
+        {
+          "name": "特長・見出し1",
+          "selector": ".c-card-feature__title",
+          "index": 0,
+          "h": 36,
+          "fontSize": 24,
+          "lineHeight": 36,
+          "fontWeight": "700",
+          "color": "#222020",
+          "_note": "Figma 2986-8592"
+        },
+        {
+          "name": "特長・本文1",
+          "selector": ".c-card-feature__desc",
+          "index": 0,
+          "fontSize": 16,
+          "lineHeight": 28.8,
+          "fontWeight": "400",
+          "color": "#787878",
+          "_note": "Figma 2323-5092 は #838383（単発の色）→ --c-text-mute（3行・箱は 133 − 見出し36 − 10）",
+          "h": 86.4
+        },
+        {
+          "name": "特長・行4",
+          "selector": ".c-card-feature",
+          "index": 3,
+          "y": 6031,
+          "h": 250,
+          "_note": "Figma 2986-8615（行の間40）"
+        },
+        {
+          "name": "Voice の帯",
+          "selector": ".p-top-voice",
+          "x": 0,
+          "y": 6493,
+          "w": 1440,
+          "background": "#f7f7f7",
+          "_note": "Figma 2323-5109（左半分の上端）。右半分の 82 は .p-top-feature::after"
+        },
+        {
+          "name": "Voice・和文ラベル",
+          "selector": ".p-top-voice .c-heading-section__label",
+          "x": 40,
+          "y": 6605,
+          "_note": "Figma 2986-8635（x39）"
+        },
+        {
+          "name": "Voice・スライダー",
+          "selector": ".p-top-voice__slider",
+          "x": 40,
+          "y": 6783,
+          "h": 757,
+          "_note": "Figma 2323-5146（いちばん高いカード）"
+        },
+        {
+          "name": "Voice・カード1",
+          "selector": ".swiper-slide-active .c-card-voice",
+          "x": 40,
+          "y": 6783,
+          "w": 550,
+          "h": 757,
+          "borderRadius": 5,
+          "background": "#ffffff",
+          "_note": "Figma 2323-5157"
+        },
+        {
+          "name": "Voice・写真1",
+          "selector": ".swiper-slide-active .c-card-voice__figure",
+          "x": 80,
+          "y": 6823,
+          "w": 470,
+          "h": 340,
+          "borderRadius": 5,
+          "_note": "Figma 2323-5158"
+        },
+        {
+          "name": "Voice・番号1",
+          "selector": ".swiper-slide-active .c-line-num",
+          "y": 7193,
+          "h": 26,
+          "_note": "Figma 3003-8911"
+        },
+        {
+          "name": "Voice・見出し1",
+          "selector": ".swiper-slide-active .c-card-voice__title",
+          "y": 7249,
+          "fontSize": 26,
+          "lineHeight": 39,
+          "fontWeight": "700",
+          "color": "#0b82a3",
+          "_note": "Figma 2323-5162（#008e9f → CTA色）。1行39 ＋ 下15",
+          "h": 54
+        },
+        {
+          "name": "Voice・本文1",
+          "selector": ".swiper-slide-active .c-card-voice__text",
+          "fontSize": 16,
+          "lineHeight": 28.8,
+          "color": "#222020",
+          "_note": "Figma 2323-5164（5行）",
+          "h": 144
+        },
+        {
+          "name": "Voice・お客様名1",
+          "selector": ".swiper-slide-active .c-card-voice__client",
+          "fontSize": 18,
+          "lineHeight": 32.4,
+          "color": "#222020",
+          "_note": "Figma 2323-5167",
+          "h": 32.4
+        },
+        {
+          "name": "Voice・カード2の位置",
+          "selector": ".swiper-slide-next .c-card-voice",
+          "x": 620,
+          "y": 6783,
+          "w": 550,
+          "h": 641.4,
+          "_note": "Figma 2323-5147 は枠が 671 固定で、中身（余白40・写真340・30・番号26・30・見出しとお客様名135・余白40）は 641。中身の高さにした"
+        },
+        {
+          "name": "前後ボタン",
+          "selector": ".p-top-voice__ctrl",
+          "y": 7560,
+          "h": 75,
+          "_note": "Figma 3003-8934（x625。帯の中央に置いたので x630）"
+        },
+        {
+          "name": "前後ボタン1つ",
+          "selector": ".p-top-voice__ctrl .c-btn-ctrl",
+          "index": 0,
+          "w": 75,
+          "h": 75,
+          "borderRadius": 3,
+          "background": "#0b82a3",
+          "_note": "Figma 3003-8930"
+        },
+        {
+          "name": "新着情報の帯",
+          "selector": ".p-top-news",
+          "x": 0,
+          "y": 7757,
+          "w": 1440,
+          "h": 634,
+          "background": "#f7f7f7",
+          "_note": "前後ボタンの下 122 から技術力の帯まで（新着情報 2323-5110 の上端 7757 → 8391）"
+        },
+        {
+          "name": "新着情報",
+          "selector": ".p-top-news__inner",
+          "x": 297,
+          "y": 7757,
+          "w": 846,
+          "h": 478.6,
+          "_note": "Figma 2323-5110 は 481。3件目だけ行間 1.8（2323-5135）のぶん -2.2"
+        },
+        {
+          "name": "新着情報・見出し",
+          "selector": ".p-top-news__title",
+          "h": 44.8,
+          "fontSize": 32,
+          "lineHeight": 44.8,
+          "letterSpacing": "0.02em",
+          "color": "#13728c",
+          "_note": "Figma 2323-5112"
+        },
+        {
+          "name": "お知らせ1件",
+          "selector": ".c-card-news--outline",
+          "index": 0,
+          "y": 7811.8,
+          "w": 846,
+          "h": 104.6,
+          "borderBottom": "1px solid #d9d9d9",
+          "_note": "Figma 2323-5115（罫線 #d1d1d1 → --c-border）"
+        },
+        {
+          "name": "お知らせ・日付",
+          "selector": ".c-card-news--outline .c-card-news__date",
+          "index": 0,
+          "fontSize": 16,
+          "color": "#0b82a3",
+          "_note": "Figma 2323-5118"
+        },
+        {
+          "name": "お知らせ・タグ",
+          "selector": ".c-card-news--outline .c-card-news__tag",
+          "index": 0,
+          "h": 20,
+          "fontSize": 12,
+          "borderRadius": 4,
+          "color": "#0b82a3",
+          "_note": "Figma 2323-5119（線だけ）"
+        },
+        {
+          "name": "お知らせ・タイトル",
+          "selector": ".c-card-news--outline .c-card-news__title",
+          "index": 0,
+          "fontSize": 21,
+          "lineHeight": 33.6,
+          "color": "#222020",
+          "_note": "Figma 2323-5121"
+        },
+        {
+          "name": "一覧をみる",
+          "selector": ".c-link-arrow--lg",
+          "x": 969,
+          "y": 8163,
+          "w": 175,
+          "h": 75,
+          "_note": "Figma 3003-8965"
+        },
+        {
+          "name": "一覧をみる・文字",
+          "selector": ".c-link-arrow--lg .c-link-arrow__label",
+          "fontSize": 18,
+          "color": "#0b82a3",
+          "_note": "Figma 3003-8966"
+        },
+        {
+          "name": "一覧をみる・矢印",
+          "selector": ".c-link-arrow--lg .c-link-arrow__arrow",
+          "w": 75,
+          "h": 75,
+          "borderRadius": 3,
+          "background": "#0b82a3",
+          "_note": "Figma 3003-8967"
+        },
+        {
+          "name": "技術力の帯",
+          "selector": ".p-top-technology",
+          "x": 0,
+          "y": 8391,
+          "w": 1440,
+          "h": 900,
+          "_note": "Figma 2323-5188"
+        },
+        {
+          "name": "写真",
+          "selector": ".p-top-technology__bg",
+          "w": 1440,
+          "h": 900,
+          "_note": "Figma 2323-5189"
+        },
+        {
+          "name": "FROM",
+          "selector": ".p-top-technology__route span",
+          "index": 0,
+          "x": 40,
+          "y": 8443,
+          "h": 25.2,
+          "fontSize": 21,
+          "lineHeight": 25.2,
+          "letterSpacing": "0.04em",
+          "fontFamily": "Poppins",
+          "fontWeight": "600",
+          "color": "#ffffff",
+          "_note": "Figma 2323-5191（lh1.19 → 1.2）"
+        },
+        {
+          "name": "AKITA（中央）",
+          "selector": ".p-top-technology__route span",
+          "index": 1,
+          "x": 687,
+          "y": 8443,
+          "_note": "Figma 2323-5192（中心 720.5）"
+        },
+        {
+          "name": "TO THE WORLD（右端）",
+          "selector": ".p-top-technology__route span",
+          "index": 2,
+          "x": 1233,
+          "y": 8443,
+          "_note": "Figma 2323-5193（右端 1400。Poppins の字幅で幅 167 → 163）"
+        },
+        {
+          "name": "英字ラベル",
+          "selector": ".p-top-technology__label",
+          "x": 40,
+          "y": 8910,
+          "h": 25.2,
+          "fontSize": 21,
+          "letterSpacing": "0.04em",
+          "fontFamily": "Poppins",
+          "color": "#ffffff",
+          "_note": "Figma 3003-8981"
+        },
+        {
+          "name": "見出し",
+          "selector": ".p-top-technology__title",
+          "x": 40,
+          "y": 8944,
+          "h": 120,
+          "fontSize": 40,
+          "lineHeight": 60,
+          "fontWeight": "700",
+          "color": "#ffffff",
+          "_note": "Figma 2323-5194（2行）"
+        },
+        {
+          "name": "本文",
+          "selector": ".p-top-technology__desc",
+          "x": 790,
+          "y": 8957,
+          "w": 610,
+          "h": 115.2,
+          "fontSize": 16,
+          "lineHeight": 28.8,
+          "letterSpacing": "-0.01em",
+          "color": "#ffffff",
+          "_note": "Figma 2323-5190（帯の中央 +70・4行・箱116）"
+        },
+        {
+          "name": "ボタン",
+          "selector": ".c-btn--lg",
+          "x": 1068,
+          "y": 9115,
+          "w": 332.2,
+          "h": 95,
+          "_note": "Figma 3003-8972 は x1052（右端 1385）。本文の右端 1400 にそろえた（doc/design-tokens.md 6）"
+        },
+        {
+          "name": "ボタンのラベル",
+          "selector": ".c-btn--lg .c-btn__label",
+          "w": 236.2,
+          "h": 95,
+          "fontSize": 24,
+          "borderRadius": 4,
+          "background": "#0b82a3",
+          "color": "#ffffff",
+          "_note": "Figma 3003-8973（24.357 → 24。地は #008e9f → CTA色）"
+        },
+        {
+          "name": "ボタンの矢印",
+          "selector": ".c-btn--lg .c-btn-arrow",
+          "w": 95,
+          "h": 95,
+          "borderRadius": 4,
+          "background": "#0b82a3",
+          "_note": "Figma 3003-8975"
+        },
+        {
+          "name": "フッター",
+          "selector": ".l-footer",
+          "y": 9291,
+          "h": 770,
+          "_note": "Figma 3003-9279"
+        }
+      ]
+    },
+    "SP": {
+      "baseline": {
+        "selector": ".p-top-technology",
+        "y": 9348
+      },
+      "items": [
+        {
+          "name": "MV",
+          "selector": ".p-top-mv",
+          "x": 0,
+          "w": 402,
+          "h": 670,
+          "background": "#f7f7f7",
+          "_note": "動画 546 ＋ 4 ＋ 画像列 120。y は見ない（SP は技術力の帯を基準にすると上半分が +139 ずれる）"
+        },
+        {
+          "name": "MV・動画",
+          "selector": ".p-top-mv__main",
+          "x": 0,
+          "w": 402,
+          "h": 546,
+          "_note": "Figma 3012-10158"
+        },
+        {
+          "name": "MV・コピー",
+          "selector": ".p-top-mv__copy",
+          "x": 20,
+          "h": 140.8,
+          "_note": "Figma 3112-4753（x23・348×140。コンテナの 20 にそろえた）"
+        },
+        {
+          "name": "MV・見出し",
+          "selector": ".p-top-mv__title",
+          "h": 76.8,
+          "fontSize": 32,
+          "lineHeight": 38.4,
+          "fontWeight": "700",
+          "color": "#ffffff",
+          "_note": "Figma 3112-4754（76）"
+        },
+        {
+          "name": "MV・本文",
+          "selector": ".p-top-mv__lead",
+          "h": 54,
+          "fontSize": 15,
+          "lineHeight": 27,
+          "_note": "Figma 3112-4756"
+        },
+        {
+          "name": "MV・画像列",
+          "selector": ".p-top-mv__gallery",
+          "x": 0,
+          "w": 402,
+          "h": 120,
+          "_note": "Figma 3112-4750"
+        },
+        {
+          "name": "MV・画像",
+          "selector": ".p-top-mv__item",
+          "index": 0,
+          "w": 120,
+          "h": 120,
+          "_note": "Figma 3112-4740（横にループで動くので x は見ない）"
+        },
+        {
+          "name": "ポイントの帯",
+          "selector": ".p-top-point",
+          "x": 0,
+          "w": 402,
+          "h": 428,
+          "background": "#f7f7f7",
+          "_note": "MV（下の写真の列 3112-4750 の下端 670）→ 帯の左半分の下端 1098（3181-17367）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "ポイント・和文ラベル",
+          "selector": ".p-top-point .c-heading-section__label",
+          "fontSize": 16,
+          "_note": "Figma 3112-4758 は 14px・英字との間15。共通の見出し（16px・間10）にそろえた。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "ポイントの一覧",
+          "selector": ".p-top-point__list",
+          "x": 20,
+          "w": 362,
+          "h": 94.8,
+          "_note": "Figma 3112-4790（見出しが Figma より2低いぶん -2）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "ポイント1",
+          "selector": ".p-top-point__item",
+          "index": 0,
+          "h": 42.4,
+          "fontSize": 15,
+          "_note": "Figma 3112-4792（15.977 → 15）"
+        },
+        {
+          "name": "ポイント2",
+          "selector": ".p-top-point__item",
+          "index": 1,
+          "_note": "Figma 3112-4799（行の間10）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "ポイントの数字",
+          "selector": ".p-top-point__num",
+          "index": 0,
+          "x": 30,
+          "w": 15,
+          "h": 22,
+          "_note": "Figma 3112-4793（14.6×21.7）"
+        },
+        {
+          "name": "DOWA の一文",
+          "selector": ".p-top-point__closing",
+          "h": 56,
+          "fontSize": 17,
+          "lineHeight": 27.2,
+          "_note": "Figma 3112-4824（2行）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "DOWA のバッジ",
+          "selector": ".p-top-point__badge",
+          "h": 27,
+          "_note": "Figma 3112-4821（63.9×26.9）"
+        },
+        {
+          "name": "強みの帯",
+          "selector": ".p-top-strength",
+          "x": 0,
+          "w": 402,
+          "h": 1916,
+          "_note": "ポイントの帯の左半分の下端 1098 → 濃い帯 3014"
+        },
+        {
+          "name": "強み・和文ラベル",
+          "selector": ".p-top-strength .c-heading-section__label",
+          "_note": "Figma 3112-4826。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "強み・リード見出しとリード",
+          "selector": ".p-top-strength__intro",
+          "x": 20,
+          "w": 362,
+          "h": 126.4,
+          "_note": "Figma 3115-587 の枠は 102 固定だが中身は 126（見出し58 ＋ 20 ＋ リード48）"
+        },
+        {
+          "name": "強み・リード（幅）",
+          "selector": ".p-top-strength__lead",
+          "x": 20,
+          "w": 362,
+          "_note": "Figma 3115-589 は x30・342 だが、文言が PC と違って短い。PC の文言は 342 だと3行になるので 362 で2行"
+        },
+        {
+          "name": "強み・リード見出し",
+          "selector": ".p-top-strength__title",
+          "h": 58.8,
+          "fontSize": 21,
+          "lineHeight": 29.4,
+          "_note": "Figma 3115-588（見出しが2低いぶん -2）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "強み・リード",
+          "selector": ".p-top-strength__lead",
+          "h": 47.6,
+          "fontSize": 14,
+          "lineHeight": 23.8,
+          "_note": "Figma 3115-589（48）"
+        },
+        {
+          "name": "強みの一覧",
+          "selector": ".p-top-strength__list",
+          "x": 20,
+          "w": 362,
+          "h": 1457.3,
+          "_note": "Figma 3181-17399（x30・342。左右10は padding）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "強み1",
+          "selector": ".p-top-strength__item",
+          "index": 0,
+          "x": 30,
+          "w": 342,
+          "h": 459,
+          "_note": "Figma 3181-17396"
+        },
+        {
+          "name": "強み1・写真",
+          "selector": ".p-top-strength__figure",
+          "index": 0,
+          "w": 342,
+          "h": 419.7,
+          "_note": "Figma 3181-17373"
+        },
+        {
+          "name": "強み1・工程名",
+          "selector": ".p-top-strength__name",
+          "index": 0,
+          "h": 29.4,
+          "fontSize": 21,
+          "_note": "Figma 3181-17374"
+        },
+        {
+          "name": "強み1・数字",
+          "selector": ".p-top-strength__num",
+          "index": 0,
+          "x": 298.5,
+          "h": 60,
+          "_note": "Figma 3181-17377（x297.9・33.4×60）"
+        },
+        {
+          "name": "買取原料の帯",
+          "selector": ".p-top-what",
+          "x": 0,
+          "w": 402,
+          "h": 2162.7,
+          "background": "#32343c",
+          "_note": "Figma 3181-17493。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "買取原料・和文ラベル",
+          "selector": ".p-top-what .c-heading-section__label",
+          "x": 20,
+          "_note": "Figma 3181-17403。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "買取原料・リード",
+          "selector": ".p-top-what__lead",
+          "h": 33.6,
+          "fontSize": 14,
+          "_note": "Figma 3181-17405（34）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "買取原料1",
+          "selector": ".p-top-what__card",
+          "index": 0,
+          "x": 20,
+          "w": 362,
+          "h": 390.7,
+          "_note": "Figma 3181-17470。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "買取原料1・写真",
+          "selector": ".p-top-what__figure",
+          "index": 0,
+          "w": 362,
+          "h": 342,
+          "_note": "Figma 3181-17471（正方形でない）"
+        },
+        {
+          "name": "買取原料1・英字",
+          "selector": ".p-top-what__en",
+          "index": 0,
+          "h": 10,
+          "fontSize": 10,
+          "_note": "Figma 3181-17473"
+        },
+        {
+          "name": "買取原料1・和文",
+          "selector": ".p-top-what__name",
+          "index": 0,
+          "h": 16,
+          "fontSize": 16,
+          "_note": "Figma 3181-17474"
+        },
+        {
+          "name": "買取原料の2枚目はメタルハニカム",
+          "selector": ".p-top-what__card",
+          "index": 1,
+          "_note": "Figma 3181-17475（SP は 自動車 → メタルハニカム → 化学 → その他）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "詳しくみる",
+          "selector": ".c-btn--md",
+          "x": 95.9,
+          "w": 210.2,
+          "h": 60,
+          "_note": "Figma 3181-17494（中央）。y は見ない（SP は技術力の帯を基準にすると Voice の文言差ぶん上半分が +139 ずれる）"
+        },
+        {
+          "name": "特長・和文ラベル",
+          "selector": ".p-top-feature .c-heading-section__label",
+          "x": 20,
+          "fontSize": 16,
+          "_note": "Figma 3181-17505。SP の上半分は Voice のカードが Figma より 112.5 短いぶん（下の _note）、技術力の帯を基準にすると y が下がる。高さと間隔だけ見る"
+        },
+        {
+          "name": "特長・英字",
+          "selector": ".p-top-feature .c-heading-section__title",
+          "h": 32,
+          "fontSize": 40,
+          "_note": "Figma 3181-17506"
+        },
+        {
+          "name": "特長・リード",
+          "selector": ".p-top-feature__lead",
+          "x": 20,
+          "w": 362,
+          "h": 75.6,
+          "fontSize": 14,
+          "lineHeight": 25.2,
+          "color": "#222020",
+          "_note": "Figma 3181-17507（見出し → 30）"
+        },
+        {
+          "name": "特長・一覧",
+          "selector": ".p-top-feature__list",
+          "x": 20,
+          "w": 362,
+          "h": 2053.2,
+          "_note": "Figma 3181-17572 は 2073.6。4行目だけ写真 → テキストが 40（他は 20）で、20 にそろえた（-20）"
+        },
+        {
+          "name": "特長・行1",
+          "selector": ".c-card-feature",
+          "index": 0,
+          "h": 449.8,
+          "_note": "Figma 3181-17508（450.4）"
+        },
+        {
+          "name": "特長・写真1",
+          "selector": ".c-card-feature__figure",
+          "index": 0,
+          "w": 362,
+          "h": 251.4,
+          "_note": "Figma 3181-17509（360:250）"
+        },
+        {
+          "name": "特長・番号1",
+          "selector": ".c-card-feature .c-line-num",
+          "index": 0,
+          "h": 26,
+          "_note": "Figma 3181-17511"
+        },
+        {
+          "name": "Voice・スライダー",
+          "selector": ".p-top-voice__slider",
+          "x": 20,
+          "w": 362,
+          "h": 572.5,
+          "_note": "Figma 3181-17792 は 685。SP の Figma のカードは PC と文言が違い（2段落の長いダミー）、本文の枠も 389 固定。文言は PC に合わせたので短い"
+        },
+        {
+          "name": "Voice・カード1",
+          "selector": ".swiper-slide-active .c-card-voice",
+          "w": 300,
+          "borderRadius": 5,
+          "_note": "Figma 3181-17735。位置（中央 x51・左隣 -259・右隣 361）は Swiper の transform で決まり、このツール（offsetLeft で測る）では測れない。2026-09-11 に手で確認済み"
+        },
+        {
+          "name": "Voice・写真1",
+          "selector": ".swiper-slide-active .c-card-voice__figure",
+          "w": 260,
+          "h": 200,
+          "_note": "Figma 3181-17736"
+        },
+        {
+          "name": "Voice・見出し1",
+          "selector": ".swiper-slide-active .c-card-voice__title",
+          "fontSize": 18,
+          "lineHeight": 27,
+          "color": "#0b82a3",
+          "_note": "Figma 3181-17742"
+        },
+        {
+          "name": "Voice・お客様名の CLIENT：",
+          "selector": ".swiper-slide-active .c-card-voice__client-label",
+          "fontSize": 14,
+          "fontFamily": "Poppins",
+          "color": "#c3c3c3",
+          "_note": "Figma 3181-17746 は #bcbcbc → --c-text-off"
+        },
+        {
+          "name": "前後ボタン",
+          "selector": ".p-top-voice__ctrl",
+          "y": 8650.5,
+          "h": 60,
+          "_note": "Figma 3181-17717"
+        },
+        {
+          "name": "前後ボタン1つ",
+          "selector": ".p-top-voice__ctrl .c-btn-ctrl",
+          "index": 0,
+          "x": 129,
+          "w": 60,
+          "h": 60,
+          "borderRadius": 2,
+          "_note": "Figma 3181-17718（2つと間24で中央）"
+        },
+        {
+          "name": "新着情報の帯",
+          "selector": ".p-top-news",
+          "x": 0,
+          "y": 8818,
+          "w": 402,
+          "h": 530,
+          "background": "#f7f7f7",
+          "_note": "3181-17632 の上端 8818 → 技術力の帯 9348"
+        },
+        {
+          "name": "新着情報",
+          "selector": ".p-top-news__inner",
+          "x": 20,
+          "y": 8818,
+          "w": 362,
+          "h": 428.4,
+          "_note": "Figma 3181-17632（430）"
+        },
+        {
+          "name": "新着情報・見出し",
+          "selector": ".p-top-news__title",
+          "h": 33.6,
+          "fontSize": 24,
+          "letterSpacing": "0.02em",
+          "_note": "Figma 3181-17634"
+        },
+        {
+          "name": "お知らせ1件",
+          "selector": ".c-card-news--outline",
+          "index": 0,
+          "h": 96.6,
+          "_note": "Figma 3181-17637"
+        },
+        {
+          "name": "お知らせ・日付",
+          "selector": ".c-card-news--outline .c-card-news__date",
+          "index": 0,
+          "fontSize": 14,
+          "_note": "Figma 3181-17640"
+        },
+        {
+          "name": "お知らせ・タイトル",
+          "selector": ".c-card-news--outline .c-card-news__title",
+          "index": 0,
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "_note": "Figma 3181-17643"
+        },
+        {
+          "name": "一覧をみる",
+          "selector": ".c-link-arrow--lg",
+          "x": 232,
+          "y": 9188,
+          "w": 150,
+          "h": 60,
+          "_note": "Figma 3181-17658"
+        },
+        {
+          "name": "一覧をみる・矢印",
+          "selector": ".c-link-arrow--lg .c-link-arrow__arrow",
+          "w": 60,
+          "h": 60,
+          "borderRadius": 2,
+          "_note": "Figma 3181-17660"
+        },
+        {
+          "name": "技術力の帯",
+          "selector": ".p-top-technology",
+          "x": 0,
+          "y": 9348,
+          "w": 402,
+          "h": 700,
+          "_note": "Figma 3181-17805"
+        },
+        {
+          "name": "FROM / AKITA / TO THE WORLD",
+          "selector": ".p-top-technology__route",
+          "x": 20,
+          "y": 9388,
+          "w": 362,
+          "h": 16.8,
+          "fontSize": 14,
+          "letterSpacing": "0.04em",
+          "fontFamily": "Poppins",
+          "fontWeight": "600",
+          "color": "#ffffff",
+          "_note": "Figma 3181-17794（space-between）"
+        },
+        {
+          "name": "AKITA",
+          "selector": ".p-top-technology__route span",
+          "index": 1,
+          "x": 145,
+          "_note": "Figma 3181-17709"
+        },
+        {
+          "name": "中身",
+          "selector": ".p-top-technology__body",
+          "x": 20,
+          "y": 9666,
+          "w": 362,
+          "h": 313,
+          "_note": "Figma 3181-17804"
+        },
+        {
+          "name": "英字ラベル",
+          "selector": ".p-top-technology__label",
+          "y": 9666,
+          "h": 16.8,
+          "fontSize": 14,
+          "_note": "Figma 3181-17710（文言は TECHNOLOGY）"
+        },
+        {
+          "name": "見出し",
+          "selector": ".p-top-technology__title",
+          "y": 9688,
+          "h": 36,
+          "fontSize": 24,
+          "lineHeight": 36,
+          "fontWeight": "700",
+          "color": "#ffffff",
+          "_note": "Figma 3181-17712"
+        },
+        {
+          "name": "本文",
+          "selector": ".p-top-technology__desc",
+          "y": 9739,
+          "w": 362,
+          "h": 151.2,
+          "fontSize": 14,
+          "lineHeight": 25.2,
+          "color": "#ffffff",
+          "_note": "Figma 3181-17700（6行・箱150）"
+        },
+        {
+          "name": "ボタン",
+          "selector": ".c-btn--lg",
+          "x": 95.9,
+          "y": 9919,
+          "w": 210.2,
+          "h": 60,
+          "_note": "Figma 3181-17795（中央）"
+        },
+        {
+          "name": "ボタンのラベル",
+          "selector": ".c-btn--lg .c-btn__label",
+          "w": 149,
+          "h": 60,
+          "fontSize": 15,
+          "borderRadius": 2,
+          "background": "#0b82a3",
+          "_note": "Figma 3181-17796（15.316 → 15。地は #1f819c → CTA色）"
+        },
+        {
+          "name": "ボタンの矢印",
+          "selector": ".c-btn--lg .c-btn-arrow",
+          "w": 60,
+          "h": 60,
+          "borderRadius": 2,
+          "_note": "Figma 3181-17798"
+        },
+        {
+          "name": "フッター",
+          "selector": ".l-footer",
+          "y": 10048,
+          "_note": "Figma 3181-17574"
+        }
+      ]
+    }
+  },
+  "_known": [
+    "PCのボタンは Figma では右端が 1385（本文の右端 1400 より 15 内側）。本文の右端にそろえた。",
+    "英字ラベルは Figma で PC「NPGM EXPERTISE」/ SP「TECHNOLOGY」と文言が違う。Figma どおり出し分けている（要確認）。",
+    "トップはこの帯しか実装していないので、いまはヘッダーが FROM の行に重なる（上のセクションが入れば解消）。",
+    "SPの Voice のカードは Figma の文言（2段落の長いダミー）と違い PC の文言なので 112.5 短い。SP の Voice より上は技術力の帯を基準にすると y が合わないので、高さと間隔だけ見ている。",
+    "Voice の PC 2・3枚目は Figma に本文が無い（見出しとお客様名だけ）。そのまま。",
+    "特長の SP 4行目だけ写真 → テキストが 40（他は 20）。20 にそろえた。",
+    "新着情報の3件目だけタイトルの行間が 1.8。1.6 にそろえた（-2.2）。",
+    "スライダーのカードの横位置は transform で動くので spec では測れない（ツールは offsetLeft で測る）。SP 中央 51・左右 -259 / 361、PC 40 / 620 / 1200 を手で確認した。",
+    "強みの写真は Figma では動画（ホバーで黒40%＋説明文）。動画は書き出されていないので静止画。ホバーの説明はホバーできる端末だけ。",
+    "SP の見出し（ポイント・強み）は Figma が 和文14px・間15 で他の見出しと違う。共通の見出しにそろえたので2低い。",
+    "SP の強みのリードは Figma では文言が PC と違う（短い）。PC の文言にしたので、幅を Figma の 342 ではなく 362 にして2行に収めた。",
+    "MV の動画は未書き出しのため静止画。画像リストは一定速度のループ（1秒あたり約25px。速さは Figma に指定なし）なので位置は見ない。",
+    "MV のコピーは Figma で SP と PC の文言が違う。出し分けている。"
+  ]
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+- var path = "./"
+- var sitename = "DOWAメタルマイン株式会社 レアメタル事業部 触媒買取"
+- var pageClass = ""
+block vars
+- var img = path + "assets/img/"
+head
+    meta(charset="UTF-8")
+    if title
+        title #{title} | #{sitename}
+    else
+        title #{sitename}
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    //-
+        meta(name="description", content="")
+        meta(name="keywords", content="")
+    meta(name="format-detection", content="telephone=no")
+    = "\n"
+    = "\n"
+
+    <!-- css -->
+    link(href= path + "assets/css/style.css", rel="stylesheet")
+    = "\n"
+    = "\n"
+
+    if (pageClass == "page-front")
+        <!-- OGP -->
+        meta(property='og:locale' content='ja_JP')
+        meta(property='og:type' content='website')
+        meta(property='og:image' content=path + 'OGP.png')
+        meta(property='og:title' content='')
+        meta(property='og:description' content='')
+        meta(property='og:url' content='')
+        meta(property='og:site_name' content='')
+        meta(name='twitter:card' content='summary')
+        = "\n"
+
+    <!-- vendor -->
+    = "\n"
+    = "\n"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+//- トップは MV（写真）の上から始まるので、JS が動く前から白抜きのロゴにしておく（is-header-dark は isSectionDark() が付け外しする）
+body#body(class=[pageClass, pageClass == "page-front" ? "is-header-dark" : ""])
+    = "\n"
+    a#top
+    .l-body-wrap
+        header.l-header
+            p.l-header-logo
+                a(href=path)
+                    img.l-header-logo__light(src=img + "logo-wh.svg" width=355 height=59 alt="DOWAメタルマイン株式会社 レアメタル事業部 自動車触媒リサイクル")
+                    img.l-header-logo__dark(src=img + "logo.svg" width=355 height=59 alt="DOWAメタルマイン株式会社 レアメタル事業部 自動車触媒リサイクル")
+            .l-header-utility
+                .l-header-utility__group
+                    nav.l-header-nav
+                        ul.l-header-nav__list
+                            li
+                                a(href=path + "material/") 買取原料
+                            li
+                                a(href=path + "flow/") お取引の流れ
+                            li
+                                a(href=path + "supply-chain/") 責任ある調達
+                            li
+                                a(href=path + "location/") 拠点一覧
+                            li
+                                a(href=path + "technology/")
+                                    span.l-header-nav__en NPGM
+                                    | の技術
+                    a.l-header-cta.c-btn.c-btn--sm(href=path + "contact/")
+                        span.c-btn__label お問い合わせ
+                .l-header-lang
+                    span.l-header-lang__current JP
+                    span.l-header-lang__line
+                    a.l-header-lang__other(href=path + "en/") EN
+                button.l-header-menu.c-btn-menu(aria-label="メニューを開く")
+                    span
+                    span
+                    span
+            .l-header-drawer
+                .l-header-drawer__wrap
+                    nav.l-header-drawer-nav(aria-label="メニュー")
+                        ul
+                            each item in [{t:"トップ", u:""}, {t:"買取原料", u:"material/"}, {t:"お取引の流れ", u:"flow/"}, {t:"責任ある調達", u:"supply-chain/"}, {t:"拠点一覧", u:"location/"}, {t:"NPGMの技術", u:"technology/"}]
+                                li.l-header-drawer-nav__item.l-header-drawer__item
+                                    a(href=path + item.u)
+                                        span.c-marker
+                                            svg(aria-hidden="true")
+                                                use(href="#ico_marker")
+                                        span= item.t
+                    a.l-header-drawer-cta.l-header-drawer__item(href=path + "contact/") お問い合わせ
+                    .l-header-drawer-lang.l-header-drawer__item
+                        span.l-header-drawer-lang__current JP
+                        span.l-header-drawer-lang__line
+                        a.l-header-drawer-lang__other(href=path + "en/") EN
+                    .l-header-drawer-policy.l-header-drawer__item
+                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--cookie(href=path + "cookie-policy/")
+                            svg(aria-hidden="true")
+                                use(href="#ico_cookie")
+                            span クッキーポリシー
+                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--privacy(href=path + "privacy-policy/")
+                            svg(aria-hidden="true")
+                                use(href="#ico_privacy")
+                            span プライバシーポリシー
+
+        main.l-main#main
+            block content
+        if typeof breadcrumb !== "undefined" && breadcrumb
+            //- breadcrumb は文字列か、{ label, url } の配列。url があればリンクにする
+            nav.cm-navi-breadcrumb(aria-label="パンくず")
+                .l-container
+                    ol.cm-navi-breadcrumb__list
+                        li.cm-navi-breadcrumb__item
+                            a(href=path) トップ
+                        each item in (Array.isArray(breadcrumb) ? breadcrumb : [breadcrumb])
+                            li.cm-navi-breadcrumb__item
+                                if item.url
+                                    a(href=path + item.url)= item.label
+                                else
+                                    = item.label || item
+        footer.l-footer.is-section-dark
+            .l-footer__inner
+                .cm-block-cta
+                    a.cm-block-cta-card(href=path + "document/")
+                        p.cm-block-cta-card__label DOWNLOAD
+                        .cm-block-cta-card__body
+                            .cm-block-cta-card__text
+                                p.cm-block-cta-card__title 資料ダウンロード
+                                p.cm-block-cta-card__desc 不明点を解消したい方はまずは資料ダウンロードから
+                            span.c-btn-arrow.c-btn-arrow--lg
+                                svg(aria-hidden="true")
+                                    use(href="#ico_arrow_ne")
+                    a.cm-block-cta-card(href=path + "contact/")
+                        p.cm-block-cta-card__label CONTACT
+                        .cm-block-cta-card__body
+                            .cm-block-cta-card__text
+                                p.cm-block-cta-card__title お問い合わせ
+                                p.cm-block-cta-card__desc どんなことでもお気軽にご相談いただけます
+                            span.c-btn-arrow.c-btn-arrow--lg
+                                svg(aria-hidden="true")
+                                    use(href="#ico_arrow_ne")
+
+                .l-footer-body
+                    .l-footer-body__top
+                        nav.l-footer-nav
+                            a(href=path + "material/") 買取原料
+                            a(href=path + "flow/") お取引の流れ
+                            a(href=path + "location/") 海外拠点
+                            a(href=path + "technology/") NPGMの技術
+                        .l-footer-sites
+                            .l-footer-sites__row
+                                p.l-footer-sites__name 運営会社：DOWAメタルマイン株式会社
+                                a.l-footer-sites__link(href="#" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）")
+                                    span.l-footer-sites__label サイトへ
+                                    span.l-footer-sites__btn
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_arrow_r")
+                            .l-footer-sites__row
+                                p.l-footer-sites__name 関連会社：株式会社日本ピージーエム
+                                a.l-footer-sites__link(href="#" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）")
+                                    span.l-footer-sites__label サイトへ
+                                    span.l-footer-sites__btn
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_arrow_r")
+
+                    .l-footer-body__bottom
+                        .l-footer-body__brand
+                            p.l-footer-logo
+                                img(src=img + "logo-footer.svg" width=338 height=49 alt="DOWA 触媒買取 Powered by DOWA METALS & MINING")
+                            p.l-footer-copy © DOWA METALS &amp; MINING CO., LTD.
+                        .l-footer-policy
+                            a.l-footer-policy__item.l-footer-policy__item--cookie(href=path + "cookie-policy/")
+                                svg(aria-hidden="true")
+                                    use(href="#ico_cookie")
+                                span クッキーポリシー
+                            a.l-footer-policy__item.l-footer-policy__item--privacy(href=path + "privacy-policy/")
+                                svg(aria-hidden="true")
+                                    use(href="#ico_privacy")
+                                span プライバシーポリシー
+
+    script(src= path + "assets/js/app.js")
+    = "\n"
+    include ./_include/_symbol
+= "\n"
+</html>

@@ -1,0 +1,56 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "新着情報"
+    - var pageClass = "page-news"
+    - var breadcrumb = "新着情報"
+
+block content
+
+    -
+        var newsList = [
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" },
+            { date: "2026-07-15", label: "2026.07.15", tag: "お知らせ", title: "新たな白金族金属（PGM）リサイクル設備の稼働を開始しました。" }
+        ]
+
+    .p-news
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title 新着情報
+                    p.c-heading-page__label News
+
+        section.p-news-list
+            .l-container
+                .cm-block-panel.cm-block-panel--list
+                    ul
+                        each item in newsList
+                            li
+                                a.c-card-news(href=path + "single-news/")
+                                    .c-card-news__body
+                                        .c-card-news__meta
+                                            time.c-card-news__date(datetime=item.date)= item.label
+                                            span.c-card-news__tag= item.tag
+                                        p.c-card-news__title= item.title
+                                    span.c-btn-arrow.c-btn-arrow--outline.c-btn-arrow--sm
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_arrow_r")
+
+                    nav.cm-navi-paginate(aria-label="ページ送り")
+                        span.cm-navi-paginate__ctrl.cm-navi-paginate__ctrl--prev.is-disabled(aria-hidden="true")
+                            svg
+                                use(href="#ico_tri_r")
+                        span.cm-navi-paginate__num.is-current(aria-current="page") 1
+                        a.cm-navi-paginate__num(href="#") 2
+                        a.cm-navi-paginate__num(href="#") 3
+                        a.cm-navi-paginate__ctrl.cm-navi-paginate__ctrl--next(href="#" aria-label="次のページへ")
+                            svg(aria-hidden="true")
+                                use(href="#ico_tri_r")

@@ -1,0 +1,838 @@
+{
+  "_": "template.html（スタイルガイド）に並べたコンポーネントの寸法・タイポ照合。",
+  "_note": "スタイルガイドのページなのでアートボード座標は持たない。x/y は書かず、箱の寸法・タイポ・装飾だけを見る。",
+  "_source": "期待値の出どころ: 寸法・余白 = Figma実測 / 色・font-size・line-height・letter-spacing・角丸 = doc/design-tokens.md",
+  "url": "http://localhost:8899/template.html",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1200,
+    "scrollThrough": true,
+    "scrollWait": 600
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1600,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "c-btn-menu",
+          "selector": ".u-template .c-btn-menu",
+          "w": 64,
+          "h": 40,
+          "borderRadius": 5,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "c-btn-menu のバー",
+          "selector": ".u-template .c-btn-menu span",
+          "w": 24,
+          "h": 1,
+          "background": "#ffffff"
+        },
+        {
+          "name": "c-btn-ctrl",
+          "selector": ".c-btn-ctrl",
+          "w": 75,
+          "h": 75,
+          "borderRadius": 3,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "c-btn-ctrl 並び",
+          "selector": ".c-btn-ctrl-group",
+          "w": 180,
+          "h": 75
+        },
+        {
+          "name": "見出し・和文ラベル",
+          "selector": ".c-heading-section__label",
+          "fontSize": 16,
+          "lineHeight": 24,
+          "fontWeight": "700",
+          "color": "#13728c",
+          "w": 174.3,
+          "h": 24
+        },
+        {
+          "name": "見出し・英字",
+          "selector": ".c-heading-section__title",
+          "fontSize": 80,
+          "lineHeight": 64,
+          "letterSpacing": "-0.06em",
+          "fontWeight": "600",
+          "fontFamily": "Poppins",
+          "color": "#13728c",
+          "w": 203.7,
+          "h": 64
+        },
+        {
+          "name": "お知らせ・日付",
+          "selector": ".c-card-news__date",
+          "fontSize": 16,
+          "lineHeight": 20,
+          "fontFamily": "Poppins",
+          "color": "#39969d",
+          "_note": "Figmaは text-box-trim で箱が20（タグと同じ）"
+        },
+        {
+          "name": "お知らせ・タグ",
+          "selector": ".c-card-news__tag",
+          "h": 20,
+          "fontSize": 12,
+          "borderRadius": 4,
+          "background": "#39969d",
+          "color": "#ffffff"
+        },
+        {
+          "name": "お知らせ・タイトル",
+          "selector": ".c-card-news__title",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "letterSpacing": "-0.01em",
+          "color": "#333d40"
+        },
+        {
+          "name": "お知らせ・行",
+          "selector": ".c-card-news",
+          "borderBottom": "1px solid rgb(217, 217, 217)"
+        },
+        {
+          "name": "お知らせ・矢印",
+          "selector": ".c-card-news .c-btn-arrow",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 4
+        },
+        {
+          "name": "ページ番号",
+          "selector": ".cm-navi-paginate__num",
+          "w": 40,
+          "h": 40,
+          "borderRadius": 4,
+          "fontSize": 16,
+          "fontFamily": "Poppins"
+        },
+        {
+          "name": "ページ番号（現在）",
+          "selector": ".cm-navi-paginate__num.is-current",
+          "background": "#15819e",
+          "color": "#ffffff"
+        },
+        {
+          "name": "ページ送りボタン",
+          "selector": ".cm-navi-paginate__ctrl",
+          "index": 1,
+          "w": 40,
+          "h": 40,
+          "borderRadius": 4,
+          "background": "#15819e"
+        },
+        {
+          "name": "ページ送り（無効）",
+          "selector": ".cm-navi-paginate__ctrl.is-disabled",
+          "background": "#d9d9d9"
+        },
+        {
+          "name": "ページャーのボタン",
+          "selector": ".cm-navi-pager__btn",
+          "w": 40,
+          "h": 40,
+          "borderRadius": 4,
+          "background": "#15819e"
+        },
+        {
+          "name": "ページャーのラベル",
+          "selector": ".cm-navi-pager__label",
+          "fontSize": 12,
+          "color": "#15819e",
+          "borderBottom": "1px solid #088395"
+        },
+        {
+          "name": "ページャーの2×2",
+          "selector": ".cm-navi-pager__grid",
+          "w": 13,
+          "h": 13
+        },
+        {
+          "name": "ヘッダー",
+          "selector": ".l-header",
+          "h": 59
+        },
+        {
+          "name": "ヘッダーロゴ",
+          "selector": ".l-header-logo",
+          "w": 355.143,
+          "h": 59
+        },
+        {
+          "name": "グローバルナビ",
+          "selector": ".l-header-nav__list",
+          "h": 40,
+          "borderRadius": 4,
+          "fontSize": 16,
+          "background": "#ffffff"
+        },
+        {
+          "name": "ヘッダーCTA",
+          "selector": ".c-btn--sm .c-btn__label",
+          "h": 40,
+          "borderRadius": 5,
+          "fontSize": 12,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "言語切替",
+          "selector": ".l-header-lang",
+          "w": 16,
+          "h": 31,
+          "fontSize": 11,
+          "letterSpacing": "0.16em"
+        },
+        {
+          "name": "ページ見出し・タイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "ページ見出し・英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "fontFamily": "Poppins",
+          "color": "#13728c"
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb"
+        },
+        {
+          "name": "パンくずの文字",
+          "selector": ".cm-navi-breadcrumb__list",
+          "fontSize": 12,
+          "color": "#555555"
+        },
+        {
+          "name": "フッター",
+          "selector": ".l-footer",
+          "background": "#174b59"
+        },
+        {
+          "name": "CTAカード・ラベル",
+          "selector": ".cm-block-cta-card__label",
+          "fontSize": 32,
+          "letterSpacing": "-0.05em",
+          "fontFamily": "Poppins",
+          "color": "#0b82a3"
+        },
+        {
+          "name": "CTAカード・見出し",
+          "selector": ".cm-block-cta-card__title",
+          "fontSize": 40,
+          "letterSpacing": "-0.05em",
+          "color": "#222"
+        },
+        {
+          "name": "CTAカード・本文",
+          "selector": ".cm-block-cta-card__desc",
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "color": "#222020"
+        },
+        {
+          "name": "CTAカードのボタン",
+          "selector": ".cm-block-cta-card .c-btn-arrow",
+          "w": 95,
+          "h": 95,
+          "borderRadius": 4,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "サイトへボタン",
+          "selector": ".l-footer-sites__btn",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 2,
+          "background": "#ffffff"
+        },
+        {
+          "name": "コピーライト",
+          "selector": ".l-footer-copy",
+          "fontSize": 14,
+          "fontFamily": "Poppins",
+          "color": "#15819e"
+        },
+        {
+          "name": "ポリシーリンク",
+          "selector": ".l-footer-policy__item",
+          "fontSize": 12,
+          "color": "#ffffff"
+        },
+        {
+          "name": "番号付き #01",
+          "selector": ".c-card-num__num",
+          "fontSize": 24,
+          "lineHeight": 43.2,
+          "fontFamily": "Poppins",
+          "color": "#15819e"
+        },
+        {
+          "name": "番号付き 見出し",
+          "selector": ".c-card-num__title",
+          "fontSize": 30,
+          "lineHeight": 42,
+          "letterSpacing": "0.03em",
+          "color": "#1e2e33",
+          "_note": "文字は lh1.4（2行の #04 = 2548-5408 が 84）。h3コンポーネントの箱36には合わせない",
+          "w": 278.1,
+          "h": 42
+        },
+        {
+          "name": "番号付き 本文",
+          "selector": ".c-card-num__desc",
+          "fontSize": 16,
+          "lineHeight": 28.8,
+          "color": "#333d40",
+          "w": 400,
+          "h": 57.6
+        },
+        {
+          "name": "番号付き 左カラム",
+          "selector": ".c-card-num__body",
+          "w": 400
+        },
+        {
+          "name": "手順 番号バッジ",
+          "selector": ".c-card-step__num",
+          "w": 45,
+          "h": 45,
+          "borderRadius": 4,
+          "fontSize": 32,
+          "background": "#15819e"
+        },
+        {
+          "name": "手順 写真",
+          "selector": ".c-card-step__figure",
+          "w": 420,
+          "h": 280
+        },
+        {
+          "name": "手順 見出し",
+          "selector": ".c-card-step__title",
+          "fontSize": 32,
+          "letterSpacing": "0.03em",
+          "color": "#1e2e33",
+          "w": 329.6,
+          "h": 44.8
+        },
+        {
+          "name": "手順 本文",
+          "selector": ".c-card-step__desc",
+          "fontSize": 18,
+          "lineHeight": 32.4,
+          "letterSpacing": "-0.05em",
+          "color": "#787878",
+          "w": 709,
+          "h": 64.8
+        },
+        {
+          "name": "フォーム ラベル",
+          "selector": ".cm-form-row__label",
+          "w": 160,
+          "fontSize": 18,
+          "fontWeight": "700",
+          "color": "#333d40"
+        },
+        {
+          "name": "必須バッジ",
+          "selector": ".c-form-required",
+          "fontSize": 14,
+          "color": "#ff442a",
+          "borderTop": "1px solid rgb(255, 68, 42)"
+        },
+        {
+          "name": "入力欄",
+          "selector": ".c-input",
+          "h": 60,
+          "borderRadius": 4,
+          "fontSize": 14,
+          "borderTop": "1px solid rgb(158, 158, 158)"
+        },
+        {
+          "name": "テキストエリア",
+          "selector": ".c-textarea",
+          "h": 200,
+          "borderRadius": 4
+        },
+        {
+          "name": "セレクト",
+          "selector": ".c-select",
+          "w": 200
+        },
+        {
+          "name": "チェックボックス",
+          "selector": ".c-checkbox input",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 4
+        },
+        {
+          "name": "同意テキスト",
+          "selector": ".c-checkbox",
+          "fontSize": 16,
+          "fontWeight": "700"
+        },
+        {
+          "name": "ボタン ラベル",
+          "selector": ".u-template .c-btn .c-btn__label",
+          "w": 133,
+          "h": 50
+        },
+        {
+          "name": "矢印ボタン lg",
+          "selector": ".c-btn-arrow--lg",
+          "w": 95,
+          "h": 95
+        },
+        {
+          "name": "矢印ボタン md",
+          "selector": ".c-btn-arrow--md",
+          "w": 50,
+          "h": 50
+        },
+        {
+          "name": "矢印ボタン sm",
+          "selector": ".c-btn-arrow--sm",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "name": "矢印ボタン xs",
+          "selector": ".c-btn-arrow--xs",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "name": "お知らせ メタ行",
+          "selector": ".c-card-news__meta",
+          "w": 157.3,
+          "h": 20
+        },
+        {
+          "name": "番号付きカード",
+          "selector": ".c-card-num",
+          "w": 1360,
+          "h": 645.7
+        },
+        {
+          "name": "番号付き 写真",
+          "selector": ".c-card-num__figure",
+          "w": 900,
+          "h": 615.7
+        },
+        {
+          "name": "手順カード",
+          "selector": ".c-card-step",
+          "w": 1360,
+          "h": 280
+        },
+        {
+          "name": "マーカー見出し",
+          "selector": ".c-heading-marker",
+          "w": 599.2,
+          "h": 40
+        },
+        {
+          "name": "マーカー見出しの印",
+          "selector": ".c-heading-marker .c-marker",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "name": "セレクトの▼",
+          "selector": ".c-select__arrow",
+          "w": 14,
+          "h": 14
+        },
+        {
+          "name": "フォーム行",
+          "selector": ".cm-form-row",
+          "w": 453,
+          "h": 60
+        },
+        {
+          "name": "ページャー",
+          "selector": ".cm-navi-pager",
+          "w": 281.2,
+          "h": 40
+        },
+        {
+          "name": "ページネーション",
+          "selector": ".cm-navi-paginate",
+          "w": 315.8,
+          "h": 40
+        },
+        {
+          "name": "次ページボタン",
+          "selector": ".cm-navi-paginate__ctrl--next",
+          "w": 40,
+          "h": 40
+        },
+        {
+          "name": "ヘッダーCTA",
+          "selector": ".l-header-cta",
+          "w": 113,
+          "h": 40
+        },
+        {
+          "name": "ヘッダーナビ",
+          "selector": ".l-header-nav",
+          "w": 631.3,
+          "h": 40
+        },
+        {
+          "name": "ナビ＋CTA",
+          "selector": ".l-header-utility__group",
+          "w": 744.3,
+          "h": 40,
+          "_note": "Figmaはナビの白ピルとCTAが隙間なく隣接（3003-9067はgap無し）。幅で隙間の混入を検出する"
+        },
+        {
+          "name": "言語切替の罫線",
+          "selector": ".l-header-lang__line",
+          "w": 16,
+          "h": 1,
+          "_note": "flex-shrink を切らないと 1px が 0 に潰れて消える"
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "c-btn-menu",
+          "selector": ".c-btn-menu",
+          "w": 64,
+          "h": 40,
+          "borderRadius": 5,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "見出し・和文ラベル",
+          "selector": ".c-heading-section__label",
+          "fontSize": 16,
+          "lineHeight": 24,
+          "fontWeight": "700",
+          "color": "#13728c",
+          "w": 174.3,
+          "h": 24
+        },
+        {
+          "name": "見出し・英字",
+          "selector": ".c-heading-section__title",
+          "fontSize": 40,
+          "lineHeight": 32,
+          "letterSpacing": "-0.06em",
+          "fontWeight": "600",
+          "fontFamily": "Poppins",
+          "color": "#13728c",
+          "w": 101.8,
+          "h": 32
+        },
+        {
+          "name": "見出し全体",
+          "selector": ".c-heading-section",
+          "h": 66
+        },
+        {
+          "name": "ヘッダー",
+          "selector": ".l-header",
+          "w": 362,
+          "h": 40
+        },
+        {
+          "name": "ヘッダーロゴ",
+          "selector": ".l-header-logo",
+          "w": 241.012,
+          "h": 40
+        },
+        {
+          "name": "ページ見出し・タイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "ページ見出し・英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "CTAカード・ラベル",
+          "selector": ".cm-block-cta-card__label",
+          "fontSize": 18,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "CTAカード・見出し",
+          "selector": ".cm-block-cta-card__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "CTAカードのボタン",
+          "selector": ".cm-block-cta-card .c-btn-arrow",
+          "w": 60,
+          "h": 60,
+          "borderRadius": 2
+        },
+        {
+          "name": "サイトへボタン",
+          "selector": ".l-footer-sites__btn",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 2
+        },
+        {
+          "name": "番号付き #01",
+          "selector": ".c-card-num__num",
+          "fontSize": 16,
+          "fontFamily": "Poppins",
+          "color": "#15819e"
+        },
+        {
+          "name": "番号付き 見出し",
+          "selector": ".c-card-num__title",
+          "fontSize": 21,
+          "letterSpacing": "0.03em",
+          "color": "#1e2e33",
+          "w": 194.7,
+          "h": 29.4,
+          "lineHeight": 29.4,
+          "_note": "Figma 3139-5476 は 21 × 1.4 = 箱29。以前は実装値 25.2（lh1.2）を書いていて検出できていなかった"
+        },
+        {
+          "name": "番号付き 本文",
+          "selector": ".c-card-num__desc",
+          "fontSize": 15,
+          "lineHeight": 27,
+          "w": 362,
+          "h": 54
+        },
+        {
+          "name": "手順 番号バッジ",
+          "selector": ".c-card-step__num",
+          "w": 45,
+          "h": 45,
+          "borderRadius": 4,
+          "fontSize": 32
+        },
+        {
+          "name": "手順 見出し",
+          "selector": ".c-card-step__title",
+          "fontSize": 21,
+          "letterSpacing": "0.03em",
+          "w": 216.3,
+          "h": 29.4
+        },
+        {
+          "name": "手順 本文",
+          "selector": ".c-card-step__desc",
+          "fontSize": 15,
+          "letterSpacing": "-0.05em",
+          "color": "#787878",
+          "w": 297,
+          "h": 81
+        },
+        {
+          "name": "入力欄",
+          "selector": ".c-input",
+          "h": 60,
+          "borderRadius": 4,
+          "fontSize": 12
+        },
+        {
+          "name": "ドロワーの項目",
+          "selector": ".l-header-drawer-nav__item a",
+          "fontSize": 28,
+          "fontWeight": "700",
+          "color": "#222020"
+        },
+        {
+          "name": "ドロワーのマーカー",
+          "selector": ".l-header-drawer-nav .c-marker",
+          "w": 12,
+          "h": 12
+        },
+        {
+          "name": "ドロワーのCTA",
+          "selector": ".l-header-drawer-cta",
+          "borderRadius": 5,
+          "fontSize": 21,
+          "background": "#0b82a3"
+        },
+        {
+          "name": "ドロワーの言語",
+          "selector": ".l-header-drawer-lang",
+          "fontSize": 18,
+          "letterSpacing": "0.16em"
+        },
+        {
+          "name": "ドロワーの項目",
+          "selector": ".l-header-drawer-nav__item",
+          "h": 70,
+          "_note": "Figmaは「トップ」「買取原料」だけ 59（line-height 1）。残り4つの 70（1.4）に統一している"
+        },
+        {
+          "name": "ドロワー項目の間隔",
+          "selector": ".l-header-drawer-nav ul",
+          "h": 571,
+          "_note": "6項目×70 ＋ 間隔30×5 = 570。Figmaは前2項目が59なので 528。行間を統一した結果 +43"
+        },
+        {
+          "name": "ドロワーのCTA高さ",
+          "selector": ".l-header-drawer-cta",
+          "h": 69
+        },
+        {
+          "name": "ドロワーの言語",
+          "selector": ".l-header-drawer-lang",
+          "h": 18
+        },
+        {
+          "name": "ボタン ラベル",
+          "selector": ".u-template .c-btn .c-btn__label",
+          "w": 133,
+          "h": 50
+        },
+        {
+          "name": "矢印ボタン lg",
+          "selector": ".c-btn-arrow--lg",
+          "w": 60,
+          "h": 60
+        },
+        {
+          "name": "矢印ボタン md",
+          "selector": ".c-btn-arrow--md",
+          "w": 50,
+          "h": 50
+        },
+        {
+          "name": "矢印ボタン sm",
+          "selector": ".c-btn-arrow--sm",
+          "w": 30,
+          "h": 30
+        },
+        {
+          "name": "矢印ボタン xs",
+          "selector": ".c-btn-arrow--xs",
+          "w": 20,
+          "h": 20
+        },
+        {
+          "name": "お知らせ メタ行",
+          "selector": ".c-card-news__meta",
+          "w": 157.3,
+          "h": 20
+        },
+        {
+          "name": "番号付きカード",
+          "selector": ".c-card-num",
+          "w": 362,
+          "h": 409.8,
+          "_note": "Figma 3139-5472 は 409.6"
+        },
+        {
+          "name": "番号付き 写真",
+          "selector": ".c-card-num__figure",
+          "w": 362,
+          "h": 247.6
+        },
+        {
+          "name": "手順カード",
+          "selector": ".c-card-step",
+          "w": 362,
+          "h": 418.4
+        },
+        {
+          "name": "マーカー見出し",
+          "selector": ".c-heading-marker",
+          "w": 362,
+          "h": 89.6
+        },
+        {
+          "name": "マーカー見出しの印",
+          "selector": ".c-heading-marker .c-marker",
+          "w": 16,
+          "h": 31
+        },
+        {
+          "name": "セレクトの▼",
+          "selector": ".c-select__arrow",
+          "w": 14,
+          "h": 14
+        },
+        {
+          "name": "フォーム行",
+          "selector": ".cm-form-row",
+          "w": 314.3,
+          "h": 102.5
+        },
+        {
+          "name": "ページャー",
+          "selector": ".cm-navi-pager",
+          "w": 281.2,
+          "h": 40
+        },
+        {
+          "name": "ページネーション",
+          "selector": ".cm-navi-paginate",
+          "w": 315.8,
+          "h": 40
+        },
+        {
+          "name": "次ページボタン",
+          "selector": ".cm-navi-paginate__ctrl--next",
+          "w": 40,
+          "h": 40
+        },
+        {
+          "name": "ハンバーガー",
+          "selector": ".l-header-menu",
+          "w": 64,
+          "h": 40
+        },
+        {
+          "name": "ドロワー",
+          "selector": ".l-header-drawer",
+          "w": 402,
+          "_note": "inset:0 のフルスクリーンなので高さはビューポート依存。幅だけ見る"
+        },
+        {
+          "name": "ドロワー言語の罫線",
+          "selector": ".l-header-drawer-lang__line",
+          "w": 1,
+          "h": 18
+        },
+        {
+          "name": "ドロワーのポリシー",
+          "selector": ".l-header-drawer-policy",
+          "w": 342,
+          "h": 59.2
+        }
+      ]
+    }
+  },
+  "_known": "ドロワーは Figma の行間不揃い（前2項目のみ line-height 1）を 1.4 に統一しているため、CTA以降が Figma より +23px 下にくる。"
+}

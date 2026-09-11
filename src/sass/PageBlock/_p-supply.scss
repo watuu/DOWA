@@ -1,0 +1,177 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	責任ある調達
+	Figma: PC_SUPPLY CHAIN 2548-5470 / SP_SUPPLY CHAIN 3139-5801
+----------------------------------------------------*/
+
+/*  方針（番号付きカード #01・#02 ＋ 点線の区切り）
+    PCはコンテナ（1360）より狭い 1189px を中央に置く（x126〜1315。買取原料と同じ）。
+    下の余白はデューデリジェンスの帯まで（Figma実測 SP 118.7 / PC 150.6）
+    Figma: SP 3139-5967 / PC 2548-5477
+----------------------------------------------------*/
+.p-supply-list {
+	max-width: math.div(1189, 16) + rem;
+	margin-inline: auto;
+	margin-bottom: math.div(120, 16) + rem;
+
+	@include config.pc {
+		margin-bottom: math.div(150, 16) + rem;
+	}
+}
+
+/*  取引開始前のデューデリジェンス（グレーの帯）
+    帯の内側余白 SP 上下60 / PC 上100・下150。帯の下はそのままパンくず。
+    PCの帯の矩形（2548-5471）はフッターの下まで伸びているので、高さの照合には SP だけ使う。
+    Figma: SP 3139-6049
+----------------------------------------------------*/
+.p-supply-dd {
+	padding-block: math.div(60, 16) + rem;
+	background: var(--c-surface-alt);
+
+	@include config.pc {
+		padding-top: math.div(100, 16) + rem;
+		padding-bottom: math.div(150, 16) + rem;
+	}
+}
+
+.p-supply-dd__inner {
+	max-width: math.div(1189, 16) + rem;
+	margin-inline: auto;
+}
+
+// 見出し → リード SP 20 / PC 30、リード → 手順 SP 30 / PC 50（2548-5625 下端 1889 → 2548-5630 上端 1939）
+// Figma: SP 3139-6084 / PC 2548-5625
+.p-supply-dd__head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(20, 16) + rem;
+	margin-bottom: math.div(30, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(30, 16) + rem;
+		margin-bottom: math.div(50, 16) + rem;
+	}
+}
+
+// 18px・--c-text-mute は お取引の流れのリード（.p-flow-lead）と同じ。
+// 行間は Figma どおり SP 1.8 / PC 1.2（PCは1行で箱22）。字送りは Figma -0.05em だが本文の -0.01em
+.p-supply-dd__lead {
+	font-size: math.div(15, 16) + rem;
+	line-height: 1.8;
+	color: var(--c-text-mute);
+
+	@include config.pc {
+		font-size: math.div(18, 16) + rem;
+		line-height: 1.2;
+	}
+}
+
+// 手順の白い箱の縦積み（SP 30 / PC 20 間隔）。SPは帯（3139-6049）の中に直接並んでいて一覧の枠が無い
+// Figma: PC 2548-5630
+.p-supply-dd__list {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+	}
+}
+
+/*  書類の表（見出しの帯 ＋ 点付きの箇条書き。SPは縦積み・PCは 400 × 2列を中央）
+    PCは見出し行の下端 → 表 が 40（本文の 27 より深い）ので、箱の gap 27 に 13 を足す。
+    Figma: SP 3139-6204 / PC 2548-5637
+----------------------------------------------------*/
+.p-supply-docs {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(30, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
+		gap: math.div(20, 16) + rem;
+		margin-top: math.div(13, 16) + rem;
+	}
+}
+
+.p-supply-docs__col {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+
+	@include config.pc {
+		flex: 0 1 math.div(400, 16) + rem;
+		min-width: 0;
+	}
+}
+
+// 帯の色は Figma #ececec。パンくずの帯（--c-surface-band #ebebeb）に寄せた
+.p-supply-docs__head {
+	padding: math.div(15, 16) + rem math.div(10, 16) + rem;
+	background: var(--c-surface-band);
+	font-size: math.div(16, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
+	text-align: center;
+	color: var(--c-heading-alt);
+}
+
+// Figmaの項目は text-box-trim（cap〜alphabetic）で箱12px・行の間16（行送り28）。
+// 同じ指定ができるブラウザ（Chrome 133〜 / Safari 18.2〜）はそのまま、できないブラウザは
+// 行の高さ24（1.5）＋ 間隔4 で行送りだけ合わせる
+.p-supply-docs__list {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(16, 16) + rem;
+	padding-left: math.div(20, 16) + rem;
+}
+
+// 和文は Regular（Figma）。欧文は Roboto Condensed Medium → Poppins 500
+.p-supply-docs__list > li {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	font-size: math.div(16, 16) + rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--c-text-title);
+}
+
+// 点（4px）は1行目の中央。トリムしないときは行の中央（0.75em）、するときは大文字の高さ（Noto Sans JP 0.733em）の中央
+.p-supply-docs__list > li::before {
+	content: "";
+	flex-shrink: 0;
+	width: math.div(4, 16) + rem;
+	height: math.div(4, 16) + rem;
+	margin-top: calc(0.75em - #{math.div(2, 16) + rem});
+	border-radius: 50%;
+	background: var(--c-bullet-mute);
+}
+
+.p-supply-docs__list .u-font-en {
+	font-weight: 500;
+	line-height: 1;
+}
+
+@supports (text-box: trim-both cap alphabetic) {
+	.p-supply-docs__list > li > span {
+		text-box: trim-both cap alphabetic;
+	}
+
+	.p-supply-docs__list > li::before {
+		margin-top: calc(0.3665em - #{math.div(2, 16) + rem});
+	}
+}
+
+@supports not (text-box: trim-both cap alphabetic) {
+	.p-supply-docs__list {
+		gap: math.div(4, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

@@ -1,0 +1,253 @@
+extends ./_default
+block vars
+    - var path = "./"
+    - var title = ""
+    - var pageClass = "page-front"
+
+block content
+
+    -
+        var features = [
+            { title: "触媒の価値を適正に評価", desc: "触媒を分析により貴金属の含有量を正確に評価。素材本来の価値に基づいた、納得感のある買取価格をご提示します。" },
+            { title: "早期決済", desc: "営業担当と製錬技術者が連携し、スピードと正確性を両立。分析から精算までを円滑に進め、迅速な決済を実現します。" },
+            { title: "グローバル<br>サンプリング拠点", desc: "世界各地にサンプリング拠点を展開。お客様に近い場所で迅速かつ正確に対応し、スムーズな取引を支えます。" },
+            { title: "初めてのお取引でも<br>安心のサポート体制", desc: "国内外を問わず、缶付き触媒やさまざまなロットに柔軟に対応。状況に合った方法をご提案し、初めての方も丁寧にサポートします。" }
+        ]
+        //- 文言は PC 版（SP 版は1枚目の文言・お客様名の書き方が違う。2・3枚目は Figma に本文が無い）
+        var voices = [
+            { title: "迅速な対応と安心して取引できる体制", text: "担当者の対応が丁寧で、取引開始から現在まで安心してお付き合いを続けることができています。問い合わせや相談にも迅速に対応していただき、コミュニケーションもスムーズです。特に支払い対応の早さには満足しており、信頼して取引できるパートナーだと感じています。", client: "日本、自動車解体業者様" },
+            { title: "信頼できるサービスと円滑なコミュニケーション", client: "海外リサイクル原料集荷業者" },
+            { title: "確かな技術と手厚いサポートに支えられて", client: "アジア圏大手B社" }
+        ]
+        var news = [
+            { date: "2025-12-31", label: "2025.12.31", tag: "お知らせ", title: "年末年始休業のお知らせ" },
+            { date: "2025-12-15", label: "2025.12.15", tag: "お知らせ", title: "使用済み触媒の買取対象を更新しました" },
+            { date: "2025-11-28", label: "2025.11.28", tag: "お知らせ", title: "サンプリング・分析体制について更新しました" }
+        ]
+
+    -
+        //- 数字の図形（書き出したSVG）の大きさ
+        var points = [
+            { text: "正確な分析・評価", w: 30, h: 44 },
+            { text: "価格の透明性", w: 32, h: 44 },
+            { text: "安定した取引体制", w: 33, h: 44 },
+            { text: "幅広い触媒への対応", w: 31, h: 45 }
+        ]
+        var strengthNums = [{ w: 67, h: 120 }, { w: 73, h: 119 }, { w: 82, h: 121 }]
+        //- detail はホバーで出る説明（Figma のバリアント2）
+        var strengths = [
+            { name: "サンプリング", detail: "お客様の原料をロットごとに丁寧に前処理し、原料全体を代表するサンプルを採取しています。高い精度が求められるPGM含有量の評価において、サンプリング工程は公正で信頼性の高い取引を支える重要な役割を担っています。" },
+            { name: "分析", detail: "ICP（誘導結合プラズマ）分析をはじめとする高度な分析技術とトレーサブルな品質管理体制により、PGM元素の含有量を高い精度で測定・定量しています。" },
+            { name: "製錬/精製", detail: "多種多様な原料を月間1,000トン規模で処理し、貴重な資源を効率的に回収するとともに、環境負荷の低減に取り組んでいます。" }
+        ]
+        //- 左列 1・3、右列 2・4（SP はこの順で縦積み）
+        var whats = [
+            { n: 1, en: "Automotive catalysts", name: "自動車触媒" },
+            { n: 2, en: "Chemical catalysts", name: "化学触媒" },
+            { n: 3, en: "Metal honeycombs", name: "メタルハニカム" },
+            { n: 4, en: "Other PGM materials", name: "その他PGM含有原料、工場残渣" }
+        ]
+
+    mixin what-card(w)
+        a.p-top-what__card(href=path + "material/")
+            figure.p-top-what__figure
+                img(src=img + "p-top-what" + w.n + ".webp" alt="" width=1328 height=1328 loading="lazy")
+            .p-top-what__text
+                p.p-top-what__en= w.en
+                h3.p-top-what__name= w.name
+
+    //- .is-section-dark … 写真や濃い地のセクション。ヘッダーが重なっている間はロゴが白抜きになる（common.js の isSectionDark）
+    .p-top
+
+        //- MV（動画は未書き出しのため静止画。画像リストは同じ5枚を2周並べて一定速度でループ）
+        section.p-top-mv.is-section-dark
+            .p-top-mv__main
+                picture.p-top-mv__movie
+                    source(media="(min-width: 641px)" srcset=img + "p-top-mv-movie.webp" width=2458 height=1800)
+                    img(src=img + "p-top-mv-movie-sp.webp" alt="" width=804 height=1092)
+                .p-top-mv__copy
+                    //- 文言は Figma で SP と PC が違う
+                    h1.p-top-mv__title
+                        span.u-only-pc
+                            | 確かな分析で、
+                            br
+                            | 触媒の価値を適正に評価
+                        span.u-only-sp
+                            | 使用済み触媒の
+                            br
+                            | 適正な買取り
+                    p.p-top-mv__lead
+                        span.u-only-pc 白金族類に特化した日本ピージーエムを基盤に、信頼に応えるサービスを提供します。
+                        span.u-only-sp
+                            | 正確な分析で、納得できる触媒取引を実現する。
+                            br
+                            | 正確な分析が、納得の取引を生み出す。
+            .p-top-mv__gallery
+                ul.p-top-mv__track
+                    each round in [0, 1]
+                        each n in [1, 2, 3, 4, 5]
+                            li.p-top-mv__item(aria-hidden=(round ? "true" : false))
+                                img(src=img + "p-top-mv-gallery" + n + ".webp" alt="" width=406 height=406)
+
+        //- 売却先を選ぶポイント
+        section.p-top-point
+            .l-container
+                .c-heading-section.c-heading-section--center.p-top-point__head
+                    p.c-heading-section__label 売却先を選ぶポイント
+                    h2.c-heading-section__title Key Points
+                ol.p-top-point__list
+                    each pt, i in points
+                        li.p-top-point__item
+                            img.p-top-point__num(src=img + "p-top-point-num" + (i + 1) + ".svg" alt=(i + 1) + "." width=pt.w height=pt.h)
+                            span= pt.text
+                p.p-top-point__closing
+                    span.p-top-point__badge DOWA
+                    | には、
+                    br.u-only-sp
+                    | そのすべてに応える体制があります
+
+        //- 私たちの強み
+        section.p-top-strength
+            .l-container
+                .c-heading-section.c-heading-section--center.p-top-strength__head
+                    p.c-heading-section__label 私たちの強み
+                    h2.c-heading-section__title Our Strength
+                .p-top-strength__intro
+                    p.p-top-strength__title
+                        | 適正な買取を支える、
+                        br
+                        | 一貫したリサイクルプロセス。
+                    p.p-top-strength__lead
+                        | サンプリングから分析・製錬まで一貫して対応し、
+                        br.u-only-pc
+                        | 透明性の高い評価を通じて、お客さまの安心と納得に応えます。
+                ol.p-top-strength__list
+                    each s, i in strengths
+                        li.p-top-strength__item
+                            .p-top-strength__figure
+                                img(src=img + "p-top-strength" + (i + 1) + ".webp" alt="" width=880 height=1080 loading="lazy")
+                                .p-top-strength__detail(aria-hidden="true")
+                                    p.p-top-strength__detail-title= s.name
+                                    p.p-top-strength__detail-text= s.detail
+                            h3.p-top-strength__name= s.name
+                            img.p-top-strength__num(src=img + "p-top-strength-num" + (i + 1) + ".svg" alt="" width=strengthNums[i].w height=strengthNums[i].h loading="lazy")
+
+        //- 買取原料（濃い帯）
+        section.p-top-what.is-section-dark
+            .l-container
+                .c-heading-section.p-top-what__head
+                    p.c-heading-section__label 買取原料
+                    h2.c-heading-section__title What We Buy
+                .p-top-what__body
+                    .p-top-what__col
+                        p.p-top-what__lead さまざまな使用済み触媒や、PGMを含む原料を買取しています。
+                        +what-card(whats[0])
+                        +what-card(whats[2])
+                    .p-top-what__col
+                        +what-card(whats[1])
+                        +what-card(whats[3])
+                        .p-top-what__action
+                            a.c-btn.c-btn--md(href=path + "material/")
+                                span.c-btn__label 詳しくみる
+                                span.c-btn-arrow
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_arrow_ne")
+
+        //- 特長
+        section.p-top-feature
+            .l-container
+                .c-heading-section.p-top-feature__head
+                    p.c-heading-section__label DOWAの特長と実績
+                    h2.c-heading-section__title Feature
+                .p-top-feature__body
+                    p.p-top-feature__lead 1991年に日本ピージーエムを設立し、使用済み触媒からプラチナ、パラジウム、ロジウムなどの白金族金属を回収するリサイクル事業を展開しています。
+                    .p-top-feature__list
+                        each f, i in features
+                            .c-card-feature
+                                figure.c-card-feature__figure
+                                    img(src=img + "p-top-feature" + (i + 1) + ".webp" alt="" width=720 height=500 loading="lazy")
+                                .c-card-feature__body
+                                    p.c-line-num 0#{i + 1}
+                                    .c-card-feature__text
+                                        h3.c-card-feature__title!= f.title
+                                        p.c-card-feature__desc= f.desc
+
+        //- お客様の声
+        section.p-top-voice
+            .l-container
+                .c-heading-section.p-top-voice__head
+                    p.c-heading-section__label 自動車解体事業者様の声
+                    h2.c-heading-section__title Voice
+                .js-card-slider
+                    .p-top-voice__slider.swiper
+                        .swiper-wrapper
+                            each v, i in voices
+                                .swiper-slide
+                                    article.c-card-voice
+                                        figure.c-card-voice__figure
+                                            img(src=img + "p-top-voice" + (i + 1) + ".webp" alt="" width=940 height=680 loading="lazy")
+                                        .c-card-voice__body
+                                            p.c-line-num 0#{i + 1}
+                                            .c-card-voice__content
+                                                h3.c-card-voice__title= v.title
+                                                if v.text
+                                                    p.c-card-voice__text= v.text
+                                                p.c-card-voice__client
+                                                    span.c-card-voice__client-label CLIENT：
+                                                    = v.client
+                    .c-btn-ctrl-group.p-top-voice__ctrl
+                        button.c-btn-ctrl.c-btn-ctrl--prev.js-card-slider-prev(type="button" aria-label="前のお客様の声へ")
+                            svg(aria-hidden="true")
+                                use(href="#ico_arrow_ne")
+                        button.c-btn-ctrl.c-btn-ctrl--next.js-card-slider-next(type="button" aria-label="次のお客様の声へ")
+                            svg(aria-hidden="true")
+                                use(href="#ico_arrow_ne")
+
+        //- 新着情報
+        section.p-top-news
+            .l-container
+                .p-top-news__inner
+                    h2.p-top-news__title 新着情報
+                    .p-top-news__list
+                        each item in news
+                            a.c-card-news.c-card-news--outline(href=path + "single-news/")
+                                .c-card-news__body
+                                    .c-card-news__meta
+                                        time.c-card-news__date(datetime=item.date)= item.label
+                                        span.c-card-news__tag= item.tag
+                                    p.c-card-news__title= item.title
+                    .p-top-news__more
+                        a.c-link-arrow.c-link-arrow--lg(href=path + "news/")
+                            span.c-link-arrow__label 一覧をみる
+                            span.c-btn-arrow.c-link-arrow__arrow
+                                svg(aria-hidden="true")
+                                    use(href="#ico_arrow_ne")
+
+        //- 日本ピージーエムの技術力（フッター直前の写真の帯）
+        section.p-top-technology.is-section-dark
+            //- SP（〜640px）だけ縦長の写真。641px 以上は PC の写真
+            picture.p-top-technology__bg
+                source(media="(min-width: 641px)" srcset=img + "p-top-technology-bg.webp" width=2880 height=1800)
+                img(src=img + "p-top-technology-bg-sp.webp" alt="" width=804 height=1400 loading="lazy")
+            .l-container.p-top-technology__inner
+                p.p-top-technology__route
+                    span FROM
+                    span AKITA
+                    span TO THE WORLD
+                .p-top-technology__body
+                    .p-top-technology__head
+                        //- 英字ラベルは Figma で SP と PC の文言が違う
+                        p.p-top-technology__label
+                            span.u-only-sp TECHNOLOGY
+                            span.u-only-pc NPGM EXPERTISE
+                        h2.p-top-technology__title
+                            | 日本ピージーエムの
+                            br.u-only-pc
+                            | 技術力
+                    p.p-top-technology__desc 日本ピージーエム独自の「ROSEプロセス」は、DOWAメタルマインと田中貴金属工業が共同開発した、高効率なPGM回収プロセスです。多様な原料に対応し、月間1,000トン規模の処理能力と短いリードタイムを実現。大規模処理のスケールメリットを活かし、競争力のあるサービスを提供しています。
+                    .p-top-technology__action
+                        a.c-btn.c-btn--lg(href=path + "technology/")
+                            span.c-btn__label 詳しくみる
+                            span.c-btn-arrow.c-btn-arrow--lg
+                                svg(aria-hidden="true")
+                                    use(href="#ico_arrow_ne")

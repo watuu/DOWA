@@ -1,0 +1,170 @@
+{
+  "_": "新着情報ページ。Figma: SP_NEWS 3139-7132 / PC_NEWS 2669-10950",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/news/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c"
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 409,
+          "w": 1016,
+          "borderRadius": 4,
+          "background": "#f6f6f6"
+        },
+        {
+          "name": "1件目",
+          "selector": ".c-card-news",
+          "x": 299,
+          "y": 469,
+          "w": 843
+        },
+        {
+          "name": "日付",
+          "selector": ".c-card-news__date",
+          "fontSize": 16,
+          "fontFamily": "Poppins",
+          "color": "#39969d"
+        },
+        {
+          "name": "タグ",
+          "selector": ".c-card-news__tag",
+          "h": 20,
+          "borderRadius": 4,
+          "background": "#39969d"
+        },
+        {
+          "name": "矢印",
+          "selector": ".c-card-news .c-btn-arrow",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 4
+        },
+        {
+          "name": "ページ番号",
+          "selector": ".cm-navi-paginate__num",
+          "w": 40,
+          "h": 40,
+          "borderRadius": 4
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 1223
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 1753
+        },
+        {
+          "name": "1件の行",
+          "selector": ".c-card-news",
+          "h": 97
+        },
+        {
+          "name": "日付の箱",
+          "selector": ".c-card-news__date",
+          "h": 20
+        },
+        {
+          "name": "一覧パネル",
+          "selector": ".cm-block-panel--list",
+          "w": 1016,
+          "h": 1222.9
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 248,
+          "w": 362,
+          "borderRadius": 4,
+          "background": "#f6f6f6"
+        },
+        {
+          "name": "1件目",
+          "selector": ".c-card-news",
+          "x": 40,
+          "y": 258,
+          "w": 322
+        },
+        {
+          "name": "一覧パネル",
+          "selector": ".cm-block-panel--list",
+          "w": 362,
+          "h": 1361.9
+        }
+      ]
+    }
+  },
+  "_known": "パネル高さ 1223 は Figma 1217 に対し +6（1行あたり 0.6px の丸め × 10行）。"
+}

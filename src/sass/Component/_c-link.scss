@@ -1,0 +1,224 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	...
+----------------------------------------------------*/
+
+/*  本文中に置くURLリンク（次の行に続けて出す）
+    Figma: PC 2669-16297（段落と同じテキストブロックの中。行間の余白は無い）
+----------------------------------------------------*/
+.c-link-url {
+	display: block;
+	font-family: var(--font-en);
+	text-decoration: underline;
+	word-break: break-all;
+}
+
+// 文中に続けて出すURL（箇条書きの「名称(URL)」など）
+// Figma PC 2669-17786 ほか（クッキーポリシー。本文と同じ色・下線のみ）
+// ※インライン要素は箱の高さを node-id 照合できないので「Figma:」の書式にしていない
+// 行の高さは親（和文）に任せる。Poppins のまま line-height 2 を継ぐと、
+// 和文とベースラインの位置が違うぶん行ボックスが広がる（16px/lh2 の行が 32 → 34px）
+.c-link-url--inline {
+	display: inline;
+	line-height: 1;
+	text-underline-position: from-font; // Figmaも from-font
+}
+
+/*  テキスト＋矢印ボタン（「お問い合わせはこちら」「責任ある調達について」）
+    Figma: SP 3139-5341 / PC 2669-17822
+----------------------------------------------------*/
+// SPとPCで見た目が違う（お取引の流れの SP 3139-5341 / PC 2548-5771、クッキーポリシー PC 2669-17822）。
+//   SP … 文字 12px・Regular・+0.05em・Action/Primary・下線なし ＋ 30px の矢印（角丸2・CTA色）
+//   PC … 文字 12px・Action/Primary・下線だけ Text/Link（#088395）＋ 40px の矢印（角丸4・Action/Primary）
+// SPの文字は Figma では 14px・CTA色（#0b82a3）だが、**PCと同じ 12px・Action/Primary にする**（2026-09-10・ユーザー指示）。
+// PCの文字と下線の組み合わせは .cm-navi-pager__label と同じ。
+// 親が縦並びの flex でも伸びないよう、幅は中身なり。
+.c-link-arrow {
+	display: flex;
+	align-items: center;
+	gap: math.div(10, 16) + rem;
+	width: fit-content;
+}
+
+.c-link-arrow__label {
+	color: var(--c-action);
+	font-size: math.div(12, 16) + rem; // PC は Figma 12.8 → 切り捨て
+	font-weight: 400;
+	line-height: 1.4;
+	letter-spacing: 0.05em;
+	white-space: nowrap;
+
+	@include config.pc {
+		border-bottom: 1px solid var(--c-text-link);
+		font-weight: inherit;
+		line-height: 1.5;
+		letter-spacing: var(--tracking-body);
+	}
+}
+
+// 矢印は .c-btn-arrow に大きさと色だけ上書きする（SP 30px / PC 40px）
+.c-link-arrow__arrow {
+	--btn-bg: var(--c-brand-cta);
+	width: math.div(30, 16) + rem;
+	height: math.div(30, 16) + rem;
+	border-radius: math.div(2, 16) + rem; // Figma 2.4 → 切り捨て
+
+	svg {
+		width: math.div(9, 16) + rem;
+		height: math.div(3, 16) + rem;
+	}
+
+	@include config.pc {
+		--btn-bg: var(--c-action);
+		width: math.div(40, 16) + rem;
+		height: math.div(40, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+
+		svg {
+			width: math.div(15, 16) + rem;
+			height: math.div(6, 16) + rem;
+		}
+	}
+}
+
+/*  テキスト＋矢印ボタン・大（トップの新着情報の「一覧をみる」）
+    文字 SP 16 / PC 18・CTA色・下線なし ＋ 矢印 SP 60 / PC 75（#ico_arrow_ne・CTA色）。間は10
+    矢印の角丸は Figma 2.523 / 3.153 → 2 / 3、字形は 14.5 / 18.13 → 14 / 18
+    Figma: SP 3181-17658 / PC 3003-8965
+----------------------------------------------------*/
+.c-link-arrow--lg .c-link-arrow__label {
+	border-bottom: 0;
+	color: var(--c-brand-cta);
+	font-size: math.div(16, 16) + rem;
+	font-weight: inherit;
+	line-height: 1.4;
+	letter-spacing: var(--tracking-body);
+
+	@include config.pc {
+		font-size: math.div(18, 16) + rem;
+	}
+}
+
+.c-link-arrow--lg .c-link-arrow__arrow {
+	--btn-bg: var(--c-brand-cta);
+	width: math.div(60, 16) + rem;
+	height: math.div(60, 16) + rem;
+	border-radius: math.div(2, 16) + rem;
+
+	@include config.pc {
+		width: math.div(75, 16) + rem;
+		height: math.div(75, 16) + rem;
+		border-radius: math.div(3, 16) + rem;
+	}
+
+	svg {
+		width: math.div(14, 16) + rem;
+		height: math.div(14, 16) + rem;
+		fill: none;
+		stroke: currentColor;
+
+		@include config.pc {
+			width: math.div(18, 16) + rem;
+			height: math.div(18, 16) + rem;
+		}
+	}
+}
+
+/*  バナーリンク（ロゴ ＋ 文言 ＋ 三角の矢印。薄いティールの箱）
+    責任ある調達 #02 の「DOWAメタルマイン 責任ある調達について」。
+    ロゴは書き出し済みSVG（dest/assets/img/logo-dowa-mm.svg／280×14、SPは 240×12 に縮小）。
+    Figma: SP 3139-6014 / PC 2548-5493
+----------------------------------------------------*/
+.c-banner-link {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: math.div(20, 16) + rem;
+	padding: math.div(20, 16) + rem;
+	border-radius: math.div(4, 16) + rem;
+	background: var(--c-surface-tint);
+
+	@include config.pc {
+		padding: math.div(30, 16) + rem;
+	}
+}
+
+.c-banner-link__body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(20, 16) + rem;
+	min-width: 0;
+}
+
+.c-banner-link__logo {
+	display: block;
+	width: math.div(240, 16) + rem;
+	height: auto;
+
+	@include config.pc {
+		width: math.div(280, 16) + rem;
+	}
+}
+
+.c-banner-link__label {
+	font-size: math.div(18, 16) + rem;
+	line-height: 1;
+	color: var(--c-text-body);
+}
+
+/*  PDFリンク
+    Figma: PC 2669-16274（文字14px＋13×16のアイコン＋容量）
+----------------------------------------------------*/
+.c-link-pdf {
+	display: inline-flex;
+	align-items: center;
+	gap: math.div(5, 16) + rem;
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.5;
+	color: var(--c-text-body);
+
+	&__label {
+		text-decoration: underline;
+	}
+
+	// 白地＋赤枠の紙に、赤いラベルを重ねた形
+	&__icon {
+		position: relative;
+		flex-shrink: 0;
+		width: math.div(16, 16) + rem;
+		height: math.div(16, 16) + rem;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: math.div(3, 16) + rem;
+			width: math.div(13, 16) + rem;
+			height: math.div(16, 16) + rem;
+			border: 1px solid var(--c-pdf);
+			background: var(--c-surface);
+		}
+
+		span {
+			position: absolute;
+			top: math.div(4, 16) + rem;
+			left: 0;
+			padding: 1px;
+			background: var(--c-pdf);
+			color: var(--color-inverse);
+			font-family: var(--font-en);
+			font-size: math.div(7, 16) + rem;
+			line-height: 1.5;
+		}
+	}
+
+	&__size {
+		font-family: var(--font-en);
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

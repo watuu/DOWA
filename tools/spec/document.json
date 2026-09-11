@@ -1,0 +1,126 @@
+{
+  "_": "資料ダウンロード。Figma: SP_DOCUMENT 3139-7413 / PC_DOCUMENT 2669-16835",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/document/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c"
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 409,
+          "w": 1016
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 298,
+          "y": 479,
+          "w": 844,
+          "borderBottom": "1px solid rgb(158, 158, 158)"
+        },
+        {
+          "name": "入力欄",
+          "selector": ".c-input",
+          "w": 600,
+          "h": 60
+        },
+        {
+          "name": "セレクト",
+          "selector": ".c-select",
+          "w": 200
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 892
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 1422
+        },
+        {
+          "name": "フォーム高さ",
+          "selector": ".cm-form",
+          "h": 562
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 248,
+          "w": 362
+        }
+      ]
+    }
+  },
+  "_known": "パネル 892 は Figma 900 に対し -8。Figmaのこのページだけパネル下の余白が 81（他ページは 70）。"
+}

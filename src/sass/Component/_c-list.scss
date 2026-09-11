@@ -1,0 +1,144 @@
+@use "sass:math";
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	c-list
+----------------------------------------------------*/
+
+/*  丸ポチの箇条書き
+    Figma: PC 2669-16190（5pxの円 ＋ gap11 ＋ 16px lh1.5）
+----------------------------------------------------*/
+.c-list-bullet {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+}
+
+.c-list-bullet > li {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(11, 16) + rem;
+	font-size: math.div(16, 16) + rem;
+	line-height: 2; // Figmaの行の箱は 32px（16 × 2）。生成コードの 1.5 では 8px 足りない
+	color: var(--c-text-body);
+}
+
+// 文中の欧文（Poppins）は行の高さを親に任せる。line-height 2 を継ぐと
+// 和文とベースラインの位置が違うぶん行ボックスが広がる（32 → 34px）
+.c-list-bullet > li .u-font-en {
+	line-height: 1;
+}
+
+// 点は**1行目の中央**に置く。(行の高さ 2em − 点 5px) ÷ 2 = 13.5px
+// Figma（3139-6703 ほか）も 19px の箱の下端に 5px の点があり、1行目の中央に来ている。
+// 行全体で中央寄せにすると、2行以上の項目で点が真ん中まで下がってしまう。
+.c-list-bullet > li::before {
+	content: "";
+	flex-shrink: 0;
+	width: math.div(5, 16) + rem;
+	height: math.div(5, 16) + rem;
+	margin-top: calc((2em - #{math.div(5, 16) + rem}) / 2);
+	border-radius: 50%;
+	background: var(--c-action);
+}
+
+/*  KEYPOINT（ラベル ＋ 点付きの箇条書き。薄いティールの箱）
+    SPは ラベル → 箇条書き の縦積み（間隔20）、PCは横並び（ラベル107 ＋ 間隔70 → 箇条書きは x207）。
+    Figma: SP 3155-10713 / PC 2630-7119
+----------------------------------------------------*/
+// PCの #02（2630-7144）だけ内側余白が 40 で箇条書きが x217。#01 の 30 / x207 にそろえている
+.c-keypoint {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(20, 16) + rem;
+	width: 100%;
+	padding: math.div(30, 16) + rem;
+	background: var(--c-surface-tint);
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: math.div(70, 16) + rem;
+	}
+}
+
+// 字形は .c-marker（12px）。文字は Figma の黒（#000）→ 濃い文字の --c-ink
+.c-keypoint__label {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	gap: math.div(10, 16) + rem;
+	font-family: var(--font-en);
+	font-size: math.div(18, 16) + rem;
+	line-height: 1;
+	color: var(--c-ink);
+}
+
+.c-keypoint__list {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: math.div(20, 16) + rem;
+}
+
+// 点（4px・Action/Primary）→ 間隔5 → 文字18px。リンクの行は後ろに三角の矢印（20px）が付いて行が20になる
+.c-keypoint__list > li {
+	display: flex;
+	align-items: center;
+	gap: math.div(5, 16) + rem;
+	font-size: math.div(18, 16) + rem;
+	line-height: 1;
+	color: var(--c-text-body);
+}
+
+.c-keypoint__list > li::before {
+	content: "";
+	flex-shrink: 0;
+	width: math.div(4, 16) + rem;
+	height: math.div(4, 16) + rem;
+	border-radius: 50%;
+	background: var(--c-action);
+}
+
+.c-keypoint__list .u-font-en {
+	line-height: 1;
+}
+
+.c-keypoint__link {
+	display: inline-flex;
+	align-items: center;
+	gap: math.div(5, 16) + rem;
+}
+
+.c-keypoint__link-label {
+	color: var(--c-action);
+	text-decoration: underline;
+	text-underline-position: from-font; // Figmaも from-font
+}
+
+/*  マーカー（#ico_marker）
+    SPドロワーのナビ先頭と、本文の小見出しで共通
+    Figma: SP 3138-4959（12×12）/ PC 2669-16188（12×24の箱の下半分に同じ字形）
+----------------------------------------------------*/
+// 字形の大きさ（--marker-size）と箱の高さ（--marker-box）を使う側で決める。
+// Figmaは箱が字形より高いことがあり、その場合は字形が箱の下に置かれる。
+.c-marker {
+	--marker-size: #{math.div(12, 16) + rem};
+	--marker-box : var(--marker-size);
+	display: flex;
+	align-items: flex-end;
+	flex-shrink: 0;
+	width: var(--marker-size);
+	height: var(--marker-box);
+	color: var(--c-action);
+
+	svg {
+		display: block;
+		width: var(--marker-size);
+		height: var(--marker-size);
+		fill: currentColor;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

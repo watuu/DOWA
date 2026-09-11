@@ -1,0 +1,9 @@
+@use '../Base/config' as config;
+@use '../Component/c-btn' as btn;
+@use '../Component/c-paragraph' as paragraph;
+/*----------------------------------------------------
+	コンテナ
+----------------------------------------------------*/
+.l-container {
+	@include config.container;
+}

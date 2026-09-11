@@ -1,0 +1,15 @@
+# figma-sanity.mjs で出さない指摘。「種別 セレクタ」で1行ずつ。
+# デザイン上わざとそうしている箇所を書く（理由をコメントで残すこと）。
+
+# Figmaのラベル列は160px固定で、長いラベルは折り返さず外へはみ出す作り（2669-15757）
+はみ出し .c-form-required
+
+# 見出しだけのセクション（第三者提供・委託）は子が __head 1つになる。gapは他節と共通
+gapの階層 .cm-policy__section
+
+# 番号の無いカード（NPGMの技術の分析）は子が __text 1つになる。
+# __text を外すと見出し → 本文が __body の gap（PC 40）になり、Figma の 15 と合わなくなる
+gapの階層 .c-card-num__body
+
+# 矢印の無いお知らせ（トップの新着情報 .c-card-news--outline）は子が __body 1つになる。gap は矢印付きの一覧と共通
+gapの階層 .c-card-news

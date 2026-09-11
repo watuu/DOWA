@@ -1,0 +1,253 @@
+{
+  "_": "お問い合わせ。Figma: SP_CONTACT 3139-7714 / PC_CONTACT 2669-15553",
+  "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/contact/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40",
+          "w": 342,
+          "h": 60
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c",
+          "w": 67.2,
+          "h": 19.6
+        },
+        {
+          "name": "パンくずの帯",
+          "selector": ".cm-navi-breadcrumb",
+          "background": "#ebebeb",
+          "w": 1440,
+          "h": 35.6
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 409,
+          "w": 1016,
+          "borderRadius": 4,
+          "background": "#f6f6f6"
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 298,
+          "y": 479,
+          "w": 844,
+          "fontSize": 16,
+          "lineHeight": 32,
+          "borderBottom": "1px solid rgb(158, 158, 158)"
+        },
+        {
+          "name": "ラベル",
+          "selector": ".cm-form-row__label",
+          "w": 160,
+          "fontSize": 18,
+          "fontWeight": "700",
+          "color": "#333d40"
+        },
+        {
+          "name": "必須バッジ",
+          "selector": ".c-form-required",
+          "fontSize": 14,
+          "color": "#ff442a",
+          "w": 43.7,
+          "h": 22
+        },
+        {
+          "name": "入力欄",
+          "selector": ".c-input",
+          "w": 600,
+          "h": 60,
+          "borderRadius": 4,
+          "fontSize": 14
+        },
+        {
+          "name": "セレクト",
+          "selector": ".c-select",
+          "w": 200
+        },
+        {
+          "name": "テキストエリア",
+          "selector": ".c-textarea",
+          "w": 600,
+          "h": 200
+        },
+        {
+          "name": "チェックボックス",
+          "selector": ".c-checkbox input",
+          "w": 30,
+          "h": 30,
+          "borderRadius": 4
+        },
+        {
+          "name": "送信ボタン",
+          "selector": ".c-btn--action .c-btn__label",
+          "h": 50,
+          "borderRadius": 4,
+          "background": "#15819e"
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 1272
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 1802,
+          "w": 1440,
+          "h": 35.6
+        },
+        {
+          "name": "リード高さ",
+          "selector": ".cm-block-lead",
+          "h": 125
+        },
+        {
+          "name": "フォーム高さ",
+          "selector": ".cm-form",
+          "h": 942
+        },
+        {
+          "name": "CTAブロック",
+          "selector": ".cm-block-cta",
+          "w": 1360,
+          "h": 380.4
+        },
+        {
+          "name": "ページ見出しブロック",
+          "selector": ".cm-block-header-page",
+          "w": 1440,
+          "h": 281
+        },
+        {
+          "name": "フッター(箱)",
+          "selector": ".l-footer",
+          "w": 1440,
+          "h": 770
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em",
+          "w": 159.6,
+          "h": 28
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c",
+          "w": 57.4,
+          "h": 16.8
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 248,
+          "w": 362
+        },
+        {
+          "name": "リード",
+          "selector": ".cm-block-lead",
+          "x": 40,
+          "y": 278,
+          "w": 322,
+          "fontSize": 16
+        },
+        {
+          "name": "入力欄",
+          "selector": ".c-input",
+          "w": 322,
+          "h": 60,
+          "fontSize": 12
+        },
+        {
+          "name": "CTAブロック",
+          "selector": ".cm-block-cta",
+          "w": 342,
+          "h": 692,
+          "_note": "Figma 3138-5157。以前は実装値 718.8 を書いていて +27 を検出できていなかった（本文の text-box-trim 漏れ）"
+        },
+        {
+          "name": "CTAカード",
+          "selector": ".cm-block-cta-card",
+          "w": 342,
+          "h": 341,
+          "_note": "Figma 3138-5137"
+        },
+        {
+          "name": "CTAカード・本文（2行）",
+          "selector": ".cm-block-cta-card__desc",
+          "h": 38,
+          "fontSize": 16,
+          "lineHeight": 25.6,
+          "_note": "Figma 3138-5142（text-box-trim で 2行 38）"
+        },
+        {
+          "name": "ページ見出しブロック",
+          "selector": ".cm-block-header-page",
+          "w": 402,
+          "h": 189
+        },
+        {
+          "name": "フッター(箱)",
+          "selector": ".l-footer",
+          "w": 402,
+          "h": 1088.6,
+          "_note": "Figma footer_sp 3138-5193 は 1080。CTAカードの本文を直して 1116.3 → 1088.6（2026-09-11）。残り +8.6 はフッター下部で未調査"
+        }
+      ]
+    }
+  },
+  "_known": "パネル・パンくずとも Figma（1269 / 1798）に対し +3〜+4。"
+}
