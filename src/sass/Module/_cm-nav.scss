@@ -8,9 +8,11 @@
 
 // ページネーション／ページャーで共通の40pxボタン（三角アイコン）
 %navi-btn {
+	--arrow-anim: arrow-to-right; // 字形は右向きの三角。前送りは scaleX(-1) で左向きにしている
 	display: grid;
 	place-items: center;
 	flex-shrink: 0;
+	overflow: hidden; // 抜けていく矢印を箱の中で切る
 	width: math.div(40, 16) + rem;
 	height: math.div(40, 16) + rem;
 	border-radius: math.div(4, 16) + rem;
@@ -41,6 +43,10 @@
 		width: math.div(40, 16) + rem;
 		height: math.div(40, 16) + rem;
 		border: 1px solid var(--c-border); // Figma 1.333 → 切り捨て
+		transition:
+			background-color var(--hover-duration) var(--hover-ease),
+			border-color     var(--hover-duration) var(--hover-ease),
+			color            var(--hover-duration) var(--hover-ease);
 		border-radius: math.div(4, 16) + rem;
 		background: var(--c-surface);
 		color: var(--c-action);
@@ -67,6 +73,7 @@
 	&__ctrl {
 		@extend %navi-btn;
 
+		&--prev { --arrow-anim: arrow-to-left; }
 		&--prev svg { transform: scaleX(-1); }
 
 		// 先頭・末尾では押せない
@@ -99,6 +106,10 @@
 	@extend %navi-btn;
 }
 
+.cm-navi-pager__btn--prev {
+	--arrow-anim: arrow-to-left;
+}
+
 .cm-navi-pager__btn--prev svg {
 	transform: scaleX(-1);
 }
@@ -108,6 +119,9 @@
 .cm-navi-pager__label {
 	border-bottom: 1px solid var(--c-text-link);
 	color: var(--c-action);
+	transition:
+		color        var(--hover-duration) var(--hover-ease),
+		border-color var(--hover-duration) var(--hover-ease);
 	font-size: math.div(12, 16) + rem; // Figma 12.8 → 切り捨て
 	line-height: 1.5;
 	white-space: nowrap;
@@ -176,6 +190,36 @@
 .cm-navi-breadcrumb__item a {
 	color: var(--c-text-link);
 	text-decoration: underline;
+}
+
+/*  ホバー
+    参考サイト npgm.adriatic-dev.com に合わせている。
+    ・数字（ページネーション）… 地が Action色・字が白・枠線は消す（現在地と同じ見た目）
+    ・前後の矢印 … 抜けて反対側から戻る（u-targetarrow）
+    ・パンくず … 薄くする（u-target）
+----------------------------------------------------*/
+@media (hover: hover) {
+	.cm-navi-paginate__num:hover {
+		border-color: transparent;
+		background: var(--c-action);
+		color: var(--color-inverse);
+	}
+
+	.cm-navi-paginate__ctrl:hover svg,
+	.cm-navi-pager__btn:hover svg,
+	.cm-navi-pager__item:hover .cm-navi-pager__btn svg {
+		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		will-change: translate, opacity;
+	}
+
+	.cm-navi-pager__item:hover .cm-navi-pager__label {
+		border-bottom-color: var(--c-text-link);
+		color: var(--c-text-link);
+	}
+
+	.cm-navi-breadcrumb__item a:hover {
+		opacity: .6;
+	}
 }
 
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/

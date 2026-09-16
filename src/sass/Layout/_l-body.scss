@@ -8,6 +8,22 @@ html {
 	//height: 100%;
 	//overscroll-behavior: none;
 }
+
+/*  スクロールバー
+	OverlayScrollbars は初期化のときに html へ scrollbar-width: none を付ける（ネイティブのスクロールバーを消す）。
+	CSS で先に伏せておかないと、app.js が走った瞬間にスクロールバーの幅ぶん中身が横に広がる。
+	ページを開くたびに起きるので、遷移のたびにカクついて見える。
+	.is-js は head のインラインスクリプトが付ける（_default.pug）。
+	JS が動かない環境では付かないので、ネイティブのスクロールバーがそのまま残って操作できる
+----------------------------------------------------*/
+html.is-js {
+	scrollbar-width: none;
+}
+
+// Safari 18.1 以前・古い Chrome は scrollbar-width を見ないので、こちらでも消す
+html.is-js::-webkit-scrollbar {
+	display: none;
+}
 body {
 	position: relative;
 	&.is-leaving {

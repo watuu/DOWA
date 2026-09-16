@@ -213,6 +213,9 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   --easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --duration: .3s;
   --easeTheme: var(--easeOutSine);
+  --hover-duration: .4s;
+  --hover-ease: var(--easeOutQuad);
+  --hover-zoom: 1.03;
 }
 
 .is-section-dark {
@@ -231,16 +234,24 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   --btn-bg: var(--c-brand-cta);
   --btn-fg: var(--color-inverse);
   --btn-line: transparent;
+  --btn-hover-bg: var(--color-inverse);
+  --btn-hover-fg: var(--c-brand-cta);
+  --btn-hover-line: var(--c-brand-cta);
+  --arrow-anim: arrow-to-right;
 }
 
 .c-btn--action,
 .c-btn-arrow--action {
   --btn-bg: var(--c-action);
+  --btn-hover-fg: var(--c-action);
+  --btn-hover-line: var(--c-action);
 }
 
 .c-btn--mid,
 .c-btn-arrow--mid {
   --btn-bg: var(--c-brand-mid);
+  --btn-hover-fg: var(--c-brand-mid);
+  --btn-hover-line: var(--c-brand-mid);
 }
 
 .c-btn--outline,
@@ -248,12 +259,18 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   --btn-bg: var(--c-surface);
   --btn-fg: var(--c-action);
   --btn-line: var(--c-border);
+  --btn-hover-bg: var(--c-action);
+  --btn-hover-fg: var(--color-inverse);
+  --btn-hover-line: var(--c-action);
 }
 
 .c-btn--white,
 .c-btn-arrow--white {
   --btn-bg: var(--c-surface);
   --btn-fg: var(--c-brand-cta);
+  --btn-hover-bg: transparent;
+  --btn-hover-fg: var(--color-inverse);
+  --btn-hover-line: var(--color-inverse);
 }
 
 /*  ラベル ＋ 矢印
@@ -276,17 +293,20 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   font-size: 0.75rem;
   line-height: 1;
   white-space: nowrap;
+  transition: background-color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
 }
 .c-btn__arrow {
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
   width: 3.125rem;
   height: 3.125rem;
   border: 1px solid var(--btn-line);
   border-radius: 0.25rem;
   background: var(--btn-bg);
   color: var(--btn-fg);
+  transition: background-color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
 }
 .c-btn__arrow svg {
   width: 0.9375rem;
@@ -341,6 +361,7 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
 }
 
 .c-btn--md .c-btn-arrow {
+  --arrow-anim: arrow-to-righttop;
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 0.125rem;
@@ -371,12 +392,14 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--btn-line);
   border-radius: 0.25rem;
   background: var(--btn-bg);
   color: var(--btn-fg);
+  transition: background-color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
 }
 .c-btn-arrow svg {
   width: 0.9375rem;
@@ -410,6 +433,7 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
 }
 
 .c-btn-arrow--lg {
+  --arrow-anim: arrow-to-righttop;
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 0.125rem;
@@ -437,15 +461,22 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
     Figma: SP 3181-17718 / PC 3003-8930
 ----------------------------------------------------*/
 .c-btn-ctrl {
+  --btn-hover-bg: var(--color-inverse);
+  --btn-hover-fg: var(--c-brand-cta);
+  --btn-hover-line: var(--c-brand-cta);
   display: grid;
   place-items: center;
   flex-shrink: 0;
   width: 3.75rem;
   height: 3.75rem;
+  --arrow-anim: arrow-to-right;
+  overflow: hidden;
+  border: 1px solid transparent;
   border-radius: 0.125rem;
   background: var(--c-brand-cta);
   color: var(--color-inverse);
   cursor: pointer;
+  transition: background-color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
 }
 @media screen and (min-width: 1024px) {
   .c-btn-ctrl {
@@ -466,6 +497,10 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
     width: 1.5625rem;
     height: 1.5625rem;
   }
+}
+
+.c-btn-ctrl--prev {
+  --arrow-anim: arrow-to-left;
 }
 
 .c-btn-ctrl--prev svg {
@@ -512,6 +547,7 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   background: var(--color-inverse);
   translate: -50% -50%;
   transition: margin-top var(--duration) var(--menu-ease), rotate 0s, opacity var(--duration) var(--menu-ease);
+  will-change: rotate, opacity;
 }
 .c-btn-menu span:nth-child(1) {
   margin-top: -0.25rem;
@@ -534,6 +570,32 @@ article, main, aside, details, figcaption, figure, footer, header, hgroup, menu,
   rotate: -160deg;
 }
 
+/*  ホバー
+    地と字を入れ替える（参考サイト npgm.adriatic-dev.com と同じ扱い）。
+    矢印はボタンの中にも、リンクやカードの中にも単体で置かれるので、
+    「自分のホバー」と「外側の a / button のホバー」の両方で効かせる。
+    タップ端末（hover: none）では何もしない
+----------------------------------------------------*/
+@media (hover: hover) {
+  .c-btn:hover .c-btn__label,
+  .c-btn:hover .c-btn__arrow,
+  a:hover .c-btn-arrow,
+  button:hover .c-btn-arrow,
+  .c-btn-arrow:hover,
+  .c-btn-ctrl:hover {
+    border-color: var(--btn-hover-line);
+    background: var(--btn-hover-bg);
+    color: var(--btn-hover-fg);
+  }
+  .c-btn:hover .c-btn__arrow svg,
+  a:hover .c-btn-arrow svg,
+  button:hover .c-btn-arrow svg,
+  .c-btn-arrow:hover svg,
+  .c-btn-ctrl:hover svg {
+    animation: var(--arrow-anim) 0.5s var(--easeOutSine) both;
+    will-change: translate, opacity;
+  }
+}
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	フォーム
@@ -728,6 +790,21 @@ a {
 /*----------------------------------------------------
 	body
 ----------------------------------------------------*/
+/*  スクロールバー
+	OverlayScrollbars は初期化のときに html へ scrollbar-width: none を付ける（ネイティブのスクロールバーを消す）。
+	CSS で先に伏せておかないと、app.js が走った瞬間にスクロールバーの幅ぶん中身が横に広がる。
+	ページを開くたびに起きるので、遷移のたびにカクついて見える。
+	.is-js は head のインラインスクリプトが付ける（_default.pug）。
+	JS が動かない環境では付かないので、ネイティブのスクロールバーがそのまま残って操作できる
+----------------------------------------------------*/
+html.is-js {
+  scrollbar-width: none;
+}
+
+html.is-js::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   position: relative;
 }
@@ -858,6 +935,21 @@ body.is-nav-open .l-header-logo__dark {
   font-family: var(--font-en);
 }
 
+/*  グローバルナビ・言語切替のホバー
+    文字色が Text/Link に変わるだけ（参考サイト npgm.adriatic-dev.com のナビは u-targetcolor）
+----------------------------------------------------*/
+.l-header-nav__list a {
+  transition: color var(--hover-duration) var(--hover-ease);
+}
+
+@media (hover: hover) {
+  .l-header-nav__list a:hover {
+    color: var(--c-text-link);
+  }
+  .l-header-lang__other:hover {
+    opacity: 0.6;
+  }
+}
 /*  ヘッダー右側（ナビ＋CTA＋言語切替）
     Figma: 3003-9066（gap14）の中に 3003-9067（ナビとCTA。gapなし）
 ----------------------------------------------------*/
@@ -1094,6 +1186,30 @@ body.is-nav-open .l-header-drawer__item {
 /*----------------------------------------------------
 	main
 ----------------------------------------------------*/
+/*  ページを開いたときのフェードイン
+	ページ遷移（＝読み込み直し）の切り替わりをやわらげるため、本文だけをわずかに出す。
+	JS の到着を待たない CSS アニメーションなので、最初の描画から動く。
+	fill-mode を付けないのは、終わったあとに opacity の指定を残さないため
+	（残すと ScrollTrigger の pin が使う position: fixed の効き方に関わる）。
+	.is-js が付かない環境（JS無効）では何もしない
+----------------------------------------------------*/
+html.is-js .l-main {
+  animation: l-main-fade-in 0.5s var(--easeOutSine);
+}
+
+@keyframes l-main-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.is-js .l-main {
+    animation: none;
+  }
+}
 /*----------------------------------------------------
 	フッター
 	Figma: SP footer_sp 3138-5193 / PC footer-pc 3003-9151
@@ -1175,9 +1291,11 @@ body.is-nav-open .l-header-drawer__item {
 
 .l-footer-sites__btn {
   --color: var(--c-brand-cta);
+  --arrow-anim: arrow-to-right;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
   width: 1.875rem;
   height: 1.875rem;
   border-radius: 0.125rem;
@@ -1304,6 +1422,20 @@ body.is-nav-open .l-header-drawer__item {
   }
 }
 
+/*  ホバー
+    濃い地に白い文字なので、色ではなく薄くして返す
+    （参考サイト npgm.adriatic-dev.com の u-target と同じ opacity .6）
+----------------------------------------------------*/
+@media (hover: hover) {
+  .l-footer-nav a:hover,
+  .l-footer-policy__item:hover {
+    opacity: 0.6;
+  }
+  .l-footer-sites__link:hover .l-footer-sites__btn svg {
+    animation: var(--arrow-anim) 0.5s var(--easeOutSine) both;
+    will-change: translate, opacity;
+  }
+}
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	トップ
@@ -1348,6 +1480,7 @@ body.is-nav-open .l-header-drawer__item {
 .p-top-mv__movie {
   position: absolute;
   inset: 0;
+  overflow: hidden;
 }
 .p-top-mv__movie img,
 .p-top-mv__movie video {
@@ -1414,6 +1547,8 @@ body.is-nav-open .l-header-drawer__item {
   display: flex;
   width: max-content;
   animation: p-top-mv-x 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 @media screen and (min-width: 1024px) {
   .p-top-mv__track {
@@ -1425,6 +1560,7 @@ body.is-nav-open .l-header-drawer__item {
 
 .p-top-mv__item {
   flex-shrink: 0;
+  overflow: hidden;
   width: 7.5rem;
   margin-right: 0.25rem;
   aspect-ratio: 1;
@@ -1675,7 +1811,8 @@ body.is-nav-open .l-header-drawer__item {
   aspect-ratio: 440/540;
   overflow: hidden;
 }
-.p-top-strength__figure img {
+.p-top-strength__figure img,
+.p-top-strength__figure video {
   display: block;
   width: 100%;
   height: 100%;
@@ -1942,8 +2079,6 @@ body.is-nav-open .l-header-drawer__item {
   .p-top-feature__lead {
     grid-column: 1;
     align-self: start;
-    position: sticky;
-    top: 2.5rem;
     font-size: 1.125rem;
   }
 }
@@ -2081,6 +2216,7 @@ body.is-nav-open .l-header-drawer__item {
   position: absolute;
   inset: 0;
   z-index: -1;
+  overflow: hidden;
 }
 .p-top-technology__bg img {
   display: block;
@@ -2211,6 +2347,25 @@ body.is-nav-open .l-header-drawer__item {
   }
 }
 
+/*  ホバー
+    写真を少し寄せる（--hover-zoom）。素の transform と transition は .u-anim-zoom が持っているので、
+    ここでは寄せる量と速さだけ上書きする（スクロールインの 1.4s のままだと、ホバーが遅れて見える）
+----------------------------------------------------*/
+@media (hover: hover) {
+  .p-top-what__card:hover .p-top-what__figure img,
+  .p-top-strength__item:hover .p-top-strength__figure video {
+    transform: scale(var(--hover-zoom));
+    transition-duration: var(--hover-duration);
+    will-change: transform;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p-top-what__card:hover .p-top-what__figure img,
+  .p-top-strength__item:hover .p-top-strength__figure video {
+    transform: none;
+    transition: none;
+  }
+}
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	新着情報
@@ -2754,6 +2909,398 @@ body.is-nav-open .l-header-drawer__item {
 
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
+	p-location（拠点一覧）
+	Figma: SP 3223-12693 / PC 2630-7190
+	※SP のフレーム名は Figma 上 "SP-TECHNOLOGY" のままだが、中身は LOCATION。
+	　doc/design-tokens.md の「6. 未決事項」に記載。
+----------------------------------------------------*/
+.p-location {
+  padding-bottom: 8.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location {
+    padding-bottom: 5.625rem;
+  }
+}
+
+/*  地図の枠
+	SP は幅が足りないので c-scroll-x で横に送る（ScrollHint は common.js の jsScrollX）。
+	PC は器に収まるので、c-scroll-x 側が is-scrollable を外してバーを隠す。
+	Figma: SP 3344-15775 / PC 3304-19292
+----------------------------------------------------*/
+.p-location-map--japan {
+  margin-bottom: 5.0625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-map--japan {
+    margin-bottom: 2.0625rem;
+  }
+}
+
+.p-location-japan {
+  display: block;
+  width: 23.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-japan {
+    width: 100%;
+  }
+}
+
+.p-location-japan__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*  「全国に触媒集荷拠点を設けています」
+	Figma: SP 3344-13222 / PC 3223-12688
+----------------------------------------------------*/
+.p-location-catch__line {
+  margin-top: 0;
+}
+
+.p-location-catch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+  margin-bottom: 7.5625rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-catch {
+    gap: 0.625rem;
+    margin-top: 7.4375rem;
+    margin-bottom: 12.5rem;
+    font-size: 1.875rem;
+  }
+}
+
+.p-location-catch__icon {
+  display: block;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1.25rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-catch__icon {
+    width: 2.1875rem;
+    height: 2.625rem;
+  }
+}
+.p-location-catch__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/*  世界地図（ラベルは画像に焼き込み、その上に透明なアンカーを重ねる）
+	ラベルを HTML の文字で組むと、Figma 側でグループごと拡大されている都合で
+	SP と PC の文字寸法が合わないため、画像に寄せている。
+	Figma: SP 3344-13235 / PC 3344-10646
+----------------------------------------------------*/
+.c-scroll-x.p-location-map--world {
+  gap: 0.8125rem;
+}
+
+.p-location-map--world {
+  margin-bottom: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-map--world {
+    margin-bottom: 7.6875rem;
+  }
+}
+
+.p-location-world {
+  position: relative;
+  width: 60.9375rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-world {
+    width: 81.25rem;
+    margin-inline: auto;
+  }
+}
+
+.p-location-world__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*  ラベル（各拠点へのアンカー）
+	Figma はラベルを地図グループごと拡大しているので、素の 12px / padding 15・3 ではなく
+	拡大後の実寸で置く（PC ×1.416 → 17 / 21・4、SP ×1.064 → 12 / 16・3）。
+	17 と 12 はどちらも doc/design-tokens.md 3-1 のスケールに載っている値。
+	幅は Figma の実測を使わず中身なり（Poppins が Roboto Condensed より広く、入りきらないため）。
+	高さだけ Figma の箱（SP 26.6 / PC 35.4）を地図の高さで割った率で合わせる。
+	Figma: SP 3344-15687〜15699 / PC 3344-13098〜13111
+----------------------------------------------------*/
+.p-location-world__label {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  height: 5.78%;
+  padding-inline: 1rem;
+  border: 1px solid var(--c-brand-mid);
+  background: var(--c-surface);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: normal;
+  color: var(--c-brand-mid);
+  white-space: nowrap;
+  transition: background-color var(--duration) var(--easeTheme), color var(--duration) var(--easeTheme);
+}
+@media screen and (min-width: 1024px) {
+  .p-location-world__label {
+    padding-inline: 1.3125rem;
+    font-size: 1.0625rem;
+  }
+}
+@media (hover: hover) {
+  .p-location-world__label:hover {
+    background: var(--c-brand-mid);
+    color: var(--color-inverse);
+  }
+}
+.p-location-world__label:focus-visible {
+  outline: 2px solid var(--c-action);
+  outline-offset: 2px;
+}
+
+/*  一覧ブロック（左のサイドナビ ＋ 右のカード一覧）
+	PC だけ2カラム。ナビの追従は common.js の jsStickySection。
+	Figma 側に「ナビ＋本文」に相当する箱が無い（PC 3192-17973 は世界地図まで含む）ので
+	node-id は書かない。内訳は .p-location-nav__list と .p-location-list を参照
+----------------------------------------------------*/
+@media screen and (min-width: 1024px) {
+  .p-location-cols {
+    display: grid;
+    grid-template-columns: 16.25rem 1fr;
+    gap: 5.125rem;
+    width: 74.125rem;
+    max-width: 100%;
+    margin-inline: auto;
+    align-items: start;
+  }
+}
+
+/*  サイドナビ（SP には無い）
+	Figma: PC 2630-7497（国内）/ 3181-14803（海外）
+----------------------------------------------------*/
+.p-location-nav {
+  display: none;
+  font-family: var(--font-en);
+}
+@media screen and (min-width: 1024px) {
+  .p-location-nav {
+    display: block;
+  }
+}
+
+.p-location-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  border-radius: 0.3125rem;
+  background: var(--c-surface-raised);
+}
+
+.p-location-nav__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  min-height: 1.8125rem;
+}
+
+.p-location-nav__icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 0.75rem;
+  height: 1.4em;
+  color: var(--c-border);
+  transition: color var(--hover-duration) var(--hover-ease);
+}
+.p-location-nav__icon svg {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  fill: currentColor;
+}
+
+.p-location-nav__label {
+  font-size: 1rem;
+  line-height: 1.4;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+  transition: color var(--hover-duration) var(--hover-ease);
+}
+
+.p-location-nav__item.is-current .p-location-nav__icon,
+.p-location-nav__item.is-current .p-location-nav__label {
+  color: var(--c-action);
+}
+
+@media (hover: hover) {
+  .p-location-nav__link:hover .p-location-nav__icon,
+  .p-location-nav__link:hover .p-location-nav__label {
+    color: var(--c-action);
+  }
+}
+/*  一覧の見出し（国内一覧 / 海外一覧）。下線つき
+	Figma のインスタンスは幅 348 固定だが、下線は文字の幅にしか付かないので実装は fit-content。
+	高さ 36 だけ node-id 照合の対象になる。
+	Figma: SP 3304-19300 / PC 2630-7510
+----------------------------------------------------*/
+.p-location-heading {
+  width: fit-content;
+  margin-bottom: 1.875rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-heading {
+    margin-bottom: 2.75rem;
+  }
+}
+
+/*  カード一覧
+	SP は点線（80）が間隔を兼ねるので gap 0、PC は gap 44。
+	Figma: SP 3344-13223（PCは見出しを含む箱しか無いので node-id を書かない）
+----------------------------------------------------*/
+.p-location-list {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-list {
+    gap: 2.75rem;
+  }
+}
+
+/*  拠点カード
+	Figma: SP 3304-19302 / PC 2630-10064
+----------------------------------------------------*/
+.p-location-card {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-en);
+  gap: 3.75rem;
+  padding-bottom: 1.875rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+.p-location-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .p-location-card__body {
+    flex-shrink: 0;
+    width: 25rem;
+  }
+}
+
+.p-location-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+
+.p-location-card__name {
+  font-size: 1.3125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  color: var(--c-heading-alt);
+}
+@media screen and (min-width: 1024px) {
+  .p-location-card__name {
+    font-size: 1.875rem;
+    line-height: 1.2;
+  }
+}
+
+.p-location-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+
+.p-location-card__spec,
+.p-location-card__address {
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+}
+
+.p-location-card__share {
+  padding-left: 1.5rem;
+}
+.p-location-card__share li {
+  list-style: disc;
+}
+
+.p-location-card__tel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.875rem;
+}
+
+.p-location-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.875rem;
+}
+.p-location-card__actions .c-link-arrow__arrow {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+}
+.p-location-card__actions .c-link-arrow__arrow svg {
+  width: 0.9375rem;
+  height: 0.375rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .p-location-card__map {
+    flex: 1 0 0;
+    min-width: 0;
+  }
+}
+.p-location-card__map iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 497/340;
+  border: 0;
+  border-radius: 0.3125rem;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
 	cm-block
 ----------------------------------------------------*/
 /*  ページ見出しのブロック
@@ -2782,6 +3329,15 @@ body.is-nav-open .l-header-drawer__item {
 @media screen and (min-width: 1024px) {
   .cm-block-header-page--section {
     margin-bottom: 8.6875rem;
+  }
+}
+
+.cm-block-header-page--map {
+  margin-bottom: 1.625rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-block-header-page--map {
+    margin-bottom: 2.375rem;
   }
 }
 
@@ -2968,9 +3524,11 @@ body.is-nav-open .l-header-drawer__item {
 	cm-nav
 ----------------------------------------------------*/
 .cm-navi-pager__btn, .cm-navi-paginate__ctrl {
+  --arrow-anim: arrow-to-right;
   display: grid;
   place-items: center;
   flex-shrink: 0;
+  overflow: hidden;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.25rem;
@@ -2999,6 +3557,7 @@ body.is-nav-open .l-header-drawer__item {
   width: 2.5rem;
   height: 2.5rem;
   border: 1px solid var(--c-border);
+  transition: background-color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease), color var(--hover-duration) var(--hover-ease);
   border-radius: 0.25rem;
   background: var(--c-surface);
   color: var(--c-action);
@@ -3016,6 +3575,9 @@ body.is-nav-open .l-header-drawer__item {
   font-family: var(--font-en);
   font-size: 1rem;
   line-height: 1;
+}
+.cm-navi-paginate__ctrl--prev {
+  --arrow-anim: arrow-to-left;
 }
 .cm-navi-paginate__ctrl--prev svg {
   transform: scaleX(-1);
@@ -3042,6 +3604,10 @@ body.is-nav-open .l-header-drawer__item {
   gap: 0.625rem;
 }
 
+.cm-navi-pager__btn--prev {
+  --arrow-anim: arrow-to-left;
+}
+
 .cm-navi-pager__btn--prev svg {
   transform: scaleX(-1);
 }
@@ -3049,6 +3615,7 @@ body.is-nav-open .l-header-drawer__item {
 .cm-navi-pager__label {
   border-bottom: 1px solid var(--c-text-link);
   color: var(--c-action);
+  transition: color var(--hover-duration) var(--hover-ease), border-color var(--hover-duration) var(--hover-ease);
   font-size: 0.75rem;
   line-height: 1.5;
   white-space: nowrap;
@@ -3114,6 +3681,32 @@ body.is-nav-open .l-header-drawer__item {
   text-decoration: underline;
 }
 
+/*  ホバー
+    参考サイト npgm.adriatic-dev.com に合わせている。
+    ・数字（ページネーション）… 地が Action色・字が白・枠線は消す（現在地と同じ見た目）
+    ・前後の矢印 … 抜けて反対側から戻る（u-targetarrow）
+    ・パンくず … 薄くする（u-target）
+----------------------------------------------------*/
+@media (hover: hover) {
+  .cm-navi-paginate__num:hover {
+    border-color: transparent;
+    background: var(--c-action);
+    color: var(--color-inverse);
+  }
+  .cm-navi-paginate__ctrl:hover svg,
+  .cm-navi-pager__btn:hover svg,
+  .cm-navi-pager__item:hover .cm-navi-pager__btn svg {
+    animation: var(--arrow-anim) 0.5s var(--easeOutSine) both;
+    will-change: translate, opacity;
+  }
+  .cm-navi-pager__item:hover .cm-navi-pager__label {
+    border-bottom-color: var(--c-text-link);
+    color: var(--c-text-link);
+  }
+  .cm-navi-breadcrumb__item a:hover {
+    opacity: 0.6;
+  }
+}
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	cm-form
@@ -3632,6 +4225,7 @@ textarea.c-textarea {
   height: 0.35rem;
   fill: currentColor;
   transition: rotate var(--duration) var(--easeTheme);
+  will-change: rotate;
 }
 
 .c-accordion__head.is-open .c-accordion__icon svg {
@@ -3663,6 +4257,7 @@ textarea.c-textarea {
     Figma: PC 2669-13663
 ----------------------------------------------------*/
 .c-card-news {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.625rem;
@@ -3706,8 +4301,32 @@ textarea.c-textarea {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--c-text-body);
+  transition: color var(--hover-duration) var(--hover-ease);
 }
 
+.c-card-news::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--c-action);
+  transform: scaleX(0);
+  transform-origin: right top;
+  transition: transform 0.5s var(--hover-ease);
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .c-card-news:hover::after {
+    transform: scaleX(1);
+    transform-origin: left top;
+  }
+  .c-card-news:hover .c-card-news__title {
+    color: var(--c-action);
+  }
+}
 /*  お知らせ1件（トップの新着情報。タグが線だけ・右の矢印なし）
     日付とタグは CTA色（Figma #0b82a3）、タイトルは SP 16 / PC 21・--c-ink。
     Figma: SP 3181-17637 / PC 2323-5115
@@ -4463,7 +5082,9 @@ textarea.c-textarea {
 }
 
 .c-link-arrow__label {
+  position: relative;
   color: var(--c-action);
+  transition: color var(--hover-duration) var(--hover-ease);
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.4;
@@ -4523,6 +5144,7 @@ textarea.c-textarea {
 
 .c-link-arrow--lg .c-link-arrow__arrow {
   --btn-bg: var(--c-brand-cta);
+  --arrow-anim: arrow-to-righttop;
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 0.125rem;
@@ -4605,6 +5227,7 @@ textarea.c-textarea {
 }
 .c-link-pdf__label {
   text-decoration: underline;
+  transition: color var(--hover-duration) var(--hover-ease);
 }
 .c-link-pdf__icon {
   position: relative;
@@ -4637,6 +5260,37 @@ textarea.c-textarea {
   font-family: var(--font-en);
 }
 
+/*  ホバー
+    文字は Text/Link（#088395）に寄せ、下線は右へ消えて左から戻る
+    （参考サイト npgm.adriatic-dev.com の c-simplebtn__txt::before と同じ）。
+    矢印の反転とアニメーションは _c-btn.scss 側（a:hover .c-btn-arrow）で効く。
+
+    下線は border のまま残してある（Figma の値で、spec もここを見ている）。
+    border は transform できないので、ホバーの間だけ border を透明にして、
+    同じ位置に動く線（::after）を重ねる。線の 0% は scaleX(1) なので、
+    入る・出るのどちらでも見た目は途切れない
+----------------------------------------------------*/
+@media (hover: hover) {
+  .c-link-arrow:hover .c-link-arrow__label {
+    border-bottom-color: transparent;
+    color: var(--c-text-link);
+  }
+  .c-link-arrow:not(.c-link-arrow--lg):hover .c-link-arrow__label::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.0625rem;
+    left: 0;
+    height: 1px;
+    background: var(--c-text-link);
+    animation: underline-through 0.4s var(--easeOutSine);
+    will-change: transform;
+  }
+  .c-link-url:hover,
+  .c-link-pdf:hover .c-link-pdf__label {
+    color: var(--c-text-link);
+  }
+}
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	c-list
@@ -4816,6 +5470,256 @@ textarea.c-textarea {
 
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
+	c-tag　役割のタグ（製錬 / サンプリング / 営業 / 触媒買取）
+	Figma: SP 3304-19307 / PC 2725-18030
+----------------------------------------------------*/
+.c-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3125rem 0.625rem;
+  border: 1px solid var(--c-label-brand);
+  border-radius: 0.9375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-label-brand);
+  white-space: nowrap;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	スクロールイン
+	.js-visible が画面に入ると is-visible が付く（common.js の isVisible）。
+	どう見えるかはここのクラスで決める。動きの起点はすべて「下から」。
+
+	並んでいるものをずらすのは --i（0起点）。data-delay は使わない
+	（_u-utility.scss の [data-delay] が transition-delay を持っていて、
+	 common.js の setTimeout と二重にかかるため）
+----------------------------------------------------*/
+:root {
+  --anim-duration: .9s;
+  --anim-ease: var(--easeOutQuart);
+  --anim-step: .09s;
+  --anim-shift: 1.875rem;
+  --anim-zoom: 1.08;
+}
+
+/*  下から出る（既定）
+----------------------------------------------------*/
+.u-anim {
+  --anim-delay: calc(var(--i, 0) * var(--anim-step));
+  opacity: 0;
+  transform: translate3d(0, var(--anim-shift), 0);
+  transition: opacity var(--anim-duration) var(--anim-ease) var(--anim-delay), transform var(--anim-duration) var(--anim-ease) var(--anim-delay);
+  will-change: opacity, transform;
+}
+
+.u-anim.is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/*  その場でフェード（動かすと崩れるもの。Swiper の枠・敷いてある写真）
+----------------------------------------------------*/
+.u-anim-fade {
+  --anim-delay: calc(var(--i, 0) * var(--anim-step));
+  opacity: 0;
+  transition: opacity var(--anim-duration) var(--anim-ease) var(--anim-delay);
+}
+
+.u-anim-fade.is-visible {
+  opacity: 1;
+}
+
+/*  行ごとに下から送り出す（見出し・キャッチコピー）
+	行は pug 側で .u-anim-line に分けて書く（br では分けられない）。
+	外側が窓、中の span が動く枠。ずらしは行ごとの --l（--i は親のぶんが降りてくるので使わない）
+----------------------------------------------------*/
+.u-anim-line {
+  --anim-delay: calc(var(--l, 0) * var(--anim-step));
+  display: block;
+  overflow: clip;
+}
+
+.u-anim-line > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform var(--anim-duration) var(--anim-ease) var(--anim-delay);
+  will-change: transform;
+}
+
+.u-anim-lines.is-visible .u-anim-line > span {
+  transform: none;
+  will-change: auto;
+}
+
+/*  1文字ずつ下から送り出す（ページ見出し）
+	参考サイト npgm.adriatic-dev.com の js-undermvtitleanimation と同じ
+	（duration 1.1s / stagger .035s / expo.out）。
+	外側が窓、中の1文字ずつが動く枠。順番は1文字ごとの --c（0起点。pug の +split-chars が振る）
+----------------------------------------------------*/
+.u-anim-chars {
+  display: flex;
+  overflow: clip;
+}
+
+.u-anim-chars > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+  transition: transform 1.1s var(--easeOutExpo) calc(var(--c, 0) * 0.035s);
+  will-change: transform;
+}
+
+.u-anim-chars.is-visible > span {
+  transform: none;
+  will-change: auto;
+}
+
+/*  写真の寄りを戻す（枠側に overflow: hidden が要る）
+	箱そのものは動かさない。合図は自分の is-visible でも、外側の is-visible でもよい
+	（カードは .js-visible をカードに付け、.u-anim-zoom は中の figure に付ける。
+	 カードに付けてしまうと、写真ではない img（数字のSVG）まで寄ってしまう）
+----------------------------------------------------*/
+.u-anim-zoom {
+  --anim-delay: calc(var(--i, 0) * var(--anim-step));
+}
+
+.u-anim-zoom img,
+.u-anim-zoom video {
+  transform: scale(var(--anim-zoom));
+  transition: transform 1.4s var(--anim-ease) var(--anim-delay);
+  will-change: transform;
+}
+
+.u-anim-zoom.is-visible img,
+.u-anim-zoom.is-visible video,
+.is-visible .u-anim-zoom img,
+.is-visible .u-anim-zoom video {
+  transform: none;
+  will-change: auto;
+}
+
+/*  矢印が抜けて戻る
+	参考サイト npgm.adriatic-dev.com の u-targetarrow と同じ（arrow_to_right / _righttop）。
+	半分まででいったん透明にして、反対側から戻す。向きは --arrow-anim で選ぶ（_c-btn.scss）。
+	transform ではなく translate（個別プロパティ）で動かす。
+	矢印には向きを作るための transform: rotate() が入っていることがあり、
+	translate は rotate より外側で効くので、回っていても動く向きは変わらない
+----------------------------------------------------*/
+@keyframes arrow-to-right {
+  0% {
+    translate: 0%;
+    opacity: 1;
+  }
+  49% {
+    translate: 50%;
+    opacity: 0;
+  }
+  50% {
+    translate: -50%;
+    opacity: 0;
+  }
+  100% {
+    translate: 0%;
+    opacity: 1;
+  }
+}
+@keyframes arrow-to-left {
+  0% {
+    translate: 0%;
+    opacity: 1;
+  }
+  49% {
+    translate: -50%;
+    opacity: 0;
+  }
+  50% {
+    translate: 50%;
+    opacity: 0;
+  }
+  100% {
+    translate: 0%;
+    opacity: 1;
+  }
+}
+@keyframes arrow-to-righttop {
+  0% {
+    translate: 0% 0%;
+    opacity: 1;
+  }
+  49% {
+    translate: 25% -25%;
+    opacity: 0;
+  }
+  50% {
+    translate: -25% 25%;
+    opacity: 0;
+  }
+  100% {
+    translate: 0% 0%;
+    opacity: 1;
+  }
+}
+/*  下線が右へ消えて、左から戻る
+	参考サイト npgm.adriatic-dev.com の simplebtn_line_animation と同じ。
+	矢印（arrow-to-*）と同じ「抜けて反対側から戻る」動き
+----------------------------------------------------*/
+@keyframes underline-through {
+  0% {
+    transform: scaleX(1);
+    transform-origin: right center;
+  }
+  49% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+  50% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+/*  出さない条件
+----------------------------------------------------*/
+html:not(.is-js) .u-anim,
+html:not(.is-js) .u-anim-fade {
+  opacity: 1;
+  transform: none;
+}
+
+html:not(.is-js) .u-anim-line > span,
+html:not(.is-js) .u-anim-chars > span,
+html:not(.is-js) .u-anim-zoom img,
+html:not(.is-js) .u-anim-zoom video {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-anim,
+  .u-anim-fade {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  * {
+    --arrow-anim: none;
+  }
+  .u-anim-line > span,
+  .u-anim-chars > span,
+  .u-anim-zoom img,
+  .u-anim-zoom video {
+    transform: none;
+    transition: none;
+  }
+}
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
 	汎用クラス
 ----------------------------------------------------*/
 .bold,
@@ -4851,6 +5755,17 @@ textarea.c-textarea {
   .u-only-pc {
     display: block !important;
   }
+}
+
+.u-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .u-font-en {

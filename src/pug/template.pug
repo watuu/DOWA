@@ -131,7 +131,8 @@ block content
                 p .cm-block-header-page ＞ .c-heading-page　ページ見出し
                 .cm-block-header-page(style="padding-top:0;")
                     .c-heading-page
-                        h1.c-heading-page__title 買取原料
+                        h1.c-heading-page__title
+                            +split-chars("買取原料")
                         p.c-heading-page__label What we buy
 
             hr

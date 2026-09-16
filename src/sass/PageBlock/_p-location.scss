@@ -1,0 +1,420 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	p-location（拠点一覧）
+	Figma: SP 3223-12693 / PC 2630-7190
+	※SP のフレーム名は Figma 上 "SP-TECHNOLOGY" のままだが、中身は LOCATION。
+	　doc/design-tokens.md の「6. 未決事項」に記載。
+----------------------------------------------------*/
+
+.p-location {
+	padding-bottom: math.div(140, 16) + rem; // 海外一覧の下端 → パンくず（SP 7366.9 → 7507）
+
+	@include config.pc {
+		padding-bottom: math.div(90, 16) + rem; // 5858.7 → 5949
+	}
+}
+
+/*  地図の枠
+	SP は幅が足りないので c-scroll-x で横に送る（ScrollHint は common.js の jsScrollX）。
+	PC は器に収まるので、c-scroll-x 側が is-scrollable を外してバーを隠す。
+	Figma: SP 3344-15775 / PC 3304-19292
+----------------------------------------------------*/
+.p-location-map--japan {
+	margin-bottom: math.div(81, 16) + rem; // 地図下端 → 国内一覧の見出し（SP 664→769 は 105、バー 2 と間隔 20 を除いて 81）
+
+	@include config.pc {
+		margin-bottom: math.div(33, 16) + rem; // 1118 → 1151
+	}
+}
+
+// 日本地図の窓。Figma のマスクの大きさ（SP 483×450 / PC 1360×800）
+.p-location-japan {
+	display: block;
+	width: math.div(382, 16) + rem; // Figma のマスクの描画サイズ。器（362）より広いので SP は横に送る
+
+	@include config.pc {
+		width: 100%;
+	}
+}
+
+// Figma: SP 3344-15775（382×450）/ PC 3304-19292（1360×800）
+.p-location-japan__img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/*  「全国に触媒集荷拠点を設けています」
+	Figma: SP 3344-13222 / PC 3223-12688
+----------------------------------------------------*/
+// SP だけカード一覧との間に点線が入る（PC は間隔だけ）
+.p-location-catch__line {
+	margin-top: 0;
+}
+
+.p-location-catch {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: math.div(10, 16) + rem;
+	font-size: math.div(18, 16) + rem;
+	font-weight: 700;
+	line-height: 1.4;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-body);
+	margin-bottom: math.div(121, 16) + rem; // SP キャッチ下端 2415.3 → 世界地図 2536
+
+	@include config.pc {
+		gap: math.div(10, 16) + rem;
+		margin-top: math.div(119, 16) + rem; // 国内一覧の下端 2111 → 2230
+		margin-bottom: math.div(200, 16) + rem; // 2272 → 世界地図 2472
+		font-size: math.div(30, 16) + rem;
+	}
+}
+
+// ピンは箱に width / height を両方入れて、SVG の属性が素通りしないようにする
+.p-location-catch__icon {
+	display: block;
+	flex-shrink: 0;
+	width: math.div(16, 16) + rem;
+	height: math.div(20, 16) + rem;
+
+	@include config.pc {
+		width: math.div(35, 16) + rem;
+		height: math.div(42, 16) + rem;
+	}
+
+	svg {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+/*  世界地図（ラベルは画像に焼き込み、その上に透明なアンカーを重ねる）
+	ラベルを HTML の文字で組むと、Figma 側でグループごと拡大されている都合で
+	SP と PC の文字寸法が合わないため、画像に寄せている。
+	Figma: SP 3344-13235 / PC 3344-10646
+----------------------------------------------------*/
+// gap は .c-scroll-x が後ろで読み込まれるので、クラスを重ねて勝たせる
+.c-scroll-x.p-location-map--world {
+	gap: math.div(13, 16) + rem; // 地図 → バーは既定の 20 ではなく 13.5（Figma 3344-13225）
+}
+
+.p-location-map--world {
+	margin-bottom: math.div(60, 16) + rem; // SP バー下端 3011 → 海外一覧 3071
+
+	@include config.pc {
+		margin-bottom: math.div(123, 16) + rem; // 3084.7 → 3208
+	}
+}
+
+// ラベルを px で置くので、地図は縮小させない（狭いPCでは c-scroll-x 側で横に送る）
+.p-location-world {
+	position: relative;
+	width: math.div(975, 16) + rem;
+
+	@include config.pc {
+		width: math.div(1300, 16) + rem;
+		margin-inline: auto; // container 1360 の内側に 30 ずつ（70 → 1370）
+	}
+}
+
+.p-location-world__img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+/*  ラベル（各拠点へのアンカー）
+	Figma はラベルを地図グループごと拡大しているので、素の 12px / padding 15・3 ではなく
+	拡大後の実寸で置く（PC ×1.416 → 17 / 21・4、SP ×1.064 → 12 / 16・3）。
+	17 と 12 はどちらも doc/design-tokens.md 3-1 のスケールに載っている値。
+	幅は Figma の実測を使わず中身なり（Poppins が Roboto Condensed より広く、入りきらないため）。
+	高さだけ Figma の箱（SP 26.6 / PC 35.4）を地図の高さで割った率で合わせる。
+	Figma: SP 3344-15687〜15699 / PC 3344-13098〜13111
+----------------------------------------------------*/
+.p-location-world__label {
+	position: absolute;
+	display: grid;
+	place-items: center;
+	height: 5.78%; // 35.4 / 612.7（SP は 26.6 / 459.5 = 5.79% で一致する）
+	padding-inline: math.div(16, 16) + rem;
+	border: 1px solid var(--c-brand-mid);
+	background: var(--c-surface);
+	font-size: math.div(12, 16) + rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: normal; // Figma は tracking 指定なし。body の -0.01em を打ち消す
+	color: var(--c-brand-mid);
+	white-space: nowrap;
+	transition:
+		background-color var(--duration) var(--easeTheme),
+		color var(--duration) var(--easeTheme);
+
+	@include config.pc {
+		padding-inline: math.div(21, 16) + rem;
+		font-size: math.div(17, 16) + rem;
+	}
+
+	// ホバーは地の色と文字色を入れ替える（Figma にホバーの指定が無いため実装側で決めた）
+	@media (hover: hover) {
+		&:hover {
+			background: var(--c-brand-mid);
+			color: var(--color-inverse);
+		}
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--c-action);
+		outline-offset: 2px;
+	}
+}
+
+/*  一覧ブロック（左のサイドナビ ＋ 右のカード一覧）
+	PC だけ2カラム。ナビの追従は common.js の jsStickySection。
+	Figma 側に「ナビ＋本文」に相当する箱が無い（PC 3192-17973 は世界地図まで含む）ので
+	node-id は書かない。内訳は .p-location-nav__list と .p-location-list を参照
+----------------------------------------------------*/
+.p-location-cols {
+	@include config.pc {
+		display: grid;
+		grid-template-columns: math.div(260, 16) + rem 1fr;
+		gap: math.div(82, 16) + rem; // ナビ右端 386.3 → 本文 468
+		width: math.div(1186, 16) + rem; // 126 → 1312
+		max-width: 100%;
+		margin-inline: auto;
+		align-items: start;
+	}
+}
+
+/*  サイドナビ（SP には無い）
+	Figma: PC 2630-7497（国内）/ 3181-14803（海外）
+----------------------------------------------------*/
+.p-location-nav {
+	display: none;
+	// 欧文は Poppins、和文は Noto Sans JP（Figma は Roboto Condensed だが --font-en に寄せる）
+	font-family: var(--font-en);
+
+	@include config.pc {
+		display: block;
+	}
+}
+
+.p-location-nav__list {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(10, 16) + rem;
+	padding: math.div(20, 16) + rem;
+	border-radius: math.div(5, 16) + rem;
+	background: var(--c-surface-raised);
+}
+
+// 1行の項目は 29（16×1.8）、2行の項目は 44.8（16×1.4×2）。
+// 行間を状態で変えると is-current が付いた瞬間に高さが跳ねるので、
+// line-height は 1.4 に固定し、1行ぶんの高さは min-height で作る。
+.p-location-nav__link {
+	display: flex;
+	align-items: flex-start;
+	gap: math.div(10, 16) + rem;
+	min-height: math.div(29, 16) + rem;
+}
+
+// 字形は .c-marker と同じ #ico_marker（Figma 2630-7499 のパスが ico_marker と一致する）。
+// 位置は「1行目の中央」に乗せる（doc/design-tokens.md 6-39 の規則）。
+// Figma は現在地の項目が行の中央（14.5）、それ以外が 12×16 の箱の下端（10）と不揃いだが、
+// is-current で字形が動くのは避ける
+.p-location-nav__icon {
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: math.div(12, 16) + rem;
+	height: 1.4em; // 16 × 1.4 = 22.4（ラベルの1行ぶん）
+	color: var(--c-border);
+	transition: color var(--hover-duration) var(--hover-ease);
+
+	// 箱（12×29）に place-items で中央寄せするが、SVG 側にも実寸を入れる。
+	// 入れないと SVG 既定の 150px が素通りして、次の行にかぶる
+	svg {
+		display: block;
+		width: math.div(12, 16) + rem;
+		height: math.div(12, 16) + rem;
+		fill: currentColor;
+	}
+}
+
+.p-location-nav__label {
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.4;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-body);
+	transition: color var(--hover-duration) var(--hover-ease);
+}
+
+.p-location-nav__item.is-current {
+	.p-location-nav__icon,
+	.p-location-nav__label {
+		color: var(--c-action);
+	}
+}
+
+// ホバーは現在地と同じ見た目にする（2026-09-16・ユーザー指示。Figma にホバーの指定は無い）
+@media (hover: hover) {
+	.p-location-nav__link:hover .p-location-nav__icon,
+	.p-location-nav__link:hover .p-location-nav__label {
+		color: var(--c-action);
+	}
+}
+
+/*  一覧の見出し（国内一覧 / 海外一覧）。下線つき
+	Figma のインスタンスは幅 348 固定だが、下線は文字の幅にしか付かないので実装は fit-content。
+	高さ 36 だけ node-id 照合の対象になる。
+	Figma: SP 3304-19300 / PC 2630-7510
+----------------------------------------------------*/
+.p-location-heading {
+	width: fit-content;
+	margin-bottom: math.div(30, 16) + rem; // SP 36 → 66
+	font-size: math.div(30, 16) + rem;
+	font-weight: 700;
+	line-height: 1.2; // Figma の箱は 36（30×1.2）。文字の行間 1.4 だと後続が 6px ずつ下がる
+	letter-spacing: 0.03em;
+	color: var(--c-heading-alt);
+	text-decoration: underline;
+	text-underline-position: from-font;
+	text-decoration-skip-ink: none;
+
+	@include config.pc {
+		margin-bottom: math.div(44, 16) + rem; // 36 → 80
+	}
+}
+
+/*  カード一覧
+	SP は点線（80）が間隔を兼ねるので gap 0、PC は gap 44。
+	Figma: SP 3344-13223（PCは見出しを含む箱しか無いので node-id を書かない）
+----------------------------------------------------*/
+.p-location-list {
+	display: flex;
+	flex-direction: column;
+
+	@include config.pc {
+		gap: math.div(44, 16) + rem;
+	}
+}
+
+/*  拠点カード
+	Figma: SP 3304-19302 / PC 2630-10064
+----------------------------------------------------*/
+.p-location-card {
+	display: flex;
+	flex-direction: column;
+	font-family: var(--font-en); // 欧文 Poppins ＋ 和文 Noto Sans JP
+	gap: math.div(60, 16) + rem;
+	padding-bottom: math.div(30, 16) + rem;
+
+	@include config.pc {
+		flex-direction: row;
+		align-items: flex-start;
+	}
+}
+
+.p-location-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(40, 16) + rem; // 本文 → Map ボタン
+
+	@include config.pc {
+		flex-shrink: 0;
+		width: math.div(400, 16) + rem;
+	}
+}
+
+.p-location-card__info {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(15, 16) + rem;
+}
+
+// SP 21 / PC 30。箱は Figma が 29 / 36 なので行間ではなく箱に合わせる
+.p-location-card__name {
+	font-size: math.div(21, 16) + rem;
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: 0.03em;
+	color: var(--c-heading-alt);
+
+	@include config.pc {
+		font-size: math.div(30, 16) + rem;
+		line-height: 1.2;
+	}
+}
+
+.p-location-card__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: math.div(10, 16) + rem;
+}
+
+.p-location-card__spec,
+.p-location-card__address {
+	font-size: math.div(16, 16) + rem;
+	line-height: 1.8;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-body);
+}
+
+// Figma は list-disc ＋ 字下げ 24（2725-18028）。
+// reset で li { list-style: none } を敷いているので、ul ではなく li に戻す
+.p-location-card__share {
+	padding-left: math.div(24, 16) + rem;
+
+	li {
+		list-style: disc;
+	}
+}
+
+// TEL と FAX は横並びで間隔 30（Figma 3304-19071）
+.p-location-card__tel {
+	display: flex;
+	flex-wrap: wrap;
+	gap: math.div(30, 16) + rem;
+}
+
+.p-location-card__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: math.div(30, 16) + rem; // WebSite と Map が並ぶ拠点がある（Figma 3181-14815）
+
+	// 他ページの c-link-arrow は SP で 30 角だが、拠点一覧は SP も 40 角（Figma 3304-19322）。
+	// 共通コンポーネント側は他ページが崩れるので触らず、このページだけ上書きする
+	.c-link-arrow__arrow {
+		width: math.div(40, 16) + rem;
+		height: math.div(40, 16) + rem;
+		border-radius: math.div(4, 16) + rem;
+
+		svg {
+			width: math.div(15, 16) + rem;
+			height: math.div(6, 16) + rem;
+		}
+	}
+}
+
+// 地図の画像。Figma の比率は 497:340
+.p-location-card__map {
+	@include config.pc {
+		flex: 1 0 0;
+		min-width: 0;
+	}
+
+	// Googleマップの埋め込み。Figma の比率は 497:340
+	iframe {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 497 / 340;
+		border: 0;
+		border-radius: math.div(5, 16) + rem;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

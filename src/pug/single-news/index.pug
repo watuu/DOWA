@@ -20,7 +20,8 @@ block content
         .cm-block-header-page
             .l-container
                 .c-heading-page
-                    p.c-heading-page__title 新着情報
+                    p.c-heading-page__title
+                        +split-chars("新着情報")
                     p.c-heading-page__label News
 
         section.p-single-news-body

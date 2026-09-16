@@ -1,0 +1,23 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	c-tag　役割のタグ（製錬 / サンプリング / 営業 / 触媒買取）
+	Figma: SP 3304-19307 / PC 2725-18030
+----------------------------------------------------*/
+// 箱は 26（14 + 上下 5 + 罫線 2）。角丸は Figma 15 をそのまま使う（doc/design-tokens.md 4）
+.c-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: math.div(5, 16) + rem math.div(10, 16) + rem;
+	border: 1px solid var(--c-label-brand);
+	border-radius: math.div(15, 16) + rem;
+	font-size: math.div(14, 16) + rem;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-label-brand);
+	white-space: nowrap;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

@@ -5,8 +5,25 @@
 - var pageClass = ""
 block vars
 - var img = path + "assets/img/"
+- var movie = path + "assets/movie/"
+
+//- ページ見出しを1文字ずつ出すための組み（見え方は Utility/_u-anim.scss の .u-anim-chars）。
+//- 参考サイト npgm.adriatic-dev.com の js-undermvtitleanimation と同じ作り。
+//- 読み上げは .u-visually-hidden に置いた全文に任せ、見えている1文字ずつの span は aria-hidden にする。
+//- translate="no" … ブラウザの翻訳機能で1文字ずつの並びが壊れるのを防ぐ
+mixin split-chars(text)
+    span.u-visually-hidden= text
+    span.u-anim-chars.js-visible(aria-hidden="true" translate="no")
+        each ch, i in Array.from(text)
+            span(style="--c: " + i)= ch
+
 head
     meta(charset="UTF-8")
+    //- JS が動くかどうかを、最初の描画より前に html へ記録する。
+    //- スクロールバーの伏せ方（Layout/_l-body.scss）とスクロールインの伏せ方（Utility/_u-anim.scss）が
+    //- これを見ている。JS が無効なら .is-js は付かないので、素のまま読める状態で出る
+    script.
+        document.documentElement.classList.add('is-js')
     if title
         title #{title} | #{sitename}
     else
@@ -152,14 +169,14 @@ body#body(class=[pageClass, pageClass == "page-front" ? "is-header-dark" : ""])
                         .l-footer-sites
                             .l-footer-sites__row
                                 p.l-footer-sites__name 運営会社：DOWAメタルマイン株式会社
-                                a.l-footer-sites__link(href="#" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）")
+                                a.l-footer-sites__link(href="https://www.dowa.co.jp/MandM/" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）")
                                     span.l-footer-sites__label サイトへ
                                     span.l-footer-sites__btn
                                         svg(aria-hidden="true")
                                             use(href="#ico_arrow_r")
                             .l-footer-sites__row
                                 p.l-footer-sites__name 関連会社：株式会社日本ピージーエム
-                                a.l-footer-sites__link(href="#" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）")
+                                a.l-footer-sites__link(href="https://nipponpgm.dowa.co.jp/" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）")
                                     span.l-footer-sites__label サイトへ
                                     span.l-footer-sites__btn
                                         svg(aria-hidden="true")

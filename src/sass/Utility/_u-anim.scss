@@ -1,0 +1,199 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	スクロールイン
+	.js-visible が画面に入ると is-visible が付く（common.js の isVisible）。
+	どう見えるかはここのクラスで決める。動きの起点はすべて「下から」。
+
+	並んでいるものをずらすのは --i（0起点）。data-delay は使わない
+	（_u-utility.scss の [data-delay] が transition-delay を持っていて、
+	 common.js の setTimeout と二重にかかるため）
+----------------------------------------------------*/
+:root {
+	--anim-duration: .9s;
+	--anim-ease    : var(--easeOutQuart);
+	--anim-step    : .09s;                       // ずらし1つぶん（--i / --l 倍）
+	--anim-shift   : #{math.div(30, 16) + rem};  // 下から出る距離
+	--anim-zoom    : 1.08;                       // 写真の寄り
+}
+
+/*  下から出る（既定）
+----------------------------------------------------*/
+.u-anim {
+	--anim-delay: calc(var(--i, 0) * var(--anim-step));
+	opacity: 0;
+	transform: translate3d(0, var(--anim-shift), 0);
+	transition:
+		opacity   var(--anim-duration) var(--anim-ease) var(--anim-delay),
+		transform var(--anim-duration) var(--anim-ease) var(--anim-delay);
+	will-change: opacity, transform;
+}
+
+.u-anim.is-visible {
+	opacity: 1;
+	transform: none;
+	will-change: auto;
+}
+
+/*  その場でフェード（動かすと崩れるもの。Swiper の枠・敷いてある写真）
+----------------------------------------------------*/
+.u-anim-fade {
+	--anim-delay: calc(var(--i, 0) * var(--anim-step));
+	opacity: 0;
+	transition: opacity var(--anim-duration) var(--anim-ease) var(--anim-delay);
+}
+
+.u-anim-fade.is-visible {
+	opacity: 1;
+}
+
+/*  行ごとに下から送り出す（見出し・キャッチコピー）
+	行は pug 側で .u-anim-line に分けて書く（br では分けられない）。
+	外側が窓、中の span が動く枠。ずらしは行ごとの --l（--i は親のぶんが降りてくるので使わない）
+----------------------------------------------------*/
+.u-anim-line {
+	--anim-delay: calc(var(--l, 0) * var(--anim-step));
+	display: block;
+	overflow: clip;
+}
+
+.u-anim-line > span {
+	display: block;
+	transform: translate3d(0, 110%, 0);
+	transition: transform var(--anim-duration) var(--anim-ease) var(--anim-delay);
+	will-change: transform;
+}
+
+.u-anim-lines.is-visible .u-anim-line > span {
+	transform: none;
+	will-change: auto;
+}
+
+/*  1文字ずつ下から送り出す（ページ見出し）
+	参考サイト npgm.adriatic-dev.com の js-undermvtitleanimation と同じ
+	（duration 1.1s / stagger .035s / expo.out）。
+	外側が窓、中の1文字ずつが動く枠。順番は1文字ごとの --c（0起点。pug の +split-chars が振る）
+----------------------------------------------------*/
+.u-anim-chars {
+	display: flex;
+	overflow: clip;
+}
+
+.u-anim-chars > span {
+	display: block;
+	transform: translate3d(0, 110%, 0);
+	transition: transform 1.1s var(--easeOutExpo) calc(var(--c, 0) * .035s);
+	will-change: transform;
+}
+
+.u-anim-chars.is-visible > span {
+	transform: none;
+	will-change: auto;
+}
+
+/*  写真の寄りを戻す（枠側に overflow: hidden が要る）
+	箱そのものは動かさない。合図は自分の is-visible でも、外側の is-visible でもよい
+	（カードは .js-visible をカードに付け、.u-anim-zoom は中の figure に付ける。
+	 カードに付けてしまうと、写真ではない img（数字のSVG）まで寄ってしまう）
+----------------------------------------------------*/
+.u-anim-zoom {
+	--anim-delay: calc(var(--i, 0) * var(--anim-step));
+}
+
+.u-anim-zoom img,
+.u-anim-zoom video {
+	transform: scale(var(--anim-zoom));
+	transition: transform 1.4s var(--anim-ease) var(--anim-delay);
+	will-change: transform;
+}
+
+.u-anim-zoom.is-visible img,
+.u-anim-zoom.is-visible video,
+.is-visible .u-anim-zoom img,
+.is-visible .u-anim-zoom video {
+	transform: none;
+	will-change: auto;
+}
+
+/*  矢印が抜けて戻る
+	参考サイト npgm.adriatic-dev.com の u-targetarrow と同じ（arrow_to_right / _righttop）。
+	半分まででいったん透明にして、反対側から戻す。向きは --arrow-anim で選ぶ（_c-btn.scss）。
+	transform ではなく translate（個別プロパティ）で動かす。
+	矢印には向きを作るための transform: rotate() が入っていることがあり、
+	translate は rotate より外側で効くので、回っていても動く向きは変わらない
+----------------------------------------------------*/
+@keyframes arrow-to-right {
+	0%   { translate: 0%;    opacity: 1; }
+	49%  { translate: 50%;   opacity: 0; }
+	50%  { translate: -50%;  opacity: 0; }
+	100% { translate: 0%;    opacity: 1; }
+}
+
+// 前送り（←）。参考サイトには右向きしか無いので、左右を反転して作った
+@keyframes arrow-to-left {
+	0%   { translate: 0%;    opacity: 1; }
+	49%  { translate: -50%;  opacity: 0; }
+	50%  { translate: 50%;   opacity: 0; }
+	100% { translate: 0%;    opacity: 1; }
+}
+
+// ↗（#ico_arrow_ne）。斜めなので振り幅は 25%
+@keyframes arrow-to-righttop {
+	0%   { translate: 0% 0%;      opacity: 1; }
+	49%  { translate: 25% -25%;   opacity: 0; }
+	50%  { translate: -25% 25%;   opacity: 0; }
+	100% { translate: 0% 0%;      opacity: 1; }
+}
+
+/*  下線が右へ消えて、左から戻る
+	参考サイト npgm.adriatic-dev.com の simplebtn_line_animation と同じ。
+	矢印（arrow-to-*）と同じ「抜けて反対側から戻る」動き
+----------------------------------------------------*/
+@keyframes underline-through {
+	0%   { transform: scaleX(1); transform-origin: right center; }
+	49%  { transform: scaleX(0); transform-origin: right center; }
+	50%  { transform: scaleX(0); transform-origin: left center; }
+	100% { transform: scaleX(1); transform-origin: left center; }
+}
+
+/*  出さない条件
+----------------------------------------------------*/
+// JSが動かない環境では is-visible が付かないので、伏せたままにしない。
+// .is-js は head のインラインスクリプトが付ける（_default.pug）。
+// @media (scripting: none) より対応ブラウザが広く、JS が無効かどうかを直接見られる
+html:not(.is-js) .u-anim,
+html:not(.is-js) .u-anim-fade {
+	opacity: 1;
+	transform: none;
+}
+
+html:not(.is-js) .u-anim-line > span,
+html:not(.is-js) .u-anim-chars > span,
+html:not(.is-js) .u-anim-zoom img,
+html:not(.is-js) .u-anim-zoom video {
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.u-anim,
+	.u-anim-fade {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	// 矢印は動かさない
+	* {
+		--arrow-anim: none;
+	}
+
+	.u-anim-line > span,
+	.u-anim-chars > span,
+	.u-anim-zoom img,
+	.u-anim-zoom video {
+		transform: none;
+		transition: none;
+	}
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

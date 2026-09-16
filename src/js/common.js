@@ -40,8 +40,9 @@ export default class common {
         this.smoothScroll();
         // this.cMouseStalker();
         this.jsSplitText();
+        this.jsMv();
         this.jsClone();
-        // this.jsStickySection();
+        this.jsStickySection();
         this.jsAccordion();
         this.jsTab();
         this.jsScrollX();
@@ -321,6 +322,50 @@ export default class common {
     }
 
     /*
+     * jsMv
+     * トップのMVの出し方（.js-mv）。
+     * 動画の読み込みが遅れると、黒いままの箱の上に文字だけ出てしまうので、
+     * 絵が用意できてから「動画と画像列 → 見出し → リード」の順に出す。
+     * 見え方は Utility/_u-anim.scss（.u-anim-fade / .u-anim-zoom / .u-anim-lines / .u-anim）。
+     * リードが見出しより少し遅れるのは、リード側の --i（transition-delay）で持っている
+     */
+    jsMv() {
+        const mv = document.querySelector('.js-mv');
+        if (!mv) return;
+
+        const media = mv.querySelectorAll('.p-top-mv__movie, .p-top-mv__gallery');
+        const copy  = mv.querySelectorAll('.p-top-mv__title, .p-top-mv__lead');
+        const video = mv.querySelector('video');
+
+        // 絵が動き出してから文字を出す（0.3秒）
+        const delayCopy = 300;
+
+        const show = () => {
+            requestAnimationFrame(() => {
+                media.forEach(el => el.classList.add('is-visible'));
+                setTimeout(() => copy.forEach(el => el.classList.add('is-visible')), delayCopy);
+            });
+        };
+
+        // 動画が無い・もう1コマ目が読めている場合はそのまま出す
+        if (!video || video.readyState >= 2) {
+            show();
+            return;
+        }
+
+        // 1コマ目が読めたら出す。読めないまま待ち続けないよう、2.5秒で打ち切る
+        let done = false;
+        const once = () => {
+            if (done) return;
+            done = true;
+            show();
+        };
+        video.addEventListener('loadeddata', once, { once: true });
+        video.addEventListener('error', once, { once: true });
+        setTimeout(once, 2500);
+    }
+
+    /*
      * jsClone
      * .js-clone 要素を data-clone-num の数だけ複製
      */
@@ -357,12 +402,18 @@ export default class common {
      * PC時にサイドナビをスティッキー固定し、現在セクションをハイライト
      */
     jsStickySection() {
-        const container = document.querySelector('.js-sticky-section__content');
-        const pin = document.querySelector('.js-sticky-section__aside');
-        const asideLis = document.querySelectorAll('.js-sticky-section__aside li');
-        const sections = document.querySelectorAll('.js-sticky-section__content section');
+        // 1ページに複数ブロック置けるよう、.js-sticky-section ごとに閉じて探す
+        // （拠点一覧は「国内一覧」「海外一覧」の2ブロック）
+        const blocks = document.querySelectorAll('.js-sticky-section');
+        if (!blocks.length || !Utility.isPC()) return;
 
-        if (container && pin && Utility.isPC()) {
+        blocks.forEach(block => {
+            const container = block.querySelector('.js-sticky-section__content');
+            const pin = block.querySelector('.js-sticky-section__aside');
+            const asideLis = block.querySelectorAll('.js-sticky-section__aside li');
+            const sections = block.querySelectorAll('.js-sticky-section__content section');
+            if (!container || !pin) return;
+
             window.addEventListener('load', () => {
                 const pinUl = pin.querySelector('ul');
                 const pinHeight = pinUl ? pinUl.offsetHeight : pin.offsetHeight;
@@ -406,7 +457,7 @@ export default class common {
                     });
                 });
             });
-        }
+        });
     }
 
     /*
@@ -642,31 +693,37 @@ export default class common {
     /*
      * isVisible
      * .js-visible がスクロールで画面内に入ると is-visible クラスを付与
+     * 見え方は Utility/_u-anim.scss（.u-anim / .u-anim-lines / .u-anim-zoom）で決める
      */
     isVisible() {
         const elements = document.querySelectorAll('.js-visible');
-        window.addEventListener("load", () => {
-            elements.forEach(el => {
-                const startOffset = el.dataset.start ?? 0;
-                const delay = el.dataset.delay ? parseFloat(el.dataset.delay) * 1000 : 0;
-                ScrollTrigger.create({
-                    trigger: el,
-                    start: `top bottom-=${startOffset}%`,
-                    once: true,
-                    invalidateOnRefresh: true,
-                    markers: false,
-                    onEnter() {
-                        requestAnimationFrame(() => {
-                            if (delay) {
-                                setTimeout(() => el.classList.add('is-visible'), delay);
-                            } else {
-                                el.classList.add('is-visible');
-                            }
-                        });
-                    },
-                });
+        if (!elements.length) return;
+
+        // load を待つと、MVのコピーが動画の読み込み待ちで数秒出ないので、待たずに作る。
+        // 画像・動画で高さが変わるぶんは下の refresh で測り直す
+        elements.forEach(el => {
+            // 画面の下から 10% ぶん入ったところで出す（data-start で個別に変えられる）
+            const startOffset = el.dataset.start ?? 10;
+            const delay = el.dataset.delay ? parseFloat(el.dataset.delay) * 1000 : 0;
+            ScrollTrigger.create({
+                trigger: el,
+                start: `top bottom-=${startOffset}%`,
+                once: true,
+                invalidateOnRefresh: true,
+                markers: false,
+                onEnter() {
+                    requestAnimationFrame(() => {
+                        if (delay) {
+                            setTimeout(() => el.classList.add('is-visible'), delay);
+                        } else {
+                            el.classList.add('is-visible');
+                        }
+                    });
+                },
             });
         });
+
+        window.addEventListener('load', () => ScrollTrigger.refresh());
     }
 
     /*

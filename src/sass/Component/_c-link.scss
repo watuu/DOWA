@@ -44,7 +44,9 @@
 }
 
 .c-link-arrow__label {
+	position: relative;
 	color: var(--c-action);
+	transition: color var(--hover-duration) var(--hover-ease);
 	font-size: math.div(12, 16) + rem; // PC は Figma 12.8 → 切り捨て
 	font-weight: 400;
 	line-height: 1.4;
@@ -104,6 +106,7 @@
 
 .c-link-arrow--lg .c-link-arrow__arrow {
 	--btn-bg: var(--c-brand-cta);
+	--arrow-anim: arrow-to-righttop; // 字形が ↗（#ico_arrow_ne）
 	width: math.div(60, 16) + rem;
 	height: math.div(60, 16) + rem;
 	border-radius: math.div(2, 16) + rem;
@@ -183,6 +186,7 @@
 
 	&__label {
 		text-decoration: underline;
+		transition: color var(--hover-duration) var(--hover-ease);
 	}
 
 	// 白地＋赤枠の紙に、赤いラベルを重ねた形
@@ -218,6 +222,41 @@
 
 	&__size {
 		font-family: var(--font-en);
+	}
+}
+
+/*  ホバー
+    文字は Text/Link（#088395）に寄せ、下線は右へ消えて左から戻る
+    （参考サイト npgm.adriatic-dev.com の c-simplebtn__txt::before と同じ）。
+    矢印の反転とアニメーションは _c-btn.scss 側（a:hover .c-btn-arrow）で効く。
+
+    下線は border のまま残してある（Figma の値で、spec もここを見ている）。
+    border は transform できないので、ホバーの間だけ border を透明にして、
+    同じ位置に動く線（::after）を重ねる。線の 0% は scaleX(1) なので、
+    入る・出るのどちらでも見た目は途切れない
+----------------------------------------------------*/
+@media (hover: hover) {
+	.c-link-arrow:hover .c-link-arrow__label {
+		border-bottom-color: transparent;
+		color: var(--c-text-link);
+	}
+
+	// 下線を持たない --lg には出さない
+	.c-link-arrow:not(.c-link-arrow--lg):hover .c-link-arrow__label::after {
+		content: "";
+		position: absolute;
+		right: 0;
+		bottom: math.div(-1, 16) + rem; // border-bottom と同じ位置に重ねる
+		left: 0;
+		height: 1px;
+		background: var(--c-text-link);
+		animation: underline-through .4s var(--easeOutSine);
+		will-change: transform;
+	}
+
+	.c-link-url:hover,
+	.c-link-pdf:hover .c-link-pdf__label {
+		color: var(--c-text-link);
 	}
 }
 

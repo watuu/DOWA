@@ -67,6 +67,7 @@
 		height: math.div(5.6, 16) + rem;
 		fill: currentColor;
 		transition: rotate var(--duration) var(--easeTheme);
+		will-change: rotate;
 	}
 }
 

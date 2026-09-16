@@ -7,34 +7,59 @@
 
 // 色は --btn-bg / --btn-fg / --btn-line の3つで切り替える。
 // 既定はCTA色（--c-brand-cta）。色違いはモディファイアで上書きする。
+//
+// ホバーは --btn-hover-* の3つ。**地と字を入れ替える**（参考サイト npgm.adriatic-dev.com と同じ扱い。
+// Figma にホバーの指定が無いため実装側で決めた。doc/design-tokens.md 未決事項 8）。
+// 自分の --btn-bg は参照できない（循環参照）ので、モディファイアごとに書く
 .c-btn,
 .c-btn-arrow {
 	--btn-bg  : var(--c-brand-cta);
 	--btn-fg  : var(--color-inverse);
 	--btn-line: transparent;
+
+	--btn-hover-bg  : var(--color-inverse);
+	--btn-hover-fg  : var(--c-brand-cta);
+	--btn-hover-line: var(--c-brand-cta);
+
+	// ホバーで矢印が抜けて戻る向き（字形に合わせる。キーフレームは Utility/_u-anim.scss）
+	--arrow-anim: arrow-to-right;
 }
 
 // 色モディファイア（.c-btn / .c-btn-arrow 共通）
 .c-btn--action,
 .c-btn-arrow--action {
 	--btn-bg: var(--c-action);
+
+	--btn-hover-fg  : var(--c-action);
+	--btn-hover-line: var(--c-action);
 }
 .c-btn--mid,
 .c-btn-arrow--mid {
 	--btn-bg: var(--c-brand-mid);
+
+	--btn-hover-fg  : var(--c-brand-mid);
+	--btn-hover-line: var(--c-brand-mid);
 }
-// 白地＋枠線。一覧・FAQの開閉ボタン
+// 白地＋枠線。一覧・FAQの開閉ボタン。入れ替えると塗りつぶしになる
 .c-btn--outline,
 .c-btn-arrow--outline {
 	--btn-bg  : var(--c-surface);
 	--btn-fg  : var(--c-action);
 	--btn-line: var(--c-border);
+
+	--btn-hover-bg  : var(--c-action);
+	--btn-hover-fg  : var(--color-inverse);
+	--btn-hover-line: var(--c-action);
 }
-// 白地。フッターなど濃い地の上
+// 白地。フッターなど濃い地の上。入れ替えると白い枠線だけが残る
 .c-btn--white,
 .c-btn-arrow--white {
 	--btn-bg: var(--c-surface);
 	--btn-fg: var(--c-brand-cta);
+
+	--btn-hover-bg  : transparent;
+	--btn-hover-fg  : var(--color-inverse);
+	--btn-hover-line: var(--color-inverse);
 }
 
 /*  ラベル ＋ 矢印
@@ -57,18 +82,27 @@
 		font-size: math.div(12, 16) + rem;
 		line-height: 1;
 		white-space: nowrap;
+		transition:
+			background-color var(--hover-duration) var(--hover-ease),
+			border-color     var(--hover-duration) var(--hover-ease),
+			color            var(--hover-duration) var(--hover-ease);
 	}
 
 	&__arrow {
 		display: grid;
 		place-items: center;
 		flex-shrink: 0;
+		overflow: hidden; // 抜けていく矢印を箱の中で切る
 		width: math.div(50, 16) + rem;
 		height: math.div(50, 16) + rem;
 		border: 1px solid var(--btn-line);
 		border-radius: math.div(4, 16) + rem;
 		background: var(--btn-bg);
 		color: var(--btn-fg);
+		transition:
+			background-color var(--hover-duration) var(--hover-ease),
+			border-color     var(--hover-duration) var(--hover-ease),
+			color            var(--hover-duration) var(--hover-ease);
 
 		svg {
 			width: math.div(15, 16) + rem;
@@ -126,6 +160,7 @@
 }
 
 .c-btn--md .c-btn-arrow {
+	--arrow-anim: arrow-to-righttop; // 字形が ↗（#ico_arrow_ne）
 	width: math.div(60, 16) + rem;
 	height: math.div(60, 16) + rem;
 	border-radius: math.div(2, 16) + rem;
@@ -155,12 +190,17 @@
 	display: grid;
 	place-items: center;
 	flex-shrink: 0;
+	overflow: hidden; // 抜けていく矢印を箱の中で切る
 	width: math.div(40, 16) + rem;
 	height: math.div(40, 16) + rem;
 	border: 1px solid var(--btn-line);
 	border-radius: math.div(4, 16) + rem;
 	background: var(--btn-bg);
 	color: var(--btn-fg);
+	transition:
+		background-color var(--hover-duration) var(--hover-ease),
+		border-color     var(--hover-duration) var(--hover-ease),
+		color            var(--hover-duration) var(--hover-ease);
 
 	svg {
 		width: math.div(15, 16) + rem;
@@ -201,6 +241,7 @@
 // フッターの大ボタン。矢印の字形が別（#ico_arrow_ne）
 // Figma SP 3138-5143（60px・角丸2.523→2・アイコン14.5→14）/ PC 3003-9089（95.143→95・角丸4・アイコン23）
 .c-btn-arrow--lg {
+	--arrow-anim: arrow-to-righttop; // 字形が ↗（#ico_arrow_ne）
 	width: math.div(60, 16) + rem;
 	height: math.div(60, 16) + rem;
 	border-radius: math.div(2, 16) + rem;
@@ -231,15 +272,26 @@
 // 矢印は #ico_arrow_ne（フッターの大ボタンと同じ字形）を回して使う。
 // Figmaのアセットも viewBox とストローク比が一致していたため、字形は追加しない。
 .c-btn-ctrl {
+	--btn-hover-bg  : var(--color-inverse);
+	--btn-hover-fg  : var(--c-brand-cta);
+	--btn-hover-line: var(--c-brand-cta);
 	display: grid;
 	place-items: center;
 	flex-shrink: 0;
 	width: math.div(60, 16) + rem;
 	height: math.div(60, 16) + rem;
+	--arrow-anim: arrow-to-right; // ↗ を回して → にしているので、動く向きは右
+	overflow: hidden;             // 抜けていく矢印を箱の中で切る
+	// ホバーで枠線が出ても大きさが変わらないよう、素から1px持たせておく（box-sizing: border-box）
+	border: 1px solid transparent;
 	border-radius: math.div(2, 16) + rem;
 	background: var(--c-brand-cta); // Figma #008e9f。doc/design-tokens.md でCTA色へ統合済み
 	color: var(--color-inverse);
 	cursor: pointer;
+	transition:
+		background-color var(--hover-duration) var(--hover-ease),
+		border-color     var(--hover-duration) var(--hover-ease),
+		color            var(--hover-duration) var(--hover-ease);
 
 	@include config.pc {
 		width: math.div(75, 16) + rem;
@@ -262,6 +314,7 @@
 }
 
 // ↗ の字形を回して ← / → にする
+.c-btn-ctrl--prev { --arrow-anim: arrow-to-left; }
 .c-btn-ctrl--prev svg { transform: rotate(-135deg); }
 .c-btn-ctrl--next svg { transform: rotate(45deg); }
 
@@ -312,6 +365,7 @@
 		translate: -50% -50%;
 		// 閉じるとき：回転は 0s で即座に戻し、上下に開く
 		transition: margin-top var(--duration) var(--menu-ease), rotate 0s, opacity var(--duration) var(--menu-ease);
+		will-change: rotate, opacity;
 	}
 	span:nth-child(1) { margin-top: math.div(-4, 16) + rem; }
 	span:nth-child(3) { margin-top: math.div(4, 16) + rem; }
@@ -334,4 +388,33 @@
 		}
 	}
 }
+/*  ホバー
+    地と字を入れ替える（参考サイト npgm.adriatic-dev.com と同じ扱い）。
+    矢印はボタンの中にも、リンクやカードの中にも単体で置かれるので、
+    「自分のホバー」と「外側の a / button のホバー」の両方で効かせる。
+    タップ端末（hover: none）では何もしない
+----------------------------------------------------*/
+@media (hover: hover) {
+	.c-btn:hover .c-btn__label,
+	.c-btn:hover .c-btn__arrow,
+	a:hover .c-btn-arrow,
+	button:hover .c-btn-arrow,
+	.c-btn-arrow:hover,
+	.c-btn-ctrl:hover {
+		border-color: var(--btn-hover-line);
+		background  : var(--btn-hover-bg);
+		color       : var(--btn-hover-fg);
+	}
+
+	// 矢印は抜けて反対側から戻る（参考サイトの u-targetarrow。.5s / easeOutSine）
+	.c-btn:hover .c-btn__arrow svg,
+	a:hover .c-btn-arrow svg,
+	button:hover .c-btn-arrow svg,
+	.c-btn-arrow:hover svg,
+	.c-btn-ctrl:hover svg {
+		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		will-change: translate, opacity;
+	}
+}
+
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/

@@ -33,6 +33,18 @@
 	}
 }
 
+// 目では見せず、スクリーンリーダーには読ませる（世界地図のアンカーのラベル等）
+.u-visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
 .u-font-en {
 	font-family: var(--font-en);
 }

@@ -90,9 +90,11 @@
 // 白地なので中の矢印だけCTA色に戻す
 .l-footer-sites__btn {
 	--color: var(--c-brand-cta);
+	--arrow-anim: arrow-to-right; // 字形が →（#ico_arrow_r）
 	display: grid;
 	place-items: center;
 	flex-shrink: 0;
+	overflow: hidden; // 抜けていく矢印を箱の中で切る
 	width: math.div(30, 16) + rem;
 	height: math.div(30, 16) + rem;
 	border-radius: math.div(2, 16) + rem;
@@ -218,6 +220,24 @@
 		@include config.pc {
 			display: flex;
 		}
+	}
+}
+
+/*  ホバー
+    濃い地に白い文字なので、色ではなく薄くして返す
+    （参考サイト npgm.adriatic-dev.com の u-target と同じ opacity .6）
+----------------------------------------------------*/
+@media (hover: hover) {
+	.l-footer-nav a:hover,
+	.l-footer-policy__item:hover {
+		opacity: .6;
+	}
+
+	// 「サイトへ」は矢印を持つので、薄くせず矢印を抜けさせる
+	// （参考サイトも、文字リンクは u-target・矢印付きは u-targetarrow で分けている）
+	.l-footer-sites__link:hover .l-footer-sites__btn svg {
+		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		will-change: translate, opacity;
 	}
 }
 

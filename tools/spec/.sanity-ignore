@@ -13,3 +13,7 @@ gapの階層 .c-card-num__body
 
 # 矢印の無いお知らせ（トップの新着情報 .c-card-news--outline）は子が __body 1つになる。gap は矢印付きの一覧と共通
 gapの階層 .c-card-news
+
+# 拠点の「Map」だけの拠点は子が a 1つになる。NPGM KOREA だけ WebSite ＋ Map の2つ並ぶので
+# gap 30 はそちらで効く（Figma 3181-14815）
+gapの階層 .p-location-card__actions

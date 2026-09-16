@@ -108,6 +108,11 @@
 
 	--duration: .3s;
 	--easeTheme: var(--easeOutSine);
+
+	// ホバー（参考サイト npgm.adriatic-dev.com の実測に合わせた .4s / easeOutQuad）
+	--hover-duration: .4s;
+	--hover-ease    : var(--easeOutQuad);
+	--hover-zoom    : 1.03; // 写真がホバーで寄る量
 }
 
 // ドロワーは白地に濃い文字（Figma SP_MENU 3138-4759）なので .is-nav-open では色を反転しない

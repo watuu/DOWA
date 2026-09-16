@@ -167,3 +167,21 @@ p-top-what__action
 # MV の入れ物（動画は .p-top-mv__main と同じ箱、画像の帯はループで動くので画像と画像列で見ている）
 p-top-mv__movie
 p-top-mv__track
+
+# 拠点一覧。独自の箱を持たない入れ物・間隔だけのモディファイア
+p-location
+p-location-body
+p-location-map
+p-location-card
+p-location-card__info
+p-location-card__spec
+p-location-card__share
+p-location-card__zip
+p-location-japan__img
+p-location-world__img
+p-location-world__label
+p-location-nav__item
+p-location-nav__link
+cm-block-header-page--map
+# SPのみ出す点線（c-line-dot 側で 80 を見ている）
+p-location-catch__line

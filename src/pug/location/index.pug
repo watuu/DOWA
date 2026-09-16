@@ -1,0 +1,229 @@
+extends ../_default
+block vars
+    - var path = "../"
+    - var title = "拠点一覧"
+    - var pageClass = "page-location"
+    - var breadcrumb = "拠点一覧"
+
+block content
+
+    -
+        //- 拠点データ。id は世界地図のラベルからのアンカー先になる
+        //- share は箇条書き（Figma の list-disc）、shareText は1行で書くとき
+        var domestic = [
+            {
+                id: "npgm",
+                name: "株式会社日本ピージーエム",
+                navName: "株式会社日本ピージーエム",
+                tags: ["製錬", "サンプリング"],
+                founded: "1991年3月15日",
+                share: ["DOWAメタルマイン(株) / 40％", "田中貴金属工業(株) / 40％", "小坂製錬(株) / 20％"],
+                zip: "〒017-0202",
+                address: "秋田県鹿角郡小坂町小坂鉱山字尾樽部76-1",
+                tel: "(0186)29-2744",
+                fax: "(0186)29-2722",
+                mapQuery: "40.3319874,140.7585799",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/LDrJ9uQEBj228Lus7" }]
+            },
+            {
+                id: "dowa-rare-metal",
+                name: "DOWAメタルマイン(株)<br>レアメタル事業部",
+                navName: "DOWAメタルマイン(株) レアメタル事業部",
+                tags: ["営業", "触媒買取"],
+                zip: "〒101-0021",
+                address: "東京都千代田区外神田4丁目14番1号 秋葉原UDXビル22階",
+                tel: "+03-6847-1205",
+                mapQuery: "35.7005674,139.7727147",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/msxVvzGMTRW6nL3U7" }]
+            }
+        ]
+        var overseas = [
+            {
+                id: "npgm-usa",
+                name: "NPGM USA INC.",
+                navName: "NPGM USA INC.",
+                tags: ["サンプリング"],
+                founded: "2024年3月13日",
+                shareText: "NPGM100%",
+                address: "191 S Keim Street, Unit 2E-1 Pottstown, PA 19464, U.S.A.",
+                tel: "+1-215-701-7050",
+                mapQuery: "40.2389662,-75.6306429",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/cC8jE8x77L81zbRy8" }]
+            },
+            {
+                id: "dowa-mm-america",
+                name: "DOWA METALS &amp; MINING<br>AMERICA INC.",
+                navName: "DOWA METALS & MINING AMERICA INC.",
+                tags: ["営業", "触媒買取"],
+                address: "1 Tower Center Boulevard, Suite 1607, East Brunswick, New Jersey, 08816, U.S.A.",
+                tel: "+1-609-900-3692",
+                mapQuery: "40.4789602,-74.4083435",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/wJ2Kxu1nVCYDFoEw6" }]
+            },
+            {
+                id: "npgm-korea",
+                name: "NPGM KOREA Co., Ltd.",
+                navName: "NPGM KOREA Co., Ltd.",
+                tags: ["営業", "触媒買取"],
+                founded: "2020年12月16日",
+                shareText: "NPGM100%",
+                address: "84-1, Nonhyeongojan-ro 54beon-gil, Namdong-gu, Incheon, Republic of Korea 21682",
+                tel: "+82-32-572-6866",
+                //- WebSite の URL は未入手（url が空のあいだは href を出さない）
+                mapQuery: "37.3865024,126.7161534",
+                links: [{ label: "WebSite", url: "https://www.npgm-korea.com/" }, { label: "Map", url: "https://maps.app.goo.gl/coFNk4Z7bzeaSLaL6" }]
+            },
+            {
+                id: "nippon-pgm-europe",
+                name: "NIPPON PGM EUROPE S.R.O.",
+                navName: "NIPPON PGM EUROPE S.R.O.",
+                tags: ["サンプリング"],
+                founded: "2010年9月16日",
+                shareText: "DMM60%、TKK40%",
+                address: "HEYROVSKEHO 488 LIBEREC 23, Czech Republic, 46312",
+                tel: "+420-488-100-271",
+                mapQuery: "50.7313644,15.0356349",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/FprK3SCHzSZk3ck36" }]
+            },
+            {
+                id: "dowa-hd-europe",
+                name: "DOWA HD Europe GmbH",
+                navName: "DOWA HD Europe GmbH",
+                tags: ["営業", "触媒買取"],
+                address: "Aeussere-Cramer-Klett-Str.19 90489 Nuremberg, Germany",
+                tel: "+49-911-56989-320",
+                mapQuery: "49.4550934,11.0927816",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/46DZCPKdoV5cLRSa9" }]
+            },
+            {
+                id: "dowa-mm-spain",
+                name: "DOWA METALS &amp; MINING CO.,<br>LTD. Spain office",
+                navName: "DOWA METALS & MINING CO., LTD. Spain office",
+                tags: ["営業", "サンプリング"],
+                founded: "2010年9月16日",
+                shareText: "DMM60%、TKK40%",
+                address: "CALLE ALBASANZ 35, 2A, 28037 MADRID, SPAIN",
+                tel: "+34-91-353-6525",
+                mapQuery: "40.437954,-3.6263752",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/pSzfnRST4U2dHR9t9" }]
+            }
+        ]
+        //- 世界地図のラベル。left/top は地図（PC 1300×612.7 / SP 975×459.5）に対する比率で、
+        //- 比率は PC と SP で一致するので1組で足りる（PC 3344-13098〜13111 / SP 3344-15687〜15699）。
+        //- 幅は Figma の値を使わず中身なり（欧文が Poppins で Figma の Roboto Condensed より広いため）
+        var worldPins = [
+            { id: "dowa-hd-europe",     label: "DOWA HD Europe GmbH",                       left: 10.385, top: 23.503 },
+            { id: "nippon-pgm-europe",  label: "NIPPON PGM EUROPE S.R.O.",                  left: 11.154, top: 36.723 },
+            { id: "dowa-mm-spain",      label: "DOWA METALS &amp; MINING CO., LTD. Spain office", left: 1.538,  top: 45.863 },
+            { id: "npgm-korea",         label: "NPGM KOREA Co., Ltd.",                      left: 36.154, top: 47.821 },
+            { id: "npgm",               label: "日本ピージーエム",                              left: 45.077, top: 39.823 },
+            { id: "npgm-usa",           label: "NPGM USA",                                  left: 66.969, top: 26.914 },
+            { id: "dowa-mm-america",    label: "DOWA METALS &amp; MINING AMERICA INC.",     right: 5.154, top: 45.863 }
+        ]
+
+    //- 拠点カード1枚。jsStickySection が現在地を取るので section で出す
+    mixin location-card(item, isLast)
+        section.p-location-item(id=item.id)
+            .p-location-card
+                .p-location-card__body
+                    .p-location-card__info
+                        h3.p-location-card__name!= item.name
+                        if item.tags && item.tags.length
+                            ul.p-location-card__tags
+                                each t in item.tags
+                                    li
+                                        span.c-tag= t
+                        if item.founded || item.shareText || item.share
+                            .p-location-card__spec
+                                if item.founded
+                                    p 設立：#{item.founded}
+                                if item.shareText
+                                    p 出資比率：#{item.shareText}
+                                if item.share
+                                    p 出資比率：
+                                    ul.p-location-card__share
+                                        each s in item.share
+                                            li= s
+                        .p-location-card__address
+                            p
+                                if item.zip
+                                    span.p-location-card__zip= item.zip
+                                    br
+                                = item.address
+                            p.p-location-card__tel
+                                span TEL: #{item.tel}
+                                if item.fax
+                                    span FAX: #{item.fax}
+                    if item.links && item.links.length
+                        .p-location-card__actions
+                            each l in item.links
+                                a.c-link-arrow(href=(l.url || false) target=(l.url ? "_blank" : false) rel=(l.url ? "noopener" : false))
+                                    span.c-link-arrow__label= l.label
+                                    span.c-btn-arrow.c-link-arrow__arrow
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_arrow_r")
+                figure.p-location-card__map
+                    iframe(src="https://maps.google.com/maps?q=" + encodeURIComponent(item.mapQuery) + "&z=15&hl=ja&output=embed" title=item.navName + "の所在地の地図" width=384 height=263 loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen)
+            if !isLast
+                .c-line-dot(aria-hidden="true")
+
+    //- 拠点一覧ブロック（左のサイドナビ ＋ 右のカード一覧）。PCのみ jsStickySection で追従する
+    mixin location-block(heading, items)
+        .p-location-cols.js-sticky-section
+            .p-location-nav.js-sticky-section__aside(aria-label=heading + "の拠点")
+                ul.p-location-nav__list
+                    each item in items
+                        li.p-location-nav__item
+                            a.p-location-nav__link(href="#" + item.id data-scroll-anchor)
+                                span.p-location-nav__icon
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_marker")
+                                span.p-location-nav__label= item.navName
+            .p-location-body.js-sticky-section__content
+                h2.p-location-heading= heading
+                .p-location-list
+                    each item, i in items
+                        +location-card(item, i === items.length - 1)
+
+    .p-location
+        .cm-block-header-page.cm-block-header-page--map
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("拠点一覧")
+                    p.c-heading-page__label Location
+
+        //- 日本地図。SPは幅が足りないので c-scroll-x で横に送る（ScrollHint は jsScrollX）
+        //- Figma: SP 3344-15775 / PC 3304-19292
+        .l-container
+            .p-location-map.p-location-map--japan.c-scroll-x
+                .c-scroll-x__inner.js-scroll-x
+                    //- Figma のマスク済み書き出し。SP と PC でトリミングが違うので画像を2枚持つ
+                    picture.p-location-japan
+                        source(media="(min-width: 1024px)" srcset=img + "p-location-japan.webp" width=1360 height=800)
+                        img.p-location-japan__img(src=img + "p-location-japan-sp.webp" alt="日本国内の拠点を示した地図" width=382 height=450)
+                .c-scroll-x__bar(aria-hidden="true")
+                    span.c-scroll-x__thumb
+
+        .l-container
+            +location-block("国内一覧", domestic)
+
+            .c-line-dot.p-location-catch__line.u-only-sp(aria-hidden="true")
+            p.p-location-catch
+                span.p-location-catch__icon
+                    svg(aria-hidden="true")
+                        use(href="#ico_pin")
+                span 全国に触媒集荷拠点を設けています
+
+            //- 世界地図。ラベルは画像に焼き込まず、HTMLのテキストリンクで重ねる（ホバーで色が変わる）
+            //- Figma: SP 3344-13235 / PC 3344-10646
+            .p-location-map.p-location-map--world.c-scroll-x
+                .c-scroll-x__inner.js-scroll-x
+                    .p-location-world
+                        img.p-location-world__img(src=img + "p-location-world.webp" alt="世界各地の拠点を示した地図" width=1300 height=613 loading="lazy")
+                        each pin in worldPins
+                            a.p-location-world__label(href="#" + pin.id data-scroll-anchor style=(pin.right ? "right:" + pin.right + "%" : "left:" + pin.left + "%") + ";top:" + pin.top + "%")!= pin.label
+                .c-scroll-x__bar(aria-hidden="true")
+                    span.c-scroll-x__thumb
+
+            +location-block("海外一覧", overseas)

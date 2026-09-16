@@ -48,41 +48,39 @@ block content
             { n: 4, en: "Other PGM materials", name: "その他PGM含有原料、工場残渣" }
         ]
 
-    mixin what-card(w)
-        a.p-top-what__card(href=path + "material/")
-            figure.p-top-what__figure
+    mixin what-card(w, i)
+        a.p-top-what__card.u-anim.js-visible(href=path + "material/" style="--i: " + i)
+            figure.p-top-what__figure.u-anim-zoom
                 img(src=img + "p-top-what" + w.n + ".webp" alt="" width=1328 height=1328 loading="lazy")
             .p-top-what__text
                 p.p-top-what__en= w.en
                 h3.p-top-what__name= w.name
 
     //- .is-section-dark … 写真や濃い地のセクション。ヘッダーが重なっている間はロゴが白抜きになる（common.js の isSectionDark）
+    //- .js-visible … 画面に入ると is-visible が付く（common.js の isVisible）。
+    //-               出方は .u-anim / .u-anim-lines / .u-anim-zoom（Utility/_u-anim.scss）。並びのずれは --i（0起点）
     .p-top
 
         //- MV（動画は未書き出しのため静止画。画像リストは同じ5枚を2周並べて一定速度でループ）
-        section.p-top-mv.is-section-dark
+        //- 出す順番は common.js の jsMv()。動画の絵が用意できてから
+        //- 「動画と画像列 → 見出し → リード」の順に is-visible を付ける
+        section.p-top-mv.is-section-dark.js-mv
             .p-top-mv__main
-                picture.p-top-mv__movie
-                    source(media="(min-width: 641px)" srcset=img + "p-top-mv-movie.webp" width=2458 height=1800)
-                    img(src=img + "p-top-mv-movie-sp.webp" alt="" width=804 height=1092)
+                //- 背景動画。poster は同じ映像の静止画なので、再生開始時に絵が飛ばない
+                .p-top-mv__movie.u-anim-fade.u-anim-zoom
+                    video(src=movie + "mv.mp4" width=1920 height=1080 autoplay muted loop playsinline preload="auto" aria-hidden="true")
                 .p-top-mv__copy
                     //- 文言は Figma で SP と PC が違う
-                    h1.p-top-mv__title
-                        span.u-only-pc
-                            | 確かな分析で、
-                            br
-                            | 触媒の価値を適正に評価
-                        span.u-only-sp
-                            | 使用済み触媒の
-                            br
-                            | 適正な買取り
-                    p.p-top-mv__lead
-                        span.u-only-pc 白金族類に特化した日本ピージーエムを基盤に、信頼に応えるサービスを提供します。
-                        span.u-only-sp
-                            | 正確な分析で、納得できる触媒取引を実現する。
-                            br
-                            | 正確な分析が、納得の取引を生み出す。
-            .p-top-mv__gallery
+                    //- 行ごとに下から送り出すので、行の区切りは br ではなく .u-anim-line で持つ
+                    h1.p-top-mv__title.u-anim-lines
+                        span
+                            span.u-anim-line(style="--l: 0")
+                                span 確かな分析で、
+                            span.u-anim-line(style="--l: 1")
+                                span 触媒の価値を適正に評価
+                    p.p-top-mv__lead.u-anim(style="--i: 2")
+                        span 白金族類に特化した日本ピージーエムを基盤に、信頼に応えるサービスを提供します。
+            .p-top-mv__gallery.u-anim-fade.u-anim-zoom
                 ul.p-top-mv__track
                     each round in [0, 1]
                         each n in [1, 2, 3, 4, 5]
@@ -93,14 +91,14 @@ block content
         section.p-top-point
             .l-container
                 .c-heading-section.c-heading-section--center.p-top-point__head
-                    p.c-heading-section__label 売却先を選ぶポイント
-                    h2.c-heading-section__title Key Points
+                    p.c-heading-section__label.u-anim.js-visible 売却先を選ぶポイント
+                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Key Points
                 ol.p-top-point__list
                     each pt, i in points
-                        li.p-top-point__item
+                        li.p-top-point__item.u-anim.js-visible(style="--i: " + i)
                             img.p-top-point__num(src=img + "p-top-point-num" + (i + 1) + ".svg" alt=(i + 1) + "." width=pt.w height=pt.h)
                             span= pt.text
-                p.p-top-point__closing
+                p.p-top-point__closing.u-anim.js-visible
                     span.p-top-point__badge DOWA
                     | には、
                     br.u-only-sp
@@ -110,22 +108,25 @@ block content
         section.p-top-strength
             .l-container
                 .c-heading-section.c-heading-section--center.p-top-strength__head
-                    p.c-heading-section__label 私たちの強み
-                    h2.c-heading-section__title Our Strength
+                    p.c-heading-section__label.u-anim.js-visible 私たちの強み
+                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Our Strength
                 .p-top-strength__intro
-                    p.p-top-strength__title
-                        | 適正な買取を支える、
-                        br
-                        | 一貫したリサイクルプロセス。
-                    p.p-top-strength__lead
+                    p.p-top-strength__title.u-anim-lines.js-visible
+                        span.u-anim-line(style="--l: 0")
+                            span 適正な買取を支える、
+                        span.u-anim-line(style="--l: 1")
+                            span 一貫したリサイクルプロセス。
+                    p.p-top-strength__lead.u-anim.js-visible(style="--i: 2")
                         | サンプリングから分析・製錬まで一貫して対応し、
                         br.u-only-pc
                         | 透明性の高い評価を通じて、お客さまの安心と納得に応えます。
                 ol.p-top-strength__list
                     each s, i in strengths
-                        li.p-top-strength__item
-                            .p-top-strength__figure
-                                img(src=img + "p-top-strength" + (i + 1) + ".webp" alt="" width=880 height=1080 loading="lazy")
+                        li.p-top-strength__item.u-anim.js-visible(style="--i: " + i)
+                            //- 数字のSVGまで寄ってしまうので、.u-anim-zoom は写真の枠だけに付ける
+                            .p-top-strength__figure.u-anim-zoom
+                                //- 動画は 1620x1080 の横長。枠が 440:540 の縦長なので object-fit: cover で左右が切れる
+                                video(src=movie + "strength_0" + (i + 1) + ".mp4" width=1620 height=1080 autoplay muted loop playsinline aria-hidden="true")
                                 .p-top-strength__detail(aria-hidden="true")
                                     p.p-top-strength__detail-title= s.name
                                     p.p-top-strength__detail-text= s.detail
@@ -136,17 +137,17 @@ block content
         section.p-top-what.is-section-dark
             .l-container
                 .c-heading-section.p-top-what__head
-                    p.c-heading-section__label 買取原料
-                    h2.c-heading-section__title What We Buy
+                    p.c-heading-section__label.u-anim.js-visible 買取原料
+                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") What We Buy
                 .p-top-what__body
                     .p-top-what__col
-                        p.p-top-what__lead さまざまな使用済み触媒や、PGMを含む原料を買取しています。
-                        +what-card(whats[0])
-                        +what-card(whats[2])
+                        p.p-top-what__lead.u-anim.js-visible さまざまな使用済み触媒や、PGMを含む原料を買取しています。
+                        +what-card(whats[0], 0)
+                        +what-card(whats[2], 0)
                     .p-top-what__col
-                        +what-card(whats[1])
-                        +what-card(whats[3])
-                        .p-top-what__action
+                        +what-card(whats[1], 1)
+                        +what-card(whats[3], 1)
+                        .p-top-what__action.u-anim.js-visible
                             a.c-btn.c-btn--md(href=path + "material/")
                                 span.c-btn__label 詳しくみる
                                 span.c-btn-arrow
@@ -157,14 +158,15 @@ block content
         section.p-top-feature
             .l-container
                 .c-heading-section.p-top-feature__head
-                    p.c-heading-section__label DOWAの特長と実績
-                    h2.c-heading-section__title Feature
+                    p.c-heading-section__label.u-anim.js-visible DOWAの特長と実績
+                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Feature
                 .p-top-feature__body
-                    p.p-top-feature__lead 1991年に日本ピージーエムを設立し、使用済み触媒からプラチナ、パラジウム、ロジウムなどの白金族金属を回収するリサイクル事業を展開しています。
+                    p.p-top-feature__lead.u-anim.js-visible 1991年に日本ピージーエムを設立し、使用済み触媒からプラチナ、パラジウム、ロジウムなどの白金族金属を回収するリサイクル事業を展開しています。
                     .p-top-feature__list
                         each f, i in features
-                            .c-card-feature
-                                figure.c-card-feature__figure
+                            //- 縦に離れて並ぶので --i でずらさない（1枚ずつ画面に入る）
+                            .c-card-feature.u-anim.js-visible
+                                figure.c-card-feature__figure.u-anim-zoom
                                     img(src=img + "p-top-feature" + (i + 1) + ".webp" alt="" width=720 height=500 loading="lazy")
                                 .c-card-feature__body
                                     p.c-line-num 0#{i + 1}
@@ -176,9 +178,10 @@ block content
         section.p-top-voice
             .l-container
                 .c-heading-section.p-top-voice__head
-                    p.c-heading-section__label 自動車解体事業者様の声
-                    h2.c-heading-section__title Voice
-                .js-card-slider
+                    p.c-heading-section__label.u-anim.js-visible 自動車解体事業者様の声
+                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Voice
+                //- Swiper は自前で transform を持つので、枠は動かさずフェードだけにする
+                .js-card-slider.u-anim-fade.js-visible
                     .p-top-voice__slider.swiper
                         .swiper-wrapper
                             each v, i in voices
@@ -207,16 +210,16 @@ block content
         section.p-top-news
             .l-container
                 .p-top-news__inner
-                    h2.p-top-news__title 新着情報
+                    h2.p-top-news__title.u-anim.js-visible 新着情報
                     .p-top-news__list
-                        each item in news
-                            a.c-card-news.c-card-news--outline(href=path + "single-news/")
+                        each item, i in news
+                            a.c-card-news.c-card-news--outline.u-anim.js-visible(href=path + "single-news/" style="--i: " + i)
                                 .c-card-news__body
                                     .c-card-news__meta
                                         time.c-card-news__date(datetime=item.date)= item.label
                                         span.c-card-news__tag= item.tag
                                     p.c-card-news__title= item.title
-                    .p-top-news__more
+                    .p-top-news__more.u-anim.js-visible
                         a.c-link-arrow.c-link-arrow--lg(href=path + "news/")
                             span.c-link-arrow__label 一覧をみる
                             span.c-btn-arrow.c-link-arrow__arrow
@@ -226,26 +229,26 @@ block content
         //- 日本ピージーエムの技術力（フッター直前の写真の帯）
         section.p-top-technology.is-section-dark
             //- SP（〜640px）だけ縦長の写真。641px 以上は PC の写真
-            picture.p-top-technology__bg
+            picture.p-top-technology__bg.u-anim-zoom.js-visible
                 source(media="(min-width: 641px)" srcset=img + "p-top-technology-bg.webp" width=2880 height=1800)
                 img(src=img + "p-top-technology-bg-sp.webp" alt="" width=804 height=1400 loading="lazy")
             .l-container.p-top-technology__inner
-                p.p-top-technology__route
+                p.p-top-technology__route.u-anim.js-visible
                     span FROM
                     span AKITA
                     span TO THE WORLD
                 .p-top-technology__body
                     .p-top-technology__head
                         //- 英字ラベルは Figma で SP と PC の文言が違う
-                        p.p-top-technology__label
+                        p.p-top-technology__label.u-anim.js-visible
                             span.u-only-sp TECHNOLOGY
                             span.u-only-pc NPGM EXPERTISE
-                        h2.p-top-technology__title
+                        h2.p-top-technology__title.u-anim.js-visible(style="--i: 1")
                             | 日本ピージーエムの
                             br.u-only-pc
                             | 技術力
-                    p.p-top-technology__desc 日本ピージーエム独自の「ROSEプロセス」は、DOWAメタルマインと田中貴金属工業が共同開発した、高効率なPGM回収プロセスです。多様な原料に対応し、月間1,000トン規模の処理能力と短いリードタイムを実現。大規模処理のスケールメリットを活かし、競争力のあるサービスを提供しています。
-                    .p-top-technology__action
+                    p.p-top-technology__desc.u-anim.js-visible(style="--i: 2") 日本ピージーエム独自の「ROSEプロセス」は、DOWAメタルマインと田中貴金属工業が共同開発した、高効率なPGM回収プロセスです。多様な原料に対応し、月間1,000トン規模の処理能力と短いリードタイムを実現。大規模処理のスケールメリットを活かし、競争力のあるサービスを提供しています。
+                    .p-top-technology__action.u-anim.js-visible(style="--i: 3")
                         a.c-btn.c-btn--lg(href=path + "technology/")
                             span.c-btn__label 詳しくみる
                             span.c-btn-arrow.c-btn-arrow--lg

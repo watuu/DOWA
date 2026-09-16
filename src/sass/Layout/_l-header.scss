@@ -114,6 +114,24 @@ body.is-nav-open .l-header-logo__dark  { display: block; }
 	}
 }
 
+/*  グローバルナビ・言語切替のホバー
+    文字色が Text/Link に変わるだけ（参考サイト npgm.adriatic-dev.com のナビは u-targetcolor）
+----------------------------------------------------*/
+.l-header-nav__list a {
+	transition: color var(--hover-duration) var(--hover-ease);
+}
+
+@media (hover: hover) {
+	.l-header-nav__list a:hover {
+		color: var(--c-text-link);
+	}
+
+	// JP / EN は薄くする（参考サイトの jp / en は u-target）
+	.l-header-lang__other:hover {
+		opacity: .6;
+	}
+}
+
 /*  ヘッダー右側（ナビ＋CTA＋言語切替）
     Figma: 3003-9066（gap14）の中に 3003-9067（ナビとCTA。gapなし）
 ----------------------------------------------------*/

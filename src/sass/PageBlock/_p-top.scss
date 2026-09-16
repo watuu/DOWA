@@ -46,6 +46,7 @@
 .p-top-mv__movie {
 	position: absolute;
 	inset: 0;
+	overflow: hidden; // 出るときに 1.08 から戻すので、はみ出しをこの箱で止める（.u-anim-zoom）
 
 	img,
 	video {
@@ -117,6 +118,8 @@
 	display: flex;
 	width: max-content;
 	animation: p-top-mv-x 25s linear infinite;
+	will-change: transform;
+	backface-visibility: hidden;
 
 	@include config.pc {
 		flex-direction: column;
@@ -127,6 +130,7 @@
 
 .p-top-mv__item {
 	flex-shrink: 0;
+	overflow: hidden; // 1コマずつ 1.08 から戻すので、隣とすき間に被らないように切る（.u-anim-zoom）
 	width: math.div(120, 16) + rem;
 	margin-right: math.div(4, 16) + rem;
 	aspect-ratio: 1;
@@ -380,7 +384,8 @@
 	aspect-ratio: 440 / 540;
 	overflow: hidden;
 
-	img {
+	img,
+	video {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -647,8 +652,8 @@
 	@include config.pc {
 		grid-column: 1;
 		align-self: start;
-		position: sticky;
-		top: math.div(40, 16) + rem;
+		//position: sticky;
+		//top: math.div(40, 16) + rem;
 		font-size: math.div(18, 16) + rem;
 	}
 }
@@ -785,6 +790,7 @@
 	position: absolute;
 	inset: 0;
 	z-index: -1;
+	overflow: hidden; // スクロールインで写真を 1.08 から戻すので、はみ出しをこの箱で止める
 
 	img {
 		display: block;
@@ -920,6 +926,29 @@
 		grid-area: action;
 		justify-self: end;
 		margin-top: math.div(42, 16) + rem;
+	}
+}
+
+/*  ホバー
+    写真を少し寄せる（--hover-zoom）。素の transform と transition は .u-anim-zoom が持っているので、
+    ここでは寄せる量と速さだけ上書きする（スクロールインの 1.4s のままだと、ホバーが遅れて見える）
+----------------------------------------------------*/
+@media (hover: hover) {
+	.p-top-what__card:hover .p-top-what__figure img,
+	.p-top-strength__item:hover .p-top-strength__figure video {
+		transform: scale(var(--hover-zoom));
+		transition-duration: var(--hover-duration);
+		will-change: transform;
+	}
+}
+
+// 動きを減らす設定では寄せない（色の変化だけ残す）。
+// _u-anim.scss の同じ指定より詳細度が高いので、ここでも打ち消しておく
+@media (prefers-reduced-motion: reduce) {
+	.p-top-what__card:hover .p-top-what__figure img,
+	.p-top-strength__item:hover .p-top-strength__figure video {
+		transform: none;
+		transition: none;
 	}
 }
 

@@ -38,6 +38,7 @@ const PAGES = [
 	{ path: '/material/', comp: 'doc/PC_MATERIAL.jpg', compSp: 'doc/SP_MATERIAL.jpg' }, // PCのカンプは旧版（番号・フッターが違う）
 	{ path: '/flow/', comp: 'doc/PC_FLOW.jpg', compSp: 'doc/SP_FLOW.jpg' },
 	{ path: '/supply-chain/', comp: 'doc/PC_SUPPLY CHAIN.jpg', compSp: 'doc/SP_SUPPLY CHAIN.jpg' },
+	{ path: '/location/', comp: 'doc/PC_LOCATION.jpg', compSp: 'doc/SP_LOCATION.jpg' }, // SPのカンプは Figma のフレーム名が SP-TECHNOLOGY のまま
 	{ path: '/technology/', comp: 'doc/PC-TECHNOLOGY.jpg', compSp: 'doc/SP-TECHNOLOGY.jpg' }, // PCのカンプはフッターが920pxの旧版
 	{ path: '/', comp: 'doc/PC_TOP.jpg', compSp: 'doc/SP_TOP.jpg' }, // 動画は静止画・Voice の SP は文言差で短い
 	{ path: '/template.html' },

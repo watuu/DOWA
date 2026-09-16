@@ -9,3 +9,25 @@
 // その分の余白は .cm-block-header-page（ページ見出しのラッパー）が持つ。
 .l-main {
 }
+
+/*  ページを開いたときのフェードイン
+	ページ遷移（＝読み込み直し）の切り替わりをやわらげるため、本文だけをわずかに出す。
+	JS の到着を待たない CSS アニメーションなので、最初の描画から動く。
+	fill-mode を付けないのは、終わったあとに opacity の指定を残さないため
+	（残すと ScrollTrigger の pin が使う position: fixed の効き方に関わる）。
+	.is-js が付かない環境（JS無効）では何もしない
+----------------------------------------------------*/
+html.is-js .l-main {
+	animation: l-main-fade-in .5s var(--easeOutSine);
+}
+
+@keyframes l-main-fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html.is-js .l-main {
+		animation: none;
+	}
+}

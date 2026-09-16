@@ -20,6 +20,7 @@
 @use "PageBlock/_p-flow";
 @use "PageBlock/_p-supply";
 @use "PageBlock/_p-technology";
+@use "PageBlock/_p-location";
 @use "Module/_cm-block";
 @use "Module/_cm-nav";
 @use "Module/_cm-form";
@@ -34,6 +35,8 @@
 @use "Component/_c-list";
 @use "Component/_c-paragraph";
 @use "Component/_c-scroll";
+@use "Component/_c-tag";
+@use "Utility/_u-anim";
 @use "Utility/_u-utility";
 
 

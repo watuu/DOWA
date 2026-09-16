@@ -12,7 +12,8 @@ block content
         .cm-block-header-page
             .l-container
                 .c-heading-page
-                    h1.c-heading-page__title お問い合わせ
+                    h1.c-heading-page__title
+                        +split-chars("お問い合わせ")
                     p.c-heading-page__label Contact
 
         section.p-contact-form

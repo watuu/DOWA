@@ -12,6 +12,7 @@
 // 右端の矢印は .c-btn-arrow--outline.c-btn-arrow--sm をそのまま使う
 // （30px・白地・--c-border・角丸4px・#ico_arrow_r まで一致していたため作り足さない）。
 .c-card-news {
+	position: relative;
 	display: flex;
 	align-items: center;
 	gap: math.div(10, 16) + rem;
@@ -61,6 +62,35 @@
 		font-size: math.div(16, 16) + rem;
 		line-height: 1.6;
 		color: var(--c-text-body);
+		transition: color var(--hover-duration) var(--hover-ease);
+	}
+}
+
+// ホバーは「下線が左から伸びる ＋ タイトルの色」（参考サイト npgm.adriatic-dev.com の
+// c-newscard ＝ u-targetborder と同じ扱い）。下の罫線（--c-border）の上に Action色の線を重ねる。
+// 右端の矢印の反転とアニメーションは _c-btn.scss 側（a:hover .c-btn-arrow）で効く
+.c-card-news::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: -1px; // border-bottom のぶん外に出して、罫線にぴったり重ねる
+	left: 0;
+	height: 1px;
+	background: var(--c-action);
+	transform: scaleX(0);
+	transform-origin: right top;
+	transition: transform .5s var(--hover-ease);
+	will-change: transform;
+}
+
+@media (hover: hover) {
+	.c-card-news:hover::after {
+		transform: scaleX(1);
+		transform-origin: left top;
+	}
+
+	.c-card-news:hover .c-card-news__title {
+		color: var(--c-action);
 	}
 }
 
