@@ -3,7 +3,7 @@ mixin formRow(id, label, required)
         label.cm-form-row__label(for=id)
             = label
             if required
-                span.c-form-required 必須
+                span.c-form-required= en ? "Required" : "必須"
         .cm-form-row__field
             block
 
@@ -15,19 +15,25 @@ mixin formSelect(id, name, label, options, required)
     +formRow(id, label, required)
         .c-select
             select(id=id name=name required=required)
-                option(value="") 選択してください
+                option(value="")= en ? "Please select." : "選択してください"
                 each opt in options
                     option(value=opt)= opt
             span.c-select__arrow
                 svg(aria-hidden="true")
                     use(href="#ico_tri_r")
 
+//- 英語は「I consent to the processing of my personal data.」（英訳確認シート 07 / 08）
 mixin formAgree(path)
     label.c-checkbox
         input(type="checkbox" name="agree" required)
         span
-            a(href=path + "privacy-policy/") 個人情報の取り扱い
-            |  に関して同意する
+            if en
+                | I consent to the #{""}
+                a(href=path + "privacy-policy/") processing of my personal data
+                | .
+            else
+                a(href=path + "privacy-policy/") 個人情報の取り扱い
+                |  に関して同意する
 
 mixin formSubmit(label)
     button.c-btn.c-btn--action(type="submit")

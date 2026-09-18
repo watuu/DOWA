@@ -72,21 +72,43 @@
 /*  1文字ずつ下から送り出す（ページ見出し）
 	参考サイト npgm.adriatic-dev.com の js-undermvtitleanimation と同じ
 	（duration 1.1s / stagger .035s / expo.out）。
-	外側が窓、中の1文字ずつが動く枠。順番は1文字ごとの --c（0起点。pug の +split-chars が振る）
+	単語（__word）が窓、中の1文字（__char）が動く枠。順番は1文字ごとの --c（0起点。pug の +split-chars が振る）。
+	窓を単語ごとに持つのは、英語の見出しが折り返したときに、上の行の文字が下の行に重なって見えないようにするため。
+	単語の間は column-gap で空ける（空白の span は flex の中で潰れて幅が無くなる）
 ----------------------------------------------------*/
+// 単語の間は gap ではなく margin で空ける（日本語は単語が1つなので、gap だと子1つの箱に gap を持つことになる）
 .u-anim-chars {
 	display: flex;
-	overflow: clip;
+	flex-wrap: wrap;
 }
 
-.u-anim-chars > span {
+// 行の間 .12em … 英語の見出しが折り返したとき、行間1（.c-heading-page__title）だと上下の行が詰まりすぎる
+.u-anim-chars:has(> .u-anim-chars__word + .u-anim-chars__word) {
+	row-gap: .12em;
+}
+
+// 窓の下を .2em 広げる（padding と同じだけ margin で戻すので、箱の高さは変わらない）。
+// 行間1のままだと、欧文の下に出る字形（g y p ,）が窓で切れるため。
+// 文字は窓の広げたぶんより下から出すので、送る量も 110% → 125%
+.u-anim-chars__word {
+	display: flex;
+	overflow: clip;
+	padding-bottom: .2em;
+	margin-bottom: -.2em;
+}
+
+.u-anim-chars__word:not(:last-child) {
+	margin-right: .28em;
+}
+
+.u-anim-chars__char {
 	display: block;
-	transform: translate3d(0, 110%, 0);
+	transform: translate3d(0, 125%, 0);
 	transition: transform 1.1s var(--easeOutExpo) calc(var(--c, 0) * .035s);
 	will-change: transform;
 }
 
-.u-anim-chars.is-visible > span {
+.u-anim-chars.is-visible .u-anim-chars__char {
 	transform: none;
 	will-change: auto;
 }
@@ -168,7 +190,7 @@ html:not(.is-js) .u-anim-fade {
 }
 
 html:not(.is-js) .u-anim-line > span,
-html:not(.is-js) .u-anim-chars > span,
+html:not(.is-js) .u-anim-chars__char,
 html:not(.is-js) .u-anim-zoom img,
 html:not(.is-js) .u-anim-zoom video {
 	transform: none;
@@ -188,7 +210,7 @@ html:not(.is-js) .u-anim-zoom video {
 	}
 
 	.u-anim-line > span,
-	.u-anim-chars > span,
+	.u-anim-chars__char,
 	.u-anim-zoom img,
 	.u-anim-zoom video {
 		transform: none;

@@ -241,6 +241,29 @@
 	}
 }
 
+// 英語は文言が長く、2列（PC 410幅）・折り返し無しだと隣の列に重なる。
+// 1列（PC は日本語の2列ぶんの幅 847 を中央）にして、SPでは折り返せるようにする（2026-09-16）
+.p-top-point__list:lang(en) {
+	grid-template-rows: none;
+	grid-auto-flow: row;
+	justify-content: stretch;
+
+	@include config.pc {
+		grid-template-columns: 1fr;
+	}
+}
+
+.p-top-point__item:lang(en) {
+	height: auto;
+	min-height: math.div(42.4, 16) + rem;
+	line-height: 1.3;
+	white-space: normal;
+
+	@include config.pc {
+		min-height: math.div(85, 16) + rem;
+	}
+}
+
 // 数字は図形（書き出したSVG・PC の大きさ）。SPは半分
 .p-top-point__num {
 	flex-shrink: 0;

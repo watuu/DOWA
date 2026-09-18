@@ -1,0 +1,89 @@
+extends ../../_default
+block vars
+    - var path = "../../"
+    - var lang = "en"
+    - var slug = "supply-chain/"
+    - var title = "Responsible Sourcing"
+    - var pageClass = "page-supply"
+    - var breadcrumb = "Responsible Sourcing"
+
+//- 英訳は「英訳確認シート」04 責任ある調達
+block content
+
+    -
+        var policies = [
+            { title: "Sourcing Controls Aligned with International Standards", desc: "Smelters play an important role in reviewing the origin of the materials they receive and assessing potential risks related to conflict, human rights, and the environment. DOWA Metals & Mining Co., Ltd. and NIPPON PGM Co., Ltd. have established sourcing controls to promote supply chain transparency and accept only catalysts and other materials that meet their responsible sourcing requirements." },
+            { title: "Responsible Sourcing Policy Aligned with OECD and LPPM Guidance", desc: "We follow a responsible sourcing policy based on OECD guidance and accept only minerals and other materials that meet our responsible sourcing requirements. Through annual independent third-party audits and public disclosure of relevant information, we work to maintain a transparent and reliable sourcing system.", banner: true }
+        ]
+        var docs = [
+            { title: "Documents to Be Provided by the Customer", items: ["Identification documents", "Official company registration certificate", "Business License or Permit", "Tax identification number or VAT certificate"] },
+            { title: "Documents We Will Provide for Completion", items: ["LPPM Responsible Sourcing Questionnaire", "Client Acknowledgement"] }
+        ]
+
+    .p-supply
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("Responsible Sourcing")
+                    p.c-heading-page__label Responsible Sourcing
+
+        section.p-supply-policy
+            .l-container
+                .p-supply-list
+                    each p, i in policies
+                        if i > 0
+                            .c-line-dot(aria-hidden="true")
+                        .c-card-num
+                            .c-card-num__body
+                                p.c-card-num__num #0#{i + 1}
+                                .c-card-num__text
+                                    h2.c-card-num__title= p.title
+                                    p.c-card-num__desc= p.desc
+                                if p.banner
+                                    .c-card-num__action
+                                        //- リンク先は未定（DOWAメタルマインの責任ある調達のページ）
+                                        a.c-banner-link(href="#" target="_blank" rel="noopener" aria-label="DOWA METALS & MINING CO., LTD.: Learn More about Responsible Sourcing (opens in a new window)")
+                                            span.c-banner-link__body
+                                                img.c-banner-link__logo(src=img + "logo-dowa-mm.svg" width=280 height=14 alt="")
+                                                span.c-banner-link__label Learn More about Responsible Sourcing
+                                            span.c-btn-arrow.c-btn-arrow--xs.c-btn-arrow--action.c-btn-arrow--tri
+                                                svg(aria-hidden="true")
+                                                    use(href="#ico_tri_d")
+                            figure.c-card-num__figure
+                                img(src=img + "p-supply-pic" + (i + 1) + ".webp" alt="" width=1458 height=998 loading=(i > 0 ? "lazy" : "eager"))
+
+        section.p-supply-dd
+            .l-container
+                .p-supply-dd__inner
+                    .p-supply-dd__head
+                        h2.c-heading-marker
+                            span.c-marker
+                                svg(aria-hidden="true")
+                                    use(href="#ico_marker")
+                            span Due Diligence Before the First Transaction
+                        p.p-supply-dd__lead To support responsible and transparent transactions, we assess potential risks related to prospective customers and the origin of their materials before entering into a business relationship.
+
+                    ol.p-supply-dd__list
+                        li.c-card-procedure
+                            .c-card-procedure__head
+                                p.c-card-procedure__num 1
+                                h3.c-card-procedure__title Required Documentation
+                            .p-supply-docs
+                                each d in docs
+                                    .p-supply-docs__col
+                                        h4.p-supply-docs__head= d.title
+                                        ul.p-supply-docs__list
+                                            each item in d.items
+                                                li
+                                                    span!= item
+                        li.c-card-procedure
+                            .c-card-procedure__head
+                                p.c-card-procedure__num 2
+                                h3.c-card-procedure__title Risk Identification &amp; Assessment
+                            p.c-card-procedure__desc Our compliance team reviews the origin of the materials and the background of each prospective customer to identify potential risks related to human rights, the environment, illicit trade, and other forms of misconduct.
+                        li.c-card-procedure
+                            .c-card-procedure__head
+                                p.c-card-procedure__num 3
+                                h3.c-card-procedure__title On-Site Visits
+                            p.c-card-procedure__desc Before the first transaction, we conduct an on-site visit to review the prospective customer’s operations and the storage and management of PGM-bearing catalysts. Following the initial transaction, additional on-site visits are generally conducted every 12 to 18 months as part of our ongoing due diligence.

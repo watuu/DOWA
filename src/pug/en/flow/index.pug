@@ -1,0 +1,97 @@
+extends ../../_default
+block vars
+    - var path = "../../"
+    - var lang = "en"
+    - var slug = "flow/"
+    - var title = "How It Works"
+    - var pageClass = "page-flow"
+    - var breadcrumb = "How It Works"
+
+//- 英訳は「英訳確認シート」02 お取引の流れ。よくあるご質問は doc/Rare_Metal_Business_Unit_FAQ_JP_EN 1.docx
+block content
+
+    -
+        var steps = [
+            { title: "Initial Inquiry &amp; Consultation", desc: "Tell us about the type, condition, and quantity of your spent catalysts. Based on your materials and requirements, we will recommend a suitable approach for the transaction.", btn: { label: "Contact us", url: "contact/" } },
+            { title: "Customer and Material Due Diligence", desc: "In accordance with our responsible sourcing policy, we conduct due diligence on prospective customers and the origin of their materials to identify potential risks before entering into a transaction.", link: { label: "Learn More about Responsible Sourcing", url: "supply-chain/" } },
+            { title: "Material Receipt, Crushing &amp; Sampling", desc: "Each lot received is carefully crushed and homogenized, followed by sample reduction to obtain a representative sample. Because this sample forms the basis for determining PGM content, accurate sampling is essential to a fair and reliable valuation.", link: { label: "Learn More about Sampling", url: "technology/" } },
+            { title: "Weight Determination", desc: "Both the wet weight and the moisture-free dry weight are determined." },
+            { title: "Assay Results, Valuation &amp; Final Settlement", desc: "Representative samples are analyzed by DOWA TECHNO RESEARCH CO., LTD., a specialist analytical laboratory. The PGM content of each lot is accurately determined, and payment is then made in accordance with the agreed terms.", link: { label: "Learn More about Analysis", url: "technology/" } }
+        ]
+        //- 日本語ページの14問のうち、docx に英訳がある11問。
+        //- 「買取時の指標価格は何ですか？」「値決めのタイミングはいつですか？」「電子スクラップの買取は行っていますか？」の
+        //- 3問は英訳が無いので載せていない（2026-09-16）
+        var faqs = [
+            { q: "What are the benefits of doing business with DOWA?", a: ["DOWA accurately determines the precious metal content of spent catalysts through precise sampling and reliable analysis. By valuing each material based on its characteristics and assay results, DOWA provides transparent transactions supported by a clear basis for valuation."] },
+            { q: "What are TC and RC?", a: ["TC stands for Treatment Charge, which is the cost of processing and smelting the material. RC stands for Refining Charge, which is the cost of refining the recovered metals. The purchase price is calculated by deducting these charges and other applicable adjustments from the value of the contained precious metals."] },
+            { q: "What is the payable recovery rate?", a: ["The payable rate is the contractual percentage of the precious metal content in the material that is eligible for payment. The actual payment amount depends not only on the payable rate, but also on the accurate determination of the precious metal content. Please contact us for details regarding the payable rate and other transaction terms."] },
+            { q: "Can precious metal content vary among catalysts with the same code?", a: ["Yes. Even catalysts with the same code or of the same apparent type can vary in precious metal content. The amounts of platinum, palladium, and rhodium in automotive catalysts differ depending on factors such as vehicle model, model year, operating conditions, and degree of deterioration. To assess the underlying value of each customer’s material, DOWA processes the entire purchased lot through the sampling line and performs the valuation based on the assay results."] },
+            { q: "What are the payment terms?", a: ["Payment is made in accordance with the terms agreed with the customer based on sampling, analysis, and valuation. The payment schedule and detailed conditions are explained individually when the business relationship is established."] },
+            { q: "Who does DOWA purchase spent catalysts from?", a: ["DOWA primarily purchases spent catalysts from business customers, including manufacturers, automotive dismantlers, and nonferrous metal recyclers. In line with LPPM responsible sourcing principles, DOWA conducts due diligence on all prospective business partners, including reviews of company information and material origin, before entering into a transaction."] },
+            { q: "Does DOWA purchase individual spent catalysts?", a: ["As a general rule, DOWA does not purchase catalysts individually. Materials are accepted in lots, sampled and analyzed, and then valued based on the assay results."] },
+            { q: "How is the payment amount calculated?", a: ["The payment amount is calculated based on the quantities of platinum, palladium, and rhodium contained in the material, together with the applicable metal prices, payable recovery rates, TC/RC, and other contractual terms."] },
+            { q: "What licenses and documents are required to sell materials to DOWA?", a: ["Required documentation varies depending on the country or region, material type, and transaction structure. In general, customers are asked to provide official documents confirming company information, business activities, and applicable licenses or permits, together with a declaration that the materials are not stolen. DOWA does not accept materials that fail to meet applicable legal and responsible sourcing requirements."] },
+            { q: "What lot size is appropriate?", a: ["The appropriate lot size depends on the material type, quantity, packaging, and sampling method. DOWA handles a range of lot sizes and proposes a suitable transaction approach based on the details of each material. Please contact us to discuss your requirements."] },
+            { q: "Do you offer material collection services?", a: ["Depending on the material’s location, quantity, and packaging, transportation or collection arrangements may be available. DOWA will propose a suitable delivery method based on these factors. Please contact us to discuss the options available."] }
+        ]
+
+    .p-flow
+        .cm-block-header-page.cm-block-header-page--lead
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("How It Works")
+                    p.c-heading-page__label Transaction Flow
+
+        section.p-flow-body
+            .l-container
+                p.p-flow-lead We guide customers through every step of the transaction, from material delivery and analysis to valuation and final settlement. Based on your materials and requirements, we recommend a suitable transaction approach and provide support throughout the process.
+
+                ol.p-flow-steps
+                    each s, i in steps
+                        li.c-card-step
+                            p.c-card-step__num= i + 1
+                            .c-card-step__main
+                                figure.c-card-step__figure
+                                    img(src=img + "p-flow-pic" + (i + 1) + ".webp" alt="" width=840 height=560 loading=(i > 0 ? "lazy" : "eager"))
+                                .c-card-step__body
+                                    h2.c-card-step__title!= s.title
+                                    p.c-card-step__desc!= s.desc
+                                    if s.btn
+                                        .c-card-step__action
+                                            a.c-btn(href=home + s.btn.url)
+                                                span.c-btn__label= s.btn.label
+                                                span.c-btn__arrow
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_arrow_r")
+                                    if s.link
+                                        .c-card-step__action
+                                            a.c-link-arrow(href=home + s.link.url)
+                                                span.c-link-arrow__label= s.link.label
+                                                span.c-btn-arrow.c-link-arrow__arrow
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_arrow_r")
+                    li.c-card-step.c-card-step--end
+                        p.c-card-step__num 6
+                        .c-card-step__main
+                            .c-card-step__body
+                                h2.c-card-step__title Smelting &amp; Refining Process
+
+        section.p-flow-faq
+            .l-container
+                .p-flow-faq__inner
+                    h2.c-heading-sub
+                        span.c-marker
+                            svg(aria-hidden="true")
+                                use(href="#ico_marker")
+                        span Frequently Asked Questions
+                    .p-flow-faq__list.c-accordion
+                        each q, i in faqs
+                            .c-accordion__item
+                                button.c-accordion__head.js-accordion(type="button" aria-expanded="false" aria-controls="faq-" + (i + 1))
+                                    span.c-accordion__q= q.q
+                                    span.c-accordion__icon
+                                        svg(aria-hidden="true")
+                                            use(href="#ico_tri_d")
+                                .c-accordion__body(id="faq-" + (i + 1))
+                                    p.c-accordion__answer!= q.a.join("<br>")

@@ -1,0 +1,108 @@
+extends ../../_default
+block vars
+    - var path = "../../"
+    - var lang = "en"
+    - var slug = "technology/"
+    - var title = "NPGM Expertise"
+    - var pageClass = "page-technology"
+    - var breadcrumb = "NIPPON PGM Expertise"
+
+//- 英訳は「英訳確認シート」05 日本PGMの技術
+block content
+
+    -
+        var research = [
+            { title: "Analysis Backed by Extensive Expertise", desc: "The analysis supporting NIPPON PGM’s material valuation is performed by DOWA TECHNO RESEARCH CO., LTD., a specialist analytical laboratory with extensive experience in materials analysis. Drawing on its expertise in PGM, environmental, and metallurgical analysis, DOWA TECHNO RESEARCH evaluates a wide range of materials and provides accurate, reliable, and objective analytical data." },
+            { title: "High-Precision ICP Analysis", desc: "Complex materials require precise analysis. By combining ICP (inductively coupled plasma) analysis with other advanced analytical techniques, DOWA TECHNO RESEARCH accurately determines the composition and precious metal content of a wide range of materials. Its advanced analytical capabilities and extensive expertise deliver reliable and reproducible data that supports fair and transparent material evaluation." }
+        ]
+        //- points の要素は文字列か { label, url }（url があればリンク＋三角の矢印）
+        var smelting = [
+            { title: "One of the World’s Largest PGM Recycling Smelters", desc: "NIPPON PGM’s proprietary ROSE Process is a low-energy, high-efficiency PGM recovery technology jointly developed by DOWA Metals &amp; Mining Co., Ltd. and Tanaka Precious Metal Technologies Co., Ltd. With a processing capacity of approximately 1,000 metric tons per month, the ROSE Process efficiently handles a wide range of PGM-bearing materials while maintaining high energy efficiency.", points: [{ label: "Processes a Wide Range of PGM-Bearing Materials", url: "material/" }, "Processing Capacity of Approximately 1,000 Metric Tons per Month"] },
+            { title: "High-Efficiency Recovery of Platinum Group Metals", desc: "Conventional smelting routes often require multiple processing steps before PGMs can be recovered, resulting in longer processing times. NIPPON PGM’s dedicated PGM smelting facilities enable fast and efficient recovery. Combined with low-energy operation and large-scale processing, these capabilities support competitive PGM recycling services.", points: ["High-efficiency recovery through dedicated PGM smelting facilities", "Environmentally conscious operation supported by large-scale processing"] },
+            { title: "Returning Platinum Group Metals to the Market", desc: "Through the ROSE Process, the precious metal content of the material is increased to approximately 60%, producing a copper alloy suitable for final refining. The material is then refined by Tanaka Precious Metal Technologies Co., Ltd. into high-purity PGMs. This closed-loop process returns valuable platinum group metals to the market and supports the sustainable use of finite resources." }
+        ]
+
+    mixin heading-marker(label)
+        h2.c-heading-marker
+            span.c-marker
+                svg(aria-hidden="true")
+                    use(href="#ico_marker")
+            span= label
+
+    .p-technology
+        .cm-block-header-page.cm-block-header-page--section
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("NIPPON PGM’s Expertise in Sampling, Assaying, and Smelting")
+                    p.c-heading-page__label NPGM Expertise
+
+        .l-container
+            .p-technology-sections
+
+                //- Sampling
+                section.p-technology-section#sampling
+                    +heading-marker("Sampling")
+                    .p-technology-sampling
+                        .c-heading-lead
+                            h3.c-heading-lead__title Trust Begins with Accurate Sampling
+                            p.c-heading-lead__desc In PGM recycling, where even the slightest variation can affect material valuation, sampling accuracy is essential. NIPPON PGM uses multiple sampling lines tailored to the characteristics of each material to obtain representative, unbiased samples. Backed by decades of expertise, NIPPON PGM supports transparent, accurate, and reliable material valuation.
+                        .p-technology-diagram.c-scroll-x
+                            .c-scroll-x__inner.js-scroll-x
+                                //- 英語版の工程図は申請中（2026-09-16）。届くまで日本語の図を使う
+                                img.p-technology-diagram__img(src=img + "p-technology-sample.svg" width=1188 height=435 alt="Sampling flow. Crushing Process: 01 Material, 02 Primary Crushing, 03 Secondary Crushing. Sampling Process: 04 Sample Reduction. Sample for Analysis: 05 Representative Sample.")
+                            .c-scroll-x__bar(aria-hidden="true")
+                                span.c-scroll-x__thumb
+                        .p-technology-photos
+                            each n in [1, 2, 3]
+                                figure.p-technology-photos__item
+                                    img(src=img + "p-technology-sample" + n + ".webp" alt="" width=772 height=572 loading="lazy")
+
+                //- Analysis
+                section.p-technology-section#research
+                    +heading-marker("Analysis")
+                    .p-technology-research
+                        each r, i in research
+                            if i > 0
+                                .c-line-dot(aria-hidden="true")
+                            .c-card-num.c-card-num--text-first
+                                .c-card-num__body
+                                    .c-card-num__text
+                                        h3.c-card-num__title= r.title
+                                        p.c-card-num__desc!= r.desc
+                                figure.c-card-num__figure
+                                    img(src=img + "p-technology-research" + (i + 1) + ".webp" alt="" width=1456 height=997 loading="lazy")
+
+                //- Smelting
+                section.p-technology-section#smelting
+                    +heading-marker("Smelting")
+                    .p-technology-smelting
+                        each s, i in smelting
+                            if i > 0
+                                .c-line-dot(aria-hidden="true")
+                            .c-card-num.c-card-num--text-first.c-card-num--media-left
+                                .c-card-num__body
+                                    p.c-card-num__num #0#{i + 1}
+                                    .c-card-num__text
+                                        h3.c-card-num__title= s.title
+                                        p.c-card-num__desc!= s.desc
+                                    if s.points
+                                        .c-keypoint
+                                            p.c-keypoint__label
+                                                span.c-marker
+                                                    svg(aria-hidden="true")
+                                                        use(href="#ico_marker")
+                                                span KEYPOINT
+                                            ul.c-keypoint__list
+                                                each pt in s.points
+                                                    li
+                                                        if pt.url
+                                                            a.c-keypoint__link(href=home + pt.url)
+                                                                span.c-keypoint__link-label= pt.label
+                                                                span.c-btn-arrow.c-btn-arrow--xs.c-btn-arrow--action.c-btn-arrow--tri
+                                                                    svg(aria-hidden="true")
+                                                                        use(href="#ico_tri_d")
+                                                        else
+                                                            span!= pt
+                                figure.c-card-num__figure
+                                    img(src=img + "p-technology-smelting" + (i + 1) + ".webp" alt="" width=1200 height=840 loading="lazy")

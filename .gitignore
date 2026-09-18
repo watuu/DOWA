@@ -16,14 +16,13 @@ Thumbs.db
 .vscode
 
 # WordPress
-# /public/*
-# !/public/.gitignore
-# !/public/wp-content
-# /public/wp-content/*
-# !/public/wp-content/themes
-# /public/wp-content/themes/*
-# !/public/wp-content/themes/xxx
+/public/*
+!/public/.gitignore
+!/public/wp-content
+/public/wp-content/*
+!/public/wp-content/themes
+/public/wp-content/themes/*
+#!/public/wp-content/themes/dowa-pgm
 
 # Misc
 *::*
-

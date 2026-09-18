@@ -1,21 +1,95 @@
 <!DOCTYPE html>
-<html lang="ja">
 - var path = "./"
-- var sitename = "DOWAメタルマイン株式会社 レアメタル事業部 触媒買取"
 - var pageClass = ""
+//- lang … "ja" / "en"。英語ページは src/pug/en/ に置き、block vars で "en" にする
+- var lang = "ja"
+//- slug … 言語の根からのこのページの位置（"material/" など）。言語切替で同じページへ飛ぶのに使う。
+//-        もう一方の言語に同じページが無いとき（新着情報・クッキーポリシー）は付けない（トップへ飛ぶ）
+- var slug = ""
 block vars
 - var img = path + "assets/img/"
 - var movie = path + "assets/movie/"
+- var en = lang === "en"
+//- home … ページ間リンクの根。日本語は path、英語は path + "en/"（画像などの素材は path のまま）
+- var home = path + (en ? "en/" : "")
+//- ヘッダー・フッター・パンくずの文言。英訳は「DOWA 自動車触媒買取サイト 英訳確認シート」の共通タブ
+-
+    var t = en ? {
+        sitename: "DOWA Spent Catalyst Purchasing & PGM Recycling | DOWA Metals & Mining Co., Ltd. Rare Metal Business Unit",
+        logoAlt: "DOWA Metals & Mining Co., Ltd. Rare Metal Business Unit, Spent Catalyst Purchasing & PGM Recycling",
+        home: "Home",
+        material: "Materials We Purchase",
+        flow: "How It Works",
+        supply: "Responsible Sourcing",
+        location: "Locations",
+        footerLocation: "Locations",
+        technology: "NPGM Expertise",
+        contact: "Contact",
+        menuOpen: "Open menu",
+        menu: "Menu",
+        breadcrumb: "Breadcrumb",
+        cookie: "Cookie Policy",
+        privacy: "Privacy Policy",
+        downloadTitle: "Download Our Brochure",
+        downloadDesc: "Download our brochure to learn more about our catalyst purchasing services.",
+        contactTitle: "Contact Us",
+        contactDesc: "Please contact us to discuss your materials or any questions you may have.",
+        operator: "Operated by: DOWA Metals & Mining Co., Ltd.",
+        operatorAria: "Visit the DOWA Metals & Mining Co., Ltd. website (opens in a new window)",
+        partner: "PGM Recycling Partner: NIPPON PGM Co., Ltd.",
+        partnerAria: "Visit the NIPPON PGM Co., Ltd. website (opens in a new window)",
+        visit: "Visit Website",
+        footerLogoAlt: "DOWA Spent Catalyst Purchasing & PGM Recycling, Powered by DOWA METALS & MINING"
+    } : {
+        sitename: "DOWAメタルマイン株式会社 レアメタル事業部 触媒買取",
+        logoAlt: "DOWAメタルマイン株式会社 レアメタル事業部 自動車触媒リサイクル",
+        home: "トップ",
+        material: "買取原料",
+        flow: "お取引の流れ",
+        supply: "責任ある調達",
+        location: "拠点一覧",
+        footerLocation: "海外拠点",
+        technology: "NPGMの技術",
+        contact: "お問い合わせ",
+        menuOpen: "メニューを開く",
+        menu: "メニュー",
+        breadcrumb: "パンくず",
+        cookie: "クッキーポリシー",
+        privacy: "プライバシーポリシー",
+        downloadTitle: "資料ダウンロード",
+        downloadDesc: "不明点を解消したい方はまずは資料ダウンロードから",
+        contactTitle: "お問い合わせ",
+        contactDesc: "どんなことでもお気軽にご相談いただけます",
+        operator: "運営会社：DOWAメタルマイン株式会社",
+        operatorAria: "DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）",
+        partner: "関連会社：株式会社日本ピージーエム",
+        partnerAria: "株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）",
+        visit: "サイトへ",
+        footerLogoAlt: "DOWA 触媒買取 Powered by DOWA METALS & MINING"
+    }
+- var sitename = t.sitename
+//- 言語切替の行き先。英語ページが無いクッキーポリシーは、英語側からも日本語のページへ飛ばす
+- var jaUrl = path + slug
+- var enUrl = path + "en/" + slug
+- var cookieUrl = path + "cookie-policy/"
+= "\n"
+<html lang="#{lang}">
 
 //- ページ見出しを1文字ずつ出すための組み（見え方は Utility/_u-anim.scss の .u-anim-chars）。
 //- 参考サイト npgm.adriatic-dev.com の js-undermvtitleanimation と同じ作り。
 //- 読み上げは .u-visually-hidden に置いた全文に任せ、見えている1文字ずつの span は aria-hidden にする。
 //- translate="no" … ブラウザの翻訳機能で1文字ずつの並びが壊れるのを防ぐ
+//- 英語は単語ごとに窓（.u-anim-chars__word）で包み、行の折り返しを単語の切れ目だけにする。
+//- 日本語は空白が無いので、全体が1つの単語になる（折り返さない）
 mixin split-chars(text)
+    - var words = text.split(" ")
+    - var index = 0
     span.u-visually-hidden= text
     span.u-anim-chars.js-visible(aria-hidden="true" translate="no")
-        each ch, i in Array.from(text)
-            span(style="--c: " + i)= ch
+        each word in words
+            span.u-anim-chars__word
+                each ch in Array.from(word)
+                    span.u-anim-chars__char(style="--c: " + (index++))= ch
 
 head
     meta(charset="UTF-8")
@@ -43,7 +117,7 @@ head
 
     if (pageClass == "page-front")
         <!-- OGP -->
-        meta(property='og:locale' content='ja_JP')
+        meta(property='og:locale' content=(en ? 'en_US' : 'ja_JP'))
         meta(property='og:type' content='website')
         meta(property='og:image' content=path + 'OGP.png')
         meta(property='og:title' content='')
@@ -67,94 +141,109 @@ body#body(class=[pageClass, pageClass == "page-front" ? "is-header-dark" : ""])
     .l-body-wrap
         header.l-header
             p.l-header-logo
-                a(href=path)
-                    img.l-header-logo__light(src=img + "logo-wh.svg" width=355 height=59 alt="DOWAメタルマイン株式会社 レアメタル事業部 自動車触媒リサイクル")
-                    img.l-header-logo__dark(src=img + "logo.svg" width=355 height=59 alt="DOWAメタルマイン株式会社 レアメタル事業部 自動車触媒リサイクル")
+                a(href=home)
+                    //- 英語版のロゴ画像は申請中（2026-09-16）。届くまで日本語のロゴを使う
+                    img.l-header-logo__light(src=img + "logo-wh.svg" width=355 height=59 alt=t.logoAlt)
+                    img.l-header-logo__dark(src=img + "logo.svg" width=355 height=59 alt=t.logoAlt)
             .l-header-utility
                 .l-header-utility__group
                     nav.l-header-nav
                         ul.l-header-nav__list
                             li
-                                a(href=path + "material/") 買取原料
+                                a(href=home + "material/")= t.material
                             li
-                                a(href=path + "flow/") お取引の流れ
+                                a(href=home + "flow/")= t.flow
                             li
-                                a(href=path + "supply-chain/") 責任ある調達
+                                a(href=home + "supply-chain/")= t.supply
                             li
-                                a(href=path + "location/") 拠点一覧
+                                a(href=home + "location/")= t.location
                             li
-                                a(href=path + "technology/")
-                                    span.l-header-nav__en NPGM
-                                    | の技術
-                    a.l-header-cta.c-btn.c-btn--sm(href=path + "contact/")
-                        span.c-btn__label お問い合わせ
+                                a(href=home + "technology/")
+                                    if en
+                                        | NPGM Expertise
+                                    else
+                                        span.l-header-nav__en NPGM
+                                        | の技術
+                    a.l-header-cta.c-btn.c-btn--sm(href=home + "contact/")
+                        span.c-btn__label= t.contact
+                //- 上が JP、下が EN の並びは変えず、今いる言語を __current（薄い色）にする
                 .l-header-lang
-                    span.l-header-lang__current JP
-                    span.l-header-lang__line
-                    a.l-header-lang__other(href=path + "en/") EN
-                button.l-header-menu.c-btn-menu(aria-label="メニューを開く")
+                    if en
+                        a.l-header-lang__other(href=jaUrl) JP
+                        span.l-header-lang__line
+                        span.l-header-lang__current EN
+                    else
+                        span.l-header-lang__current JP
+                        span.l-header-lang__line
+                        a.l-header-lang__other(href=enUrl) EN
+                button.l-header-menu.c-btn-menu(aria-label=t.menuOpen)
                     span
                     span
                     span
             .l-header-drawer
                 .l-header-drawer__wrap
-                    nav.l-header-drawer-nav(aria-label="メニュー")
+                    nav.l-header-drawer-nav(aria-label=t.menu)
                         ul
-                            each item in [{t:"トップ", u:""}, {t:"買取原料", u:"material/"}, {t:"お取引の流れ", u:"flow/"}, {t:"責任ある調達", u:"supply-chain/"}, {t:"拠点一覧", u:"location/"}, {t:"NPGMの技術", u:"technology/"}]
+                            each item in [{t:t.home, u:""}, {t:t.material, u:"material/"}, {t:t.flow, u:"flow/"}, {t:t.supply, u:"supply-chain/"}, {t:t.location, u:"location/"}, {t:t.technology, u:"technology/"}]
                                 li.l-header-drawer-nav__item.l-header-drawer__item
-                                    a(href=path + item.u)
+                                    a(href=home + item.u)
                                         span.c-marker
                                             svg(aria-hidden="true")
                                                 use(href="#ico_marker")
                                         span= item.t
-                    a.l-header-drawer-cta.l-header-drawer__item(href=path + "contact/") お問い合わせ
+                    a.l-header-drawer-cta.l-header-drawer__item(href=home + "contact/")= t.contact
                     .l-header-drawer-lang.l-header-drawer__item
-                        span.l-header-drawer-lang__current JP
-                        span.l-header-drawer-lang__line
-                        a.l-header-drawer-lang__other(href=path + "en/") EN
+                        if en
+                            a.l-header-drawer-lang__other(href=jaUrl) JP
+                            span.l-header-drawer-lang__line
+                            span.l-header-drawer-lang__current EN
+                        else
+                            span.l-header-drawer-lang__current JP
+                            span.l-header-drawer-lang__line
+                            a.l-header-drawer-lang__other(href=enUrl) EN
                     .l-header-drawer-policy.l-header-drawer__item
-                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--cookie(href=path + "cookie-policy/")
+                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--cookie(href=cookieUrl)
                             svg(aria-hidden="true")
                                 use(href="#ico_cookie")
-                            span クッキーポリシー
-                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--privacy(href=path + "privacy-policy/")
+                            span= t.cookie
+                        a.l-header-drawer-policy__item.l-header-drawer-policy__item--privacy(href=home + "privacy-policy/")
                             svg(aria-hidden="true")
                                 use(href="#ico_privacy")
-                            span プライバシーポリシー
+                            span= t.privacy
 
         main.l-main#main
             block content
         if typeof breadcrumb !== "undefined" && breadcrumb
             //- breadcrumb は文字列か、{ label, url } の配列。url があればリンクにする
-            nav.cm-navi-breadcrumb(aria-label="パンくず")
+            nav.cm-navi-breadcrumb(aria-label=t.breadcrumb)
                 .l-container
                     ol.cm-navi-breadcrumb__list
                         li.cm-navi-breadcrumb__item
-                            a(href=path) トップ
+                            a(href=home)= t.home
                         each item in (Array.isArray(breadcrumb) ? breadcrumb : [breadcrumb])
                             li.cm-navi-breadcrumb__item
                                 if item.url
-                                    a(href=path + item.url)= item.label
+                                    a(href=home + item.url)= item.label
                                 else
                                     = item.label || item
         footer.l-footer.is-section-dark
             .l-footer__inner
                 .cm-block-cta
-                    a.cm-block-cta-card(href=path + "document/")
+                    a.cm-block-cta-card(href=home + "document/")
                         p.cm-block-cta-card__label DOWNLOAD
                         .cm-block-cta-card__body
                             .cm-block-cta-card__text
-                                p.cm-block-cta-card__title 資料ダウンロード
-                                p.cm-block-cta-card__desc 不明点を解消したい方はまずは資料ダウンロードから
+                                p.cm-block-cta-card__title= t.downloadTitle
+                                p.cm-block-cta-card__desc= t.downloadDesc
                             span.c-btn-arrow.c-btn-arrow--lg
                                 svg(aria-hidden="true")
                                     use(href="#ico_arrow_ne")
-                    a.cm-block-cta-card(href=path + "contact/")
+                    a.cm-block-cta-card(href=home + "contact/")
                         p.cm-block-cta-card__label CONTACT
                         .cm-block-cta-card__body
                             .cm-block-cta-card__text
-                                p.cm-block-cta-card__title お問い合わせ
-                                p.cm-block-cta-card__desc どんなことでもお気軽にご相談いただけます
+                                p.cm-block-cta-card__title= t.contactTitle
+                                p.cm-block-cta-card__desc= t.contactDesc
                             span.c-btn-arrow.c-btn-arrow--lg
                                 svg(aria-hidden="true")
                                     use(href="#ico_arrow_ne")
@@ -162,22 +251,22 @@ body#body(class=[pageClass, pageClass == "page-front" ? "is-header-dark" : ""])
                 .l-footer-body
                     .l-footer-body__top
                         nav.l-footer-nav
-                            a(href=path + "material/") 買取原料
-                            a(href=path + "flow/") お取引の流れ
-                            a(href=path + "location/") 海外拠点
-                            a(href=path + "technology/") NPGMの技術
+                            a(href=home + "material/")= t.material
+                            a(href=home + "flow/")= t.flow
+                            a(href=home + "location/")= t.footerLocation
+                            a(href=home + "technology/")= t.technology
                         .l-footer-sites
                             .l-footer-sites__row
-                                p.l-footer-sites__name 運営会社：DOWAメタルマイン株式会社
-                                a.l-footer-sites__link(href="https://www.dowa.co.jp/MandM/" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）")
-                                    span.l-footer-sites__label サイトへ
+                                p.l-footer-sites__name= t.operator
+                                a.l-footer-sites__link(href="https://www.dowa.co.jp/MandM/" target="_blank" rel="noopener" aria-label=t.operatorAria)
+                                    span.l-footer-sites__label= t.visit
                                     span.l-footer-sites__btn
                                         svg(aria-hidden="true")
                                             use(href="#ico_arrow_r")
                             .l-footer-sites__row
-                                p.l-footer-sites__name 関連会社：株式会社日本ピージーエム
-                                a.l-footer-sites__link(href="https://nipponpgm.dowa.co.jp/" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）")
-                                    span.l-footer-sites__label サイトへ
+                                p.l-footer-sites__name= t.partner
+                                a.l-footer-sites__link(href="https://nipponpgm.dowa.co.jp/" target="_blank" rel="noopener" aria-label=t.partnerAria)
+                                    span.l-footer-sites__label= t.visit
                                     span.l-footer-sites__btn
                                         svg(aria-hidden="true")
                                             use(href="#ico_arrow_r")
@@ -185,17 +274,19 @@ body#body(class=[pageClass, pageClass == "page-front" ? "is-header-dark" : ""])
                     .l-footer-body__bottom
                         .l-footer-body__brand
                             p.l-footer-logo
-                                img(src=img + "logo-footer.svg" width=338 height=49 alt="DOWA 触媒買取 Powered by DOWA METALS & MINING")
+                                //- 英語版のロゴ画像は申請中（2026-09-16）
+                                img(src=img + "logo-footer.svg" width=338 height=49 alt=t.footerLogoAlt)
                             p.l-footer-copy © DOWA METALS &amp; MINING CO., LTD.
                         .l-footer-policy
-                            a.l-footer-policy__item.l-footer-policy__item--cookie(href=path + "cookie-policy/")
+                            //- 英語のクッキーポリシーは後日（2026-09-16）。それまで英語ページからも日本語のページへ飛ばす
+                            a.l-footer-policy__item.l-footer-policy__item--cookie(href=cookieUrl)
                                 svg(aria-hidden="true")
                                     use(href="#ico_cookie")
-                                span クッキーポリシー
-                            a.l-footer-policy__item.l-footer-policy__item--privacy(href=path + "privacy-policy/")
+                                span= t.cookie
+                            a.l-footer-policy__item.l-footer-policy__item--privacy(href=home + "privacy-policy/")
                                 svg(aria-hidden="true")
                                     use(href="#ico_privacy")
-                                span プライバシーポリシー
+                                span= t.privacy
 
     script(src= path + "assets/js/app.js")
     = "\n"

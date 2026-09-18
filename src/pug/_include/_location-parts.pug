@@ -1,0 +1,67 @@
+//- 拠点一覧のカードとブロック（日本語 / 英語の拠点一覧で共通）。
+//- 見出しや項目名は en で出し分け、拠点ごとの文言は各ページのデータ（domestic / overseas）が持つ
+
+//- 拠点カード1枚。jsStickySection が現在地を取るので section で出す
+//- addressLabel … 住所の前の見出し（NPGM の「工場：」。英訳確認シート 06「工場住所にしてください」）
+mixin location-card(item, isLast)
+    section.p-location-item(id=item.id)
+        .p-location-card
+            .p-location-card__body
+                .p-location-card__info
+                    h3.p-location-card__name!= item.name
+                    if item.tags && item.tags.length
+                        ul.p-location-card__tags
+                            each t in item.tags
+                                li
+                                    span.c-tag= t
+                    if item.founded || item.shareText || item.share
+                        .p-location-card__spec
+                            if item.founded
+                                p #{en ? "Established: " : "設立："}#{item.founded}
+                            if item.shareText
+                                p #{en ? "Shareholders: " : "出資比率："}#{item.shareText}
+                            if item.share
+                                p= en ? "Shareholders:" : "出資比率："
+                                ul.p-location-card__share
+                                    each s in item.share
+                                        li= s
+                    .p-location-card__address
+                        p
+                            if item.addressLabel || item.zip
+                                span.p-location-card__zip= (item.addressLabel || "") + (item.zip || "")
+                                br
+                            = item.address
+                        p.p-location-card__tel
+                            span #{en ? "Tel" : "TEL"}: #{item.tel}
+                            if item.fax
+                                span #{en ? "Fax" : "FAX"}: #{item.fax}
+                if item.links && item.links.length
+                    .p-location-card__actions
+                        each l in item.links
+                            a.c-link-arrow(href=(l.url || false) target=(l.url ? "_blank" : false) rel=(l.url ? "noopener" : false))
+                                span.c-link-arrow__label= l.label
+                                span.c-btn-arrow.c-link-arrow__arrow
+                                    svg(aria-hidden="true")
+                                        use(href="#ico_arrow_r")
+            figure.p-location-card__map
+                iframe(src="https://maps.google.com/maps?q=" + encodeURIComponent(item.mapQuery) + "&z=15&hl=" + (en ? "en" : "ja") + "&output=embed" title=(en ? "Map of " + item.navName : item.navName + "の所在地の地図") width=384 height=263 loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen)
+        if !isLast
+            .c-line-dot(aria-hidden="true")
+
+//- 拠点一覧ブロック（左のサイドナビ ＋ 右のカード一覧）。PCのみ jsStickySection で追従する
+mixin location-block(heading, items)
+    .p-location-cols.js-sticky-section
+        .p-location-nav.js-sticky-section__aside(aria-label=(en ? heading : heading + "の拠点"))
+            ul.p-location-nav__list
+                each item in items
+                    li.p-location-nav__item
+                        a.p-location-nav__link(href="#" + item.id data-scroll-anchor)
+                            span.p-location-nav__icon
+                                svg(aria-hidden="true")
+                                    use(href="#ico_marker")
+                            span.p-location-nav__label= item.navName
+        .p-location-body.js-sticky-section__content
+            h2.p-location-heading= heading
+            .p-location-list
+                each item, i in items
+                    +location-card(item, i === items.length - 1)

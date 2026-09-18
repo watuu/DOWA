@@ -65,6 +65,11 @@
 		font-weight: 400;
 		letter-spacing: 0.05em;
 		white-space: nowrap;
+
+		// 英語は「Operated by: DOWA Metals & Mining Co., Ltd.」と長く、SPで「サイトへ」の矢印を画面の外へ押し出すので折り返す
+		&:lang(en) {
+			white-space: normal;
+		}
 	}
 
 	&__link {

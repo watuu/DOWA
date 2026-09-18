@@ -1,0 +1,40 @@
+extends ../../_default
+include ../../_include/_form-parts
+block vars
+    - var path = "../../"
+    - var lang = "en"
+    - var slug = "contact/"
+    - var title = "Contact"
+    - var pageClass = "page-contact"
+    - var breadcrumb = "Contact"
+
+//- 英訳は「英訳確認シート」07 お問い合わせ。英語版はフリガナ欄なし（シートの指示）。
+//- 問い合わせ種別の選択肢は機械翻訳（2026-09-16）
+block content
+
+    .p-contact
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("Contact")
+                    p.c-heading-page__label Contact
+
+        section.p-contact-form
+            .l-container
+                .cm-block-panel
+                    p.cm-block-lead Please use the form below to contact us with any questions or to discuss your materials and requirements. Our team will respond on business days, excluding public holidays. Depending on the nature of your inquiry, additional time may be required to provide a response. Thank you for your understanding.
+
+                    form.p-contact-form__body.cm-form(action="#" method="post" onsubmit="return false;")
+                        .cm-form__body
+                            .cm-form__rows
+                                +formText("f-name", "name", "Name", "Please enter your name.", true)
+                                +formText("f-email", "email", "Email address", "Please enter your email address.", true, "email")
+                                +formText("f-company", "company", "Company name", "Please enter your company name.", true)
+                                +formText("f-address", "address", "Address", "Please enter your address.", true)
+                                +formText("f-tel", "tel", "Phone number", "Please enter your phone number.", true, "tel")
+                                +formSelect("f-type", "type", "Inquiry type", ["About purchasing", "About our brochure", "Other"], true)
+                                +formRow("f-body", "Inquiry details", true)
+                                    textarea#f-body.c-textarea(name="body" placeholder="Please enter your inquiry." required)
+                            +formAgree(home)
+                        +formSubmit("Review Your Information")

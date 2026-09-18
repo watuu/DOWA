@@ -1,6 +1,8 @@
 extends ../_default
+include ../_include/_location-parts
 block vars
     - var path = "../"
+    - var slug = "location/"
     - var title = "拠点一覧"
     - var pageClass = "page-location"
     - var breadcrumb = "拠点一覧"
@@ -18,6 +20,7 @@ block content
                 tags: ["製錬", "サンプリング"],
                 founded: "1991年3月15日",
                 share: ["DOWAメタルマイン(株) / 40％", "田中貴金属工業(株) / 40％", "小坂製錬(株) / 20％"],
+                addressLabel: "工場：",
                 zip: "〒017-0202",
                 address: "秋田県鹿角郡小坂町小坂鉱山字尾樽部76-1",
                 tel: "(0186)29-2744",
@@ -32,7 +35,7 @@ block content
                 tags: ["営業", "触媒買取"],
                 zip: "〒101-0021",
                 address: "東京都千代田区外神田4丁目14番1号 秋葉原UDXビル22階",
-                tel: "+03-6847-1205",
+                tel: "03-6847-1205",
                 mapQuery: "35.7005674,139.7727147",
                 links: [{ label: "Map", url: "https://maps.app.goo.gl/msxVvzGMTRW6nL3U7" }]
             }
@@ -64,7 +67,7 @@ block content
                 id: "npgm-korea",
                 name: "NPGM KOREA Co., Ltd.",
                 navName: "NPGM KOREA Co., Ltd.",
-                tags: ["営業", "触媒買取"],
+                tags: ["営業", "触媒買取", "サンプリング"],
                 founded: "2020年12月16日",
                 shareText: "NPGM100%",
                 address: "84-1, Nonhyeongojan-ro 54beon-gil, Namdong-gu, Incheon, Republic of Korea 21682",
@@ -80,7 +83,7 @@ block content
                 tags: ["サンプリング"],
                 founded: "2010年9月16日",
                 shareText: "DMM60%、TKK40%",
-                address: "HEYROVSKEHO 488 LIBEREC 23, Czech Republic, 46312",
+                address: "Heyrovskeho 488, Liberec 23, 46312, Czech Republic",
                 tel: "+420-488-100-271",
                 mapQuery: "50.7313644,15.0356349",
                 links: [{ label: "Map", url: "https://maps.app.goo.gl/FprK3SCHzSZk3ck36" }]
@@ -99,10 +102,9 @@ block content
                 id: "dowa-mm-spain",
                 name: "DOWA METALS &amp; MINING CO.,<br>LTD. Spain office",
                 navName: "DOWA METALS & MINING CO., LTD. Spain office",
-                tags: ["営業", "サンプリング"],
-                founded: "2010年9月16日",
-                shareText: "DMM60%、TKK40%",
-                address: "CALLE ALBASANZ 35, 2A, 28037 MADRID, SPAIN",
+                tags: ["営業", "触媒買取"],
+                //- 設立・出資比率は記載しない（英訳確認シート 06）
+                address: "Calle Albasanz 35, 2A, 28037 Madrid, Spain",
                 tel: "+34-91-353-6525",
                 mapQuery: "40.437954,-3.6263752",
                 links: [{ label: "Map", url: "https://maps.app.goo.gl/pSzfnRST4U2dHR9t9" }]
@@ -120,70 +122,6 @@ block content
             { id: "npgm-usa",           label: "NPGM USA",                                  left: 66.969, top: 26.914 },
             { id: "dowa-mm-america",    label: "DOWA METALS &amp; MINING AMERICA INC.",     right: 5.154, top: 45.863 }
         ]
-
-    //- 拠点カード1枚。jsStickySection が現在地を取るので section で出す
-    mixin location-card(item, isLast)
-        section.p-location-item(id=item.id)
-            .p-location-card
-                .p-location-card__body
-                    .p-location-card__info
-                        h3.p-location-card__name!= item.name
-                        if item.tags && item.tags.length
-                            ul.p-location-card__tags
-                                each t in item.tags
-                                    li
-                                        span.c-tag= t
-                        if item.founded || item.shareText || item.share
-                            .p-location-card__spec
-                                if item.founded
-                                    p 設立：#{item.founded}
-                                if item.shareText
-                                    p 出資比率：#{item.shareText}
-                                if item.share
-                                    p 出資比率：
-                                    ul.p-location-card__share
-                                        each s in item.share
-                                            li= s
-                        .p-location-card__address
-                            p
-                                if item.zip
-                                    span.p-location-card__zip= item.zip
-                                    br
-                                = item.address
-                            p.p-location-card__tel
-                                span TEL: #{item.tel}
-                                if item.fax
-                                    span FAX: #{item.fax}
-                    if item.links && item.links.length
-                        .p-location-card__actions
-                            each l in item.links
-                                a.c-link-arrow(href=(l.url || false) target=(l.url ? "_blank" : false) rel=(l.url ? "noopener" : false))
-                                    span.c-link-arrow__label= l.label
-                                    span.c-btn-arrow.c-link-arrow__arrow
-                                        svg(aria-hidden="true")
-                                            use(href="#ico_arrow_r")
-                figure.p-location-card__map
-                    iframe(src="https://maps.google.com/maps?q=" + encodeURIComponent(item.mapQuery) + "&z=15&hl=ja&output=embed" title=item.navName + "の所在地の地図" width=384 height=263 loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen)
-            if !isLast
-                .c-line-dot(aria-hidden="true")
-
-    //- 拠点一覧ブロック（左のサイドナビ ＋ 右のカード一覧）。PCのみ jsStickySection で追従する
-    mixin location-block(heading, items)
-        .p-location-cols.js-sticky-section
-            .p-location-nav.js-sticky-section__aside(aria-label=heading + "の拠点")
-                ul.p-location-nav__list
-                    each item in items
-                        li.p-location-nav__item
-                            a.p-location-nav__link(href="#" + item.id data-scroll-anchor)
-                                span.p-location-nav__icon
-                                    svg(aria-hidden="true")
-                                        use(href="#ico_marker")
-                                span.p-location-nav__label= item.navName
-            .p-location-body.js-sticky-section__content
-                h2.p-location-heading= heading
-                .p-location-list
-                    each item, i in items
-                        +location-card(item, i === items.length - 1)
 
     .p-location
         .cm-block-header-page.cm-block-header-page--map

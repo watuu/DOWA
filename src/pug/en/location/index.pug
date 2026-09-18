@@ -1,0 +1,159 @@
+extends ../../_default
+include ../../_include/_location-parts
+block vars
+    - var path = "../../"
+    - var lang = "en"
+    - var slug = "location/"
+    - var title = "Locations"
+    - var pageClass = "page-location"
+    - var breadcrumb = "Locations"
+
+//- 英訳は「英訳確認シート」06 拠点一覧。カードの組みは _include/_location-parts.pug（日本語ページと共通）
+block content
+
+    -
+        //- タグは日本語の1タグ＝英語の1タグ（営業 → Customer Support / 触媒買取 → Catalyst Purchasing / サンプリング → Sampling / 製錬 → Smelting）。
+        //- NIPPON PGM EUROPE だけシートの「Preprocessing / sampling」に合わせて Preprocessing を足している
+        var domestic = [
+            {
+                id: "npgm",
+                name: "NIPPON PGM Co., Ltd.",
+                navName: "NIPPON PGM Co., Ltd.",
+                tags: ["Smelting", "Sampling"],
+                founded: "March 15, 1991",
+                share: ["DOWA Metals & Mining Co., Ltd. / 40%", "Tanaka Precious Metal Technologies Co., Ltd. / 40%", "Kosaka Smelting & Refining Co., Ltd. / 20%"],
+                addressLabel: "Processing Plant:",
+                address: "76-1 Otarube, Kosaka Kozan, Kosaka-machi, Kazuno-gun, Akita 017-0202, Japan",
+                tel: "+81-186-29-2744",
+                fax: "+81-186-29-2722",
+                mapQuery: "40.3319874,140.7585799",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/LDrJ9uQEBj228Lus7" }]
+            },
+            {
+                id: "dowa-rare-metal",
+                name: "DOWA Metals &amp; Mining Co., Ltd.,<br>Rare Metal Business Unit",
+                navName: "DOWA Metals & Mining Co., Ltd., Rare Metal Business Unit",
+                tags: ["Customer Support", "Catalyst Purchasing"],
+                address: "22F, Akihabara UDX, 14-1, Sotokanda 4-Chome, Chiyoda-ku, Tokyo, 101-0021, Japan",
+                tel: "+81-3-6847-1205",
+                mapQuery: "35.7005674,139.7727147",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/msxVvzGMTRW6nL3U7" }]
+            }
+        ]
+        var overseas = [
+            {
+                id: "npgm-usa",
+                name: "NPGM USA INC.",
+                navName: "NPGM USA INC.",
+                tags: ["Sampling"],
+                founded: "March 13, 2024",
+                shareText: "NIPPON PGM Co., Ltd. (100%)",
+                address: "191 S Keim Street, Unit 2E-1, Pottstown, PA 19464, U.S.A.",
+                tel: "+1-215-701-7050",
+                mapQuery: "40.2389662,-75.6306429",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/cC8jE8x77L81zbRy8" }]
+            },
+            {
+                id: "dowa-mm-america",
+                name: "DOWA METALS &amp; MINING<br>AMERICA INC.",
+                navName: "DOWA METALS & MINING AMERICA INC.",
+                tags: ["Customer Support", "Catalyst Purchasing"],
+                address: "1 Tower Center Boulevard, Suite 1607, East Brunswick, New Jersey 08816, U.S.A.",
+                tel: "+1-609-900-3692",
+                mapQuery: "40.4789602,-74.4083435",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/wJ2Kxu1nVCYDFoEw6" }]
+            },
+            {
+                id: "npgm-korea",
+                name: "NPGM KOREA Co., Ltd.",
+                navName: "NPGM KOREA Co., Ltd.",
+                tags: ["Customer Support", "Catalyst Purchasing", "Sampling"],
+                founded: "December 16, 2020",
+                shareText: "NIPPON PGM Co., Ltd. (100%)",
+                address: "84-1, Nonhyeongojan-ro 54beon-gil, Namdong-gu, Incheon, Republic of Korea 21682",
+                tel: "+82-32-572-6866",
+                mapQuery: "37.3865024,126.7161534",
+                links: [{ label: "Website", url: "https://www.npgm-korea.com/" }, { label: "Map", url: "https://maps.app.goo.gl/coFNk4Z7bzeaSLaL6" }]
+            },
+            {
+                id: "nippon-pgm-europe",
+                name: "NIPPON PGM EUROPE S.R.O.",
+                navName: "NIPPON PGM EUROPE S.R.O.",
+                tags: ["Preprocessing", "Sampling"],
+                founded: "September 16, 2010",
+                share: ["DOWA Metals & Mining Co., Ltd. / 60%", "Tanaka Precious Metal Technologies Co., Ltd. / 40%"],
+                address: "Heyrovskeho 488, Liberec 23, 46312, Czech Republic",
+                tel: "+420-488-100-271",
+                mapQuery: "50.7313644,15.0356349",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/FprK3SCHzSZk3ck36" }]
+            },
+            {
+                id: "dowa-hd-europe",
+                name: "DOWA HD Europe GmbH",
+                navName: "DOWA HD Europe GmbH",
+                tags: ["Customer Support", "Catalyst Purchasing"],
+                address: "Aeussere-Cramer-Klett-Str.19 90489 Nuremberg, Germany",
+                tel: "+49-911-56989-320",
+                mapQuery: "49.4550934,11.0927816",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/46DZCPKdoV5cLRSa9" }]
+            },
+            {
+                id: "dowa-mm-spain",
+                name: "DOWA METALS &amp; MINING CO.,<br>LTD. Spain office",
+                navName: "DOWA METALS & MINING CO., LTD. Spain office",
+                tags: ["Customer Support", "Catalyst Purchasing"],
+                address: "Calle Albasanz 35, 2A, 28037 Madrid, Spain",
+                tel: "+34-91-353-6525",
+                mapQuery: "40.437954,-3.6263752",
+                links: [{ label: "Map", url: "https://maps.app.goo.gl/pSzfnRST4U2dHR9t9" }]
+            }
+        ]
+        //- 世界地図のラベル（位置は日本語ページと同じ）
+        var worldPins = [
+            { id: "dowa-hd-europe",     label: "DOWA HD Europe GmbH",                       left: 10.385, top: 23.503 },
+            { id: "nippon-pgm-europe",  label: "NIPPON PGM EUROPE S.R.O.",                  left: 11.154, top: 36.723 },
+            { id: "dowa-mm-spain",      label: "DOWA METALS &amp; MINING CO., LTD. Spain office", left: 1.538,  top: 45.863 },
+            { id: "npgm-korea",         label: "NPGM KOREA Co., Ltd.",                      left: 36.154, top: 47.821 },
+            { id: "npgm",               label: "NIPPON PGM",                                left: 45.077, top: 39.823 },
+            { id: "npgm-usa",           label: "NPGM USA",                                  left: 66.969, top: 26.914 },
+            { id: "dowa-mm-america",    label: "DOWA METALS &amp; MINING AMERICA INC.",     right: 5.154, top: 45.863 }
+        ]
+
+    .p-location
+        .cm-block-header-page.cm-block-header-page--map
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("Locations")
+                    p.c-heading-page__label Locations
+
+        .l-container
+            .p-location-map.p-location-map--japan.c-scroll-x
+                .c-scroll-x__inner.js-scroll-x
+                    //- 地図の画像は日本語ページと同じ（英語版の画像は申請中）
+                    picture.p-location-japan
+                        source(media="(min-width: 1024px)" srcset=img + "p-location-japan.webp" width=1360 height=800)
+                        img.p-location-japan__img(src=img + "p-location-japan-sp.webp" alt="Map of our locations in Japan" width=382 height=450)
+                .c-scroll-x__bar(aria-hidden="true")
+                    span.c-scroll-x__thumb
+
+        .l-container
+            +location-block("Locations in Japan", domestic)
+
+            .c-line-dot.p-location-catch__line.u-only-sp(aria-hidden="true")
+            p.p-location-catch
+                span.p-location-catch__icon
+                    svg(aria-hidden="true")
+                        use(href="#ico_pin")
+                span We provide catalyst collection support through a nationwide network in Japan.
+
+            .p-location-map.p-location-map--world.c-scroll-x
+                .c-scroll-x__inner.js-scroll-x
+                    .p-location-world
+                        img.p-location-world__img(src=img + "p-location-world.webp" alt="Map of our locations worldwide" width=1300 height=613 loading="lazy")
+                        each pin in worldPins
+                            a.p-location-world__label(href="#" + pin.id data-scroll-anchor style=(pin.right ? "right:" + pin.right + "%" : "left:" + pin.left + "%") + ";top:" + pin.top + "%")!= pin.label
+                .c-scroll-x__bar(aria-hidden="true")
+                    span.c-scroll-x__thumb
+
+            +location-block("Overseas Locations", overseas)
