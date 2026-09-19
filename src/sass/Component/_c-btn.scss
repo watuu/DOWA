@@ -412,7 +412,7 @@
 	button:hover .c-btn-arrow svg,
 	.c-btn-arrow:hover svg,
 	.c-btn-ctrl:hover svg {
-		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		animation: var(--arrow-anim) var(--hover-duration) var(--easeOutSine) both;
 		will-change: translate, opacity;
 	}
 }

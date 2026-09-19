@@ -241,7 +241,7 @@
 	// 「サイトへ」は矢印を持つので、薄くせず矢印を抜けさせる
 	// （参考サイトも、文字リンクは u-target・矢印付きは u-targetarrow で分けている）
 	.l-footer-sites__link:hover .l-footer-sites__btn svg {
-		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		animation: var(--arrow-anim) var(--hover-duration) var(--easeOutSine) both;
 		will-change: translate, opacity;
 	}
 }

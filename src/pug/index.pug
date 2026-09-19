@@ -157,11 +157,14 @@ block content
         //- 特長
         section.p-top-feature
             .l-container
-                .c-heading-section.p-top-feature__head
-                    p.c-heading-section__label.u-anim.js-visible DOWAの特長と実績
-                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Feature
                 .p-top-feature__body
-                    p.p-top-feature__lead.u-anim.js-visible 1991年に日本ピージーエムを設立し、使用済み触媒からプラチナ、パラジウム、ロジウムなどの白金族金属を回収するリサイクル事業を展開しています。
+                    //- PCは見出しとリードを左の列の下に寄せ、sticky（bottom 30）で画面の下に留める（2026-09-18 デザイナー確認 No.5）
+                    .p-top-feature__side
+                        .p-top-feature__intro
+                            .c-heading-section.p-top-feature__head
+                                p.c-heading-section__label.u-anim.js-visible DOWAの特長と実績
+                                h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Feature
+                            p.p-top-feature__lead.u-anim.js-visible 1991年に日本ピージーエムを設立し、使用済み触媒からプラチナ、パラジウム、ロジウムなどの白金族金属を回収するリサイクル事業を展開しています。
                     .p-top-feature__list
                         each f, i in features
                             //- 縦に離れて並ぶので --i でずらさない（1枚ずつ画面に入る）

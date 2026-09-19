@@ -57,6 +57,16 @@
 	}
 }
 
+// 動画の上の黒（Figma には無い）。白いコピーが明るい絵に負けるので重ねた（2026-09-18 デザイナー確認 No.2）。
+// 動画を 1.08 から戻す .u-anim-zoom は img / video だけにかかるので、この黒は寄らない
+.p-top-mv__movie::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--c-overlay-mv);
+	pointer-events: none;
+}
+
 // コピー。左下に置く（SP 下から40 / PC 下から30）。見出し → 本文 SP 10 / PC 20。本文だけ左に2の余白（Figma の padding-left）
 // SPの Figma は x23 だが、ヘッダー・コンテナの 20 にそろえた
 // Figma: SP 3112-4753 / PC 2942-8015
@@ -416,7 +426,7 @@
 	}
 }
 
-// ホバーで黒40% ＋ 工程名と説明（Figma バリアント2 3003-8868：x50 y148・幅340、DISSOLVE）。
+// ホバーで黒60%（Figma は 40%。2026-09-18 No.3 で濃くした）＋ 工程名と説明（Figma バリアント2 3003-8868：x50 y148・幅340、DISSOLVE）。
 // ホバーできない端末（SP）では出さない（Figma もホバーのみ）
 .p-top-strength__detail {
 	position: absolute;
@@ -428,7 +438,7 @@
 	background: var(--c-overlay-hover);
 	color: var(--color-inverse);
 	opacity: 0;
-	transition: opacity var(--duration) var(--easeTheme);
+	transition: opacity var(--hover-duration) var(--hover-ease);
 	pointer-events: none;
 }
 
@@ -474,7 +484,7 @@
 }
 
 /*  買取原料（What We Buy。濃い帯）
-    帯の上端 → 見出しの和文ラベル SP 110 / PC 70、見出し → リード SP 30 / PC 44。
+    帯の上端 → 見出しの和文ラベル SP 110 / PC 140（Figma は 70。窮屈なので倍にした。2026-09-18 デザイナー確認 No.4）、見出し → リード SP 30 / PC 44。
     PCは2列で、左列は リード → 80 → 1枚目 → 80 → 3枚目、右列は 2枚目（リードの上端から）→ 80 → 4枚目 → 85 → ボタン。
     SPはこの並びのまま縦積み（リード → 50 → 1 → 40 → 3 → 40 → 2 → 40 → 4 → 50 → ボタン）。下の余白 SP 80 / PC 191
     Figma: SP 3181-17493
@@ -488,7 +498,7 @@
 	color: var(--color);
 
 	@include config.pc {
-		padding-top: math.div(70, 16) + rem;
+		padding-top: math.div(140, 16) + rem;
 		padding-bottom: math.div(191, 16) + rem;
 	}
 }
@@ -651,7 +661,7 @@
 	}
 }
 
-// SPは リード → 一覧 60 の縦積み。PCは左にリード（335）、右（x554〜1316・762）に一覧。
+// SPは 見出し → リード → 一覧（60）の縦積み。PCは左に見出しとリード（335）、右（x554〜1316・762）に一覧。
 // 列は 335 : 179 : 762 : 84（1440 のとき。1360 に対する比率で持つ）
 .p-top-feature__body {
 	display: flex;
@@ -665,18 +675,40 @@
 	}
 }
 
-// PCは一覧が流れる間、左に留まる（Figma のプロトタイプで sticky 指定。2986-8347）。
-// 留まる位置は Figma に無いので、画面の上から 40（コンテナの左右余白と同じ）で仮置き
+// PCは一覧が流れる間、見出しとリードを画面の下から 30 に留める（2026-09-18 デザイナー確認 No.5。
+// Figma のプロトタイプにも sticky 指定がある 2986-8347 が、留まる位置は無かった）。
+// sticky の bottom は「元の位置が画面の下より下にあるとき」にしか効かないので、左の列（一覧と同じ高さ）の下端に寄せておく。
+// 列の外には出ないので、画面に入ってくるときは列の上端（Figma の位置）から始まり、一覧の下端で離れる
+.p-top-feature__side {
+	@include config.pc {
+		grid-column: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+}
+
+.p-top-feature__intro {
+	@include config.pc {
+		position: sticky;
+		bottom: math.div(40, 16) + rem;
+	}
+}
+
+// 英語の見出し「Our capabilities」は 80px だと幅 568 で、一覧の列（x554〜）にかかる。
+// sticky で一覧の上を流れるので、PC は 60（3-1 のスケール）にして左の列に収める（2026-09-18）
+.p-top-feature__head .c-heading-section__title:lang(en) {
+	@include config.pc {
+		font-size: math.div(60, 16) + rem;
+	}
+}
+
 .p-top-feature__lead {
 	font-size: math.div(14, 16) + rem;
 	line-height: 1.8;
 	color: var(--c-ink);
 
 	@include config.pc {
-		grid-column: 1;
-		align-self: start;
-		//position: sticky;
-		//top: math.div(40, 16) + rem;
 		font-size: math.div(18, 16) + rem;
 	}
 }
@@ -688,9 +720,18 @@
 	flex-direction: column;
 	gap: math.div(60, 16) + rem;
 
+	// 見出しが左の列に入ったので、一覧はリードの上端から始める（見出し 24 ＋ 20 ＋ 64 ＋ 見出しの下 40）
 	@include config.pc {
 		grid-column: 3;
 		gap: math.div(40, 16) + rem;
+		margin-top: math.div(148, 16) + rem;
+	}
+}
+
+// 英語は見出しが 60（48 の高さ）なので 24 ＋ 20 ＋ 48 ＋ 40
+.p-top-feature__list:lang(en) {
+	@include config.pc {
+		margin-top: math.div(132, 16) + rem;
 	}
 }
 
@@ -843,12 +884,13 @@
 	}
 }
 
-// FROM / AKITA / TO THE WORLD。SPは両端＋間（Figma 3181-17794 は space-between）、
+// FROM / AKITA / TO THE WORLD。SPは左に「FROM AKITA」、右に「TO THE WORLD」
+// （Figma 3181-17794 は3つの space-between。2026-09-18 デザイナー確認 No.8 で2つに分けた。FROM と AKITA の間は語間ぶん）。
 // PCは AKITA が帯の中央（Figma 2323-5192 の中心 720.5 ＝ 1440 / 2）
 // Figma: SP 3181-17794 / PC 2323-5191
 .p-top-technology__route {
 	display: flex;
-	justify-content: space-between;
+	column-gap: .3em;
 	font-family: var(--font-en);
 	font-size: math.div(14, 16) + rem;
 	font-weight: 600;
@@ -860,13 +902,17 @@
 	@include config.pc {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
+		column-gap: 0;
 		font-size: math.div(21, 16) + rem;
 	}
 }
 
 .p-top-technology__route > span:last-child {
+	margin-left: auto;
+
 	@include config.pc {
 		justify-self: end;
+		margin-left: 0;
 	}
 }
 
@@ -960,7 +1006,7 @@
 	.p-top-what__card:hover .p-top-what__figure img,
 	.p-top-strength__item:hover .p-top-strength__figure video {
 		transform: scale(var(--hover-zoom));
-		transition-duration: var(--hover-duration);
+		transition-duration: var(--hover-zoom-duration);
 		will-change: transform;
 	}
 }

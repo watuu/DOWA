@@ -144,11 +144,14 @@ block content
         //- Our capabilities
         section.p-top-feature
             .l-container
-                .c-heading-section.p-top-feature__head
-                    p.c-heading-section__label.u-anim.js-visible DOWA’s Strengths and Track Record
-                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Our capabilities
                 .p-top-feature__body
-                    p.p-top-feature__lead.u-anim.js-visible Since jointly establishing NIPPON PGM in 1991, DOWA has expanded its catalyst recycling business, recovering platinum group metals such as platinum, palladium, and rhodium from spent catalysts.
+                    //- PCは見出しとリードを左の列の下に寄せ、sticky（bottom 30）で画面の下に留める（2026-09-18 デザイナー確認 No.5）
+                    .p-top-feature__side
+                        .p-top-feature__intro
+                            .c-heading-section.p-top-feature__head
+                                p.c-heading-section__label.u-anim.js-visible DOWA’s Strengths and Track Record
+                                h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Our capabilities
+                            p.p-top-feature__lead.u-anim.js-visible Since jointly establishing NIPPON PGM in 1991, DOWA has expanded its catalyst recycling business, recovering platinum group metals such as platinum, palladium, and rhodium from spent catalysts.
                     .p-top-feature__list
                         each f, i in features
                             .c-card-feature.u-anim.js-visible

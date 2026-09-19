@@ -79,7 +79,7 @@
 	background: var(--c-action);
 	transform: scaleX(0);
 	transform-origin: right top;
-	transition: transform .5s var(--hover-ease);
+	transition: transform var(--hover-duration) var(--hover-ease);
 	will-change: transform;
 }
 

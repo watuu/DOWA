@@ -250,7 +250,7 @@
 		left: 0;
 		height: 1px;
 		background: var(--c-text-link);
-		animation: underline-through .4s var(--easeOutSine);
+		animation: underline-through var(--hover-duration) var(--easeOutSine);
 		will-change: transform;
 	}
 

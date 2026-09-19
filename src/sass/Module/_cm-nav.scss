@@ -208,7 +208,7 @@
 	.cm-navi-paginate__ctrl:hover svg,
 	.cm-navi-pager__btn:hover svg,
 	.cm-navi-pager__item:hover .cm-navi-pager__btn svg {
-		animation: var(--arrow-anim) .5s var(--easeOutSine) both;
+		animation: var(--arrow-anim) var(--hover-duration) var(--easeOutSine) both;
 		will-change: translate, opacity;
 	}
 

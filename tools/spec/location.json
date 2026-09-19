@@ -43,18 +43,18 @@
         { "name": "国内サイドナビの文字", "selector": ".p-location-nav__label", "index": 1, "fontSize": 16, "lineHeight": 22.4, "letterSpacing": "-0.01em", "color": "#333d40" },
         { "name": "国内一覧の見出し", "selector": ".p-location-heading", "index": 0, "x": 468, "y": 1151, "h": 36, "fontSize": 30, "letterSpacing": "0.03em", "color": "#1e2e33" },
 
-        { "name": "国内カード1（点線こみ）", "selector": ".p-location-item", "index": 0, "x": 468, "y": 1231, "w": 844, "h": 528 },
-        { "name": "国内カード1の本文列", "selector": ".p-location-card__body", "index": 0, "x": 468, "y": 1231, "w": 400, "h": 418 },
-        { "name": "国内カード1の社名", "selector": ".p-location-card__name", "index": 0, "h": 36, "fontSize": 30, "letterSpacing": "0.03em", "color": "#1e2e33" },
+        { "name": "国内カード1（点線こみ）", "selector": ".p-location-item", "index": 0, "x": 468, "y": 1231, "w": 844, "h": 520, "_note": "Figma 528。社名 30 → 24（2026-09-18 No.7）で -7.2" },
+        { "name": "国内カード1の本文列", "selector": ".p-location-card__body", "index": 0, "x": 468, "y": 1231, "w": 400, "h": 410, "_note": "Figma 418。社名 30 → 24（No.7）" },
+        { "name": "国内カード1の社名", "selector": ".p-location-card__name", "index": 0, "h": 28.8, "fontSize": 24, "letterSpacing": "0.03em", "color": "#1e2e33" },
         { "name": "タグ（製錬）", "selector": ".c-tag", "index": 0, "h": 26, "fontSize": 14, "borderRadius": 15, "color": "#39969d" },
         { "name": "国内カード1の住所", "selector": ".p-location-card__address", "index": 0, "w": 400, "h": 86, "fontSize": 16, "lineHeight": 28.8, "letterSpacing": "-0.01em", "color": "#333d40" },
         { "name": "国内カード1の地図", "selector": ".p-location-card__map iframe", "index": 0, "x": 928, "y": 1231, "w": 384, "h": 263, "borderRadius": 5 },
         { "name": "Mapリンクの矢印", "selector": ".p-location-card__actions .c-link-arrow__arrow", "index": 0, "w": 40, "h": 40, "borderRadius": 4 },
         { "name": "カード間の点線", "selector": ".p-location-item .c-line-dot", "index": 0, "w": 844, "h": 80 },
 
-        { "name": "国内カード2", "selector": ".p-location-item", "index": 1, "x": 468, "y": 1803, "w": 844, "h": 308 },
+        { "name": "国内カード2", "selector": ".p-location-item", "index": 1, "x": 468, "y": 1796, "w": 844, "h": 308, "_note": "Figma y1803。カード1が社名 30 → 24（No.7）で短くなったぶん -7" },
 
-        { "name": "全国にキャッチ", "selector": ".p-location-catch", "y": 2230, "h": 42, "fontSize": 30, "color": "#333d40" },
+        { "name": "世界にキャッチ", "selector": ".p-location-catch", "y": 2230, "h": 42, "fontSize": 30, "color": "#333d40" },
         { "name": "世界地図", "selector": ".p-location-world", "x": 70, "y": 2472, "w": 1300, "h": 613 },
         { "name": "ラベル（NPGM USA）", "selector": ".p-location-world__label", "index": 5, "x": 940, "y": 2636, "h": 35, "fontSize": 17, "color": "#13728c", "background": "#fff" },
         { "name": "ラベル（Spain office）", "selector": ".p-location-world__label", "index": 2, "x": 90, "y": 2753, "h": 35, "borderTop": "1px solid #13728c" },
@@ -90,9 +90,9 @@
         { "name": "日本地図のスクロールバー", "selector": ".p-location-map--japan .c-scroll-x__bar", "x": 20, "y": 687, "w": 362, "h": 2 },
 
         { "name": "国内一覧の見出し", "selector": ".p-location-heading", "index": 0, "x": 20, "y": 769, "h": 36, "fontSize": 30, "letterSpacing": "0.03em", "color": "#1e2e33" },
-        { "name": "国内カード1（点線こみ）", "selector": ".p-location-item", "index": 0, "x": 20, "y": 835, "w": 362, "h": 829 },
-        { "name": "国内カード1の本文列", "selector": ".p-location-card__body", "index": 0, "x": 20, "y": 835, "w": 362, "h": 411 },
-        { "name": "国内カード1の社名", "selector": ".p-location-card__name", "index": 0, "h": 29, "fontSize": 21, "letterSpacing": "0.03em", "color": "#1e2e33" },
+        { "name": "国内カード1（点線こみ）", "selector": ".p-location-item", "index": 0, "x": 20, "y": 835, "w": 362, "h": 825, "_note": "Figma 829。社名 21 → 18（2026-09-18 No.7）で -3.8" },
+        { "name": "国内カード1の本文列", "selector": ".p-location-card__body", "index": 0, "x": 20, "y": 835, "w": 362, "h": 407, "_note": "Figma 411。社名 21 → 18（No.7）" },
+        { "name": "国内カード1の社名", "selector": ".p-location-card__name", "index": 0, "h": 25.2, "fontSize": 18, "letterSpacing": "0.03em", "color": "#1e2e33" },
         { "name": "タグ（製錬）", "selector": ".c-tag", "index": 0, "h": 26, "fontSize": 14, "borderRadius": 15, "color": "#39969d" },
         { "name": "国内カード1の住所", "selector": ".p-location-card__address", "index": 0, "w": 362, "h": 86, "fontSize": 16, "lineHeight": 28.8 },
         { "name": "国内カード1の地図", "selector": ".p-location-card__map iframe", "index": 0, "x": 20, "w": 362, "h": 248, "borderRadius": 5 },
@@ -100,7 +100,7 @@
 
         { "name": "サイドナビはSPでは出さない", "selector": ".p-location-nav", "index": 0, "display": "none" },
 
-        { "name": "全国にキャッチ", "selector": ".p-location-catch", "x": 20, "y": 2390, "h": 25, "fontSize": 18 },
+        { "name": "世界にキャッチ", "selector": ".p-location-catch", "x": 20, "y": 2390, "h": 25, "fontSize": 18 },
         { "name": "世界地図", "selector": ".p-location-world", "x": 20, "y": 2536, "w": 975, "h": 460 },
         { "name": "世界地図のスクロールバー", "selector": ".p-location-map--world .c-scroll-x__bar", "x": 20, "y": 3009, "w": 362, "h": 2 },
         { "name": "ラベル（NPGM USA）", "selector": ".p-location-world__label", "index": 5, "x": 673, "y": 2659, "h": 27, "fontSize": 12, "color": "#13728c" },

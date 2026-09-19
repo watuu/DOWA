@@ -45,7 +45,7 @@
 	height: auto;
 }
 
-/*  「全国に触媒集荷拠点を設けています」
+/*  「世界に触媒集荷拠点を設けています」（Figma は「全国に」。2026-09-18 No.6）
 	Figma: SP 3344-13222 / PC 3223-12688
 ----------------------------------------------------*/
 // SP だけカード一覧との間に点線が入る（PC は間隔だけ）
@@ -335,16 +335,17 @@
 	gap: math.div(15, 16) + rem;
 }
 
-// SP 21 / PC 30。箱は Figma が 29 / 36 なので行間ではなく箱に合わせる
+// SP 18 / PC 24（Figma は 21 / 30。読みやすさのため一回り小さくした。2026-09-18 デザイナー確認 No.7）。
+// 行間は Figma の箱（29 / 36）に合わせて決めた当時のまま
 .p-location-card__name {
-	font-size: math.div(21, 16) + rem;
+	font-size: math.div(18, 16) + rem;
 	font-weight: 500;
 	line-height: 1.4;
 	letter-spacing: 0.03em;
 	color: var(--c-heading-alt);
 
 	@include config.pc {
-		font-size: math.div(30, 16) + rem;
+		font-size: math.div(24, 16) + rem;
 		line-height: 1.2;
 	}
 }
