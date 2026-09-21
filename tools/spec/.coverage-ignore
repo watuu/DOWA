@@ -185,3 +185,9 @@ p-location-nav__link
 cm-block-header-page--map
 # SPのみ出す点線（c-line-dot 側で 80 を見ている）
 p-location-catch__line
+p-contact-thanks
+p-document-thanks
+p-error
+p-error-body
+p-default
+p-default-body

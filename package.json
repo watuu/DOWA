@@ -8,15 +8,19 @@
   },
   "scripts": {
     "sass": "sass --no-source-map src/sass/style.scss dest/assets/css/style.css --style expanded",
+    "sass:editor": "sass --no-source-map src/sass/editor.scss dest/assets/css/editor.css --style expanded",
     "pug": "pug src/pug/ --hierarchy -o dest -P '\t' -E html",
     "js:build": "cross-env NODE_ENV=production rollup -c rollup-config.js",
+    "sync:theme": "rsync -a --delete dest/assets/ public/wp-content/themes/dowa-pgm/assets/",
+    "build:theme": "npm run sass && npm run sass:editor && npm run js:build && npm run sync:theme",
     "js:watch": "cross-env NODE_ENV=development rollup -c rollup-config.js --watch",
     "verify": "node tools/figma-verify.mjs",
     "verify:coverage": "node tools/figma-coverage.mjs",
     "verify:nodes": "node tools/figma-nodes.mjs",
     "verify:compare": "node tools/figma-compare.mjs",
     "verify:sanity": "node tools/figma-sanity.mjs",
-    "verify:all": "node tools/verify-all.mjs"
+    "verify:all": "node tools/verify-all.mjs",
+    "verify:wp": "node tools/wp-compare.mjs"
   },
   "devDependencies": {
     "@babel/core": "^7.24.5",

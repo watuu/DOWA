@@ -3966,6 +3966,34 @@ textarea.c-textarea {
   text-decoration: underline;
 }
 
+/*  Contact Form 7 の入れ子に合わせる
+    WP 版のフォームは CF7 で組んでいて、同意チェックが
+      .c-checkbox > span.wpcf7-form-control-wrap > span.wpcf7-acceptance
+        > span.wpcf7-list-item > label > (input + span.wpcf7-list-item-label)
+    という入れ子になる。このままだと .c-checkbox の flex が label 1つにしか効かず、
+    チェックボックスと文字が縦に並んで 5.7px 高くなる。
+    間の span を素通しのブロックにして、**並べるのは label に任せる**。
+    display: contents は使わない（箱が消えて、はみ出しの誤検出になるため）。
+    静的コーディング側にはこれらのクラスが無いので、この指定は効かない。
+----------------------------------------------------*/
+.c-checkbox:has(.wpcf7-acceptance) {
+  display: block;
+}
+
+.c-checkbox .wpcf7-form-control-wrap,
+.c-checkbox .wpcf7-acceptance,
+.c-checkbox .wpcf7-list-item {
+  display: block;
+  margin: 0;
+}
+
+.c-checkbox .wpcf7-list-item > label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
 /*----------------------------------------------------
 	cm-policy　規程・方針の長文組み（個人情報保護方針・クッキーポリシー）
@@ -4229,6 +4257,60 @@ textarea.c-textarea {
   height: auto;
   aspect-ratio: 1.8733333333;
   object-fit: cover;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*----------------------------------------------------
+	cm-thanks　フォームの完了画面（お問い合わせ / 資料ダウンロード）
+
+	参考にしたのは NIPPON PGM 側のアートボード（SP_CONTACT_DONE 3451-6103 /
+	PC_CONTACT_DONE 3451-6153）で、**本サイト（DOWA）のデザインではない**。
+	組み（本文 → 区切り線 → 中央のボタン）と文章だけを借り、箱・余白・タイポは
+	本サイトの .cm-block-panel / .cm-post に合わせている。
+	そのため node-id 照合（npm run verify:nodes）の対象にしない。
+----------------------------------------------------*/
+.cm-thanks {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1.875rem;
+  border-bottom: 1px solid var(--c-placeholder);
+}
+@media screen and (min-width: 1024px) {
+  .cm-thanks {
+    gap: 1.25rem;
+    padding-bottom: 3.75rem;
+  }
+}
+
+.cm-thanks p {
+  margin-block: 0;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+}
+@media screen and (min-width: 1024px) {
+  .cm-thanks p {
+    font-size: 1rem;
+    line-height: 2;
+  }
+}
+
+.cm-thanks__gap {
+  padding-top: 1rem;
+}
+@media screen and (min-width: 1024px) {
+  .cm-thanks__gap {
+    padding-top: 1.25rem;
+  }
+}
+
+/*  ボタン（パネルの中で中央）
+----------------------------------------------------*/
+.cm-thanks-action {
+  display: flex;
+  justify-content: center;
 }
 
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/

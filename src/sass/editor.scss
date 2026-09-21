@@ -1,0 +1,67 @@
+@charset "utf-8";
+@use "sass:math";
+@use "Base/config" as config;
+@use "Base/variables"; // :root のカスタムプロパティ（色・フォント）を出す
+
+/*----------------------------------------------------
+	ブロックエディタの本文
+	出力先: dest/assets/css/editor.css（npm run sass:editor）
+
+	公開側の .cm-post（Module/_cm-post.scss）と同じ見え方にする。
+	記事本文は新着情報だけなので、見出し・段落・画像に絞ってある。
+	**値を変えるときは _cm-post.scss と両方直すこと。**
+----------------------------------------------------*/
+.editor-styles-wrapper {
+	font-family: var(--font);
+	color: var(--c-text-body);
+
+	// 本文の幅。公開側のパネル内は PC 844px
+	.wp-block {
+		max-width: math.div(844, 16) + rem;
+	}
+
+	// 段落（_cm-post.scss の .cm-post p）
+	p {
+		font-size: math.div(16, 16) + rem;
+		line-height: 2;
+		letter-spacing: var(--tracking-body);
+		color: var(--c-text-body);
+	}
+
+	// 大見出し（下に短い罫線）
+	h2 {
+		font-size: math.div(32, 16) + rem;
+		font-weight: 700;
+		line-height: 2;
+		letter-spacing: var(--tracking-body);
+		color: var(--c-text-title);
+
+		&::after {
+			content: "";
+			display: block;
+			width: math.div(100, 16) + rem;
+			height: 1px;
+			margin-top: math.div(22, 16) + rem;
+			background: var(--c-placeholder);
+		}
+	}
+
+	// 小見出し
+	h3 {
+		font-size: math.div(24, 16) + rem;
+		font-weight: 700;
+		line-height: 2;
+		letter-spacing: var(--tracking-body);
+		color: var(--c-text-title);
+	}
+
+	// 本文中の画像（公開側は角丸なし。アイキャッチだけ角丸4）
+	img {
+		height: auto;
+	}
+
+	a {
+		color: var(--c-action);
+		text-decoration: underline;
+	}
+}

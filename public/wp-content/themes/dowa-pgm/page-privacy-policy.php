@@ -1,0 +1,320 @@
+<?php
+/*
+ * 個人情報保護方針（日本語）  /privacy-policy/
+ * 静的コーディング src/pug/privacy-policy/index.pug。英語版は en/page-privacy-policy.php。
+ * 文言は doc/20260817改定_個人情報保護方針_日英.docx の日本語版
+ * （DOWAメタルマイン株式会社・2026年8月17日改正）。
+ */
+theme_set_page([
+    'lang'       => 'ja',
+    'class'      => 'page-privacy',
+    'title'      => '個人情報保護方針',
+    'breadcrumb' => '個人情報保護方針',
+]);
+
+get_header();
+?>
+<div class="p-privacy">
+	<div class="cm-block-header-page">
+		<div class="l-container">
+			<div class="c-heading-page">
+				<h1 class="c-heading-page__title"><?php echo theme_split_chars('個人情報保護方針'); ?>
+				</h1>
+				<p class="c-heading-page__label">Privacy Policy</p>
+			</div>
+		</div>
+	</div>
+	<section class="p-privacy-body">
+		<div class="l-container">
+			<div class="cm-block-panel cm-block-panel--policy">
+				<p class="cm-block-lead">DOWAメタルマイン株式会社（以下当社といいます）は、お客様の個人情報の保護の重要性を強く認識し、「個人情報の保護に関する法律」（個人情報保護法）および関連する法令、ガイドライン等を遵守して以下の方針に従って個人情報を適切に管理・利用することにより、お客様の信頼とご期待に応えていきます。</p>
+				<div class="p-privacy-body__main cm-policy">
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">１．個人情報の利用目的</h3>
+							<p>当社は、以下の目的の範囲内で個人情報を利用します。その他の目的で利用する場合には、個人情報の取得に際して、利用目的を別途特定のうえ、ご本人に通知または公表し、その利用目的の範囲内で個人情報を取り扱います。</p>
+						</div>
+									<div class="cm-policy__blocks">
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>当社へお問い合わせいただいた方の個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>お問い合わせをされた方へのご連絡、ご本人確認、お問い合わせの内容確認およびお問い合わせ事項等への対応</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>お取引先様&lt;潜在的なお取引先様を含む&gt;の個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>商品・サービスの適正使用、品質、安全性および有効性等に関する情報の提供</li>
+												<li>取引に関する義務の履行および権利の行使</li>
+												<li>業務上必要な情報の収集および連絡等</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>株主様の個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>会社法に基づく権利の行使・義務の履行</li>
+												<li>期末報告書その他配布物の送付および連絡</li>
+												<li>各種法令に基づく所定の基準による株主のデータを作成する等の株主管理</li>
+												<li>支払調書の作成・提出に関する事務の遂行</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>当社の研究開発に協力している研究者、学者等に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>各事業におけるより良い製品・サービスの開発およびこれらに関する調査・研究</li>
+												<li>業務上必要な情報の収集および連絡等</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>関係する官公庁の担当者等公務員に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>必要な許認可の取得</li>
+												<li>事故発生時・製品回収時等の報告</li>
+												<li>業務上必要な情報の収集および連絡</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>当社が加盟している団体の参加者・会員等に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>業務上必要な情報の収集および連絡</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>広報活動における記者、アナリスト、機関投資家等に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>期末報告書その他配布物の送付および連絡</li>
+												<li>業務上必要な情報の収集および連絡</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>研修・保養施設の利用者・宿泊者に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>旅館業法に基づく宿泊者名簿の作成</li>
+												<li>利用者・宿泊者の確認</li>
+												<li>業務上必要な連絡</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>当社施設の近隣住民に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>緊急時その他の必要な連絡</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>採用応募者に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>採用選考</li>
+												<li>内定者管理</li>
+												<li>採用情報ＰＲのための情報発信</li>
+												<li>より効果的な採用活動の検討</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>退職者に関する個人情報</span></h4>
+											<ul class="c-list-bullet">
+												<li>退職年金等の支払い</li>
+												<li>OB会の案内等、業務上必要な連絡</li>
+												<li>会社状況に関する情報提供</li>
+												<li>期末報告書その他配布物の送付および連絡</li>
+											</ul>
+										</div>
+									</div>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">２．安全管理措置</h3>
+							<p>当社は、個人情報について、以下のとおり漏洩または毀損の防止その他の個人データの適切な管理のための措置を講じています。なお、その他の個人データの適切な管理のための措置には、当社が取得し、または取得しようとしている個人情報であって、当社が個人データとして取り扱うことを予定しているものの漏洩等を防止するために必要かつ適切な措置も含まれます。</p>
+						</div>
+									<div class="cm-policy__blocks">
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>基本方針の策定</span></h4>
+											<ul class="c-list-bullet">
+												<li>個人情報の適正な取り扱いを確保し、質問および苦情処理の窓口をお知らせするため、本方針を定めています。</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>個人データの取り扱いに係る規律の整備</span></h4>
+											<ul class="c-list-bullet">
+												<li>取得、利用、保存、提供、削除・廃棄等の段階ごとに、取り扱い方法、責任者・担当者およびその任務等について個人情報管理規則を策定</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>組織的安全管理措置</span></h4>
+											<ul class="c-list-bullet">
+												<li>個人データの取り扱いに関する責任者（個人情報管理責任者）を設置</li>
+												<li>個人データを取り扱う従業員および当該従業員が取り扱う個人データの範囲を明確化</li>
+												<li>法や社内規程に違反している事実または兆候を把握した場合の個人情報管理責任者への報告連絡体制を整備</li>
+												<li>個人情報の取り扱い状況について、定期的に自己点検を実施するとともに、他部署や外部の者による監査を実施</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>人的安全管理措置</span></h4>
+											<ul class="c-list-bullet">
+												<li>個人情報の取り扱いに関する留意事項について、従業員に定期的な研修を実施</li>
+												<li>個人情報についての秘密保持に関する事項を就業規則に記載</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>物理的安全管理措置</span></h4>
+											<ul class="c-list-bullet">
+												<li>個人情報を取り扱う区域において、従業員の入退室管理および持ち込む機器等の制限を行うとともに、権限を有しない者による個人情報の閲覧を防止する措置を実施</li>
+												<li>個人情報を取り扱う機器、電子媒体および書類等の盗難または紛失等を防止するための措置を実施</li>
+												<li>事業所内の移動を含め、個人情報を取り扱う機器、電子媒体等を持ち運ぶ場合、容易に個人情報が判明しないよう措置を実施</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>技術的安全管理措置</span></h4>
+											<ul class="c-list-bullet">
+												<li>アクセス制御を実施して、担当者および取り扱う個人情報の範囲を限定</li>
+												<li>個人情報を取り扱う情報システムを外部からの不正アクセスまたは不正ソフトウェアから保護する仕組みを導入</li>
+											</ul>
+										</div>
+										<div class="cm-policy__block">
+											<h4 class="cm-policy__subtitle"><span class="c-marker">
+													<svg aria-hidden="true">
+														<use href="#ico_marker"></use>
+													</svg></span><span>外的環境の把握</span></h4>
+											<ul class="c-list-bullet">
+												<li>個人情報を保管している当社グループ会社が存在する外国（DOWAホールディングス株式会社HP「グループ会社一覧」ご参照）における個人情報保護に関する制度を把握したうえで安全管理措置を実施</li>
+											</ul>
+										</div>
+									</div>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">３．個人情報の第三者提供</h3>
+							<p>当社は、法令により認められる場合を除き、あらかじめお客様の同意を得ずに、お客様の個人情報を第三者に提供しません。お客様の個人情報を取り扱う業務を第三者に委託するときは、適切な安全措置を講じる義務を定めた契約を締結の上、個人情報を開示します。</p>
+						</div>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">４．委託</h3>
+							<p>当社は、ウェブサイトの閲覧履歴等の情報の分析等の事務を第三者に委託することがあります。この場合、当社は、個人情報保護法に従って、委託先に対する必要かつ適切な監督を行います。</p>
+						</div>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">５．個人情報の共同利用</h3>
+							<p>当社は、必要な場合に限り、お客様の個人データをグループ会社内で共同利用することがあります。共同利用の実施にあたっては、個人情報の保護に関する法律（個人情報保護法）その他の関係法令等を遵守して個人情報を取り扱います。</p>
+						</div>
+						<div class="cm-policy__numbers">
+							<div class="cm-policy__number">
+								<h4 class="cm-policy__number-title"><span class="cm-policy__no">01</span><span>共同利用する個人データの項目</span></h4>
+								<p>氏名（法人団体の場合は役員・従業員の氏名および職位・所属名）、住所、生年月日、性別、電話番号、FAX番号、E-mailアドレス、お問い合わせ内容
+								</p>
+							</div>
+							<div class="cm-policy__number">
+								<h4 class="cm-policy__number-title"><span class="cm-policy__no">02</span><span>共同利用者の範囲</span></h4>
+								<p>共同利用者は別紙に定める通りとする。
+								</p><a class="c-link-pdf" href="#" target="_blank" rel="noopener"><span class="c-link-pdf__label">共同利用者一覧</span><span class="c-link-pdf__icon" aria-hidden="true"><span>PDF</span></span><span class="c-link-pdf__size">(53KB)</span></a>
+							</div>
+							<div class="cm-policy__number">
+								<h4 class="cm-policy__number-title"><span class="cm-policy__no">03</span><span>共同利用する者の利用目的</span></h4>
+								<p>本方針１に記載する利用目的と同じです。
+								</p>
+							</div>
+							<div class="cm-policy__number">
+								<h4 class="cm-policy__number-title"><span class="cm-policy__no">04</span><span>管理責任を有する者</span></h4>
+								<p>DOWAホールディングス株式会社<br>住所および代表者名は以下のURLを参照ください。<a class="c-link-url" href="https://hd.dowa.co.jp/ja/company/summary.html" target="_blank" rel="noopener">https://hd.dowa.co.jp/ja/company/summary.html</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">６．Cookie等の識別子に紐付けされた情報の取得・利用・提供</h3>
+							<p>Cookie（クッキー）とは、ウェブサイトからお使いのウェブブラウザに送信され、お使いの端末内に記録される情報のことです。また、ウェブビーコンとは、ウェブページや電子メールに小さな画像を埋め込むことによって、お客様がそのページやメールを閲覧した際に情報を送信する仕組みです。本ウェブサイトでは、Cookie、ウェブビーコンまたはそれに類似する技術を利用して、お客様のウェブサイトの閲覧履歴等の情報を分析して、以下の目的で利用します。</p>
+						</div>
+						<ul class="c-list-bullet">
+							<li>本ウェブサイトにおいて提供する情報やサービスを充実させるため</li>
+							<li>本ウェブサイトにおける技術的なオペレーションを確実なものとして、機能不全を調査して除去するため</li>
+						</ul>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">７．保有個人データの開示請求等</h3>
+							<p>当社は、ご本人またはその代理人から、当該保有個人データの開示のご請求があったときは、下記の場合を除き、遅滞なく回答します。なお、開示しない場合または当該保有個人データが存在しない場合には、その旨を回答します。</p>
+						</div>
+						<ul class="c-list-bullet">
+							<li>ご本人または第三者の生命、身体、財産その他の権利利益を害するおそれがある場合</li>
+							<li>当社の業務の適正な実施に著しい支障を及ぼすおそれがある場合</li>
+							<li>法令に違反することとなる場合</li>
+						</ul>
+						<p>また、当社は、ご本人またはその代理人から、当該保有個人データに関して、訂正、追加もしくは削除のご請求、または利用の停止・消去もしくは第三者提供の停止のご請求があったときも、調査のうえ、法令に従って対応します。</p>
+						<p>なお、開示等のご請求に際してご提出いただく書面およびご請求の方法、ならびに開示等をご請求いただいた方がご本人または代理人であることを証する書面をご提出いただきますので、予めご了承ください。</p>
+						<p>以上に関するお問い合わせは以下までお願いします。</p>
+									<p>DOWAメタルマイン株式会社<br/>企画室<br/>電話　<span class="u-font-en">03-6847-1200</span></p>
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">８．ご質問および苦情処理の窓口</h3>
+							<p>当社の個人情報の取り扱いに関する質問または苦情については、以下にお問い合わせください。</p>
+						</div>
+						<div class="p-privacy-contact">
+										<p>DOWAメタルマイン株式会社<br/>企画室<br/>電話　<span class="u-font-en">03-6847-1200</span></p>
+							<div class="p-privacy-imprint">
+								<p>制定　<span class="u-font-en">2022</span>年<span class="u-font-en">12</span>月<span class="u-font-en">1</span>日<br/>改正　<span class="u-font-en">2024</span>年<span class="u-font-en">5</span>月<span class="u-font-en">20</span>日（施行 <span class="u-font-en">2024</span>年<span class="u-font-en">4</span>月<span class="u-font-en">1</span>日）<br/>　　　<span class="u-font-en">2025</span>年<span class="u-font-en">3</span>月<span class="u-font-en">27</span>日（施行 <span class="u-font-en">2024</span>年<span class="u-font-en">10</span>月<span class="u-font-en">21</span>日）<br/>　　　<span class="u-font-en">2026</span>年<span class="u-font-en">8</span>月<span class="u-font-en">6</span>日（施行 <span class="u-font-en">2026</span>年<span class="u-font-en">4</span>月<span class="u-font-en">1</span>日）<br/>　　　<span class="u-font-en">2026</span>年<span class="u-font-en">8</span>月<span class="u-font-en">17</span>日（施行 <span class="u-font-en">2026</span>年<span class="u-font-en">4</span>月<span class="u-font-en">1</span>日）
+								</p>
+								<p>DOWAメタルマイン株式会社<br/>住所 〒<span class="u-font-en">101-0021</span>　東京都千代田区外神田四丁目<span class="u-font-en">14</span>番<span class="u-font-en">1</span>号<br/>代表取締役社長　佐藤 重樹
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+	
+<?php get_footer(); ?>

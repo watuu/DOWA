@@ -1,0 +1,58 @@
+@use "sass:math";
+@use '../Base/config' as config;
+/*----------------------------------------------------
+	cm-thanks　フォームの完了画面（お問い合わせ / 資料ダウンロード）
+
+	参考にしたのは NIPPON PGM 側のアートボード（SP_CONTACT_DONE 3451-6103 /
+	PC_CONTACT_DONE 3451-6153）で、**本サイト（DOWA）のデザインではない**。
+	組み（本文 → 区切り線 → 中央のボタン）と文章だけを借り、箱・余白・タイポは
+	本サイトの .cm-block-panel / .cm-post に合わせている。
+	そのため node-id 照合（npm run verify:nodes）の対象にしない。
+----------------------------------------------------*/
+// パネルの中は「本文（下に区切り線）→ ボタン」の2つ。
+// 本文 → ボタンの間は .cm-block-panel の gap（SP 32 / PC 65）が持つので、ここでは持たない。
+// 区切り線と下の余白は .cm-block-lead と同じ扱い（1px #9e9e9e ／ 下 SP 30 / PC 60）。
+.cm-thanks {
+	display: flex;
+	flex-direction: column;
+	gap: math.div(16, 16) + rem; // 段落どうし。.cm-post と同じ
+	padding-bottom: math.div(30, 16) + rem;
+	border-bottom: 1px solid var(--c-placeholder);
+
+	@include config.pc {
+		gap: math.div(20, 16) + rem;
+		padding-bottom: math.div(60, 16) + rem;
+	}
+}
+
+// 本文。.cm-post p と同じ大きさ・行間（justify はしない）
+.cm-thanks p {
+	margin-block: 0;
+	font-size: math.div(14, 16) + rem;
+	line-height: 1.8;
+	letter-spacing: var(--tracking-body);
+	color: var(--c-text-body);
+
+	@include config.pc {
+		font-size: math.div(16, 16) + rem;
+		line-height: 2;
+	}
+}
+
+// 段落のまとまりの切れ目（参考デザインの空行1つぶん）。gap に足して SP 32 / PC 40 にする
+.cm-thanks__gap {
+	padding-top: math.div(16, 16) + rem;
+
+	@include config.pc {
+		padding-top: math.div(20, 16) + rem;
+	}
+}
+
+/*  ボタン（パネルの中で中央）
+----------------------------------------------------*/
+.cm-thanks-action {
+	display: flex;
+	justify-content: center;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::::*/

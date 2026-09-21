@@ -1,0 +1,52 @@
+extends ../../_default
+block vars
+    - var path = "../../"
+    - var slug = "contact/thanks/"
+    - var title = "お問い合わせ送信完了"
+    - var pageClass = "page-contact"
+    - var noindex = true
+    - var breadcrumb = [{ label: "お問い合わせ", url: "contact/" }, "送信完了"]
+
+//- お問い合わせフォームの送信後に出す完了画面。
+//- 組みは NIPPON PGM 側の SP_CONTACT_DONE 3451-6103 / PC_CONTACT_DONE 3451-6153 を参考にしたが、
+//- あちらは別サイトのアートボードなので寸法は拾わず、本サイトの .cm-block-panel に合わせている。
+//- 文言は原稿が無いため実装側で用意した（doc/memo.md「確認画面・完了画面・エラー文」）。
+//- 電話番号は DOWAメタルマイン(株) レアメタル事業部（src/pug/location/index.pug と同じ）。
+//- 自動返信の送信元ドメインは dowa-pgm.com 想定。WP のフォーム設定が決まったら合わせる
+block content
+
+    .p-contact
+        .cm-block-header-page
+            .l-container
+                .c-heading-page
+                    h1.c-heading-page__title
+                        +split-chars("お問い合わせ")
+                    p.c-heading-page__label Contact
+
+        section.p-contact-thanks
+            .l-container
+                .cm-block-panel
+                    .cm-thanks
+                        p お問い合わせありがとうございます。
+                        p
+                            | このたびは、お問い合わせいただき誠にありがとうございます。
+                            br
+                            | お送りいただきました内容を確認のうえ、1週間以内に折り返しご連絡いたします。また、ご記入いただいたメールアドレスへ、自動返信の確認メールをお送りしております。
+                        p.cm-thanks__gap
+                            | しばらく経ってもメールが届かない場合は、ご入力いただいたメールアドレスが間違っているか、迷惑メールフォルダに振り分けられている可能性がございます。
+                            br
+                            | また、ドメイン指定受信を設定されている場合は、「#[span.u-font-en @dowa-pgm.com]」からのメールを受信できるよう、あらかじめ設定をお願いいたします。
+                            br
+                            | 以上をご確認のうえ、お手数ですがもう一度フォームよりお問い合わせいただきますようお願い申し上げます。
+                        p.cm-thanks__gap
+                            | なお、お急ぎの場合はお電話でもご相談を承っております。
+                            br
+                            span.u-font-en 03-6847-1205
+                            |  までお気軽にご連絡ください。
+
+                    .cm-thanks-action
+                        a.c-btn.c-btn--action(href=home)
+                            span.c-btn__label トップへもどる
+                            span.c-btn__arrow
+                                svg(aria-hidden="true")
+                                    use(href="#ico_arrow_r")

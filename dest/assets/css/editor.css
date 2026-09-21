@@ -1,0 +1,146 @@
+@charset "UTF-8";
+:root {
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN", "Yu Gothic", "メイリオ", "Meiryo", sans-serif;
+  --serif: "游明朝", YuMincho, "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HG明朝E", "ＭＳ 明朝", serif;
+  --font: var(--sans);
+  --font-en: "Poppins", var(--sans);
+  --tracking-body: -0.01em;
+  --tracking-title: -0.05em;
+  --c-text-title: #263a40;
+  --c-text-body: #333d40;
+  --c-text-link: #088395;
+  --c-text-support: #555;
+  --c-action: #15819e;
+  --c-label-brand: #39969d;
+  --c-border: #d9d9d9;
+  --c-surface: #fff;
+  --c-surface-raised: #f6f6f6;
+  --c-surface-tint: #edf6f8;
+  --c-brand-deep: #174b59;
+  --c-brand-mid: #13728c;
+  --c-brand-cta: #0b82a3;
+  --c-ink: #222020;
+  --c-ink-title: #222;
+  --c-heading-alt: #1e2e33;
+  --c-surface-alt: #f7f7f7;
+  --c-surface-band: #ebebeb;
+  --c-required: #ff442a;
+  --c-placeholder: #9e9e9e;
+  --c-text-mute: #787878;
+  --c-border-drawer: #b6b6b6;
+  --c-text-off: #c3c3c3;
+  --c-lang-current: #c4c4c4;
+  --c-overlay-photo: rgba(0, 0, 0, .46);
+  --c-overlay-hover: rgba(0, 0, 0, .6);
+  --c-overlay-mv: rgba(0, 0, 0, .3);
+  --c-surface-dark: #32343c;
+  --c-brand-dark: #045268;
+  --c-pdf: #ff3131;
+  --c-bullet-mute: #a4a4a4;
+  --color: var(--c-text-body);
+  --color-inverse: #fff;
+  --color-accent: var(--c-action);
+  --header-height: 3.75rem;
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --header-height: 7.5rem;
+  }
+}
+:root {
+  --gap: 0.75rem;
+  --padding-section: 6.75rem;
+  --padding-page: 16.625rem;
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --gap: 1rem;
+    --padding-section: 10.25rem;
+    --padding-page: 24.5rem;
+  }
+}
+
+:root {
+  --easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+  --easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+  --easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  --easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+  --easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+  --easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+  --easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+  --easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+  --easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  --easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --duration: .3s;
+  --easeTheme: var(--easeOutSine);
+  --hover-duration: .25s;
+  --hover-ease: var(--easeOutQuad);
+  --hover-zoom: 1.03;
+  --hover-zoom-duration: .4s;
+}
+
+.is-section-dark {
+  --color: #fff;
+}
+
+/*----------------------------------------------------
+	ブロックエディタの本文
+	出力先: dest/assets/css/editor.css（npm run sass:editor）
+
+	公開側の .cm-post（Module/_cm-post.scss）と同じ見え方にする。
+	記事本文は新着情報だけなので、見出し・段落・画像に絞ってある。
+	**値を変えるときは _cm-post.scss と両方直すこと。**
+----------------------------------------------------*/
+.editor-styles-wrapper {
+  font-family: var(--font);
+  color: var(--c-text-body);
+}
+.editor-styles-wrapper .wp-block {
+  max-width: 52.75rem;
+}
+.editor-styles-wrapper p {
+  font-size: 1rem;
+  line-height: 2;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-body);
+}
+.editor-styles-wrapper h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-title);
+}
+.editor-styles-wrapper h2::after {
+  content: "";
+  display: block;
+  width: 6.25rem;
+  height: 1px;
+  margin-top: 1.375rem;
+  background: var(--c-placeholder);
+}
+.editor-styles-wrapper h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2;
+  letter-spacing: var(--tracking-body);
+  color: var(--c-text-title);
+}
+.editor-styles-wrapper img {
+  height: auto;
+}
+.editor-styles-wrapper a {
+  color: var(--c-action);
+  text-decoration: underline;
+}

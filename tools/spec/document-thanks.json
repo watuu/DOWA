@@ -1,0 +1,218 @@
+{
+  "_": "資料ダウンロード完了。**Figma のアートボードが無いページ**（参考にした SP_CONTACT_DONE 3451-6103 / PC_CONTACT_DONE 3451-6153 は NIPPON PGM 側の別サイト）。期待値は本サイトの .cm-block-panel / .c-btn / doc/design-tokens.md から取った実装値。",
+  "_source": "寸法・余白 = 本サイトの既存コンポーネント（.cm-block-panel / .c-btn）/ 色・タイポ = doc/design-tokens.md",
+  "url": "http://localhost:8899/document/thanks/",
+  "tolerance": 4,
+  "settle": {
+    "timeout": 1000,
+    "scrollThrough": true,
+    "scrollWait": 500
+  },
+  "viewports": [
+    {
+      "name": "PC",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "name": "SP",
+      "width": 402,
+      "height": 900
+    }
+  ],
+  "targets": {
+    "PC": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 40,
+          "y": 190,
+          "w": 1360
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 60,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 14,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 212,
+          "y": 410,
+          "w": 1016,
+          "borderRadius": 4,
+          "background": "#f6f6f6"
+        },
+        {
+          "name": "本文ブロック",
+          "selector": ".cm-thanks",
+          "x": 298,
+          "y": 480,
+          "w": 844,
+          "borderBottom": "1px solid #9e9e9e"
+        },
+        {
+          "name": "本文",
+          "selector": ".cm-thanks p",
+          "fontSize": 16,
+          "lineHeight": 32,
+          "letterSpacing": "-0.01em",
+          "color": "#333d40"
+        },
+        {
+          "name": "段落の切れ目（gap20 ＋ padding20 = 40）",
+          "selector": ".cm-thanks__gap",
+          "y": 648,
+          "h": 182
+        },
+        {
+          "name": "ボタンの行",
+          "selector": ".cm-thanks-action",
+          "x": 298,
+          "y": 1062,
+          "w": 844,
+          "h": 50
+        },
+        {
+          "name": "ボタンのラベル",
+          "selector": ".cm-thanks-action .c-btn__label",
+          "h": 50,
+          "fontSize": 12,
+          "borderRadius": 4,
+          "background": "#15819e",
+          "color": "#fff"
+        },
+        {
+          "name": "ボタンの矢印",
+          "selector": ".cm-thanks-action .c-btn__arrow",
+          "w": 50,
+          "h": 50,
+          "borderRadius": 4,
+          "background": "#15819e"
+        },
+        {
+          "name": "本文ブロック高さ",
+          "selector": ".cm-thanks",
+          "h": 517
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 772
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 1302,
+          "background": "#ebebeb"
+        }
+      ]
+    },
+    "SP": {
+      "items": [
+        {
+          "name": "ページ見出し",
+          "selector": ".c-heading-page",
+          "x": 20,
+          "y": 140,
+          "w": 362
+        },
+        {
+          "name": "見出しタイトル",
+          "selector": ".c-heading-page__title",
+          "fontSize": 28,
+          "letterSpacing": "-0.05em",
+          "color": "#333d40"
+        },
+        {
+          "name": "見出し英字",
+          "selector": ".c-heading-page__label",
+          "fontSize": 12,
+          "color": "#13728c"
+        },
+        {
+          "name": "パネル",
+          "selector": ".cm-block-panel",
+          "x": 20,
+          "y": 249,
+          "w": 362,
+          "borderRadius": 4,
+          "background": "#f6f6f6"
+        },
+        {
+          "name": "本文ブロック",
+          "selector": ".cm-thanks",
+          "x": 40,
+          "y": 279,
+          "w": 322,
+          "borderBottom": "1px solid #9e9e9e"
+        },
+        {
+          "name": "本文",
+          "selector": ".cm-thanks p",
+          "fontSize": 14,
+          "lineHeight": 25.2,
+          "letterSpacing": "-0.01em",
+          "color": "#333d40"
+        },
+        {
+          "name": "段落の切れ目（gap16 ＋ padding16 = 32）",
+          "selector": ".cm-thanks__gap",
+          "y": 462,
+          "h": 269
+        },
+        {
+          "name": "ボタンの行",
+          "selector": ".cm-thanks-action",
+          "x": 40,
+          "y": 928,
+          "w": 322,
+          "h": 50
+        },
+        {
+          "name": "ボタンのラベル",
+          "selector": ".cm-thanks-action .c-btn__label",
+          "h": 50,
+          "fontSize": 12,
+          "borderRadius": 4,
+          "background": "#15819e",
+          "color": "#fff"
+        },
+        {
+          "name": "ボタンの矢印",
+          "selector": ".cm-thanks-action .c-btn__arrow",
+          "w": 50,
+          "h": 50,
+          "borderRadius": 4,
+          "background": "#15819e"
+        },
+        {
+          "name": "本文ブロック高さ",
+          "selector": ".cm-thanks",
+          "h": 617
+        },
+        {
+          "name": "パネル高さ",
+          "selector": ".cm-block-panel",
+          "h": 759
+        },
+        {
+          "name": "パンくず上端",
+          "selector": ".cm-navi-breadcrumb",
+          "y": 1108,
+          "background": "#ebebeb"
+        }
+      ]
+    }
+  },
+  "_known": "本文ブロックの高さ・段落の切れ目の y と h・ボタンの行以下の y は、いまの文言の行数に依存する。原稿（doc/memo.md の「確認画面・完了画面・エラー文」）が届いて文言を差し替えたら、「本文ブロック高さ / パネル高さ / 段落の切れ目 / ボタンの行 / パンくず上端」を測り直して更新すること。"
+}

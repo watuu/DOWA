@@ -107,6 +107,12 @@ head
         meta(name="description", content="")
         meta(name="keywords", content="")
     meta(name="format-detection", content="telephone=no")
+    //- ファビコン。WP 側は「サイトアイコン」（設定 > 一般）から出すので、こちらは静的確認用
+    link(rel="icon" href=img + "favicon.png" sizes="any")
+    link(rel="apple-touch-icon" href=img + "favicon.png")
+    //- 完了画面など、検索結果に出したくないページ。block vars で - var noindex = true と書く
+    if typeof noindex !== "undefined" && noindex
+        meta(name="robots", content="noindex, follow")
     = "\n"
     = "\n"
 

@@ -22,7 +22,9 @@ Thumbs.db
 /public/wp-content/*
 !/public/wp-content/themes
 /public/wp-content/themes/*
-#!/public/wp-content/themes/dowa-pgm
+!/public/wp-content/themes/dowa-pgm
+# assets/ は dest/assets/ を同期した生成物（npm run sync:theme）。dest/ 側を追跡しているので二重に持たない
+/public/wp-content/themes/dowa-pgm/assets
 
 # Misc
 *::*

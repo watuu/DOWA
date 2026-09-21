@@ -199,4 +199,32 @@ textarea.c-textarea {
 	}
 }
 
+/*  Contact Form 7 の入れ子に合わせる
+    WP 版のフォームは CF7 で組んでいて、同意チェックが
+      .c-checkbox > span.wpcf7-form-control-wrap > span.wpcf7-acceptance
+        > span.wpcf7-list-item > label > (input + span.wpcf7-list-item-label)
+    という入れ子になる。このままだと .c-checkbox の flex が label 1つにしか効かず、
+    チェックボックスと文字が縦に並んで 5.7px 高くなる。
+    間の span を素通しのブロックにして、**並べるのは label に任せる**。
+    display: contents は使わない（箱が消えて、はみ出しの誤検出になるため）。
+    静的コーディング側にはこれらのクラスが無いので、この指定は効かない。
+----------------------------------------------------*/
+.c-checkbox:has(.wpcf7-acceptance) {
+	display: block; // 並べるのは中の label。ここで flex にすると子が1つで gap が効かない
+}
+
+.c-checkbox .wpcf7-form-control-wrap,
+.c-checkbox .wpcf7-acceptance,
+.c-checkbox .wpcf7-list-item {
+	display: block;
+	margin: 0; // CF7 の .wpcf7-list-item に付く margin-left: 1em を消す
+}
+
+.c-checkbox .wpcf7-list-item > label {
+	display: flex;
+	align-items: center;
+	gap: math.div(12, 16) + rem;
+	cursor: pointer;
+}
+
 /*::::::::::::::::::::::::::::::::::::::::::::::::::*/
