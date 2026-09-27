@@ -71,6 +71,7 @@ require_once(__DIR__ . '/functions/post-type.php');
 require_once(__DIR__ . '/functions/template.php');
 require_once(__DIR__ . '/functions/form.php');
 require_once(__DIR__ . '/functions/ogp.php');
+require_once(__DIR__ . '/functions/tag.php');
 
 // -------------------------------------------------------
 //    フロント側 初期設定

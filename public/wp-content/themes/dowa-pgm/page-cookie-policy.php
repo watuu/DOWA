@@ -88,6 +88,25 @@ get_header();
 							</div>
 						</div>
 					</div>
+					<?php // 同意の変更と外部送信の一覧。中身は STRIGHT ONE のバナースクリプト（functions/tag.php）が差し込む ?>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">クッキーの設定の変更</h3>
+							<p>本ウェブサイトでのクッキーの利用に関する同意の内容は、以下からいつでも変更いただけます。</p>
+						</div>
+						<!-- STRIGHT ONE Privacy Setting Banner Redisplay Link Tag Start -->
+						<div data-id="cookie_consent_cookie_btn"></div>
+						<!-- STRIGHT ONE Privacy Setting Banner Redisplay Link Tag End -->
+					</div>
+					<div class="cm-policy__section">
+						<div class="cm-policy__head">
+							<h3 class="cm-policy__title">利用者情報の外部送信について</h3>
+							<p>本ウェブサイトでは、以下の事業者に利用者情報を送信しています。</p>
+						</div>
+						<!-- STRIGHT ONE Network Rule Tag Start -->
+						<div id="cookie_consent_network_rule"></div>
+						<!-- STRIGHT ONE Network Rule Tag End -->
+					</div>
 					<div class="cm-policy__section">
 						<div class="cm-policy__head">
 							<h3 class="cm-policy__title">連絡先</h3>

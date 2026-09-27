@@ -81,21 +81,13 @@ function theme_asset($rel) {
 /**
  * 言語切替の行き先
  *
- * 新着情報は英語側に同じ記事が無いので、各言語のトップへ飛ばす
- * （静的側で slug を持たせていないページと同じ扱い）。
+ * どのページからでも、切り替えた先の言語のトップへ飛ばす
+ * （ページ単位の日英の対応づけは hreflang の theme_alternate_urls() が持つ）。
  */
 function theme_lang_urls() {
-    $uri = '';
-    if (is_page()) {
-        $uri = get_page_uri(get_queried_object_id());
-        if (theme_is_en()) {
-            $uri = preg_replace('#^en/?#', '', $uri);
-        }
-    }
-    $tail = $uri ? trailingslashit($uri) : '';
     return [
-        'ja' => home_url('/' . $tail),
-        'en' => home_url('/en/' . $tail),
+        'ja' => home_url('/'),
+        'en' => home_url('/en/'),
     ];
 }
 

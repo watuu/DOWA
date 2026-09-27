@@ -30,6 +30,7 @@ if (theme_page('class') === 'page-front') {
 	<?php wp_head(); ?>
 </head>
 <body id="body" <?php body_class(trim($bodyClass)); ?>>
+<?php wp_body_open(); ?>
 <a id="top"></a>
 <div class="l-body-wrap">
 
