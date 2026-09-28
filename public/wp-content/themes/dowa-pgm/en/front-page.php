@@ -207,9 +207,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">01</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">Responsive Service and a Trusted Partnership</h3>
-										<p class="c-card-voice__text">We have appreciated the team’s professionalism and responsiveness throughout our business relationship. Communication is always smooth, and our inquiries and requests are handled promptly. We are particularly satisfied with the speed of payment and regard DOWA as a trusted and reliable business partner.</p>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Automotive Dismantler, Japan
+										<h3 class="c-card-voice__title">Reliable Service and Clear Communication</h3>
+										<p class="c-card-voice__text">サービス品質と信頼性の高さに満足しています。説明も分かりやすく、コミュニケーションもスムーズで、安心して取引を進めることができました。分析・サンプリングの対応にも期待しており、今後のさらなるサービス向上を楽しみにしています。</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Recycling Materials Collector, Asia
 										</p>
 									</div>
 								</div>
@@ -221,8 +221,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">02</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">Reliable Service and Clear Communication</h3>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Recycling Materials Collector, Asia
+										<h3 class="c-card-voice__title">More Than a Service Provider: A Trusted Partner</h3>
+										<p class="c-card-voice__text">世界トップクラスのPGM処理能力と技術力に加え、迅速で柔軟なサポートにも大きな信頼を寄せています。問い合わせや要望にも丁寧に対応いただき、当社にとって欠かせない存在です。長期的に安心して取引できるパートナーだと感じています。</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Lorene Japan Co., Ltd., Japan
 										</p>
 									</div>
 								</div>
@@ -234,8 +235,23 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">03</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">More Than a Service Provider: A Trusted Partner</h3>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Major Company B, Asia
+										<h3 class="c-card-voice__title">透明性の高い取引と確かな分析力</h3>
+										<p class="c-card-voice__text">取引開始時から真摯に提案に耳を傾けていただき、初めての取り組みでも安心して取引を始めることができました。分析結果は精確で透明性も高く、納得感のある取引ができています。担当者が変わっても情報共有が徹底され、やり取りはいつもスムーズです。</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>アジアのリサイクル集荷業者様
+										</p>
+									</div>
+								</div>
+							</article>
+						</div>
+						<div class="swiper-slide">
+							<article class="c-card-voice">
+								<figure class="c-card-voice__figure"><img src="<?php echo esc_url(theme_asset('img/p-top-voice4.webp')); ?>" alt="" width="940" height="680" loading="lazy"/></figure>
+								<div class="c-card-voice__body">
+									<p class="c-line-num">04</p>
+									<div class="c-card-voice__content">
+										<h3 class="c-card-voice__title">Responsive Service and a Trusted Partnership</h3>
+										<p class="c-card-voice__text">We have appreciated the team’s professionalism and responsiveness throughout our business relationship. Communication is always smooth, and our inquiries and requests are handled promptly. We are particularly satisfied with the speed of payment and regard DOWA as a trusted and reliable business partner.</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Automotive Dismantler, Japan
 										</p>
 									</div>
 								</div>

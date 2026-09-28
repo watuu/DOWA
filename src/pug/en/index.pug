@@ -17,10 +17,12 @@ block content
         ]
         //- お客様の声は保留（2026-09-16）。日本語のトップと同じ3件を、シートの対応する英訳で出している。
         //- 3件目のお客様名はシートの英訳（ロレンジャパン株式会社様）と日本語（アジア圏大手B社）が違うので、日本語に合わせて仮置き
+        //- 英訳が無い箇所は日本語のまま（申請中。doc/english-pages.md）
         var voices = [
-            { title: "Responsive Service and a Trusted Partnership", text: "We have appreciated the team’s professionalism and responsiveness throughout our business relationship. Communication is always smooth, and our inquiries and requests are handled promptly. We are particularly satisfied with the speed of payment and regard DOWA as a trusted and reliable business partner.", client: "Automotive Dismantler, Japan" },
-            { title: "Reliable Service and Clear Communication", client: "Recycling Materials Collector, Asia" },
-            { title: "More Than a Service Provider: A Trusted Partner", client: "Major Company B, Asia" }
+            { title: "Reliable Service and Clear Communication", text: "サービス品質と信頼性の高さに満足しています。説明も分かりやすく、コミュニケーションもスムーズで、安心して取引を進めることができました。分析・サンプリングの対応にも期待しており、今後のさらなるサービス向上を楽しみにしています。", client: "Recycling Materials Collector, Asia" },
+            { title: "More Than a Service Provider: A Trusted Partner", text: "世界トップクラスのPGM処理能力と技術力に加え、迅速で柔軟なサポートにも大きな信頼を寄せています。問い合わせや要望にも丁寧に対応いただき、当社にとって欠かせない存在です。長期的に安心して取引できるパートナーだと感じています。", client: "Lorene Japan Co., Ltd., Japan" },
+            { title: "透明性の高い取引と確かな分析力", text: "取引開始時から真摯に提案に耳を傾けていただき、初めての取り組みでも安心して取引を始めることができました。分析結果は精確で透明性も高く、納得感のある取引ができています。担当者が変わっても情報共有が徹底され、やり取りはいつもスムーズです。", client: "アジアのリサイクル集荷業者様" },
+            { title: "Responsive Service and a Trusted Partnership", text: "We have appreciated the team’s professionalism and responsiveness throughout our business relationship. Communication is always smooth, and our inquiries and requests are handled promptly. We are particularly satisfied with the speed of payment and regard DOWA as a trusted and reliable business partner.", client: "Automotive Dismantler, Japan" }
         ]
         //- 新着情報は WP で入る。ここは仮の記事
         var news = [

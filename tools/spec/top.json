@@ -1,5 +1,5 @@
 {
-  "_": "トップ。Figma: SP_TOP 3012-9710 / PC_TOP 2323-5003。全セクション実装済み（2026-09-11）。baseline は技術力の帯",
+  "_": "トップ。Figma: SP_TOP 3012-9710 / PC_TOP 2323-5003（Voice の4件化は PC 3485-6319 で更新、2026-09-28。PC_TOP 側は旧テキストのままなので、Voice より下の y と baseline を +10）。全セクション実装済み（2026-09-11）。baseline は技術力の帯",
   "_source": "寸法・余白 = Figma実測 / 色・タイポ = doc/design-tokens.md",
   "url": "http://localhost:8899/",
   "tolerance": 4,
@@ -24,7 +24,7 @@
     "PC": {
       "baseline": {
         "selector": ".p-top-technology",
-        "y": 8461
+        "y": 8471
       },
       "items": [
         {
@@ -576,7 +576,7 @@
           "selector": ".p-top-voice__slider",
           "x": 40,
           "y": 6853,
-          "h": 757,
+          "h": 767,
           "_note": "Figma 2323-5146（いちばん高いカード）"
         },
         {
@@ -585,7 +585,7 @@
           "x": 40,
           "y": 6853,
           "w": 550,
-          "h": 757,
+          "h": 767,
           "borderRadius": 5,
           "background": "#ffffff",
           "_note": "Figma 2323-5157"
@@ -616,7 +616,7 @@
           "fontWeight": "700",
           "color": "#0b82a3",
           "_note": "Figma 2323-5162（#008e9f → CTA色）。1行39 ＋ 下15",
-          "h": 54
+          "h": 93
         },
         {
           "name": "Voice・本文1",
@@ -625,7 +625,7 @@
           "lineHeight": 28.8,
           "color": "#222020",
           "_note": "Figma 2323-5164（5行）",
-          "h": 144
+          "h": 116
         },
         {
           "name": "Voice・お客様名1",
@@ -642,13 +642,13 @@
           "x": 620,
           "y": 6853,
           "w": 550,
-          "h": 641.4,
+          "h": 767,
           "_note": "Figma 2323-5147 は枠が 671 固定で、中身（余白40・写真340・30・番号26・30・見出しとお客様名135・余白40）は 641。中身の高さにした"
         },
         {
           "name": "前後ボタン",
           "selector": ".p-top-voice__ctrl",
-          "y": 7630,
+          "y": 7640,
           "h": 75,
           "_note": "Figma 3003-8934（x625。帯の中央に置いたので x630）"
         },
@@ -666,7 +666,7 @@
           "name": "新着情報の帯",
           "selector": ".p-top-news",
           "x": 0,
-          "y": 7827,
+          "y": 7837,
           "w": 1440,
           "h": 634,
           "background": "#f7f7f7",
@@ -676,7 +676,7 @@
           "name": "新着情報",
           "selector": ".p-top-news__inner",
           "x": 297,
-          "y": 7827,
+          "y": 7837,
           "w": 846,
           "h": 478.6,
           "_note": "Figma 2323-5110 は 481。3件目だけ行間 1.8（2323-5135）のぶん -2.2"
@@ -695,7 +695,7 @@
           "name": "お知らせ1件",
           "selector": ".c-card-news--outline",
           "index": 0,
-          "y": 7881.8,
+          "y": 7891.8,
           "w": 846,
           "h": 104.6,
           "borderBottom": "1px solid #d9d9d9",
@@ -732,7 +732,7 @@
           "name": "一覧をみる",
           "selector": ".c-link-arrow--lg",
           "x": 969,
-          "y": 8233,
+          "y": 8243,
           "w": 175,
           "h": 75,
           "_note": "Figma 3003-8965"
@@ -757,7 +757,7 @@
           "name": "技術力の帯",
           "selector": ".p-top-technology",
           "x": 0,
-          "y": 8461,
+          "y": 8471,
           "w": 1440,
           "h": 900,
           "_note": "Figma 2323-5188"
@@ -774,7 +774,7 @@
           "selector": ".p-top-technology__route span",
           "index": 0,
           "x": 40,
-          "y": 8513,
+          "y": 8523,
           "h": 25.2,
           "fontSize": 21,
           "lineHeight": 25.2,
@@ -789,7 +789,7 @@
           "selector": ".p-top-technology__route span",
           "index": 1,
           "x": 687,
-          "y": 8513,
+          "y": 8523,
           "_note": "Figma 2323-5192（中心 720.5）"
         },
         {
@@ -797,14 +797,14 @@
           "selector": ".p-top-technology__route span",
           "index": 2,
           "x": 1233,
-          "y": 8513,
+          "y": 8523,
           "_note": "Figma 2323-5193（右端 1400。Poppins の字幅で幅 167 → 163）"
         },
         {
           "name": "英字ラベル",
           "selector": ".p-top-technology__label",
           "x": 40,
-          "y": 8980,
+          "y": 8990,
           "h": 25.2,
           "fontSize": 21,
           "letterSpacing": "0.04em",
@@ -816,7 +816,7 @@
           "name": "見出し",
           "selector": ".p-top-technology__title",
           "x": 40,
-          "y": 9014,
+          "y": 9024,
           "h": 120,
           "fontSize": 40,
           "lineHeight": 60,
@@ -828,7 +828,7 @@
           "name": "本文",
           "selector": ".p-top-technology__desc",
           "x": 790,
-          "y": 9027,
+          "y": 9037,
           "w": 610,
           "h": 115.2,
           "fontSize": 16,
@@ -841,7 +841,7 @@
           "name": "ボタン",
           "selector": ".c-btn--lg",
           "x": 1068,
-          "y": 9185,
+          "y": 9195,
           "w": 332.2,
           "h": 95,
           "_note": "Figma 3003-8972 は x1052（右端 1385）。本文の右端 1400 にそろえた（doc/design-tokens.md 6）"
@@ -869,7 +869,7 @@
         {
           "name": "フッター",
           "selector": ".l-footer",
-          "y": 9361,
+          "y": 9371,
           "h": 770,
           "_note": "Figma 3003-9279"
         }
