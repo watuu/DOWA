@@ -74,7 +74,10 @@ get_template_part('en/header');
 										</p>
 									</div>
 								</div>
-								<div class="p-location-card__actions"><a class="c-link-arrow" href="https://maps.app.goo.gl/LDrJ9uQEBj228Lus7" target="_blank" rel="noopener"><span class="c-link-arrow__label">Map</span><span class="c-btn-arrow c-link-arrow__arrow">
+								<div class="p-location-card__actions"><a class="c-link-arrow" href="https://nipponpgm.com/en/" target="_blank" rel="noopener"><span class="c-link-arrow__label">Website</span><span class="c-btn-arrow c-link-arrow__arrow">
+											<svg aria-hidden="true">
+												<use href="#ico_arrow_r"></use>
+											</svg></span></a><a class="c-link-arrow" href="https://maps.app.goo.gl/LDrJ9uQEBj228Lus7" target="_blank" rel="noopener"><span class="c-link-arrow__label">Map</span><span class="c-btn-arrow c-link-arrow__arrow">
 											<svg aria-hidden="true">
 												<use href="#ico_arrow_r"></use>
 											</svg></span></a>
@@ -207,7 +210,10 @@ get_template_part('en/header');
 										</p>
 									</div>
 								</div>
-								<div class="p-location-card__actions"><a class="c-link-arrow" href="https://maps.app.goo.gl/wJ2Kxu1nVCYDFoEw6" target="_blank" rel="noopener"><span class="c-link-arrow__label">Map</span><span class="c-btn-arrow c-link-arrow__arrow">
+								<div class="p-location-card__actions"><a class="c-link-arrow" href="https://dmmamerica.com/" target="_blank" rel="noopener"><span class="c-link-arrow__label">Website</span><span class="c-btn-arrow c-link-arrow__arrow">
+											<svg aria-hidden="true">
+												<use href="#ico_arrow_r"></use>
+											</svg></span></a><a class="c-link-arrow" href="https://maps.app.goo.gl/wJ2Kxu1nVCYDFoEw6" target="_blank" rel="noopener"><span class="c-link-arrow__label">Map</span><span class="c-btn-arrow c-link-arrow__arrow">
 											<svg aria-hidden="true">
 												<use href="#ico_arrow_r"></use>
 											</svg></span></a>

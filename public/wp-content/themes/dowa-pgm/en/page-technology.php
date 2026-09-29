@@ -35,7 +35,7 @@ get_template_part('en/header');
 						<p class="c-heading-lead__desc">In PGM recycling, where even the slightest variation can affect material valuation, sampling accuracy is essential. NIPPON PGM uses multiple sampling lines tailored to the characteristics of each material to obtain representative, unbiased samples. Backed by decades of expertise, NIPPON PGM supports transparent, accurate, and reliable material valuation.</p>
 					</div>
 					<div class="p-technology-diagram c-scroll-x">
-						<div class="c-scroll-x__inner js-scroll-x"><img class="p-technology-diagram__img" src="<?php echo esc_url(theme_asset('img/p-technology-sample.svg')); ?>" width="1188" height="435" alt="Sampling flow. Crushing Process: 01 Material, 02 Primary Crushing, 03 Secondary Crushing. Sampling Process: 04 Sample Reduction. Sample for Analysis: 05 Representative Sample."/></div>
+						<div class="c-scroll-x__inner js-scroll-x"><img class="p-technology-diagram__img" src="<?php echo esc_url(theme_asset('img/p-technology-sample-en.svg')); ?>" width="1188" height="461" alt="Sampling flow. Crushing Process: 01 Material, 02 Primary Crushing, 03 Secondary Crushing. Sampling Process: 04 Primary &amp; Secondary Reduction. Sample for Analysis: 05 Sample."/></div>
 						<div class="c-scroll-x__bar" aria-hidden="true"><span class="c-scroll-x__thumb"></span></div>
 					</div>
 					<div class="p-technology-photos">

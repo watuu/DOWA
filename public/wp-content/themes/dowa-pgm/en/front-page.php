@@ -68,7 +68,7 @@ get_template_part('en/header');
 						<video src="<?php echo esc_url(theme_asset('movie/strength_01.mp4')); ?>" width="1620" height="1080" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" aria-hidden="true"></video>
 						<div class="p-top-strength__detail" aria-hidden="true">
 							<p class="p-top-strength__detail-title">Sampling</p>
-							<p class="p-top-strength__detail-text">お客様の原料をロットごとに丁寧に前処理し、原料全体を代表するサンプルを採取しています。高い精度が求められるPGM含有量の評価において、サンプリング工程は公正で信頼性の高い取引を支える重要な役割を担っています。</p>
+							<p class="p-top-strength__detail-text">We carefully pre-treat each lot of customer material and collect a sample that represents the entire lot. Because PGM content must be evaluated with a high degree of accuracy, sampling plays a vital role in ensuring fair and reliable transactions.</p>
 						</div>
 					</div>
 					<h3 class="p-top-strength__name">Sampling</h3><img class="p-top-strength__num" src="<?php echo esc_url(theme_asset('img/p-top-strength-num1.svg')); ?>" alt="" width="67" height="120" loading="lazy"/>
@@ -78,7 +78,7 @@ get_template_part('en/header');
 						<video src="<?php echo esc_url(theme_asset('movie/strength_02.mp4')); ?>" width="1620" height="1080" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" aria-hidden="true"></video>
 						<div class="p-top-strength__detail" aria-hidden="true">
 							<p class="p-top-strength__detail-title">Analysis</p>
-							<p class="p-top-strength__detail-text">ICP（誘導結合プラズマ）分析をはじめとする高度な分析技術とトレーサブルな品質管理体制により、PGM元素の含有量を高い精度で測定・定量しています。</p>
+							<p class="p-top-strength__detail-text">Using advanced analytical techniques, including ICP (inductively coupled plasma) analysis, and a traceable quality control system, we accurately measure and quantify PGM content.</p>
 						</div>
 					</div>
 					<h3 class="p-top-strength__name">Analysis</h3><img class="p-top-strength__num" src="<?php echo esc_url(theme_asset('img/p-top-strength-num2.svg')); ?>" alt="" width="73" height="119" loading="lazy"/>
@@ -88,7 +88,7 @@ get_template_part('en/header');
 						<video src="<?php echo esc_url(theme_asset('movie/strength_03.mp4')); ?>" width="1620" height="1080" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" aria-hidden="true"></video>
 						<div class="p-top-strength__detail" aria-hidden="true">
 							<p class="p-top-strength__detail-title">Smelting &amp; Refining</p>
-							<p class="p-top-strength__detail-text">多種多様な原料を月間1,000トン規模で処理し、貴重な資源を効率的に回収するとともに、環境負荷の低減に取り組んでいます。</p>
+							<p class="p-top-strength__detail-text">We process around 1,000 metric tonnes of diverse materials each month, efficiently recovering valuable resources while working to reduce our environmental impact.</p>
 						</div>
 					</div>
 					<h3 class="p-top-strength__name">Smelting &amp; Refining</h3><img class="p-top-strength__num" src="<?php echo esc_url(theme_asset('img/p-top-strength-num3.svg')); ?>" alt="" width="82" height="121" loading="lazy"/>
@@ -194,9 +194,23 @@ get_template_part('en/header');
 	</section>
 	<section class="p-top-voice">
 		<div class="l-container">
-			<div class="c-heading-section p-top-voice__head">
-				<p class="c-heading-section__label u-anim js-visible">Customer testimonials</p>
-				<h2 class="c-heading-section__title u-anim js-visible" style="--i: 1">Voice</h2>
+			<div class="p-top-voice__head">
+				<div class="c-heading-section">
+					<p class="c-heading-section__label u-anim js-visible">Customer testimonials</p>
+					<h2 class="c-heading-section__title u-anim js-visible" style="--i: 1">Voice</h2>
+				</div>
+				<div class="c-btn-ctrl-group p-top-voice__ctrl p-top-voice__ctrl--head u-anim js-visible" style="--i: 2">
+					<button class="c-btn-ctrl c-btn-ctrl--prev js-card-slider-prev" type="button" aria-label="Previous testimonial">
+						<svg aria-hidden="true">
+							<use href="#ico_arrow_ne"></use>
+						</svg>
+					</button>
+					<button class="c-btn-ctrl c-btn-ctrl--next js-card-slider-next" type="button" aria-label="Next testimonial">
+						<svg aria-hidden="true">
+							<use href="#ico_arrow_ne"></use>
+						</svg>
+					</button>
+				</div>
 			</div>
 			<div class="js-card-slider u-anim-fade js-visible">
 				<div class="p-top-voice__slider swiper">
@@ -207,9 +221,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">01</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">Reliable Service and Clear Communication</h3>
-										<p class="c-card-voice__text">サービス品質と信頼性の高さに満足しています。説明も分かりやすく、コミュニケーションもスムーズで、安心して取引を進めることができました。分析・サンプリングの対応にも期待しており、今後のさらなるサービス向上を楽しみにしています。</p>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Recycling Materials Collector, Asia
+										<h3 class="c-card-voice__title">Reliable Service and Smooth Communication</h3>
+										<p class="c-card-voice__text">We are highly satisfied with the quality and reliability of NIPPON PGM’s services. The team explains everything clearly and communicates smoothly, so we can conduct business with confidence. We also have high expectations for its analysis and sampling services and look forward to seeing them continue to improve.</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Overseas Recyclable Materials Supplier
 										</p>
 									</div>
 								</div>
@@ -221,9 +235,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">02</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">More Than a Service Provider: A Trusted Partner</h3>
-										<p class="c-card-voice__text">世界トップクラスのPGM処理能力と技術力に加え、迅速で柔軟なサポートにも大きな信頼を寄せています。問い合わせや要望にも丁寧に対応いただき、当社にとって欠かせない存在です。長期的に安心して取引できるパートナーだと感じています。</p>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Lorene Japan Co., Ltd., Japan
+										<h3 class="c-card-voice__title">Proven Expertise and Attentive Support</h3>
+										<p class="c-card-voice__text">We have great confidence in NIPPON PGM’s world-class PGM processing capacity and technical expertise, as well as its prompt and flexible support. The team responds thoughtfully to our inquiries and requests, making NIPPON PGM an indispensable partner to our business. We know we can count on them for a long-term relationship.</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Lorene Japan Co., Ltd.
 										</p>
 									</div>
 								</div>
@@ -235,9 +249,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">03</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">透明性の高い取引と確かな分析力</h3>
-										<p class="c-card-voice__text">取引開始時から真摯に提案に耳を傾けていただき、初めての取り組みでも安心して取引を始めることができました。分析結果は精確で透明性も高く、納得感のある取引ができています。担当者が変わっても情報共有が徹底され、やり取りはいつもスムーズです。</p>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>アジアのリサイクル集荷業者様
+										<h3 class="c-card-voice__title">Transparent Transactions and Accurate Analysis</h3>
+										<p class="c-card-voice__text">From the outset, NIPPON PGM listened carefully to our proposals, giving us the confidence to begin working together. Its analysis results are accurate and transparent, giving us confidence in every transaction. Communication remains smooth, with information shared thoroughly even when our point of contact changes.</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Asian Recycling Materials Collector
 										</p>
 									</div>
 								</div>
@@ -249,9 +263,9 @@ get_template_part('en/header');
 								<div class="c-card-voice__body">
 									<p class="c-line-num">04</p>
 									<div class="c-card-voice__content">
-										<h3 class="c-card-voice__title">Responsive Service and a Trusted Partnership</h3>
-										<p class="c-card-voice__text">We have appreciated the team’s professionalism and responsiveness throughout our business relationship. Communication is always smooth, and our inquiries and requests are handled promptly. We are particularly satisfied with the speed of payment and regard DOWA as a trusted and reliable business partner.</p>
-										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Automotive Dismantler, Japan
+										<h3 class="c-card-voice__title">Prompt Service and a Partnership We Can Trust</h3>
+										<p class="c-card-voice__text">The team is attentive, and we have felt at ease working with NIPPON PGM from the beginning. Inquiries and consultations are handled promptly, and communication is always smooth. We are especially pleased with how quickly payments are processed and see NIPPON PGM as a trusted partner.</p>
+										<p class="c-card-voice__client"><span class="c-card-voice__client-label">CLIENT: </span>Japanese Auto Dismantler
 										</p>
 									</div>
 								</div>
@@ -259,7 +273,7 @@ get_template_part('en/header');
 						</div>
 					</div>
 				</div>
-				<div class="c-btn-ctrl-group p-top-voice__ctrl">
+				<div class="c-btn-ctrl-group p-top-voice__ctrl p-top-voice__ctrl--foot">
 					<button class="c-btn-ctrl c-btn-ctrl--prev js-card-slider-prev" type="button" aria-label="Previous testimonial">
 						<svg aria-hidden="true">
 							<use href="#ico_arrow_ne"></use>

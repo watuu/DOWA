@@ -500,12 +500,13 @@ export default class common {
      * jsCardSlider
      * .js-card-slider の中の .swiper（カードを横に並べて送る。トップのお客様の声）。
      * SPは1枚（300）を中央に置いて左右をのぞかせ、PCは 550 を左端からそろえて右へはみ出させる。
-     * 前後ボタンは .js-card-slider-prev / .js-card-slider-next
+     * 前後ボタンは .js-card-slider-prev / .js-card-slider-next（同じ section の中ならどこに・何組置いてもよい）
      */
     jsCardSlider() {
         document.querySelectorAll('.js-card-slider').forEach(wrapper => {
             const elm = wrapper.querySelector('.swiper');
             if (!elm) return;
+            const scope = wrapper.closest('section') || wrapper;
 
             // ループは「見えている枚数 × 2」ほどの枚数が要る（3枚だと Swiper が警告してループしない）。
             // 足りないときは同じ並びを複製して足す。複製は読み上げから外す（カードの中にリンクは無い）
@@ -525,9 +526,10 @@ export default class common {
                 centeredSlides: true,
                 loop: true,
                 speed: 600,
+                // 前後ボタンは見出しの横にも置く（PC とSPで別の組を出し分ける）ので、セクション全体から全部渡す
                 navigation: {
-                    prevEl: wrapper.querySelector('.js-card-slider-prev'),
-                    nextEl: wrapper.querySelector('.js-card-slider-next'),
+                    prevEl: [...scope.querySelectorAll('.js-card-slider-prev')],
+                    nextEl: [...scope.querySelectorAll('.js-card-slider-next')],
                 },
                 breakpoints: {
                     1024: {
@@ -613,6 +615,7 @@ export default class common {
         swiperAll.forEach(wrapper => {
             const elm = wrapper.querySelector('.swiper');
             if (!elm) return;
+            const scope = wrapper.closest('section') || wrapper;
 
             const paginationEl = wrapper.querySelector('.swiper-pagination');
             const prevEl = wrapper.querySelector('.swiper-prev');

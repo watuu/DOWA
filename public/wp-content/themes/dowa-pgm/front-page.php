@@ -195,9 +195,23 @@ get_header();
 	</section>
 	<section class="p-top-voice">
 		<div class="l-container">
-			<div class="c-heading-section p-top-voice__head">
-				<p class="c-heading-section__label u-anim js-visible">自動車解体事業者様の声</p>
-				<h2 class="c-heading-section__title u-anim js-visible" style="--i: 1">Voice</h2>
+			<div class="p-top-voice__head">
+				<div class="c-heading-section">
+					<p class="c-heading-section__label u-anim js-visible">自動車解体事業者様の声</p>
+					<h2 class="c-heading-section__title u-anim js-visible" style="--i: 1">Voice</h2>
+				</div>
+				<div class="c-btn-ctrl-group p-top-voice__ctrl p-top-voice__ctrl--head u-anim js-visible" style="--i: 2">
+					<button class="c-btn-ctrl c-btn-ctrl--prev js-card-slider-prev" type="button" aria-label="前のお客様の声へ">
+						<svg aria-hidden="true">
+							<use href="#ico_arrow_ne"></use>
+						</svg>
+					</button>
+					<button class="c-btn-ctrl c-btn-ctrl--next js-card-slider-next" type="button" aria-label="次のお客様の声へ">
+						<svg aria-hidden="true">
+							<use href="#ico_arrow_ne"></use>
+						</svg>
+					</button>
+				</div>
 			</div>
 			<div class="js-card-slider u-anim-fade js-visible">
 				<div class="p-top-voice__slider swiper">
@@ -260,7 +274,7 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<div class="c-btn-ctrl-group p-top-voice__ctrl">
+				<div class="c-btn-ctrl-group p-top-voice__ctrl p-top-voice__ctrl--foot">
 					<button class="c-btn-ctrl c-btn-ctrl--prev js-card-slider-prev" type="button" aria-label="前のお客様の声へ">
 						<svg aria-hidden="true">
 							<use href="#ico_arrow_ne"></use>

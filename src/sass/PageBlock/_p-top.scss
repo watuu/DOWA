@@ -755,7 +755,12 @@
 .p-top-voice__head {
 	margin-bottom: math.div(40, 16) + rem;
 
+	// PC は見出しの右下に前後ボタン（2026-09-29 修正依頼 No.15・16。SP は元どおりカードの下の中央）
 	@include config.pc {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: math.div(20, 16) + rem;
 		margin-bottom: math.div(70, 16) + rem;
 	}
 }
@@ -781,10 +786,24 @@
 }
 
 .p-top-voice__ctrl {
+	flex-shrink: 0;
+}
+
+// 見出しの右は PC だけ
+.p-top-voice__ctrl--head {
+	display: none;
+
+	@include config.pc {
+		display: flex;
+	}
+}
+
+// カードの下は SP・TAB だけ
+.p-top-voice__ctrl--foot {
 	margin-top: math.div(57.5, 16) + rem;
 
 	@include config.pc {
-		margin-top: math.div(20, 16) + rem;
+		display: none;
 	}
 }
 

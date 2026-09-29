@@ -42,18 +42,19 @@ theme_breadcrumb(theme_page('breadcrumb'), 'トップ', 'パンくず');
 						<a href="<?php echo esc_url(home_url('/flow/')); ?>">お取引の流れ</a>
 						<a href="<?php echo esc_url(home_url('/location/')); ?>">海外拠点</a>
 						<a href="<?php echo esc_url(home_url('/technology/')); ?>">NPGMの技術</a>
+						<a href="<?php echo esc_url(home_url('/supply-chain/')); ?>">責任ある調達</a>
 					</nav>
 					<div class="l-footer-sites">
 						<div class="l-footer-sites__row">
 							<p class="l-footer-sites__name">運営会社：DOWAメタルマイン株式会社</p>
-							<a class="l-footer-sites__link" href="https://www.dowa.co.jp/MandM/" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）">
+							<a class="l-footer-sites__link" href="https://hd.dowa.co.jp/ja/product/metalmine.html" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社のサイトへ（新しいウィンドウで開きます）">
 								<span class="l-footer-sites__label">サイトへ</span>
 								<span class="l-footer-sites__btn"><?php echo theme_icon('arrow_r'); ?></span>
 							</a>
 						</div>
 						<div class="l-footer-sites__row">
 							<p class="l-footer-sites__name">関連会社：株式会社日本ピージーエム</p>
-							<a class="l-footer-sites__link" href="https://nipponpgm.dowa.co.jp/" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）">
+							<a class="l-footer-sites__link" href="https://nipponpgm.com/" target="_blank" rel="noopener" aria-label="株式会社日本ピージーエムのサイトへ（新しいウィンドウで開きます）">
 								<span class="l-footer-sites__label">サイトへ</span>
 								<span class="l-footer-sites__btn"><?php echo theme_icon('arrow_r'); ?></span>
 							</a>

@@ -10,7 +10,7 @@
  *    （get_header は直下の header-en.php しか見ない）。代わりに get_template_part で読み、
  *    プラグインが拾えるよう get_header アクションだけ自分で撃っておく。
  *
- * ロゴ画像の英語版は申請中（2026-09-16）。届くまで日本語のロゴを使う。
+ * ロゴは英語版（logo-en.svg / logo-wh-en.svg。2026-09-29 支給）。
  * 英語のクッキーポリシーも後日なので、日本語のページへ飛ばす。
  */
 do_action('get_header', 'en', []);
@@ -42,8 +42,8 @@ if (theme_page('class') === 'page-front') {
 	<header class="l-header">
 		<p class="l-header-logo">
 			<a href="<?php echo esc_url(home_url('/en/')); ?>">
-				<img class="l-header-logo__light" src="<?php echo esc_url(theme_asset('img/logo-wh.svg')); ?>" width="355" height="59" alt="DOWA Metals &amp; Mining Co., Ltd. Rare Metal Business Unit, Spent Catalyst Purchasing &amp; PGM Recycling">
-				<img class="l-header-logo__dark" src="<?php echo esc_url(theme_asset('img/logo.svg')); ?>" width="355" height="59" alt="DOWA Metals &amp; Mining Co., Ltd. Rare Metal Business Unit, Spent Catalyst Purchasing &amp; PGM Recycling">
+				<img class="l-header-logo__light" src="<?php echo esc_url(theme_asset('img/logo-wh-en.svg')); ?>" width="250" height="59" alt="DOWA Metals &amp; Mining Co., Ltd. Rare Metal Business Unit, Spent Catalyst Purchasing &amp; PGM Recycling">
+				<img class="l-header-logo__dark" src="<?php echo esc_url(theme_asset('img/logo-en.svg')); ?>" width="250" height="59" alt="DOWA Metals &amp; Mining Co., Ltd. Rare Metal Business Unit, Spent Catalyst Purchasing &amp; PGM Recycling">
 			</a>
 		</p>
 		<div class="l-header-utility">

@@ -6,7 +6,7 @@
  *
  * 静的コーディング src/pug/_default.pug の </main> 〜 </html>（lang = "en"）。
  * 日本語版はテーマ直下の footer.php。英訳は「英訳確認シート」の共通タブ。
- * ロゴ画像の英語版は申請中（2026-09-16）。クッキーポリシーも英語版が無いので日本語へ飛ばす。
+ * ロゴは英語版（logo-footer-en.svg。2026-09-29 支給）。クッキーポリシーは英語版が無いので日本語へ飛ばす。
  */
 do_action('get_footer', 'en', []);
 
@@ -45,18 +45,19 @@ theme_breadcrumb(theme_page('breadcrumb'), 'Home', 'Breadcrumb');
 						<a href="<?php echo esc_url(home_url('/en/flow/')); ?>">How It Works</a>
 						<a href="<?php echo esc_url(home_url('/en/location/')); ?>">Locations</a>
 						<a href="<?php echo esc_url(home_url('/en/technology/')); ?>">NPGM Expertise</a>
+						<a href="<?php echo esc_url(home_url('/en/supply-chain/')); ?>">Responsible Sourcing</a>
 					</nav>
 					<div class="l-footer-sites">
 						<div class="l-footer-sites__row">
 							<p class="l-footer-sites__name">Operated by: DOWA Metals &amp; Mining Co., Ltd.</p>
-							<a class="l-footer-sites__link" href="https://www.dowa.co.jp/MandM/" target="_blank" rel="noopener" aria-label="Visit the DOWA Metals &amp; Mining Co., Ltd. website (opens in a new window)">
+							<a class="l-footer-sites__link" href="https://hd.dowa.co.jp/en/product/metalmine.html" target="_blank" rel="noopener" aria-label="Visit the DOWA Metals &amp; Mining Co., Ltd. website (opens in a new window)">
 								<span class="l-footer-sites__label">Visit Website</span>
 								<span class="l-footer-sites__btn"><?php echo theme_icon('arrow_r'); ?></span>
 							</a>
 						</div>
 						<div class="l-footer-sites__row">
 							<p class="l-footer-sites__name">PGM Recycling Partner: NIPPON PGM Co., Ltd.</p>
-							<a class="l-footer-sites__link" href="https://nipponpgm.dowa.co.jp/" target="_blank" rel="noopener" aria-label="Visit the NIPPON PGM Co., Ltd. website (opens in a new window)">
+							<a class="l-footer-sites__link" href="https://nipponpgm.com/en/" target="_blank" rel="noopener" aria-label="Visit the NIPPON PGM Co., Ltd. website (opens in a new window)">
 								<span class="l-footer-sites__label">Visit Website</span>
 								<span class="l-footer-sites__btn"><?php echo theme_icon('arrow_r'); ?></span>
 							</a>
@@ -67,7 +68,7 @@ theme_breadcrumb(theme_page('breadcrumb'), 'Home', 'Breadcrumb');
 				<div class="l-footer-body__bottom">
 					<div class="l-footer-body__brand">
 						<p class="l-footer-logo">
-							<img src="<?php echo esc_url(theme_asset('img/logo-footer.svg')); ?>" width="338" height="49" alt="DOWA Spent Catalyst Purchasing &amp; PGM Recycling, Powered by DOWA METALS &amp; MINING">
+							<img src="<?php echo esc_url(theme_asset('img/logo-footer-en.svg')); ?>" width="165" height="49" alt="DOWA Spent Catalyst Purchasing &amp; PGM Recycling, Powered by DOWA METALS &amp; MINING">
 						</p>
 						<p class="l-footer-copy">&copy; DOWA METALS &amp; MINING CO., LTD.</p>
 					</div>

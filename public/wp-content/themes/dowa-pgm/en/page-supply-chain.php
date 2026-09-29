@@ -43,7 +43,7 @@ get_template_part('en/header');
 							<h2 class="c-card-num__title">Responsible Sourcing Policy Aligned with OECD and LPPM Guidance</h2>
 							<p class="c-card-num__desc">We follow a responsible sourcing policy based on OECD guidance and accept only minerals and other materials that meet our responsible sourcing requirements. Through annual independent third-party audits and public disclosure of relevant information, we work to maintain a transparent and reliable sourcing system.</p>
 						</div>
-						<div class="c-card-num__action"><a class="c-banner-link" href="#" target="_blank" rel="noopener" aria-label="DOWA METALS &amp; MINING CO., LTD.: Learn More about Responsible Sourcing (opens in a new window)"><span class="c-banner-link__body"><img class="c-banner-link__logo" src="<?php echo esc_url(theme_asset('img/logo-dowa-mm.svg')); ?>" width="280" height="14" alt=""/><span class="c-banner-link__label">Learn More about Responsible Sourcing</span></span><span class="c-btn-arrow c-btn-arrow--xs c-btn-arrow--action c-btn-arrow--tri">
+						<div class="c-card-num__action"><a class="c-banner-link" href="https://hd.dowa.co.jp/en/csr/esg/policy/procurement-policies.html" target="_blank" rel="noopener" aria-label="DOWA METALS &amp; MINING CO., LTD.: Learn More about Responsible Sourcing (opens in a new window)"><span class="c-banner-link__body"><img class="c-banner-link__logo" src="<?php echo esc_url(theme_asset('img/logo-dowa-mm.svg')); ?>" width="280" height="14" alt=""/><span class="c-banner-link__label">Learn More about Responsible Sourcing</span></span><span class="c-btn-arrow c-btn-arrow--xs c-btn-arrow--action c-btn-arrow--tri">
 									<svg aria-hidden="true">
 										<use href="#ico_tri_d"></use>
 									</svg></span></a></div>

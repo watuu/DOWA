@@ -62,6 +62,15 @@ body.is-nav-open .l-header {
 		width: math.div(355.143, 16) + rem;
 	}
 
+	// 英語版のロゴ（logo-en.svg・logo-wh-en.svg／250×59。2026-09-29 支給）。高さは日本語と同じ 40 / 59
+	&:lang(en) {
+		width: math.div(250 * 0.6786, 16) + rem;
+
+		@include config.pc {
+			width: math.div(250, 16) + rem;
+		}
+	}
+
 	a {
 		display: block;
 	}

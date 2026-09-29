@@ -120,6 +120,11 @@
 	width: math.div(338, 16) + rem;
 	max-width: 100%;
 
+	// 英語版は「触媒買取」の無いロゴ（logo-footer-en.svg／165×49。2026-09-29 支給）
+	&:lang(en) {
+		width: math.div(165, 16) + rem;
+	}
+
 	img {
 		display: block;
 		width: 100%;

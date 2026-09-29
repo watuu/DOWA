@@ -181,9 +181,19 @@ block content
         //- お客様の声
         section.p-top-voice
             .l-container
-                .c-heading-section.p-top-voice__head
-                    p.c-heading-section__label.u-anim.js-visible 自動車解体事業者様の声
-                    h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Voice
+                //- 前後ボタンは PC だけ見出しの右（2026-09-29 修正依頼 No.15・16）。SP は元どおりカードの下
+                //- 同じボタンを2組置き、表示は CSS で出し分ける（Swiper には両方を渡す）
+                .p-top-voice__head
+                    .c-heading-section
+                        p.c-heading-section__label.u-anim.js-visible 自動車解体事業者様の声
+                        h2.c-heading-section__title.u-anim.js-visible(style="--i: 1") Voice
+                    .c-btn-ctrl-group.p-top-voice__ctrl.p-top-voice__ctrl--head.u-anim.js-visible(style="--i: 2")
+                        button.c-btn-ctrl.c-btn-ctrl--prev.js-card-slider-prev(type="button" aria-label="前のお客様の声へ")
+                            svg(aria-hidden="true")
+                                use(href="#ico_arrow_ne")
+                        button.c-btn-ctrl.c-btn-ctrl--next.js-card-slider-next(type="button" aria-label="次のお客様の声へ")
+                            svg(aria-hidden="true")
+                                use(href="#ico_arrow_ne")
                 //- Swiper は自前で transform を持つので、枠は動かさずフェードだけにする
                 .js-card-slider.u-anim-fade.js-visible
                     .p-top-voice__slider.swiper
@@ -202,7 +212,7 @@ block content
                                                 p.c-card-voice__client
                                                     span.c-card-voice__client-label CLIENT：
                                                     = v.client
-                    .c-btn-ctrl-group.p-top-voice__ctrl
+                    .c-btn-ctrl-group.p-top-voice__ctrl.p-top-voice__ctrl--foot
                         button.c-btn-ctrl.c-btn-ctrl--prev.js-card-slider-prev(type="button" aria-label="前のお客様の声へ")
                             svg(aria-hidden="true")
                                 use(href="#ico_arrow_ne")

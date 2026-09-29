@@ -43,7 +43,7 @@ get_header();
 							<h2 class="c-card-num__title">OECD/LPPMに準拠した責任ある調達方針</h2>
 							<p class="c-card-num__desc">DOWAメタルマインは、OECDのガイダンスに基づき、リスクのある鉱物を使用しない方針を採用しています。さらに、年1回の第三者監査と情報公開を通じて、透明性と信頼性の高い調達体制を維持しています。</p>
 						</div>
-						<div class="c-card-num__action"><a class="c-banner-link" href="#" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社 責任ある調達について（新しいウィンドウで開きます）"><span class="c-banner-link__body"><img class="c-banner-link__logo" src="<?php echo esc_url(theme_asset('img/logo-dowa-mm.svg')); ?>" width="280" height="14" alt=""/><span class="c-banner-link__label">責任ある調達について</span></span><span class="c-btn-arrow c-btn-arrow--xs c-btn-arrow--action c-btn-arrow--tri">
+						<div class="c-card-num__action"><a class="c-banner-link" href="https://hd.dowa.co.jp/ja/csr/esg/policy/procurement-policies.html" target="_blank" rel="noopener" aria-label="DOWAメタルマイン株式会社 責任ある調達について（新しいウィンドウで開きます）"><span class="c-banner-link__body"><img class="c-banner-link__logo" src="<?php echo esc_url(theme_asset('img/logo-dowa-mm.svg')); ?>" width="280" height="14" alt=""/><span class="c-banner-link__label">責任ある調達について</span></span><span class="c-btn-arrow c-btn-arrow--xs c-btn-arrow--action c-btn-arrow--tri">
 									<svg aria-hidden="true">
 										<use href="#ico_tri_d"></use>
 									</svg></span></a></div>
